@@ -561,7 +561,21 @@
         cursor: pointer;
       }
 
-      .bravel-social-link img {
+      .bravel-social-link img,
+      .bravel-social-link svg {
+        display: block;
+      }
+
+      .bravel-roadmap-list-icon {
+        display: block;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .bravel-social-icon {
         display: block;
       }
 
@@ -1477,7 +1491,7 @@
         padding-bottom: 24px;
         padding-left: 24px;
         gap: 10px;
-        background: url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721488520/b3ca/37d3/24fc/8906123c1ec2ce694faf10733c53c131.jpg) -0.1211px -68px / 690.2423px 481px no-repeat;
+        background: linear-gradient(135deg, #ff641a 0%, #ff8a4d 100%);
       }
 
       .music_392_168 {
@@ -2744,7 +2758,7 @@
         position: relative;
         width: 682px;
         height: 368px;
-        background: url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721502025/0c76/0c5f/8cac/592405f8dd787f9fa6a2ad77252af98b.png) center / cover no-repeat;
+        background: transparent;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -2805,7 +2819,7 @@
         position: relative;
         width: 483px;
         height: 234px;
-        background: url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721501124/aa14/e69d/bc14/59308f85e1d06174c28b4c379ab805e7.png) center / cover no-repeat;
+        background: transparent;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -3708,7 +3722,7 @@
         left: 2%;
         right: 0%;
         bottom: 0%;
-        background: url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721483791/36b4/4c04/c75f/9abd49917e128b409b0c99a56a771bfa.png) center / cover no-repeat;
+        background: transparent;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -4500,7 +4514,7 @@
         position: relative;
         width: 212px;
         height: 173px;
-        background: url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721484127/4c09/f65e/0658/ed7a6778f8ffc7958cc2b3e64d7ca0cf.png) center / cover no-repeat;
+        background: transparent;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -5323,9 +5337,9 @@
         <div class="music_430_239">
           <div class="music_392_227">
             <div class="music_392_228">
-              <img
-                class="music_i392_228_124_15"
-                src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721494522/cc89/a6fb/9b89/2fd5d94da2bb4749c0aa09aa180cbca8.png" />
+              <svg class="music_i392_228_124_15 bravel-roadmap-list-icon" viewBox="0 0 25 14" aria-hidden="true" focusable="false">
+                  <path d="M1.5 10.5L7.2 5.3L11.1 8.6L18.2 2.1L23.5 6.3" />
+                </svg>
             </div>
             <span class="music_392_229">Исследования</span>
           </div>
@@ -5333,18 +5347,27 @@
             <div class="music_392_233"></div>
             <div class="music_430_241">
               <div class="music_392_225">
-                <img
-                  class="music_i392_225_124_18"
-                  src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721498289/091b/09bd/dbf7/c57e3197ee2c03ba2b61bf16c6aa5dcb.png" />
+                <svg class="music_i392_225_124_18 bravel-roadmap-list-icon" viewBox="0 0 25 25" aria-hidden="true" focusable="false">
+                    <rect x="6.5" y="2.5" width="12" height="20" rx="3" />
+                    <path d="M10.5 5.5H14.5" />
+                    <path d="M12.5 18.5H12.51" />
+                  </svg>
               </div>
               <span class="music_392_230">Разработка мобильного приложения</span>
             </div>
           </div>
           <div class="music_430_242">
             <div class="music_392_234">
-              <img
-                class="music_i392_234_134_74"
-                src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721494724/2300/5afe/4f9c/baf6a343fe4a28c2286a3bb74efe84ec.png" />
+              <svg class="music_i392_234_134_74 bravel-roadmap-list-icon" viewBox="0 0 17 22" aria-hidden="true" focusable="false">
+                  <path d="M8.5 4.5V1.5" />
+                  <path d="M4.5 6.5L2.5 4.5" />
+                  <path d="M12.5 6.5L14.5 4.5" />
+                  <rect x="3" y="6.5" width="11" height="13" rx="5" />
+                  <path d="M1.5 11H3" />
+                  <path d="M14 11H15.5" />
+                  <path d="M1.5 15.5H3" />
+                  <path d="M14 15.5H15.5" />
+                </svg>
             </div>
             <span class="music_392_231">Тестирование и&nbsp;исправление багов</span>
           </div>
@@ -5421,7 +5444,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1" data-bravel-faq-question>
               <span>Почему именно мы?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" aria-hidden="true">
               <p>Мы проверяем водителей и&nbsp;автомобили, фиксируем стоимость после бронирования и&nbsp;показываем маршрут в&nbsp;реальном времени. В&nbsp;сервисе также можно находить регулярные поездки, выбирать попутчиков по&nbsp;предпочтениям и&nbsp;оставлять запрос на&nbsp;нужный маршрут.</p>
@@ -5430,7 +5452,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2" data-bravel-faq-question>
               <span>Как&nbsp;вы проверяете водителей?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" aria-hidden="true">
               <p>Водитель подтверждает личность по&nbsp;паспорту и&nbsp;селфи, а&nbsp;также загружает права и&nbsp;документы на&nbsp;автомобиль. После проверки в&nbsp;профиле появляется специальная отметка.</p>
@@ -5439,7 +5460,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3" data-bravel-faq-question>
               <span>Может&nbsp;ли приехать другой водитель или автомобиль?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" aria-hidden="true">
               <p>Нет. Бронирование привязано к&nbsp;конкретному водителю и&nbsp;автомобилю. До&nbsp;поездки вы&nbsp;увидите фотографию водителя, марку, цвет и&nbsp;номер машины.</p>
@@ -5448,7 +5468,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4" data-bravel-faq-question>
               <span>Может&nbsp;ли измениться стоимость поездки?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" aria-hidden="true">
               <p>После бронирования стоимость фиксируется. Все условия, включая багаж, животных и&nbsp;дополнительные остановки, водитель указывает заранее.</p>
@@ -5457,7 +5476,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5" data-bravel-faq-question>
               <span>Что произойдёт, если водитель отменит поездку?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" aria-hidden="true">
               <p>Мы&nbsp;сразу сообщим об&nbsp;отмене, предложим похожие варианты и&nbsp;отправим запрос водителям, которые ездят по&nbsp;этому маршруту.</p>
@@ -5466,7 +5484,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6" data-bravel-faq-question>
               <span>Как возвращаются деньги?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" aria-hidden="true">
               <p>Если водитель отменил поездку или не&nbsp;приехал, оплата возвращается автоматически. При отмене пассажиром сумма возврата зависит от&nbsp;времени до&nbsp;отправления.</p>
@@ -5475,7 +5492,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7" data-bravel-faq-question>
               <span>Как понять, что поездка состоится?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-question-7" aria-hidden="true">
               <p>В&nbsp;профиле водителя можно посмотреть рейтинг, отзывы, количество поездок и&nbsp;частоту отмен. Перед отправлением мы&nbsp;попросим водителя подтвердить поездку и&nbsp;сообщим вам её статус.</p>
@@ -5484,7 +5500,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8" data-bravel-faq-question>
               <span>Что делать, если водитель опаздывает?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-8" role="region" aria-labelledby="faq-question-8" aria-hidden="true">
               <p>В&nbsp;приложении можно увидеть местоположение автомобиля и&nbsp;новое время прибытия. Если ожидание затянется, вы&nbsp;сможете связаться с&nbsp;водителем, отменить бронирование или обратиться в&nbsp;поддержку.</p>
@@ -5493,7 +5508,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-9" id="faq-question-9" data-bravel-faq-question>
               <span>Можно&nbsp;ли ездить на&nbsp;работу регулярно?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-9" role="region" aria-labelledby="faq-question-9" aria-hidden="true">
               <p>Да. Водители заранее публикуют расписание повторяющихся поездок. Вы&nbsp;сможете выбрать удобные дни и&nbsp;время, а&nbsp;затем заранее бронировать места.</p>
@@ -5502,7 +5516,6 @@
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-10" id="faq-question-10" data-bravel-faq-question>
               <span>Что делать, если подходящей поездки нет?</span>
-              <img src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721480526/4de4/3588/6b60/964d5a044001080e079c5231848033bc.png" alt="" aria-hidden="true" />
             </button>
             <div class="bravel-faq-answer" id="faq-answer-10" role="region" aria-labelledby="faq-question-10" aria-hidden="true">
               <p>Оставьте запрос с&nbsp;маршрутом, датой и&nbsp;временем. Водители, которые регулярно ездят в&nbsp;этом направлении, получат уведомление и&nbsp;смогут предложить поездку.</p>
@@ -5556,14 +5569,16 @@
         <div class="flexContainer_11_music_430_232"><span class="music_412_121">Стать частью команды</span><span class="music_412_122">Работа у&nbsp;нас</span></div>
         <div class="music_430_237">
           <a class="music_392_415 bravel-social-link" href="https://vk.ru/club240456240" target="_blank" rel="noopener noreferrer" aria-label="VK">
-            <img
-              class="music_i392_415_381_103"
-              src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721497351/be91/5af1/4df5/fe70a847e18f50af43b7710a399c7c59.png" />
+            <svg class="music_i392_415_381_103 bravel-social-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="16" r="16" fill="#121212" />
+              <path d="M8.3 11.2h3.1c.1 2.9 1.4 4.1 2.3 4.3v-4.3h2.9v2.5c.9-.1 1.9-1.3 2.2-2.5h2.9c-.2 1.6-1.3 3-2.3 3.6 1 .5 2.6 1.8 3.2 4h-3.2c-.4-1.2-1.3-2.1-2.8-2.3v2.3h-.4c-5.8 0-7.6-3.9-7.9-7.6Z" fill="#fff" />
+            </svg>
           </a>
           <a class="music_392_416 bravel-social-link" href="https://t.me/bravel2026" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <img
-              class="music_i392_416_381_108"
-              src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721493719/2bf9/f642/4eca/ce4076b4b0bf8d0821c4deede601ebb8.png" />
+            <svg class="music_i392_416_381_108 bravel-social-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="16" r="16" fill="#121212" />
+              <path d="M23.4 9.5 7.9 15.6c-1 .4-1 1 .1 1.3l3.9 1.2 1.5 4.5c.2.6.5.8 1 .3l2.2-2.1 4.1 3c.8.4 1.3.2 1.5-.8l2.6-12.2c.3-1.1-.4-1.6-1.4-1.3Zm-10.8 8.1 8.7-5.5c.4-.2.7-.1.4.2l-7 6.4-.3 3-1.8-4.1Z" fill="#fff" />
+            </svg>
           </a>
         </div>
       </div>
