@@ -568,11 +568,17 @@
 
       .bravel-roadmap-list-icon {
         display: block;
+        flex-shrink: 0;
         fill: none;
         stroke: currentColor;
         stroke-width: 2;
         stroke-linecap: round;
         stroke-linejoin: round;
+        overflow: visible;
+      }
+
+      .bravel-roadmap-list-icon * {
+        vector-effect: non-scaling-stroke;
       }
 
       .bravel-social-icon {
@@ -3286,20 +3292,16 @@
         width: 27px;
         height: 28px;
         flex-shrink: 0;
-        overflow: hidden;
+        overflow: visible;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
       }
 
       .music_i392_228_124_15 {
-        width: 92.5926%;
-        height: 50%;
-        position: absolute;
-        top: 25%;
-        left: 3.7037%;
-        right: 3.7037%;
-        bottom: 25%;
+        width: 25px;
+        height: 14px;
+        position: relative;
       }
 
       .music_392_229 {
@@ -3354,22 +3356,19 @@
         position: relative;
         width: 28px;
         height: 28px;
-        overflow: hidden;
+        flex-shrink: 0;
+        overflow: visible;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
         margin-left: 0;
         margin-top: 0;
       }
 
       .music_i392_225_124_18 {
-        width: 87.5%;
-        height: 87.5%;
-        position: absolute;
-        top: 3.5714%;
-        left: 7.1429%;
-        right: 5.3571%;
-        bottom: 8.9286%;
+        width: 25px;
+        height: 25px;
+        position: relative;
       }
 
       .music_392_230 {
@@ -3400,23 +3399,20 @@
         position: relative;
         width: 28px;
         height: 28px;
-        overflow: hidden;
+        flex-shrink: 0;
+        overflow: visible;
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
         z-index: 1;
         margin-left: 0;
         margin-top: 0;
       }
 
       .music_i392_234_134_74 {
-        width: 60.7143%;
-        height: 78.5714%;
-        position: absolute;
-        top: 10.7143%;
-        left: 21.4286%;
-        right: 17.8571%;
-        bottom: 10.7143%;
+        width: 17px;
+        height: 23px;
+        position: relative;
       }
 
       .music_392_231 {
@@ -5345,9 +5341,7 @@
         <div class="music_430_239">
           <div class="music_392_227">
             <div class="music_392_228">
-              <svg class="music_i392_228_124_15 bravel-roadmap-list-icon" viewBox="0 0 25 14" aria-hidden="true" focusable="false">
-                  <path d="M1.5 10.5L7.2 5.3L11.1 8.6L18.2 2.1L23.5 6.3" />
-                </svg>
+              <img class="music_i392_228_124_15 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-research.svg" alt="" aria-hidden="true" />
             </div>
             <span class="music_392_229">Исследования</span>
           </div>
@@ -5355,27 +5349,14 @@
             <div class="music_392_233"></div>
             <div class="music_430_241">
               <div class="music_392_225">
-                <svg class="music_i392_225_124_18 bravel-roadmap-list-icon" viewBox="0 0 25 25" aria-hidden="true" focusable="false">
-                    <rect x="6.5" y="2.5" width="12" height="20" rx="3" />
-                    <path d="M10.5 5.5H14.5" />
-                    <path d="M12.5 18.5H12.51" />
-                  </svg>
+                <img class="music_i392_225_124_18 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-app.svg" alt="" aria-hidden="true" />
               </div>
               <span class="music_392_230">Разработка мобильного приложения</span>
             </div>
           </div>
           <div class="music_430_242">
             <div class="music_392_234">
-              <svg class="music_i392_234_134_74 bravel-roadmap-list-icon" viewBox="0 0 17 22" aria-hidden="true" focusable="false">
-                  <path d="M8.5 4.5V1.5" />
-                  <path d="M4.5 6.5L2.5 4.5" />
-                  <path d="M12.5 6.5L14.5 4.5" />
-                  <rect x="3" y="6.5" width="11" height="13" rx="5" />
-                  <path d="M1.5 11H3" />
-                  <path d="M14 11H15.5" />
-                  <path d="M1.5 15.5H3" />
-                  <path d="M14 15.5H15.5" />
-                </svg>
+              <img class="music_i392_234_134_74 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-testing.svg" alt="" aria-hidden="true" />
             </div>
             <span class="music_392_231">Тестирование и&nbsp;исправление багов</span>
           </div>
