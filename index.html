@@ -4924,6 +4924,7 @@
       .music_430_207.bravel-faq-section {
         height: auto;
         min-height: 655px;
+        overflow-anchor: none;
       }
 
       .music_430_208.bravel-faq-heading {
@@ -4951,6 +4952,7 @@
         display: block;
         margin-top: 24px;
         isolation: auto;
+        overflow-anchor: none;
       }
 
       .bravel-faq-item {
@@ -5055,13 +5057,17 @@
         background-color: #ff641a;
         opacity: 0;
         pointer-events: none;
-        transform: translate3d(var(--bravel-dot-x, 0px), var(--bravel-dot-y, 0px), 0);
+        transform: translate3d(0, 0, 0);
         transition:
           transform 980ms cubic-bezier(0.16, 1, 0.3, 1),
           opacity 320ms ease;
         isolation: isolate;
         will-change: transform;
         z-index: 50;
+      }
+
+      .bravel-scroll-dot.is-positioning {
+        transition: none;
       }
 
       .bravel-scroll-dot::after {
@@ -5081,7 +5087,9 @@
       .bravel-scroll-dot-enabled .music_392_308,
       .bravel-scroll-dot-enabled .music_392_341,
       .bravel-scroll-dot-enabled .music_392_385 {
-        opacity: 0;
+        position: relative;
+        background-color: transparent !important;
+        opacity: 1;
       }
 
       @keyframes bravelDotPulse {
@@ -5796,6 +5804,10 @@
           const item = button.closest('.bravel-faq-item');
           if (!item) return;
 
+          const preservedScrollX = window.scrollX;
+          const preservedScrollY = window.scrollY;
+          window.dispatchEvent(new CustomEvent('bravel:faq-toggle', { detail: { scrollY: preservedScrollY } }));
+
           const shouldOpen = !item.classList.contains('is-open');
           faq.querySelectorAll('.bravel-faq-item.is-open').forEach(closeItem);
 
@@ -5803,15 +5815,23 @@
             openItem(item);
           }
 
-          window.dispatchEvent(new Event('resize'));
+          const restoreScrollPosition = () => {
+            window.scrollTo({ top: preservedScrollY, left: preservedScrollX, behavior: 'auto' });
+          };
+          window.requestAnimationFrame(() => {
+            restoreScrollPosition();
+            window.requestAnimationFrame(restoreScrollPosition);
+          });
+          [80, 180, 360, 620, 980].forEach((delay) => {
+            window.setTimeout(restoreScrollPosition, delay);
+          });
         });
       })();
 
       (() => {
-        const page = document.querySelector('.music_386_81');
         const movingDot = document.querySelector('.bravel-scroll-dot');
 
-        if (!page || !movingDot) return;
+        if (!movingDot) return;
 
         const targets = [
           { section: '.music_430_189', dot: '.music_392_140' },
@@ -5833,16 +5853,20 @@
         document.documentElement.classList.add('bravel-scroll-dot-enabled');
 
         let activeIndex = -1;
+        let activeDot = null;
         let ticking = false;
+        let faqLockUntil = 0;
+        let faqLockTimer = 0;
+        const FAQ_LOCK_DURATION = 1200;
 
         const getDocumentTop = (element) => element.getBoundingClientRect().top + window.scrollY;
+        const isFaqLocked = () => window.performance.now() < faqLockUntil;
 
         const getActiveIndex = () => {
           const lastIndex = targets.length - 1;
-          const lastSectionTop = targets[lastIndex].section.getBoundingClientRect().top;
           const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
 
-          if (lastSectionTop <= window.innerHeight * 0.78 || window.scrollY >= maxScrollY - 2) {
+          if (window.scrollY >= maxScrollY - 2) {
             return lastIndex;
           }
 
@@ -5858,33 +5882,80 @@
           return nextIndex;
         };
 
-        const moveToTarget = (target) => {
-          const pageRect = page.getBoundingClientRect();
-          const dotRect = target.dot.getBoundingClientRect();
-          const x = dotRect.left - pageRect.left;
-          const y = dotRect.top - pageRect.top;
+        const moveToTarget = (target, animate = true) => {
+          const previousRect = movingDot.getBoundingClientRect();
+          const shouldAnimate = animate && activeDot && activeDot !== target.dot && previousRect.width && previousRect.height;
 
-          movingDot.style.setProperty('--bravel-dot-x', `${x}px`);
-          movingDot.style.setProperty('--bravel-dot-y', `${y}px`);
+          target.dot.appendChild(movingDot);
           movingDot.style.opacity = '1';
+
+          if (shouldAnimate) {
+            const nextRect = movingDot.getBoundingClientRect();
+            const deltaX = previousRect.left - nextRect.left;
+            const deltaY = previousRect.top - nextRect.top;
+
+            movingDot.classList.add('is-positioning');
+            movingDot.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0)`;
+            movingDot.getBoundingClientRect();
+            movingDot.classList.remove('is-positioning');
+            window.requestAnimationFrame(() => {
+              movingDot.style.transform = 'translate3d(0, 0, 0)';
+            });
+          } else {
+            movingDot.classList.add('is-positioning');
+            movingDot.style.transform = 'translate3d(0, 0, 0)';
+            movingDot.getBoundingClientRect();
+            movingDot.classList.remove('is-positioning');
+          }
+
+          activeDot = target.dot;
         };
 
         const update = (force = false) => {
           ticking = false;
+          if (isFaqLocked()) return;
+
           const nextIndex = getActiveIndex();
 
           if (force || nextIndex !== activeIndex) {
             activeIndex = nextIndex;
-            moveToTarget(targets[activeIndex]);
+            moveToTarget(targets[activeIndex], !force);
           }
         };
 
         const scheduleUpdate = () => {
+          if (isFaqLocked()) return;
           if (ticking) return;
           ticking = true;
           window.requestAnimationFrame(() => update());
         };
 
+        const releaseFaqLock = () => {
+          if (!isFaqLocked()) return;
+          faqLockUntil = 0;
+          if (faqLockTimer) {
+            window.clearTimeout(faqLockTimer);
+            faqLockTimer = 0;
+          }
+          scheduleUpdate();
+        };
+
+        window.addEventListener('bravel:faq-toggle', () => {
+          faqLockUntil = window.performance.now() + FAQ_LOCK_DURATION;
+          ticking = false;
+          if (faqLockTimer) window.clearTimeout(faqLockTimer);
+          faqLockTimer = window.setTimeout(() => {
+            faqLockUntil = 0;
+            faqLockTimer = 0;
+          }, FAQ_LOCK_DURATION);
+        });
+        window.addEventListener('wheel', releaseFaqLock, { passive: true });
+        window.addEventListener('touchmove', releaseFaqLock, { passive: true });
+        window.addEventListener('keydown', (event) => {
+          if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) {
+            releaseFaqLock();
+          }
+        });
         window.addEventListener('scroll', scheduleUpdate, { passive: true });
         window.addEventListener('resize', () => update(true));
         window.addEventListener('load', () => update(true));
