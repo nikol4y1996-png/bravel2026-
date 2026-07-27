@@ -607,13 +607,19 @@
         border-radius: 37.5px;
         padding-left: 26px;
         font-size: 24px;
-        font-family: var(--bravel-font-ui);
-        font-weight: 500;
+        font-family: var(--bravel-font-logo);
+        font-weight: 400;
         line-height: 30px;
-        color: transparent;
+        color: #121212;
         text-decoration: none;
         white-space: nowrap;
         transition: color var(--bravel-hover-duration) var(--bravel-hover-ease);
+      }
+
+      /* Логотип теперь выводится живым текстом на шрифте Neue Haas Grotesk,
+         поэтому скрываем задублированную векторную надпись "Bravel" в SVG шапки. */
+      .bravel-header-path_logo {
+        display: none;
       }
 
       .bravel-header-link {
@@ -4746,8 +4752,8 @@
         align-items: center;
         gap: 8px;
         font-size: 24px;
-        font-family: var(--bravel-font-ui);
-        font-weight: 500;
+        font-family: var(--bravel-font-logo);
+        font-weight: 400;
         line-height: 30px;
         color: #121212;
         white-space: pre;
