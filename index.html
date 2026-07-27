@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0" />
+      content="width=device-width, initial-scale=1.0"
+      data-bravel-viewport />
     <title>Bravel</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -12,9 +13,59 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <style>
+      @font-face {
+        font-family: 'Bravel SF UI Display';
+        src: url('assets/fonts/bravel-sf-pro-display-regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Bravel SF UI Display';
+        src: url('assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Bravel SF UI Display';
+        src: url('assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
+        font-weight: 510;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Bravel SF UI Display';
+        src: url('assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Bravel SF UI Display';
+        src: url('assets/fonts/bravel-sf-pro-display-bold-italic.otf') format('opentype');
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Neue Haas Grotesk Display Pro 6';
+        src: url('assets/fonts/bravel-neue-haas-roman.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
       :root {
         --bravel-hover-duration: 320ms;
         --bravel-hover-ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --bravel-font-ui: 'Bravel SF UI Display', 'SF UI Display', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        --bravel-font-logo: 'Neue Haas Grotesk Display Pro 6', 'Neue Haas Grotesk Display Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
       }
 
       html,
@@ -107,9 +158,110 @@
       }
       * {
         box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
+
+      /* =========================================================
+         BRAVEL — КРОССБРАУЗЕРНАЯ НОРМАЛИЗАЦИЯ
+         Приводит рендеринг к единому виду в Chrome, Safari,
+         Firefox, Edge и мобильных браузерах (iOS Safari, Chrome
+         Android, Samsung Internet).
+         ========================================================= */
+      html {
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      html, body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      a,
+      button,
+      label,
+      [role='button'] {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: inherit;
+        color: inherit;
+        background: none;
+        border: 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      img,
+      svg,
+      video {
+        max-width: 100%;
+      }
+
+      a {
+        -webkit-text-decoration-skip: objects;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Firefox: скрыть внутреннюю пунктирную рамку у кнопок при фокусе */
+      button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+
+      /* Единый вид полосы прокрутки в WebKit-браузерах */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(18, 18, 18, 0.25);
+        border-radius: 8px;
       }
       html {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(18, 18, 18, 0.25) transparent;
+      }
+
+      /* Фоллбэк для браузеров без поддержки backdrop-filter
+         (некоторые версии Firefox < 103, старые Chromium на Windows) */
+      @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .music_430_188::before,
+        .bravel-header-links {
+          background-color: rgba(255, 255, 255, 0.92);
+        }
+        .music_392_158 {
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+      }
+
+      html {
         scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
         scroll-padding-top: 130px;
       }
 
@@ -147,7 +299,7 @@
         transform: translate(-50%, 18px);
         text-align: center;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         font-style: normal;
         line-height: 38px;
@@ -175,7 +327,7 @@
         overflow: hidden;
         text-align: center;
         font-size: 52px;
-        font-family: 'Neue Haas Grotesk Display Pro 6';
+        font-family: var(--bravel-font-logo);
         font-weight: 400;
         font-style: normal;
         line-height: 66px;
@@ -455,7 +607,7 @@
         border-radius: 37.5px;
         padding-left: 26px;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 30px;
         color: transparent;
@@ -474,7 +626,7 @@
         overflow: hidden;
         border-radius: 37.5px;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: transparent;
@@ -493,7 +645,7 @@
         align-items: center;
         justify-content: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -595,7 +747,7 @@
         align-items: center;
         gap: 8px;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 30px;
         color: #121212;
@@ -621,7 +773,7 @@
       .music_392_138 {
         text-align: center;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 29px;
         color: #121212;
@@ -666,7 +818,7 @@
       .music_392_133 {
         flex-shrink: 0;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -676,7 +828,7 @@
       .music_392_134 {
         flex-shrink: 0;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -686,7 +838,7 @@
       .music_392_135 {
         flex-shrink: 0;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -696,7 +848,7 @@
       .music_392_136 {
         flex-shrink: 0;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -706,7 +858,7 @@
       .music_392_137 {
         flex-shrink: 0;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -730,7 +882,7 @@
         width: 152px;
         height: 20px;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 20px;
         color: #121212;
@@ -764,7 +916,7 @@
         width: 100%;
         text-align: center;
         font-size: 52px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 70px;
         letter-spacing: 0px;
@@ -775,7 +927,7 @@
 
       .music_392_142_0_33 {
         font-size: 52px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 70px;
         letter-spacing: 0px;
@@ -786,7 +938,7 @@
 
       .music_392_142_33_39 {
         font-size: 52px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 70px;
         font-style: italic;
@@ -800,7 +952,7 @@
         width: 804px;
         text-align: center;
         font-size: 23px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 33px;
         font-style: normal;
@@ -817,7 +969,7 @@
         height: 50.56px;
         position: relative;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         letter-spacing: 0px;
@@ -877,6 +1029,7 @@
         transform-box: fill-box;
         transform-origin: center;
         transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         transition:
           fill var(--bravel-hover-duration) var(--bravel-hover-ease),
@@ -994,7 +1147,7 @@
         width: 57px;
         height: 16px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: normal;
         color: #121212;
@@ -1042,7 +1195,7 @@
         width: 292px;
         text-align: center;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 40px;
         color: #121212;
@@ -1055,7 +1208,7 @@
       .music_392_162 {
         text-align: center;
         font-size: 15px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -1152,7 +1305,7 @@
       .music_392_176 {
         width: 294px;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -1167,7 +1320,7 @@
       .music_392_174 {
         width: 100%;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -1243,7 +1396,7 @@
       .music_392_187 {
         width: 189px;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -1258,7 +1411,7 @@
       .music_392_186 {
         width: 100%;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -1331,7 +1484,7 @@
       .music_392_184 {
         width: 100%;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -1345,7 +1498,7 @@
       .music_392_185 {
         width: 169px;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -1461,7 +1614,7 @@
       .music_392_180 {
         width: 302px;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -1475,7 +1628,7 @@
       .music_392_181 {
         width: 387px;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -1514,6 +1667,7 @@
         flex-shrink: 0;
         border-radius: 35px;
         background-color: rgba(18, 18, 18, 0);
+        -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
       }
 
@@ -1532,7 +1686,7 @@
 
       .music_392_169 {
         font-size: 54px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 68px;
         color: #ffffff;
@@ -1556,7 +1710,7 @@
 
       .music_392_170 {
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 30px;
         color: #ffffff;
@@ -1609,7 +1763,7 @@
         width: 90px;
         height: 16px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: normal;
         color: #121212;
@@ -1657,7 +1811,7 @@
         width: 496px;
         text-align: center;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 38px;
         color: #121212;
@@ -1671,7 +1825,7 @@
         width: 79px;
         text-align: center;
         font-size: 15px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -1744,7 +1898,7 @@
       .music_392_206 {
         width: 254px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -1774,7 +1928,7 @@
         width: 100%;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.5);
@@ -1832,7 +1986,7 @@
       .music_392_205 {
         width: 195px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -1862,7 +2016,7 @@
         width: 100%;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.5);
@@ -1926,7 +2080,7 @@
         width: 99px;
         height: 16px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: normal;
         color: #121212;
@@ -1962,7 +2116,7 @@
         width: 456px;
         text-align: center;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 38px;
         color: #121212;
@@ -1976,7 +2130,7 @@
       .music_392_215 {
         width: 100%;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 24px;
         color: rgba(18, 18, 18, 0.4);
@@ -2095,7 +2249,7 @@
         width: 98px;
         text-align: center;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 31px;
         color: #ffffff;
@@ -2111,7 +2265,7 @@
         width: 98px;
         text-align: center;
         font-size: 15px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 15px;
         color: rgba(255, 255, 255, 0.4);
@@ -2147,7 +2301,7 @@
       .music_392_243 {
         text-align: left;
         font-size: 14px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 17px;
         color: #ff641a;
@@ -2161,7 +2315,7 @@
       .music_392_245 {
         text-align: left;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 29px;
         color: #121212;
@@ -2175,7 +2329,7 @@
       .music_392_244 {
         text-align: left;
         font-size: 14px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 17px;
         color: rgba(18, 18, 18, 0.4);
@@ -2227,7 +2381,7 @@
       .music_392_282 {
         text-align: center;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 29px;
         text-decoration: line-through;
@@ -2242,7 +2396,7 @@
       .music_392_283 {
         text-align: center;
         font-size: 14px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 17px;
         color: rgba(255, 255, 255, 0.4);
@@ -2870,7 +3024,7 @@
         width: 88px;
         text-align: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -2883,7 +3037,7 @@
         width: 95px;
         text-align: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -2896,7 +3050,7 @@
         width: 91px;
         text-align: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -2909,7 +3063,7 @@
         width: 80px;
         text-align: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -2922,7 +3076,7 @@
         width: 53px;
         text-align: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -2936,6 +3090,7 @@
         height: 74px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.01);
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         position: relative;
@@ -2948,6 +3103,7 @@
         height: 74px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.01);
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         position: relative;
@@ -3007,7 +3163,7 @@
         width: 1164px;
         text-align: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 24px;
         color: #121212;
@@ -3021,6 +3177,7 @@
         position: absolute;
         margin: 0;
         background-color: rgba(255, 255, 255, 0.01);
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         pointer-events: none;
@@ -3067,7 +3224,7 @@
         width: 214px;
         height: 29px;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         color: #ff641a;
@@ -3255,7 +3412,7 @@
       .music_392_286 {
         width: 185px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -3282,7 +3439,7 @@
         align-items: center;
         gap: 8px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: rgba(18, 18, 18, 0.3);
@@ -3343,7 +3500,7 @@
         width: 386px;
         height: 28px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -3387,7 +3544,7 @@
         width: 371px;
         height: 28px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: rgba(18, 18, 18, 0.3);
@@ -3456,7 +3613,7 @@
         width: 89px;
         height: 16px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: normal;
         color: #121212;
@@ -3490,7 +3647,7 @@
       .music_392_310 {
         width: 100%;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 38px;
         color: #121212;
@@ -3503,7 +3660,7 @@
       .music_392_311 {
         width: 492px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 24px;
         color: #ff641a;
@@ -3517,7 +3674,7 @@
         height: 50.56px;
         position: relative;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 510;
         line-height: 19px;
         letter-spacing: 0px;
@@ -3702,7 +3859,7 @@
         width: 100%;
         height: 98px;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         letter-spacing: 0px;
@@ -3765,7 +3922,7 @@
       .music_392_336 {
         width: 100%;
         font-size: 15px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 18px;
         letter-spacing: 0px;
@@ -3779,7 +3936,7 @@
       .music_392_337 {
         width: 64px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 14px;
         letter-spacing: 0px;
@@ -3796,6 +3953,7 @@
         background: linear-gradient(180deg, #d9d9d9 0%, #737373 100%);
         opacity: 0.2;
         mix-blend-mode: overlay;
+        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         position: relative;
@@ -3809,6 +3967,7 @@
         background: linear-gradient(180deg, #d9d9d9 0%, #737373 100%);
         opacity: 0.2;
         mix-blend-mode: overlay;
+        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         position: relative;
@@ -3822,6 +3981,7 @@
         background: linear-gradient(180deg, #d9d9d9 0%, #737373 100%);
         opacity: 0.2;
         mix-blend-mode: overlay;
+        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         position: relative;
@@ -3859,7 +4019,7 @@
         width: 77px;
         height: 16px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: normal;
         color: #121212;
@@ -3895,7 +4055,7 @@
         width: 100%;
         text-align: center;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 40px;
         color: #121212;
@@ -3936,7 +4096,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -3980,7 +4140,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4024,7 +4184,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4068,7 +4228,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4112,7 +4272,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4156,7 +4316,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4200,7 +4360,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4244,7 +4404,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4288,7 +4448,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4333,7 +4493,7 @@
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -4411,7 +4571,7 @@
         width: 73px;
         height: 16px;
         font-size: 12px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: normal;
         color: #121212;
@@ -4445,7 +4605,7 @@
       .music_392_387 {
         width: 100%;
         font-size: 32px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 700;
         line-height: 38px;
         color: #121212;
@@ -4458,7 +4618,7 @@
       .music_392_388 {
         width: 100%;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 24px;
         color: #121212;
@@ -4586,7 +4746,7 @@
         align-items: center;
         gap: 8px;
         font-size: 24px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 30px;
         color: #121212;
@@ -4614,7 +4774,7 @@
       .music_413_127 {
         width: 142px;
         font-size: 14px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 17px;
         color: rgba(18, 18, 18, 0.4);
@@ -4639,7 +4799,7 @@
         width: 43px;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -4667,7 +4827,7 @@
         flex-shrink: 0;
         align-self: stretch;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.6);
@@ -4678,7 +4838,7 @@
         flex-shrink: 0;
         align-self: stretch;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.6);
@@ -4690,7 +4850,7 @@
         align-self: stretch;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.6);
@@ -4713,7 +4873,7 @@
         width: 100%;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -4728,7 +4888,7 @@
         width: 136px;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.6);
@@ -4755,7 +4915,7 @@
         width: 48px;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -4770,7 +4930,7 @@
         width: 100%;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.6);
@@ -4797,7 +4957,7 @@
         width: 100%;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 19px;
         color: #121212;
@@ -4812,7 +4972,7 @@
         width: 94px;
         text-align: center;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         color: rgba(18, 18, 18, 0.6);
@@ -4941,7 +5101,7 @@
         display: block;
         width: 650px;
         font-size: 18px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 24px;
         color: rgba(18, 18, 18, 0.4);
@@ -4978,7 +5138,7 @@
         border: 0;
         background: transparent;
         font-size: 20px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 24px;
         color: #121212;
@@ -5032,7 +5192,7 @@
         max-width: 930px;
         margin: 0;
         font-size: 18px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 26px;
         color: rgba(18, 18, 18, 0.55);
@@ -5388,13 +5548,13 @@
         <svg class="music_430_202 bravel-promo-widget" aria-hidden="true" focusable="false" width="526" height="220" viewBox="0 0 526 220" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect y="3" width="525.451" height="217" rx="30" fill="#F7F7F7"/>
         <path d="M99.0854 76C118.995 76.0001 135.122 92.1243 135.122 112C135.122 131.876 118.995 148 99.0854 148C79.1758 148 63.0473 131.876 63.0473 112C63.0473 92.1242 79.1758 76 99.0854 76Z" stroke="#FF641A" stroke-width="16"/>
-        <foreignObject x="-28.5069" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <foreignObject x="-28.5069" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);clip-path:url(#bgblur_0_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
         <path d="M11.4931 19.0138C11.4931 10.1696 18.6627 3 27.5069 3H43.4931V220H27.4931C18.6565 220 11.4931 212.837 11.4931 204V19.0138Z" fill="url(#paint0_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
         </g>
-        <foreignObject x="3.4931" y="-37" width="113" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_1_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <foreignObject x="3.4931" y="-37" width="113" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);clip-path:url(#bgblur_1_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
         <rect x="43.4931" y="3" width="33" height="217" fill="url(#paint1_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
         </g>
-        <foreignObject x="36.4931" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_2_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <foreignObject x="36.4931" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);clip-path:url(#bgblur_2_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
         <rect x="76.4931" y="3" width="32" height="217" fill="url(#paint2_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
         </g>
         <line x1="159.13" y1="85" x2="159.13" y2="139" stroke="#FF641A" stroke-width="16" stroke-linecap="round"/>
@@ -5577,6 +5737,21 @@
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
     </div>
     <script>
+      (() => {
+        const viewport = document.querySelector('meta[name="viewport"][data-bravel-viewport]');
+        if (!viewport) return;
+
+        const DESIGN_WIDTH = 1440;
+        const setAdaptiveViewport = () => {
+          const width = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0);
+          viewport.setAttribute('content', width < DESIGN_WIDTH ? `width=${DESIGN_WIDTH}` : 'width=device-width, initial-scale=1.0');
+        };
+
+        setAdaptiveViewport();
+        window.addEventListener('resize', setAdaptiveViewport, { passive: true });
+        window.addEventListener('orientationchange', setAdaptiveViewport);
+      })();
+
       (() => {
         const intro = document.querySelector('[data-bravel-intro]');
         let introFinished = false;
