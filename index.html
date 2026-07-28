@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
@@ -15,7 +16,7 @@
     <style>
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('assets/fonts/bravel-sf-pro-display-regular.otf') format('opentype');
+        src: url('./assets/fonts/bravel-sf-pro-display-regular.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
@@ -23,7 +24,7 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
+        src: url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
         font-weight: 500;
         font-style: normal;
         font-display: swap;
@@ -31,7 +32,7 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
+        src: url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
         font-weight: 510;
         font-style: normal;
         font-display: swap;
@@ -39,7 +40,7 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
+        src: url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
         font-weight: 700;
         font-style: normal;
         font-display: swap;
@@ -47,7 +48,7 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('assets/fonts/bravel-sf-pro-display-bold-italic.otf') format('opentype');
+        src: url('./assets/fonts/bravel-sf-pro-display-bold-italic.otf') format('opentype');
         font-weight: 700;
         font-style: italic;
         font-display: swap;
@@ -55,7 +56,7 @@
 
       @font-face {
         font-family: 'Neue Haas Grotesk Display Pro 6';
-        src: url('assets/fonts/bravel-neue-haas-roman.otf') format('opentype');
+        src: url('./assets/fonts/bravel-neue-haas-roman.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
@@ -158,111 +159,37 @@
       }
       * {
         box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
       }
-
-      /* =========================================================
-         BRAVEL — КРОССБРАУЗЕРНАЯ НОРМАЛИЗАЦИЯ
-         Приводит рендеринг к единому виду в Chrome, Safari,
-         Firefox, Edge и мобильных браузерах (iOS Safari, Chrome
-         Android, Samsung Internet).
-         ========================================================= */
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
       html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 130px;
         -webkit-text-size-adjust: 100%;
-        -moz-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
         text-size-adjust: 100%;
       }
 
-      html, body {
+      body {
+        min-width: 100%;
+        overflow-x: hidden;
+        font-synthesis: none;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-      }
-
-      a,
-      button,
-      label,
-      [role='button'] {
-        -webkit-tap-highlight-color: transparent;
       }
 
       button,
       input,
-      select,
-      textarea {
-        font-family: inherit;
-        font-size: 100%;
-        line-height: inherit;
+      textarea,
+      select {
+        font: inherit;
         color: inherit;
-        background: none;
-        border: 0;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border-radius: 0;
       }
 
       button {
-        cursor: pointer;
-      }
-
-      button:focus:not(:focus-visible) {
-        outline: none;
-      }
-
-      img,
-      svg,
-      video {
-        max-width: 100%;
-      }
-
-      a {
-        -webkit-text-decoration-skip: objects;
-        text-decoration: none;
-        color: inherit;
-      }
-
-      /* Firefox: скрыть внутреннюю пунктирную рамку у кнопок при фокусе */
-      button::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-      }
-
-      /* Единый вид полосы прокрутки в WebKit-браузерах */
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background-color: rgba(18, 18, 18, 0.25);
-        border-radius: 8px;
-      }
-      html {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(18, 18, 18, 0.25) transparent;
-      }
-
-      /* Фоллбэк для браузеров без поддержки backdrop-filter
-         (некоторые версии Firefox < 103, старые Chromium на Windows) */
-      @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-        .music_430_188::before,
-        .bravel-header-links {
-          background-color: rgba(255, 255, 255, 0.92);
-        }
-        .music_392_158 {
-          background-color: rgba(255, 255, 255, 0.9);
-        }
-      }
-
-      html {
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scroll-padding-top: 130px;
+        -webkit-appearance: none;
+        appearance: none;
       }
 
       body.bravel-intro-active {
@@ -607,19 +534,13 @@
         border-radius: 37.5px;
         padding-left: 26px;
         font-size: 24px;
-        font-family: var(--bravel-font-logo);
-        font-weight: 400;
+        font-family: var(--bravel-font-ui);
+        font-weight: 500;
         line-height: 30px;
-        color: #121212;
+        color: transparent;
         text-decoration: none;
         white-space: nowrap;
         transition: color var(--bravel-hover-duration) var(--bravel-hover-ease);
-      }
-
-      /* Логотип теперь выводится живым текстом на шрифте Neue Haas Grotesk,
-         поэтому скрываем задублированную векторную надпись "Bravel" в SVG шапки. */
-      .bravel-header-path_logo {
-        display: none;
       }
 
       .bravel-header-link {
@@ -684,6 +605,14 @@
       .music_430_188:has(.bravel-header-link_faq:focus-visible) .bravel-header-path_faq,
       .music_430_188:has(.bravel-header-link_promo:hover) .bravel-header-path_promo,
       .music_430_188:has(.bravel-header-link_promo:focus-visible) .bravel-header-path_promo {
+        fill: #ff641a;
+      }
+
+      .music_430_188.is-hovering-service .bravel-header-path_service,
+      .music_430_188.is-hovering-safety .bravel-header-path_safety,
+      .music_430_188.is-hovering-roadmap .bravel-header-path_roadmap,
+      .music_430_188.is-hovering-faq .bravel-header-path_faq,
+      .music_430_188.is-hovering-promo .bravel-header-path_promo {
         fill: #ff641a;
       }
 
@@ -1035,7 +964,6 @@
         transform-box: fill-box;
         transform-origin: center;
         transform: translate3d(0, 0, 0);
-        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         transition:
           fill var(--bravel-hover-duration) var(--bravel-hover-ease),
@@ -3096,7 +3024,6 @@
         height: 74px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.01);
-        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         position: relative;
@@ -3109,7 +3036,6 @@
         height: 74px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.01);
-        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         position: relative;
@@ -3183,7 +3109,6 @@
         position: absolute;
         margin: 0;
         background-color: rgba(255, 255, 255, 0.01);
-        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         pointer-events: none;
@@ -3959,7 +3884,6 @@
         background: linear-gradient(180deg, #d9d9d9 0%, #737373 100%);
         opacity: 0.2;
         mix-blend-mode: overlay;
-        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         position: relative;
@@ -3973,7 +3897,6 @@
         background: linear-gradient(180deg, #d9d9d9 0%, #737373 100%);
         opacity: 0.2;
         mix-blend-mode: overlay;
-        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         position: relative;
@@ -3987,7 +3910,6 @@
         background: linear-gradient(180deg, #d9d9d9 0%, #737373 100%);
         opacity: 0.2;
         mix-blend-mode: overlay;
-        -webkit-backdrop-filter: blur(40px);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         position: relative;
@@ -4752,8 +4674,8 @@
         align-items: center;
         gap: 8px;
         font-size: 24px;
-        font-family: var(--bravel-font-logo);
-        font-weight: 400;
+        font-family: var(--bravel-font-ui);
+        font-weight: 500;
         line-height: 30px;
         color: #121212;
         white-space: pre;
@@ -5274,6 +5196,30 @@
         }
       }
 
+      @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .music_430_188::before {
+          background: rgba(255, 255, 255, 0.92);
+        }
+
+        .flexContainer_1_music_386_81::after {
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.34) 32%,
+            rgba(255, 255, 255, 0.78) 72%,
+            rgba(255, 255, 255, 1) 100%
+          );
+        }
+
+        .music_392_158 {
+          background-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .music_392_168 {
+          background-color: rgba(255, 255, 255, 0.05);
+        }
+      }
+
       @media (max-width: 640px) {
         .bravel-intro__welcome {
           font-size: 32px;
@@ -5309,6 +5255,24 @@
           opacity: 0;
         }
       }
+
+      /* --- Performance: skip layout/paint work for off-screen sections until
+         they're about to enter the viewport. Big win here because several of
+         these sections contain very heavy inline SVGs (see #how-it-works). */
+      #how-it-works,
+      #safety,
+      #roadmap,
+      #promo,
+      #faq,
+      #contacts {
+        content-visibility: auto;
+      }
+      #how-it-works { contain-intrinsic-size: auto 708px; }
+      #safety { contain-intrinsic-size: auto 694px; }
+      #roadmap { contain-intrinsic-size: auto 732px; }
+      #promo { contain-intrinsic-size: auto 220px; }
+      #faq { contain-intrinsic-size: auto 655px; }
+      #contacts { contain-intrinsic-size: auto 106px; }
     </style>
   </head>
   <body class="bravel-intro-active">
@@ -5393,7 +5357,7 @@
           <svg class="music_430_221 bravel-how-cards-svg" role="img" aria-label="Карточки: как работает Bravel" focusable="false" width="1164" height="620" viewBox="0 0 1164 620" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <rect x="474" y="325" width="690" height="295" rx="35" fill="#F7F7F7"/>
           <rect x="474" y="325" width="690" height="295" rx="35" fill="url(#pattern0_430_221)"/>
-          <foreignObject x="467" y="318" width="704" height="309"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);clip-path:url(#bgblur_0_430_221_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="7" x="474" y="325" width="690" height="295" rx="35" fill="#121212" fill-opacity="0.01"/>
+          <foreignObject x="467" y="318" width="704" height="309"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);-webkit-clip-path:url(#bgblur_0_430_221_clip_path);clip-path:url(#bgblur_0_430_221_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="7" x="474" y="325" width="690" height="295" rx="35" fill="#121212" fill-opacity="0.01"/>
           <path d="M500.637 365.398H519.305C521.309 365.398 523.049 365.609 524.525 366.084C526.002 366.559 527.268 367.244 528.322 368.035C530.537 369.881 531.645 372.359 531.645 375.471C531.645 377.422 531.17 379.004 530.273 380.217C529.324 381.43 528.006 382.326 526.266 383.012V383.17C528.375 383.803 530.062 384.963 531.328 386.65C532.541 388.338 533.174 390.342 533.174 392.609C533.174 394.561 532.805 396.248 532.119 397.672C531.434 399.096 530.484 400.256 529.219 401.258C526.898 403.104 523.734 404 519.727 404H500.637V365.398ZM518.619 396.354C520.201 396.354 521.467 395.932 522.363 395.088C523.26 394.297 523.734 393.189 523.734 391.818C523.734 390.289 523.26 389.129 522.258 388.338C521.256 387.547 519.99 387.178 518.514 387.178H510.129V396.354H518.619ZM517.881 380.691C519.252 380.691 520.359 380.375 521.256 379.689C522.1 379.004 522.521 378.055 522.521 376.789C522.521 375.576 522.1 374.627 521.309 373.941C520.465 373.256 519.357 372.939 517.934 372.939H510.129V380.691H517.881ZM536.338 404V376.367H544.775V380.691H544.934C545.936 379.057 546.99 377.844 548.15 377.053C549.363 376.314 550.787 375.945 552.475 375.945C553.318 375.945 553.898 375.998 554.215 376.156V383.697H554.004C551.314 383.328 549.152 383.75 547.57 385.068C545.936 386.387 545.145 388.602 545.145 391.607V404H536.338ZM573.516 400.941H573.357C572.566 402.102 571.512 402.998 570.246 403.684C568.928 404.369 567.24 404.738 565.184 404.738C563.812 404.738 562.547 404.527 561.387 404.158C560.174 403.789 559.172 403.262 558.381 402.576C557.537 401.838 556.904 400.941 556.43 399.887C555.955 398.885 555.744 397.672 555.744 396.301C555.744 394.771 556.008 393.506 556.535 392.504C557.115 391.449 557.854 390.605 558.855 389.973C559.857 389.287 560.965 388.76 562.23 388.391C563.496 388.021 564.867 387.758 566.291 387.6C568.875 387.283 570.721 386.914 571.775 386.492C572.777 386.123 573.305 385.438 573.305 384.541C573.305 383.645 573.041 382.906 572.461 382.379C571.881 381.799 570.879 381.535 569.561 381.535C568.137 381.535 567.082 381.852 566.344 382.484C565.658 383.064 565.236 383.961 565.078 385.121H556.957C557.01 383.803 557.273 382.59 557.854 381.43C558.381 380.27 559.172 379.268 560.174 378.424C561.176 377.527 562.494 376.842 564.023 376.367C565.553 375.893 567.398 375.629 569.508 375.629C571.564 375.629 573.357 375.787 574.781 376.156C576.205 376.525 577.471 377.105 578.473 377.896C579.686 378.74 580.529 379.848 581.109 381.166C581.689 382.484 581.953 384.014 581.953 385.754V399.676C581.953 400.783 582.006 401.68 582.164 402.312C582.27 402.945 582.533 403.367 582.955 403.631V404H574.412C574.201 403.736 574.043 403.314 573.885 402.787C573.727 402.26 573.621 401.627 573.516 400.941ZM573.568 394.139V390.816C572.988 391.133 572.303 391.396 571.512 391.607C570.721 391.871 569.93 392.082 569.033 392.293C567.293 392.662 566.08 393.137 565.342 393.664C564.551 394.191 564.182 394.982 564.182 396.037C564.182 397.145 564.551 397.936 565.289 398.41C565.975 398.885 566.871 399.096 567.979 399.096C569.613 399.096 570.984 398.621 571.986 397.725C573.041 396.828 573.568 395.668 573.568 394.139ZM583.957 376.367H593.027L596.824 388.865L597.879 392.662C598.037 393.295 598.195 393.875 598.354 394.402H598.459C598.617 393.875 598.723 393.295 598.881 392.662L599.355 390.922C599.514 390.236 599.725 389.551 599.936 388.865C601.254 384.699 602.52 380.533 603.785 376.367H612.592L603.047 404H593.502L583.957 376.367ZM632.736 395.773H641.332C641.068 396.986 640.488 398.199 639.697 399.359C638.906 400.467 637.904 401.469 636.691 402.26C635.531 403.104 634.266 403.736 632.842 404.158C631.418 404.633 629.783 404.844 628.043 404.844C625.775 404.844 623.719 404.475 621.873 403.736C620.027 402.998 618.498 401.943 617.232 400.625C616.02 399.307 615.018 397.777 614.332 395.984C613.646 394.139 613.33 392.188 613.33 390.131C613.33 388.074 613.646 386.176 614.332 384.383C615.018 382.59 616.02 381.061 617.232 379.742C618.498 378.424 619.975 377.422 621.715 376.684C623.455 375.945 625.406 375.576 627.516 375.576C629.467 375.576 631.26 375.893 632.842 376.473C634.371 377.053 635.742 377.896 636.955 379.004C638.59 380.533 639.855 382.432 640.646 384.752C641.438 387.072 641.859 389.656 641.807 392.451H621.926C622.242 394.297 622.875 395.773 623.877 396.881C624.879 397.988 626.303 398.516 628.148 398.516C629.309 398.516 630.258 398.252 631.049 397.777C631.787 397.303 632.367 396.617 632.736 395.773ZM622.031 387.23H632.895C632.736 385.596 632.156 384.277 631.26 383.275C630.311 382.273 629.098 381.799 627.674 381.799C625.986 381.799 624.668 382.273 623.771 383.275C622.875 384.277 622.295 385.596 622.031 387.23ZM644.812 404V365.398H653.725V404H644.812Z" fill="white"/>
           <path d="M1068.17 572.844H1076.47C1077.36 572.844 1078.13 572.938 1078.79 573.148C1079.45 573.359 1080.01 573.664 1080.48 574.016C1081.46 574.836 1081.95 575.938 1081.95 577.32C1081.95 578.188 1081.74 578.891 1081.34 579.43C1080.92 579.969 1080.34 580.367 1079.56 580.672V580.742C1080.5 581.023 1081.25 581.539 1081.81 582.289C1082.35 583.039 1082.63 583.93 1082.63 584.938C1082.63 585.805 1082.47 586.555 1082.16 587.188C1081.86 587.82 1081.44 588.336 1080.88 588.781C1079.84 589.602 1078.44 590 1076.66 590H1068.17V572.844ZM1076.16 586.602C1076.87 586.602 1077.43 586.414 1077.83 586.039C1078.23 585.688 1078.44 585.195 1078.44 584.586C1078.44 583.906 1078.23 583.391 1077.78 583.039C1077.34 582.688 1076.77 582.523 1076.12 582.523H1072.39V586.602H1076.16ZM1075.84 579.641C1076.45 579.641 1076.94 579.5 1077.34 579.195C1077.71 578.891 1077.9 578.469 1077.9 577.906C1077.9 577.367 1077.71 576.945 1077.36 576.641C1076.98 576.336 1076.49 576.195 1075.86 576.195H1072.39V579.641H1075.84ZM1099.53 577.766V590H1095.55V580.672H1091.68V590H1087.7V577.766H1099.53ZM1101.76 594.055V591.008H1103.09C1103.68 591.008 1104.08 590.891 1104.34 590.68C1104.59 590.469 1104.71 590.141 1104.71 589.719C1104.71 589.461 1104.64 589.133 1104.52 588.734C1104.41 588.336 1104.22 587.82 1103.96 587.164C1102.74 584.023 1101.52 580.883 1100.33 577.719H1104.45L1106.12 582.945C1106.21 583.25 1106.3 583.578 1106.4 583.906C1106.47 584.258 1106.56 584.562 1106.63 584.82C1106.73 585.148 1106.82 585.477 1106.89 585.781H1106.94C1107.01 585.477 1107.08 585.148 1107.15 584.82L1107.38 583.906C1107.45 583.578 1107.55 583.25 1107.66 582.945C1108.2 581.211 1108.72 579.477 1109.26 577.719H1113.17C1111.74 581.867 1110.34 586.016 1108.93 590.164C1108.67 590.891 1108.41 591.5 1108.13 591.992C1107.85 592.484 1107.52 592.883 1107.17 593.188C1106.8 593.492 1106.38 593.727 1105.93 593.867C1105.46 593.984 1104.92 594.055 1104.29 594.055H1101.76ZM1124.66 577.766V580.672H1120.88V590H1116.9V580.672H1113.15V577.766H1124.66ZM1125.57 590V577.766H1129.44V582.125C1129.44 583.789 1129.34 585.406 1129.18 586.93H1129.25C1129.74 585.406 1130.35 583.906 1131.05 582.43L1133.38 577.766H1139.12V590H1135.27V585.664C1135.27 584.047 1135.34 582.43 1135.48 580.812H1135.44C1134.97 582.312 1134.36 583.812 1133.63 585.312L1131.34 590H1125.57Z" fill="white"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M806.356 439.281C811.141 438.657 815.974 438.438 819.5 438.438C823.029 438.438 827.865 438.662 832.649 439.29C837.349 439.906 842.355 440.954 846.001 442.766C850.051 444.779 852.534 448.305 854.237 451.384C855.007 452.776 855.672 454.181 856.243 455.388C856.309 455.526 856.373 455.661 856.435 455.794C857.084 457.162 857.572 458.146 858.032 458.846C858.752 459.939 860.117 460.886 862.078 461.973C862.335 462.116 862.619 462.27 862.913 462.429C863.582 462.792 864.308 463.186 864.91 463.549C865.756 464.059 866.905 464.817 867.717 465.895L867.723 465.902C868.281 466.647 868.606 467.544 868.807 468.189C869.036 468.923 869.232 469.764 869.401 470.645C869.741 472.414 870.016 474.567 870.215 476.804C870.611 481.241 870.738 486.364 870.371 489.884C870.021 493.242 869.519 495.93 869.097 497.798C868.886 498.733 868.695 499.464 868.553 499.972C868.482 500.226 868.424 500.425 868.381 500.566C868.359 500.636 868.342 500.692 868.329 500.734C868.322 500.754 868.317 500.771 868.313 500.784L868.307 500.802L868.304 500.811L868.304 500.812C868.303 500.812 868.303 500.813 865.067 499.75L868.303 500.813C867.844 502.211 866.539 503.156 865.067 503.156H846.971C845.144 503.156 843.808 502.813 842.571 502.495C842.469 502.469 842.368 502.443 842.267 502.418C840.989 502.093 839.385 501.707 836.546 501.438L836.545 501.438C829.944 500.811 823.24 500.602 819.5 500.602C815.764 500.602 809.272 500.81 802.663 501.438L802.66 501.438C799.824 501.705 798.23 502.09 796.957 502.415C796.858 502.44 796.758 502.466 796.658 502.492C795.42 502.811 794.082 503.156 792.237 503.156H773.929C772.457 503.156 771.152 502.211 770.692 500.813L773.929 499.75C770.692 500.813 770.692 500.812 770.692 500.812L770.691 500.808L770.689 500.802L770.683 500.784C770.68 500.775 770.677 500.764 770.672 500.751L770.667 500.734C770.654 500.692 770.636 500.636 770.615 500.566C770.572 500.425 770.513 500.226 770.442 499.972C770.301 499.464 770.11 498.733 769.899 497.798C769.477 495.93 768.974 493.242 768.625 489.884C768.258 486.364 768.384 481.241 768.779 476.804C768.979 474.567 769.254 472.413 769.595 470.644C769.765 469.762 769.961 468.92 770.191 468.185C770.394 467.539 770.72 466.641 771.283 465.895C772.093 464.818 773.242 464.06 774.087 463.549C774.69 463.184 775.416 462.789 776.086 462.425C776.38 462.266 776.662 462.112 776.919 461.969C778.881 460.879 780.249 459.93 780.969 458.838C781.429 458.14 781.915 457.158 782.563 455.792C782.627 455.658 782.692 455.521 782.758 455.381C783.328 454.177 783.991 452.774 784.759 451.385C786.462 448.306 788.944 444.78 792.996 442.761C796.648 440.941 801.657 439.895 806.356 439.281ZM776.554 496.344H792.237C793.201 496.344 793.779 496.196 795.105 495.857C795.159 495.843 795.214 495.829 795.271 495.814C796.768 495.432 798.726 494.966 802.019 494.656M776.554 496.344C776.551 496.329 776.547 496.314 776.544 496.298C776.175 494.663 775.719 492.241 775.401 489.179C775.099 486.277 775.188 481.642 775.565 477.409C775.752 475.311 776.001 473.402 776.285 471.933C776.427 471.195 776.567 470.624 776.693 470.221C776.733 470.094 776.765 470.002 776.789 469.94C776.894 469.852 777.135 469.667 777.612 469.379C778.083 469.094 778.569 468.83 779.15 468.515C779.475 468.338 779.83 468.146 780.228 467.924C782.168 466.847 784.925 465.215 786.657 462.587C787.424 461.423 788.107 460.002 788.719 458.712C788.784 458.574 788.849 458.437 788.913 458.301C789.493 457.075 790.064 455.87 790.721 454.682C792.193 452.019 793.836 449.954 796.034 448.859C798.632 447.564 802.71 446.628 807.238 446.036C811.68 445.457 816.213 445.25 819.5 445.25C822.784 445.25 827.319 445.461 831.763 446.044C836.293 446.638 840.373 447.576 842.969 448.867C845.16 449.956 846.802 452.016 848.276 454.682C848.935 455.873 849.507 457.081 850.089 458.31C850.153 458.444 850.216 458.579 850.28 458.713C850.893 460.005 851.576 461.427 852.341 462.591C854.075 465.226 856.834 466.856 858.775 467.932C859.175 468.153 859.531 468.346 859.857 468.523C860.436 468.836 860.921 469.099 861.391 469.382C861.862 469.666 862.102 469.85 862.208 469.938C862.232 470 862.264 470.092 862.303 470.217C862.429 470.621 862.569 471.193 862.711 471.931C862.993 473.401 863.243 475.311 863.43 477.409C863.807 481.643 863.897 486.278 863.595 489.179C863.276 492.241 862.821 494.663 862.452 496.298C862.448 496.314 862.445 496.329 862.442 496.344H846.971C846.023 496.344 845.447 496.197 844.113 495.858C844.059 495.844 844.003 495.83 843.946 495.815C842.447 495.434 840.481 494.968 837.189 494.656C830.344 494.006 823.424 493.789 819.5 493.789C815.573 493.789 808.866 494.006 802.02 494.656" fill="white"/>
@@ -5469,7 +5433,7 @@
           </div>
           <div class="flexContainer_9_music_430_191"><span class="music_392_201">Безопасность на&nbsp;каждом этапе</span></div>
         </div>
-        <img class="music_430_193 bravel-safety-cards" src="assets/bravel-inline/bravel-inline-07-32d1d0b72ea0.svg" alt="" />
+        <img class="music_430_193 bravel-safety-cards" src="assets/bravel-inline/bravel-inline-07-32d1d0b72ea0.svg" loading="lazy" decode="async" alt="" />
       </div>
       <div class="music_430_238" id="roadmap">
         <div class="music_430_243">
@@ -5486,7 +5450,7 @@
               >
             </div>
             <div class="music_410_71 bravel-dev-status-widget" data-bravel-dev-clock>
-              <img class="bravel-dev-status-base" src="assets/bravel-inline/bravel-inline-08-6439bcaa71c2.svg" alt="" aria-hidden="true" />
+              <img class="bravel-dev-status-base" src="assets/bravel-inline/bravel-inline-08-6439bcaa71c2.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
               <div class="bravel-dev-live-card" aria-label="Текущая дата и время">
                 <div class="music_430_248">
                   <span class="music_392_243" data-bravel-date>Июл 23</span>
@@ -5501,7 +5465,7 @@
             </div>
           </div>
 <div class="music_430_255 bravel-roadmap-graph">
-  <img class="bravel-roadmap-graph-image" src="assets/bravel-inline/bravel-inline-09-603dad6ad66a.svg" alt="" />
+  <img class="bravel-roadmap-graph-image" src="assets/bravel-inline/bravel-inline-09-603dad6ad66a.svg" loading="lazy" decode="async" alt="" />
   <span class="bravel-roadmap-pulse-dot" aria-hidden="true"></span>
   <span class="bravel-roadmap-countdown-mask" aria-hidden="true"></span>
   <span class="bravel-roadmap-countdown-text" data-bravel-roadmap-countdown>Осталось: 189 дней</span>
@@ -5512,7 +5476,7 @@
         <div class="music_430_239">
           <div class="music_392_227">
             <div class="music_392_228">
-              <img class="music_i392_228_124_15 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-research.svg" alt="" aria-hidden="true" />
+              <img class="music_i392_228_124_15 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-research.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
             </div>
             <span class="music_392_229">Исследования</span>
           </div>
@@ -5520,14 +5484,14 @@
             <div class="music_392_233"></div>
             <div class="music_430_241">
               <div class="music_392_225">
-                <img class="music_i392_225_124_18 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-app.svg" alt="" aria-hidden="true" />
+                <img class="music_i392_225_124_18 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-app.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
               </div>
               <span class="music_392_230">Разработка мобильного приложения</span>
             </div>
           </div>
           <div class="music_430_242">
             <div class="music_392_234">
-              <img class="music_i392_234_134_74 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-testing.svg" alt="" aria-hidden="true" />
+              <img class="music_i392_234_134_74 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-testing.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
             </div>
             <span class="music_392_231">Тестирование и&nbsp;исправление багов</span>
           </div>
@@ -5554,13 +5518,13 @@
         <svg class="music_430_202 bravel-promo-widget" aria-hidden="true" focusable="false" width="526" height="220" viewBox="0 0 526 220" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect y="3" width="525.451" height="217" rx="30" fill="#F7F7F7"/>
         <path d="M99.0854 76C118.995 76.0001 135.122 92.1243 135.122 112C135.122 131.876 118.995 148 99.0854 148C79.1758 148 63.0473 131.876 63.0473 112C63.0473 92.1242 79.1758 76 99.0854 76Z" stroke="#FF641A" stroke-width="16"/>
-        <foreignObject x="-28.5069" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);clip-path:url(#bgblur_0_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <foreignObject x="-28.5069" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);-webkit-clip-path:url(#bgblur_0_430_202_clip_path);clip-path:url(#bgblur_0_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
         <path d="M11.4931 19.0138C11.4931 10.1696 18.6627 3 27.5069 3H43.4931V220H27.4931C18.6565 220 11.4931 212.837 11.4931 204V19.0138Z" fill="url(#paint0_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
         </g>
-        <foreignObject x="3.4931" y="-37" width="113" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);clip-path:url(#bgblur_1_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <foreignObject x="3.4931" y="-37" width="113" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);-webkit-clip-path:url(#bgblur_1_430_202_clip_path);clip-path:url(#bgblur_1_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
         <rect x="43.4931" y="3" width="33" height="217" fill="url(#paint1_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
         </g>
-        <foreignObject x="36.4931" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);clip-path:url(#bgblur_2_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <foreignObject x="36.4931" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);-webkit-clip-path:url(#bgblur_2_430_202_clip_path);clip-path:url(#bgblur_2_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
         <rect x="76.4931" y="3" width="32" height="217" fill="url(#paint2_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
         </g>
         <line x1="159.13" y1="85" x2="159.13" y2="139" stroke="#FF641A" stroke-width="16" stroke-linecap="round"/>
@@ -5756,6 +5720,43 @@
         setAdaptiveViewport();
         window.addEventListener('resize', setAdaptiveViewport, { passive: true });
         window.addEventListener('orientationchange', setAdaptiveViewport);
+      })();
+
+      (() => {
+        const header = document.querySelector('.music_430_188');
+        if (!header) return;
+
+        const hoverTargets = [
+          ['service', '.bravel-header-link_service'],
+          ['safety', '.bravel-header-link_safety'],
+          ['roadmap', '.bravel-header-link_roadmap'],
+          ['faq', '.bravel-header-link_faq'],
+          ['promo', '.bravel-header-link_promo'],
+        ];
+        const hoverClasses = hoverTargets.map(([name]) => `is-hovering-${name}`);
+
+        const clearHover = () => {
+          header.classList.remove(...hoverClasses);
+        };
+
+        hoverTargets.forEach(([name, selector]) => {
+          const link = header.querySelector(selector);
+          if (!link) return;
+
+          const className = `is-hovering-${name}`;
+          const activate = () => {
+            clearHover();
+            header.classList.add(className);
+          };
+          const deactivate = () => {
+            header.classList.remove(className);
+          };
+
+          link.addEventListener('mouseenter', activate);
+          link.addEventListener('mouseleave', deactivate);
+          link.addEventListener('focus', activate);
+          link.addEventListener('blur', deactivate);
+        });
       })();
 
       (() => {
