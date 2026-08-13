@@ -1322,6 +1322,64 @@
         letter-spacing: 0;
       }
 
+      .bsm {
+        display: none;
+      }
+
+      .bsm-list {
+        display: grid;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .bsm-card {
+        min-height: 132px;
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        align-items: center;
+        column-gap: 18px;
+        padding: 22px;
+        border-radius: 21px;
+        background: #f7f7f7;
+      }
+
+      .bsm-img {
+        width: 88px;
+        object-fit: contain;
+      }
+
+      .bsm-img_doc {
+        height: 82px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .bsm-img_car {
+        height: 68px;
+      }
+
+      .bsm-title {
+        display: block;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(18, 18, 18, 0.12);
+        color: #121212;
+        font-family: 'Bravel SF UI Display', 'SF UI Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px;
+        letter-spacing: 0;
+      }
+
+      .bsm-desc {
+        margin: 8px 0 0;
+        color: rgba(18, 18, 18, 0.6);
+        font-family: 'Bravel SF UI Display', 'SF UI Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: 0;
+      }
+
       .flexContainer_4_music_430_221 {
         position: relative;
         display: flex;
@@ -6134,6 +6192,71 @@
         #how-it-works .bhm-list {
           gap: 10px;
         }
+
+        #safety.music_430_190 {
+          width: calc(100vw - 32px);
+          max-width: 390px;
+          height: auto;
+          margin-top: 72px;
+        }
+
+        #safety .music_430_191 {
+          height: auto;
+        }
+
+        #safety .music_430_192 {
+          width: auto;
+          height: 12px;
+          align-items: center;
+          font-size: 9px;
+          line-height: 11px;
+          letter-spacing: 0;
+        }
+
+        #safety .music_392_203 {
+          width: 8px;
+          height: 8px;
+          margin-top: 0;
+        }
+
+        #safety .music_392_204 {
+          width: auto;
+          height: auto;
+          margin-left: 4px;
+          font-size: 0;
+          line-height: 0;
+          letter-spacing: 0;
+        }
+
+        #safety .music_392_204::after {
+          content: 'ОБЗОР';
+          font-size: 9px;
+          line-height: 11px;
+        }
+
+        #safety .flexContainer_9_music_430_191 {
+          margin-top: 3px;
+        }
+
+        #safety .music_392_201 {
+          width: 100%;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 19px;
+          letter-spacing: 0;
+          text-align: left;
+          text-wrap: initial;
+        }
+
+        #safety .bravel-safety-cards {
+          display: none;
+        }
+
+        #safety .bsm {
+          display: grid;
+          width: 100%;
+          margin-top: 32px;
+        }
       }
 
       @media (max-width: 359px) {
@@ -6419,6 +6542,24 @@
           <div class="flexContainer_9_music_430_191"><span class="music_392_201">Безопасность на&nbsp;каждом этапе</span></div>
         </div>
         <img class="music_430_193 bravel-safety-cards" src="assets/bravel-inline/bravel-inline-07-32d1d0b72ea0.svg" loading="lazy" decode="async" alt="" />
+        <div class="bsm" aria-label="Безопасность на каждом этапе">
+          <div class="bsm-list">
+            <article class="bsm-card">
+              <img class="bsm-img bsm-img_doc" src="assets/bravel-inline/bravel-safety-passport.jpg" alt="" />
+              <div class="bsm-text">
+                <span class="bsm-title">Защита до начала поездки</span>
+                <p class="bsm-desc">Верифицируем водителя по паспорту, проверяем автомобиль, защищаем от подмены и выявляем подозрительные действия.</p>
+              </div>
+            </article>
+            <article class="bsm-card">
+              <img class="bsm-img bsm-img_car" src="assets/bravel-inline/bravel-safety-car.png" alt="" />
+              <div class="bsm-text">
+                <span class="bsm-title">Безопасность в пути</span>
+                <p class="bsm-desc">Показываем маршрут в реальном времени, держим близких в курсе и помогаем быстро обратиться за помощью.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
       <div class="music_430_238" id="roadmap">
         <div class="music_430_243">
