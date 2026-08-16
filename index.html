@@ -13,6 +13,9 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="./assets/fonts/bravel-sf-pro-display-regular.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="./assets/fonts/bravel-sf-pro-display-medium.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="./assets/fonts/bravel-sf-pro-display-bold.otf" as="font" type="font/otf" crossorigin />
     <style>
       @font-face {
         font-family: 'Bravel SF UI Display';
@@ -6437,7 +6440,7 @@
         width: auto;
         position: relative;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -6454,7 +6457,7 @@
         width: auto;
         position: relative;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -6531,7 +6534,7 @@
       .music_694_1852 {
         width: 189px;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -6546,7 +6549,7 @@
       .music_694_1851 {
         width: 100%;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -6620,7 +6623,7 @@
         width: auto;
         position: relative;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -6636,7 +6639,7 @@
         width: auto;
         position: relative;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -6751,7 +6754,7 @@
         width: auto;
         position: relative;
         font-size: 21px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 500;
         line-height: 25px;
         letter-spacing: 0px;
@@ -6767,7 +6770,7 @@
         width: auto;
         position: relative;
         font-size: 16px;
-        font-family: 'SF UI Display';
+        font-family: var(--bravel-font-ui);
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
@@ -6825,7 +6828,7 @@
 
       .music_694_1822 {
         font-size: 54px;
-        font-family: 'Neue Haas Grotesk Display Pro 7';
+        font-family: var(--bravel-font-logo);
         font-weight: 400;
         line-height: 68px;
         color: #ffffff;
@@ -6848,7 +6851,7 @@
 
       .music_694_1823 {
         font-size: 24px;
-        font-family: 'Neue Haas Grotesk Display Pro 7';
+        font-family: var(--bravel-font-logo);
         font-weight: 400;
         line-height: 30px;
         color: #ffffff;
@@ -7471,6 +7474,89 @@
           display: none !important;
         }
       }
+      /* --- Cross-browser rendering normalization --- */
+      html,
+      body {
+        font-family: var(--bravel-font-ui);
+        font-kerning: normal;
+        font-variant-ligatures: common-ligatures;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
+      body,
+      button,
+      input,
+      textarea,
+      select {
+        font-family: var(--bravel-font-ui);
+      }
+
+      img,
+      svg,
+      video {
+        vertical-align: middle;
+      }
+
+      svg {
+        shape-rendering: geometricPrecision;
+        text-rendering: geometricPrecision;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 0;
+      }
+
+      /* Balanced wrapping is implemented differently by browser engines.
+         Regular wrapping keeps the same line boxes everywhere. */
+      .music_392_142,
+      .music_392_143,
+      .music_392_161,
+      .music_392_201,
+      .music_392_214,
+      .music_392_310,
+      .music_392_339,
+      .music_392_387 {
+        text-wrap: wrap;
+        hyphens: none;
+        -webkit-hyphens: none;
+      }
+
+      /* SVG foreignObject filters render differently in Chromium, Firefox,
+         and WebKit. The underlying SVG gradients remain as a stable fallback. */
+      .music_721_18317 foreignObject,
+      .music_721_18317 foreignobject,
+      .music_430_202.bravel-promo-widget foreignObject,
+      .music_430_202.bravel-promo-widget foreignobject {
+        display: none;
+      }
+
+      /* Stable aspect-ratio fallbacks for older Safari/WebView versions. */
+      @supports not (aspect-ratio: 1 / 1) {
+        @media (max-width: 767px) {
+          .bhm-promo {
+            height: calc((100vw - 32px) * 150 / 358);
+            max-height: 164px;
+          }
+
+          .music_430_255,
+          .music_430_255.bravel-roadmap-graph {
+            height: calc((100vw - 32px) * 563 / 1164);
+            max-height: 271px;
+          }
+
+          .music_430_202,
+          .music_430_202.bravel-promo-widget {
+            height: calc((100vw - 32px) * 220 / 526);
+            max-height: 235px;
+          }
+        }
+      }
     </style>
   </head>
   <body class="bravel-intro-active">
@@ -7657,7 +7743,6 @@
             <span class="music_694_1822">Bravel</span
             ><svg
               class="music_694_1824"
-              fill="#ffffff"
               width="109"
               height="109"
               viewBox="0 0 109 109"
@@ -7981,7 +8066,6 @@
                 <div class="music_756_18410 music_410_71 bravel-dev-status-widget" data-bravel-dev-clock>
           <svg aria-hidden="true" focusable="false"
                     class="bravel-dev-status-base"
-                    fill="#f7f7f7"
                     width="276"
                     height="143"
                     viewBox="0 0 276 143"
@@ -8946,8 +9030,8 @@
 
       (() => {
         const header = document.querySelector('.music_430_188');
-        const toggle = header?.querySelector('.bravel-mobile-menu-toggle');
-        const links = header?.querySelectorAll('.bravel-header-links a');
+        const toggle = header ? header.querySelector('.bravel-mobile-menu-toggle') : null;
+        const links = header ? header.querySelectorAll('.bravel-header-links a') : null;
         if (!header || !toggle || !links) return;
 
         const setMenuOpen = (isOpen) => {
@@ -9353,5 +9437,5 @@
         update(true);
       })();
     </script>
-  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0ac082d11fbdc',t:'MTc4Njg4NTc1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
