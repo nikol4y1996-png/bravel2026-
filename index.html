@@ -22,7 +22,7 @@
         src: url('./assets/fonts/bravel-sf-pro-display-regular.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
-        font-display: swap;
+        font-display: block;
       }
 
       @font-face {
@@ -30,7 +30,7 @@
         src: url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
         font-weight: 500;
         font-style: normal;
-        font-display: swap;
+        font-display: block;
       }
 
       @font-face {
@@ -38,7 +38,7 @@
         src: url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
         font-weight: 510;
         font-style: normal;
-        font-display: swap;
+        font-display: block;
       }
 
       @font-face {
@@ -46,7 +46,7 @@
         src: url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
         font-weight: 700;
         font-style: normal;
-        font-display: swap;
+        font-display: block;
       }
 
       @font-face {
@@ -54,7 +54,7 @@
         src: url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
         font-weight: 700;
         font-style: normal;
-        font-display: swap;
+        font-display: block;
       }
 
       @font-face {
@@ -62,7 +62,7 @@
         src: url('./assets/fonts/bravel-sf-pro-display-bold-italic.otf') format('opentype');
         font-weight: 700;
         font-style: italic;
-        font-display: swap;
+        font-display: block;
       }
 
       @font-face {
@@ -70,7 +70,7 @@
         src: url('./assets/fonts/bravel-neue-haas-roman.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
-        font-display: swap;
+        font-display: block;
       }
 
       :root {
@@ -7474,69 +7474,28 @@
           display: none !important;
         }
       }
-      /* --- Cross-browser rendering normalization --- */
-      html,
-      body {
-        font-family: var(--bravel-font-ui);
-        font-kerning: normal;
-        font-variant-ligatures: common-ligatures;
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
+      /* Match the 30px heading-to-content spacing used by the other
+         desktop sections. Mobile cards keep their existing layout. */
+      @media (min-width: 768px) {
+        #how-it-works .bravel-how-cards-code {
+          margin-top: 30px;
+        }
       }
 
+      /* --- Conservative cross-browser compatibility layer --- */
+      html,
       body,
       button,
       input,
       textarea,
       select {
         font-family: var(--bravel-font-ui);
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
 
-      img,
-      svg,
-      video {
-        vertical-align: middle;
-      }
-
-      svg {
-        shape-rendering: geometricPrecision;
-        text-rendering: geometricPrecision;
-      }
-
-      button,
-      input,
-      textarea,
-      select {
-        -webkit-appearance: none;
-        appearance: none;
-        border-radius: 0;
-      }
-
-      /* Balanced wrapping is implemented differently by browser engines.
-         Regular wrapping keeps the same line boxes everywhere. */
-      .music_392_142,
-      .music_392_143,
-      .music_392_161,
-      .music_392_201,
-      .music_392_214,
-      .music_392_310,
-      .music_392_339,
-      .music_392_387 {
-        text-wrap: wrap;
-        hyphens: none;
-        -webkit-hyphens: none;
-      }
-
-      /* SVG foreignObject filters render differently in Chromium, Firefox,
-         and WebKit. The underlying SVG gradients remain as a stable fallback. */
-      .music_721_18317 foreignObject,
-      .music_721_18317 foreignobject,
-      .music_430_202.bravel-promo-widget foreignObject,
-      .music_430_202.bravel-promo-widget foreignobject {
-        display: none;
-      }
-
-      /* Stable aspect-ratio fallbacks for older Safari/WebView versions. */
+      /* Fallback dimensions apply only where aspect-ratio is unsupported;
+         modern-browser geometry remains untouched. */
       @supports not (aspect-ratio: 1 / 1) {
         @media (max-width: 767px) {
           .bhm-promo {
@@ -8538,7 +8497,7 @@
               height="297"
               ><div
                 xmlns="http://www.w3.org/1999/xhtml"
-                style="backdrop-filter: blur(20px); clip-path: url(#bgblur_0_721_18317_clip_path); height: 100%; width: 100%"></div
+                style="-webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); -webkit-clip-path: url(#bgblur_0_721_18317_clip_path); clip-path: url(#bgblur_0_721_18317_clip_path); height: 100%; width: 100%"></div
             ></foreignObject>
             <g data-figma-bg-blur-radius="40">
               <path
@@ -8554,7 +8513,7 @@
               height="297"
               ><div
                 xmlns="http://www.w3.org/1999/xhtml"
-                style="backdrop-filter: blur(20px); clip-path: url(#bgblur_1_721_18317_clip_path); height: 100%; width: 100%"></div
+                style="-webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); -webkit-clip-path: url(#bgblur_1_721_18317_clip_path); clip-path: url(#bgblur_1_721_18317_clip_path); height: 100%; width: 100%"></div
             ></foreignObject>
             <g data-figma-bg-blur-radius="40">
               <rect
@@ -8573,7 +8532,7 @@
               height="297"
               ><div
                 xmlns="http://www.w3.org/1999/xhtml"
-                style="backdrop-filter: blur(20px); clip-path: url(#bgblur_2_721_18317_clip_path); height: 100%; width: 100%"></div
+                style="-webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); -webkit-clip-path: url(#bgblur_2_721_18317_clip_path); clip-path: url(#bgblur_2_721_18317_clip_path); height: 100%; width: 100%"></div
             ></foreignObject>
             <g data-figma-bg-blur-radius="40">
               <rect
@@ -8983,7 +8942,7 @@
       </div>
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
       (() => {
         const viewport = document.querySelector('meta[name="viewport"][data-bravel-viewport]');
         if (!viewport) return;
@@ -9437,5 +9396,5 @@
         update(true);
       })();
     </script>
-  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0ac082d11fbdc',t:'MTc4Njg4NTc1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0c200ef6b37c0',t:'MTc4Njg4NjY1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
