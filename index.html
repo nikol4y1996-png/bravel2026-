@@ -7516,6 +7516,11 @@
           }
         }
       }
+      .bravel-scroll-dot.is-following-layout {
+        transition:
+          transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 180ms ease;
+      }
     </style>
   </head>
   <body class="bravel-intro-active">
@@ -9290,6 +9295,7 @@
         let ticking = false;
         let faqLockUntil = 0;
         let faqLockTimer = 0;
+        let faqFollowFrame = 0;
         const FAQ_LOCK_DURATION = 1200;
 
         const getDocumentTop = (element) => element.getBoundingClientRect().top + window.scrollY;
@@ -9325,11 +9331,12 @@
           return nextIndex;
         };
 
-        const moveToTarget = (target, animate = true) => {
+        const moveToTarget = (target, animate = true, followLayout = false) => {
           const position = getDotPosition(target.dot);
-          const shouldAnimate = animate && activeDot && activeDot !== target.dot;
+          const shouldAnimate = animate && activeDot && (activeDot !== target.dot || followLayout);
 
           movingDot.style.opacity = '1';
+          movingDot.classList.toggle('is-following-layout', followLayout);
 
           if (shouldAnimate) {
             window.requestAnimationFrame(() => {
@@ -9364,6 +9371,20 @@
           window.requestAnimationFrame(() => update());
         };
 
+        const followActiveTargetDuringFaqLayout = () => {
+          if (!isFaqLocked()) {
+            faqFollowFrame = 0;
+            movingDot.classList.remove('is-following-layout');
+            if (activeIndex >= 0) moveToTarget(targets[activeIndex], false);
+            return;
+          }
+
+          if (activeIndex >= 0) {
+            moveToTarget(targets[activeIndex], true, true);
+          }
+          faqFollowFrame = window.requestAnimationFrame(followActiveTargetDuringFaqLayout);
+        };
+
         const releaseFaqLock = () => {
           if (!isFaqLocked()) return;
           faqLockUntil = 0;
@@ -9371,6 +9392,12 @@
             window.clearTimeout(faqLockTimer);
             faqLockTimer = 0;
           }
+          if (faqFollowFrame) {
+            window.cancelAnimationFrame(faqFollowFrame);
+            faqFollowFrame = 0;
+          }
+          movingDot.classList.remove('is-following-layout');
+          if (activeIndex >= 0) moveToTarget(targets[activeIndex], true, true);
           scheduleUpdate();
         };
 
@@ -9378,9 +9405,21 @@
           faqLockUntil = window.performance.now() + FAQ_LOCK_DURATION;
           ticking = false;
           if (faqLockTimer) window.clearTimeout(faqLockTimer);
+          if (faqFollowFrame) window.cancelAnimationFrame(faqFollowFrame);
+
+          /* Keep the same active dot, but continuously recalculate its
+             document coordinates while the FAQ changes height. */
+          followActiveTargetDuringFaqLayout();
+
           faqLockTimer = window.setTimeout(() => {
             faqLockUntil = 0;
             faqLockTimer = 0;
+            if (faqFollowFrame) {
+              window.cancelAnimationFrame(faqFollowFrame);
+              faqFollowFrame = 0;
+            }
+            movingDot.classList.remove('is-following-layout');
+            if (activeIndex >= 0) moveToTarget(targets[activeIndex], false);
           }, FAQ_LOCK_DURATION);
         });
         window.addEventListener('wheel', releaseFaqLock, { passive: true });
@@ -9396,5 +9435,5 @@
         update(true);
       })();
     </script>
-  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0c200ef6b37c0',t:'MTc4Njg4NjY1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0c200ef6b37c0',t:'MTc4Njg4NjY1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c1155feb13fe9a',t:'MTc4Njg5MDA2NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
