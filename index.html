@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Bravel</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -6400,6 +6401,382 @@
           transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
           opacity 180ms ease;
       }
+      /* --- Mobile layout: the same desktop markup, transformed only by CSS --- */
+      @media (max-width: 767px) {
+        html { scroll-padding-top: 16px; }
+        body { min-width: 0; width: 100%; overflow-x: hidden; }
+        .music_430_188 { display: none; }
+        .bravel-scroll-dot { display: none; }
+
+        .music_386_81,
+        .flexContainer_1_music_386_81 {
+          width: 100%;
+          height: auto;
+          min-height: 0;
+          overflow: visible;
+        }
+
+        .music_392_156 { display: none; }
+        .music_392_158 {
+          width: 100%;
+          height: 220px;
+          margin: 0;
+          padding: 20px 16px 0;
+          background: transparent;
+          -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+        }
+        .music_430_189 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+          align-items: center;
+        }
+        .music_392_139 { width: auto; height: 12px; font-size: 9px; line-height: 11px; }
+        .music_392_140 { width: 8px; height: 8px; margin-top: 1px; }
+        .music_392_141 { width: auto; height: auto; margin-left: 4px; }
+        .music_392_142,
+        .music_392_142_0_33,
+        .music_392_142_33_39 {
+          width: 100%;
+          font-size: 26px;
+          line-height: 30px;
+          text-align: center;
+          white-space: normal;
+        }
+        .music_392_142 { margin-top: 12px; }
+        .music_392_143 {
+          width: 100%;
+          max-width: 360px;
+          margin-top: 10px;
+          font-size: 12px;
+          line-height: 15px;
+          text-align: center;
+        }
+        .music_392_143 br { display: none; }
+        .bravel-hero-button-link {
+          width: 130px;
+          height: 34px;
+          margin-top: 14px;
+          transform: none;
+        }
+        .music_392_153 {
+          width: 100vw;
+          height: 78px;
+          margin: 0 0 0 calc(50% - 50vw);
+        }
+
+        .music_430_218,
+        .music_430_190,
+        .music_430_238,
+        .music_430_198,
+        .music_430_207,
+        .music_430_211,
+        .music_430_232 {
+          width: calc(100% - 32px);
+          max-width: 390px;
+          height: auto;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .music_430_218 { margin-top: 20px; }
+        .music_430_190,
+        .music_430_238,
+        .music_430_198,
+        .music_430_211,
+        .music_430_232 { margin-top: 20px; }
+        .music_430_207 { display: none; }
+
+        .music_430_219,
+        .music_430_191 {
+          width: 100%;
+          height: 34px;
+        }
+        .music_430_220,
+        .music_430_192,
+        .music_430_246,
+        .music_430_200,
+        .music_430_214 {
+          width: auto;
+          height: 12px;
+          font-size: 9px;
+          line-height: 11px;
+          align-items: center;
+        }
+        .music_392_163,
+        .music_392_203,
+        .music_392_216,
+        .music_392_308,
+        .music_392_385 {
+          width: 8px;
+          height: 8px;
+          margin-top: 0;
+        }
+        .music_392_164,
+        .music_392_204,
+        .music_392_217,
+        .music_392_309,
+        .music_392_386 {
+          width: auto;
+          height: auto;
+          margin-left: 4px;
+          font-size: 0;
+          line-height: 0;
+        }
+        .music_392_164::after,
+        .music_392_204::after,
+        .music_392_217::after,
+        .music_392_309::after,
+        .music_392_386::after {
+          content: 'ОБЗОР';
+          font-size: 9px;
+          line-height: 11px;
+        }
+        .flexContainer_2_music_430_219,
+        .flexContainer_9_music_430_191 {
+          width: 100%;
+          height: 19px;
+          margin-top: 3px;
+        }
+        .music_392_161,
+        .music_392_201,
+        .music_392_214,
+        .music_392_310,
+        .music_392_387 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+          font-size: 16px;
+          line-height: 19px;
+          text-align: left;
+          white-space: normal;
+        }
+
+        /* How it works — same four cards and promo, stacked. */
+        .bravel-how-cards-code { width: 100%; height: auto; margin-top: 18px; }
+        .music_694_1817 { position: relative; width: 100%; height: auto; min-height: 0; }
+        .flexContainer_2_music_694_1817,
+        .flexContainer_1_music_694_1817 {
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin: 0;
+        }
+        .flexContainer_1_music_694_1817 { margin-top: 10px; gap: 13px; }
+        .music_694_1853,
+        .music_694_1843,
+        .music_694_1835,
+        .music_694_1825 {
+          width: 100%;
+          height: 158px;
+          margin: 0;
+          padding: 16px;
+          border-radius: 19px;
+          background: #f7f7f7;
+        }
+        .music_694_1854,
+        .music_694_1844,
+        .music_694_1836,
+        .music_694_1826 {
+          width: 100%;
+          height: 126px;
+        }
+        .flexContainer_6_music_694_1854,
+        .flexContainer_5_music_694_1844,
+        .flexContainer_4_music_694_1836,
+        .flexContainer_3_music_694_1826 {
+          width: 100%;
+          height: 40px;
+        }
+        .music_694_1855,
+        .music_694_1850,
+        .music_694_1840,
+        .music_694_1832 { width: 40px; height: 40px; margin: 0; object-fit: contain; }
+        .music_694_1858,
+        .music_694_1845,
+        .music_694_1837,
+        .music_694_1827 { width: 21px; height: 21px; margin: 0 0 0 auto; }
+        .music_694_1857,
+        .music_694_1852,
+        .music_694_1841,
+        .music_694_1833 {
+          width: 100%;
+          margin: 46px 0 0;
+          font-size: 14px;
+          line-height: 17px;
+          white-space: normal;
+        }
+        .music_694_1856,
+        .music_694_1851,
+        .music_694_1842,
+        .music_694_1834 {
+          width: 100%;
+          margin: 5px 0 0;
+          font-size: 12px;
+          line-height: 13px;
+        }
+        .music_694_1856 br,
+        .music_694_1834 br { display: none; }
+        .music_694_1818 { width: 100%; height: 151px; margin: 0; border-radius: 17px; }
+        .music_694_1820,
+        .music_694_1821 { width: 100%; height: 100%; }
+        .music_694_1822 { font-size: 27px; line-height: 30px; }
+        .music_694_1824 { width: 68px; height: 50px; }
+        .music_694_1823 { position: absolute; right: 16px; bottom: 14px; left: auto; top: auto; margin: 0; font-size: 15px; line-height: 18px; }
+
+        /* Safety — the same two cards, converted to compact rows. */
+        .music_430_193.bravel-safety-cards {
+          position: relative;
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          margin: 32px 0 0;
+        }
+        .music_430_196,
+        .music_430_194 {
+          width: 100%;
+          height: 132px;
+          margin: 0;
+          padding: 22px;
+          border-radius: 21px;
+        }
+        .music_756_18556,
+        .music_758_18581 {
+          width: 100%;
+          height: 88px;
+          display: grid;
+          grid-template-columns: 88px minmax(0, 1fr);
+          gap: 18px;
+          align-items: center;
+        }
+        .music_756_18555 { width: 100%; height: 88px; }
+        .music_392_212,
+        .music_758_18579 { width: 88px; height: 82px; margin: 0; object-fit: contain; }
+        .music_430_197,
+        .music_430_195 { width: auto; height: auto; margin: 0; align-self: center; }
+        .music_392_206,
+        .music_392_205 {
+          width: 100%;
+          margin: 0;
+          padding-bottom: 8px;
+          border-bottom: 1px solid rgba(18,18,18,.12);
+          font-size: 14px;
+          line-height: 17px;
+          white-space: normal;
+          text-align: left;
+        }
+        .music_392_210,
+        .music_392_209 { display: none; }
+        .music_392_207,
+        .music_392_208 {
+          width: 100%;
+          margin: 8px 0 0;
+          font-size: 12px;
+          line-height: 13px;
+          text-align: left;
+        }
+
+        /* Roadmap — retain one source block and compact its internal parts. */
+        #roadmap { position: relative; min-height: 390px; }
+        #roadmap > .bravel-roadmap-section-label { position: relative; inset: auto; }
+        .bravel-roadmap-source { position: relative; width: 100%; height: 354px; min-height: 354px; }
+        .music_756_18349 { position: relative; inset: auto; width: 100%; height: 354px; }
+        .music_756_18546 { width: 100%; gap: 8px; }
+        .music_756_18545 { position: relative; width: 100%; height: 170px; display: block; }
+        .music_756_18407 { width: 100%; height: auto; justify-content: flex-start; gap: 6px; }
+        .music_756_18408 { width: 100%; font-size: 16px; line-height: 19px; text-align: left; white-space: normal; }
+        .music_756_18409 { width: 100%; font-size: 14px; line-height: 17px; }
+        .music_756_18409 br { display: none; }
+        .music_756_18410 {
+          position: absolute;
+          right: 0;
+          top: 100px;
+          width: 276px;
+          height: 143px;
+          margin: 0;
+          transform: scale(.45);
+          transform-origin: top right;
+        }
+        .music_694_1884 {
+          position: absolute;
+          left: 0;
+          top: 124px;
+          width: 422px;
+          height: 140px;
+          margin: 0;
+          transform: scale(.45);
+          transform-origin: top left;
+          z-index: 5;
+        }
+        .music_756_18547 { width: 100%; height: 176px; }
+        .bravel-roadmap-source .bravel-roadmap-pulse-dot { left: calc(50% - 8px); top: 0; }
+        .music_756_18458 { width: 100%; height: 176px; }
+        .music_756_18459 { width: 100%; height: 116px; margin: 0; object-fit: fill; }
+        .flexContainer_3_music_756_18458 { transform: scale(.31); transform-origin: top left; width: 1164px; }
+        .music_756_18404 { position: absolute; top: 170px; width: 100%; height: 176px; overflow: hidden; }
+        .music_756_18406 { display: none; }
+        .music_756_18457 { width: 100%; height: 176px; }
+        .bravel-roadmap-source .bravel-roadmap-countdown-mask { left: 30%; top: 156px; width: 40%; height: 20px; }
+        .bravel-roadmap-source .bravel-roadmap-countdown-text { top: 158px; width: 100%; font-size: 9px; line-height: 12px; }
+
+        /* Promo, support and footer. */
+        #promo > .bravel-promo-section-label,
+        .music_430_211 > .bravel-questions-section-label { position: relative; inset: auto; }
+        .bravel-promo-source { width: 100%; min-height: 0; display: flex; flex-direction: column; margin-top: 4px; }
+        .music_721_18301 { width: 100%; height: 126px; }
+        .music_721_18305 { margin-top: 2px; font-size: 16px; line-height: 19px; white-space: normal; }
+        .music_721_18306 { width: 100%; margin-top: 6px; font-size: 14px; line-height: 17px; }
+        .bravel-promo-source-button { width: 137px; height: 34px; bottom: 0; }
+        .music_721_18317 { width: 100%; height: auto; margin-top: 18px; }
+
+        .music_430_211 { position: relative; min-height: 92px; }
+        .bravel-questions-source { position: relative; width: 100%; min-height: 92px; display: flex; justify-content: space-between; }
+        .music_756_18343 { width: 235px; height: 72px; margin-top: 20px; transform: none; justify-content: flex-start; }
+        .music_756_18344 { width: 100%; height: 19px; font-size: 16px; line-height: 19px; }
+        .music_756_18346 { width: 235px; margin-top: 6px; font-size: 12px; line-height: 15px; }
+        .music_694_1786 { width: 112px; height: 58px; margin-top: 12px; }
+        .bravel-email-link { color: inherit; text-decoration: none; }
+
+        #how-it-works,
+        #safety,
+        #roadmap,
+        #promo,
+        .music_430_211,
+        #contacts {
+          content-visibility: visible !important;
+          contain-intrinsic-size: none !important;
+        }
+
+        .music_430_232 {
+          position: relative;
+          display: grid;
+          grid-template-columns: repeat(2,minmax(0,1fr));
+          grid-template-areas:
+            'brand social'
+            'about promo'
+            'development team';
+          gap: 28px 20px;
+          height: 330px;
+          min-height: 330px;
+          padding-bottom: 38px;
+          margin-bottom: 40px;
+        }
+        .music_430_233 { grid-area: brand; position: static; width: 100%; height: 32px; }
+        .music_430_234 { grid-area: about; }
+        .music_430_236 { grid-area: promo; }
+        .music_430_235 { grid-area: development; }
+        .flexContainer_11_music_430_232 { grid-area: team; }
+        .music_430_234,
+        .music_430_235,
+        .music_430_236,
+        .flexContainer_11_music_430_232 { width: 100%; height: auto; margin: 0; }
+        .music_430_237 { grid-area: social; justify-self: end; width: 74px; height: 32px; margin: 0; }
+        .music_413_127 { position: absolute; left: 0; bottom: 0; width: 100%; margin: 0; }
+      }
     </style>
   </head>
   <body class="bravel-intro-active">
@@ -7514,7 +7891,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4527372433202977757773053c242b21203d6b3730">[email&#160;protected]</a><br />Ответим на все ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту <a class="bravel-email-link" href="mailto:bravel2026@yandex.ru">bravel2026@yandex.ru</a><br />Ответим на все ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
