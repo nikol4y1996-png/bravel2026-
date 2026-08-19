@@ -2,12 +2,16 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+      data-bravel-viewport />
     <title>Bravel</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preload" href="./assets/fonts/bravel-sf-pro-display-regular.otf" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="./assets/fonts/bravel-sf-pro-display-medium.otf" as="font" type="font/otf" crossorigin />
@@ -450,21 +454,6 @@
         margin-left: calc(50% - 50vw);
         -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, rgba(0, 0, 0, 0.8) 82%, rgba(0, 0, 0, 0.36) 92%, transparent 100%);
         mask-image: linear-gradient(180deg, #000 0%, #000 72%, rgba(0, 0, 0, 0.8) 82%, rgba(0, 0, 0, 0.36) 92%, transparent 100%);
-      }
-
-      .bravel-hero-video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 900ms ease-in-out;
-      }
-
-      .bravel-hero-video.is-active {
-        opacity: 1;
       }
 
       .music_392_158 {
@@ -1176,6 +1165,208 @@
         margin-left: 0;
       }
 
+      .bhm {
+        display: none;
+      }
+
+      .bhm-list {
+        display: grid;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .bhm-card {
+        position: relative;
+        min-height: 158px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+        padding: 16px;
+        border-radius: 19px;
+        background: #f7f7f7;
+      }
+
+      .bhm-img {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .bhm-act {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 21px;
+        height: 21px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: #ffffff;
+        color: #e1e1e1;
+      }
+
+      .bhm-act::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border: 1px solid currentColor;
+        border-radius: 2px;
+      }
+
+      .bhm-text {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 100%;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      .bhm-title {
+        display: block;
+        margin: 0 0 5px;
+        color: #121212;
+        font-family: 'Bravel SF UI Display', 'SF UI Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px;
+        letter-spacing: 0;
+      }
+
+      .bhm-desc {
+        margin: 0;
+        color: rgba(18, 18, 18, 0.6);
+        font-family: 'Bravel SF UI Display', 'SF UI Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: 0;
+      }
+
+      .bhm-promo {
+        position: relative;
+        min-height: 150px;
+        aspect-ratio: 358 / 150;
+        overflow: hidden;
+        border-radius: 17px;
+        background: #ff641a;
+        color: #ffffff;
+        isolation: isolate;
+      }
+
+      .bhm-bg {
+        position: absolute;
+        inset: -4px;
+        width: calc(100% + 8px);
+        height: calc(100% + 8px);
+        object-fit: cover;
+        object-position: center 52%;
+        filter: blur(3px);
+        transform: scale(1.02);
+        z-index: -2;
+      }
+
+      .bhm-promo::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 100, 26, 0.15);
+        z-index: -1;
+      }
+
+      .bhm-logo {
+        position: absolute;
+        top: 17px;
+        left: 16px;
+        font-family: var(--bravel-font-ui);
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: 0;
+      }
+
+      .bhm-car {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 68px;
+        height: 50px;
+        transform: translate(-50%, -48%);
+      }
+
+      .bhm-status {
+        position: absolute;
+        right: 16px;
+        bottom: 14px;
+        font-family: var(--bravel-font-ui);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 0;
+      }
+
+      .bsm {
+        display: none;
+      }
+
+      .bsm-list {
+        display: grid;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .bsm-card {
+        min-height: 132px;
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        align-items: center;
+        column-gap: 18px;
+        padding: 22px;
+        border-radius: 21px;
+        background: #f7f7f7;
+      }
+
+      .bsm-img {
+        width: 88px;
+        object-fit: contain;
+      }
+
+      .bsm-img_doc {
+        height: 82px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .bsm-img_car {
+        height: 68px;
+      }
+
+      .bsm-title {
+        display: block;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(18, 18, 18, 0.12);
+        color: #121212;
+        font-family: 'Bravel SF UI Display', 'SF UI Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px;
+        letter-spacing: 0;
+      }
+
+      .bsm-desc {
+        margin: 8px 0 0;
+        color: rgba(18, 18, 18, 0.6);
+        font-family: 'Bravel SF UI Display', 'SF UI Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: 0;
+      }
 
       .flexContainer_4_music_430_221 {
         position: relative;
@@ -5263,12 +5454,834 @@
         }
       }
 
+      .bravel-mobile-menu-toggle {
+        display: none;
+      }
 
-      
+      @media (max-width: 767px) {
+        html {
+          scroll-padding-top: 88px;
+        }
 
-      
+        body {
+          min-width: 0;
+          width: 100%;
+          overflow-x: hidden;
+        }
 
-      
+        .bravel-intro {
+          min-height: 100svh;
+          padding: 0 24px;
+        }
+
+        .bravel-intro__logo {
+          font-size: 52px;
+          line-height: 58px;
+        }
+
+        .bravel-intro__welcome {
+          width: 100%;
+          max-width: 330px;
+          font-size: 26px;
+          line-height: 31px;
+          text-align: center;
+          white-space: normal;
+        }
+
+        .music_430_188 {
+          top: max(12px, env(safe-area-inset-top));
+          width: calc(100% - 24px);
+          height: 64px;
+          transition: height 420ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .music_430_188.is-menu-open {
+          height: 380px;
+        }
+
+        .music_430_188::before {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 32px;
+          background: rgba(255, 255, 255, 0.82);
+          border-color: rgba(255, 255, 255, 0.7);
+          -webkit-backdrop-filter: blur(18px) saturate(145%);
+          backdrop-filter: blur(18px) saturate(145%);
+          transition:
+            height 420ms cubic-bezier(0.16, 1, 0.3, 1),
+            border-radius 420ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .music_430_188.is-menu-open::before {
+          border-radius: 28px;
+        }
+
+        .bravel-floating-header-frame {
+          display: none;
+        }
+
+        .bravel-header-links {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: inherit;
+        }
+
+        .bravel-header-home {
+          top: 0;
+          left: 17px;
+          width: 150px;
+          height: 64px;
+          padding-left: 36px;
+          border-radius: 0;
+          font-size: 22px;
+          line-height: 27px;
+          z-index: 2;
+        }
+
+        .bravel-header-home::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 22px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #ff641a;
+        }
+
+        .bravel-header-link,
+        .bravel-header-contacts {
+          left: 16px;
+          width: calc(100% - 32px);
+          height: 48px;
+          justify-content: flex-start;
+          padding: 0 16px;
+          border-top: 1px solid rgba(18, 18, 18, 0.08);
+          border-radius: 0;
+          color: #121212;
+          font-size: 17px;
+          line-height: 22px;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transform: translateY(-8px);
+          transition:
+            color var(--bravel-hover-duration) var(--bravel-hover-ease),
+            opacity 220ms ease,
+            transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
+            visibility 0s linear 360ms;
+        }
+
+        .bravel-header-link_service {
+          top: 68px;
+        }
+
+        .bravel-header-link_safety {
+          top: 116px;
+        }
+
+        .bravel-header-link_roadmap {
+          top: 164px;
+        }
+
+        .bravel-header-link_faq {
+          top: 212px;
+        }
+
+        .bravel-header-link_promo {
+          top: 260px;
+        }
+
+        .bravel-header-contacts {
+          top: 308px;
+        }
+
+        .music_430_188.is-menu-open .bravel-header-link,
+        .music_430_188.is-menu-open .bravel-header-contacts {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: translateY(0);
+          transition-delay: 80ms, 70ms, 70ms, 0s;
+        }
+
+        .bravel-mobile-menu-toggle {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          z-index: 4;
+          display: flex;
+          width: 40px;
+          height: 40px;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: 0;
+          border-radius: 50%;
+          background: transparent;
+          color: #121212;
+          cursor: pointer;
+        }
+
+        .bravel-mobile-menu-toggle span,
+        .bravel-mobile-menu-toggle::before,
+        .bravel-mobile-menu-toggle::after {
+          content: '';
+          position: absolute;
+          width: 20px;
+          height: 2px;
+          border-radius: 2px;
+          background: currentColor;
+          transition:
+            transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+            opacity 180ms ease;
+        }
+
+        .bravel-mobile-menu-toggle::before {
+          transform: translateY(-6px);
+        }
+
+        .bravel-mobile-menu-toggle::after {
+          transform: translateY(6px);
+        }
+
+        .music_430_188.is-menu-open .bravel-mobile-menu-toggle span {
+          opacity: 0;
+        }
+
+        .music_430_188.is-menu-open .bravel-mobile-menu-toggle::before {
+          transform: rotate(45deg);
+        }
+
+        .music_430_188.is-menu-open .bravel-mobile-menu-toggle::after {
+          transform: rotate(-45deg);
+        }
+
+        .music_386_81,
+        .flexContainer_1_music_386_81 {
+          width: 100%;
+          height: auto;
+          min-height: 0;
+          overflow: visible;
+        }
+
+        .music_386_81 img,
+        .music_386_81 svg,
+        .music_386_81 video {
+          max-width: 100%;
+        }
+
+        .music_386_81 span,
+        .music_386_81 p,
+        .music_386_81 a,
+        .music_386_81 button {
+          overflow-wrap: anywhere;
+        }
+
+        .flexContainer_1_music_386_81::after {
+          top: 520px;
+          height: 200px;
+          -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+        }
+
+        .music_392_156 {
+          width: 100vw;
+          min-width: 0;
+          height: 740px;
+          margin-left: calc(50% - 50vw);
+        }
+
+        .music_392_158 {
+          width: 100vw;
+          height: 740px;
+          margin-top: -740px;
+          margin-left: calc(50% - 50vw);
+          padding: 118px 16px 0;
+        }
+
+        .music_430_189 {
+          width: 100%;
+          height: auto;
+          margin: 46px auto 0;
+          align-items: center;
+        }
+
+        .music_392_139 {
+          width: auto;
+          height: 18px;
+          font-size: 13px;
+          line-height: 18px;
+        }
+
+        .music_392_141 {
+          margin-left: 5px;
+        }
+
+        .music_392_142,
+        .music_392_142_0_33,
+        .music_392_142_33_39 {
+          font-size: 38px;
+          line-height: 42px;
+          letter-spacing: 0;
+        }
+
+        .music_392_142 {
+          max-width: 520px;
+          margin-top: 20px;
+          text-wrap: balance;
+        }
+
+        .music_392_143 {
+          width: 100%;
+          max-width: 520px;
+          margin-top: 20px;
+          font-size: 18px;
+          line-height: 23px;
+          text-wrap: balance;
+        }
+
+        .bravel-hero-button-link {
+          margin-top: 30px;
+        }
+
+        .music_392_153 {
+          width: 100vw;
+          height: 19.861111vw;
+          margin-top: -70px;
+          margin-left: calc(50% - 50vw);
+        }
+
+        .music_430_218,
+        .music_430_190,
+        .music_430_238,
+        .music_430_198,
+        .music_430_207,
+        .music_430_211,
+        .music_430_232 {
+          width: calc(100% - 32px);
+          max-width: 560px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .music_430_218 {
+          height: auto;
+          margin-top: 64px;
+        }
+
+        .music_430_219,
+        .music_430_191,
+        .music_430_208 {
+          width: 100%;
+          height: auto;
+        }
+
+        .flexContainer_2_music_430_219,
+        .flexContainer_9_music_430_191 {
+          width: 100%;
+          height: auto;
+        }
+
+        .music_392_161,
+        .music_392_201,
+        .music_392_214,
+        .music_392_310,
+        .music_392_339,
+        .music_392_387 {
+          width: 100%;
+          height: auto;
+          margin-left: 0;
+          font-size: 30px;
+          line-height: 34px;
+          text-align: left;
+          white-space: normal;
+          text-wrap: balance;
+        }
+
+        .music_430_221,
+        .bravel-how-cards-svg {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 24px 0 0;
+          border-radius: 16px;
+        }
+
+        .music_430_190 {
+          height: auto;
+          margin-top: 72px;
+        }
+
+        .music_430_193,
+        .music_430_193.bravel-safety-cards {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 24px 0 0;
+        }
+
+        .music_430_238 {
+          height: auto;
+          margin-top: 72px;
+        }
+
+        .music_430_243,
+        .music_430_244 {
+          width: 100%;
+          height: auto;
+        }
+
+        .music_430_244 {
+          flex-direction: column;
+        }
+
+        .music_430_245 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+
+        .music_392_215 {
+          width: 100%;
+          margin-top: 12px;
+          font-size: 17px;
+          line-height: 22px;
+        }
+
+        .music_392_215 br {
+          display: none;
+        }
+
+        .music_410_71,
+        .music_410_71.bravel-dev-status-widget {
+          width: 276px;
+          height: 143px;
+          margin: 28px auto 0;
+          flex-shrink: 0;
+        }
+
+        .music_430_255,
+        .music_430_255.bravel-roadmap-graph {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1164 / 563;
+          margin: 28px 0 0;
+          overflow: visible;
+        }
+
+        .music_430_255.bravel-roadmap-graph .bravel-roadmap-pulse-dot {
+          left: calc(49.14% - 6px);
+          top: 0.7%;
+          width: 12px;
+          height: 12px;
+        }
+
+        .music_430_255.bravel-roadmap-graph .bravel-roadmap-pulse-dot::after {
+          inset: -6px;
+        }
+
+        .music_430_255.bravel-roadmap-graph .bravel-roadmap-countdown-mask {
+          left: 33.7%;
+          top: 94.4%;
+          width: 32.6%;
+          height: 5.6%;
+        }
+
+        .music_430_255.bravel-roadmap-graph .bravel-roadmap-countdown-text {
+          top: 95.1%;
+          width: 100%;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        .music_430_255.bravel-roadmap-graph .bravel-roadmap-blur-rect {
+          width: 9.2%;
+          height: 13.1%;
+        }
+
+        .music_430_255.bravel-roadmap-graph .music_427_185 {
+          left: 63.8%;
+          top: 64.7%;
+        }
+
+        .music_430_255.bravel-roadmap-graph .music_427_186 {
+          left: 83.3%;
+          top: 64.7%;
+        }
+
+        .music_430_239 {
+          width: 100%;
+          height: auto;
+          margin: 28px 0 0;
+        }
+
+        .music_392_227,
+        .music_430_242 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+          font-size: 16px;
+          line-height: 21px;
+          white-space: normal;
+        }
+
+        .music_430_240 {
+          width: 100%;
+          height: 48px;
+          margin: 16px 0;
+        }
+
+        .music_392_233 {
+          height: 48px;
+        }
+
+        .music_430_241 {
+          width: calc(100% - 28px);
+          height: 30px;
+          margin-top: -39px;
+          font-size: 16px;
+          line-height: 21px;
+          white-space: normal;
+          align-items: center;
+        }
+
+        .music_392_230 {
+          margin-top: 0;
+        }
+
+        .music_430_198 {
+          height: auto;
+          flex-direction: column;
+          margin-top: 72px;
+        }
+
+        .music_430_199 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+
+        .music_392_311 {
+          width: 100%;
+          margin-top: 12px;
+          font-size: 17px;
+          line-height: 22px;
+        }
+
+        .bravel-promo-button-link {
+          margin-top: 24px;
+        }
+
+        .music_430_202,
+        .music_430_202.bravel-promo-widget {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 526 / 220;
+          margin: 32px 0 0;
+        }
+
+        .music_430_207.bravel-faq-section {
+          min-height: 0;
+          margin-top: 72px;
+        }
+
+        .music_430_208.bravel-faq-heading,
+        .bravel-faq-intro {
+          width: 100%;
+        }
+
+        .music_430_210.bravel-faq-list {
+          width: 100%;
+          margin-top: 22px;
+        }
+
+        .bravel-faq-question,
+        .bravel-faq-answer {
+          width: 100%;
+        }
+
+        .bravel-faq-question {
+          min-height: 58px;
+          gap: 16px;
+          padding: 16px 0;
+          font-size: 18px;
+          line-height: 23px;
+        }
+
+        .bravel-faq-answer p {
+          max-width: none;
+          padding-right: 24px;
+          font-size: 16px;
+          line-height: 23px;
+        }
+
+        .bravel-faq-item.is-open .bravel-faq-answer {
+          max-height: 420px;
+          padding-bottom: 20px;
+        }
+
+        .music_430_211 {
+          height: auto;
+          flex-direction: column;
+          margin-top: 72px;
+        }
+
+        .music_430_212,
+        .music_430_213 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+
+        .music_392_388 {
+          font-size: 18px;
+          line-height: 23px;
+        }
+
+        .music_430_215,
+        .music_430_215.bravel-questions-image {
+          width: 100%;
+          max-width: 335px;
+          height: auto;
+          margin: 28px auto 0;
+        }
+
+        .music_430_232 {
+          height: auto;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 32px 20px;
+          margin-top: 72px;
+          margin-bottom: 64px;
+        }
+
+        .music_430_233,
+        .music_430_234,
+        .music_430_235,
+        .music_430_236,
+        .flexContainer_11_music_430_232,
+        .music_430_237 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+
+        .music_430_233 {
+          grid-column: 1 / -1;
+        }
+
+        .music_413_127 {
+          margin-top: 18px;
+        }
+
+        .music_412_114,
+        .music_412_118,
+        .music_412_119,
+        .music_412_121,
+        .music_412_105,
+        .music_412_120,
+        .music_412_108,
+        .music_412_107,
+        .music_412_109,
+        .music_412_122 {
+          width: 100%;
+          text-align: left;
+          white-space: normal;
+        }
+
+        .music_430_237 {
+          width: 74px;
+          height: 32px;
+          align-self: end;
+        }
+
+        .bravel-scroll-dot {
+          display: none;
+        }
+
+        .bravel-scroll-dot-enabled .music_392_140,
+        .bravel-scroll-dot-enabled .music_392_163,
+        .bravel-scroll-dot-enabled .music_392_203,
+        .bravel-scroll-dot-enabled .music_392_216,
+        .bravel-scroll-dot-enabled .music_392_308,
+        .bravel-scroll-dot-enabled .music_392_341,
+        .bravel-scroll-dot-enabled .music_392_385 {
+          background-color: #ff641a !important;
+        }
+
+        #how-it-works,
+        #safety,
+        #roadmap,
+        #promo,
+        #faq,
+        #contacts {
+          content-visibility: visible !important;
+          contain-intrinsic-size: none !important;
+        }
+      }
+
+      @media (max-width: 767px) {
+        #how-it-works.music_430_218 {
+          width: calc(100vw - 32px);
+          max-width: 390px;
+          margin-top: 64px;
+        }
+
+        #how-it-works .music_430_219 {
+          height: auto;
+        }
+
+        #how-it-works .music_430_220 {
+          width: auto;
+          height: 12px;
+          align-items: center;
+          font-size: 9px;
+          line-height: 11px;
+          letter-spacing: 0;
+        }
+
+        #how-it-works .music_392_163 {
+          width: 8px;
+          height: 8px;
+          margin-top: 0;
+        }
+
+        #how-it-works .music_392_164 {
+          width: auto;
+          height: auto;
+          margin-left: 4px;
+          font-size: 9px;
+          line-height: 11px;
+          letter-spacing: 0;
+        }
+
+        #how-it-works .flexContainer_2_music_430_219 {
+          margin-top: 3px;
+        }
+
+        #how-it-works .music_392_161 {
+          width: 100%;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 19px;
+          letter-spacing: 0;
+          text-align: left;
+          text-wrap: initial;
+        }
+
+        #how-it-works .bravel-how-cards-svg {
+          display: none;
+        }
+
+        #how-it-works .bhm {
+          display: grid;
+          gap: 13px;
+          width: 100%;
+          margin-top: 18px;
+        }
+
+        #how-it-works .bhm-list {
+          gap: 10px;
+        }
+
+        #safety.music_430_190 {
+          width: calc(100vw - 32px);
+          max-width: 390px;
+          height: auto;
+          margin-top: 72px;
+        }
+
+        #safety .music_430_191 {
+          height: auto;
+        }
+
+        #safety .music_430_192 {
+          width: auto;
+          height: 12px;
+          align-items: center;
+          font-size: 9px;
+          line-height: 11px;
+          letter-spacing: 0;
+        }
+
+        #safety .music_392_203 {
+          width: 8px;
+          height: 8px;
+          margin-top: 0;
+        }
+
+        #safety .music_392_204 {
+          width: auto;
+          height: auto;
+          margin-left: 4px;
+          font-size: 0;
+          line-height: 0;
+          letter-spacing: 0;
+        }
+
+        #safety .music_392_204::after {
+          content: 'ОБЗОР';
+          font-size: 9px;
+          line-height: 11px;
+        }
+
+        #safety .flexContainer_9_music_430_191 {
+          margin-top: 3px;
+        }
+
+        #safety .music_392_201 {
+          width: 100%;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 19px;
+          letter-spacing: 0;
+          text-align: left;
+          text-wrap: initial;
+        }
+
+        #safety .bravel-safety-cards {
+          display: none;
+        }
+
+        #safety .bsm {
+          display: grid;
+          width: 100%;
+          margin-top: 32px;
+        }
+      }
+
+      @media (max-width: 359px) {
+        .music_392_142,
+        .music_392_142_0_33,
+        .music_392_142_33_39 {
+          font-size: 33px;
+          line-height: 37px;
+        }
+
+        .music_392_143 {
+          font-size: 17px;
+          line-height: 22px;
+        }
+
+        .music_392_161,
+        .music_392_201,
+        .music_392_214,
+        .music_392_310,
+        .music_392_339,
+        .music_392_387 {
+          font-size: 27px;
+          line-height: 31px;
+        }
+
+        .music_430_232 {
+          grid-template-columns: 1fr;
+        }
+      }
 
       @media (prefers-reduced-motion: reduce) {
         .bravel-intro {
@@ -5834,7 +6847,11 @@
         margin-left: 569px;
       }
     
-      
+      @media (max-width: 767px) {
+        .bravel-how-cards-code {
+          display: none;
+        }
+      }
 
       .music_694_1883 {
         position: absolute;
@@ -6121,7 +7138,9 @@
       }
 
       /* --- "Следите за развитием Bravel" — block from index.html --- */
-
+      .bravel-roadmap-mobile-legacy {
+        display: none;
+      }
 
       #roadmap > .bravel-roadmap-section-label {
         position: absolute;
@@ -6195,7 +7214,26 @@
         z-index: 4;
       }
 
-      
+      @media (max-width: 767px) {
+        #roadmap > .bravel-roadmap-source {
+          display: none !important;
+        }
+
+        #roadmap > .bravel-roadmap-mobile-legacy {
+          display: contents;
+        }
+
+        #roadmap > .bravel-roadmap-section-label {
+          position: relative;
+          top: auto;
+          left: auto;
+          z-index: 8;
+        }
+
+        #roadmap > .bravel-roadmap-mobile-legacy .music_430_246 {
+          display: none !important;
+        }
+      }
 
       @media (prefers-reduced-motion: reduce) {
         .bravel-roadmap-source .bravel-roadmap-pulse-dot::after {
@@ -6273,7 +7311,9 @@
       }
 
       /* --- "Бронируйте без комиссии целый год" — block from index.html --- */
-
+      .bravel-promo-mobile-legacy {
+        display: none;
+      }
 
       #promo > .bravel-promo-section-label {
         position: absolute;
@@ -6298,7 +7338,26 @@
         height: 100%;
       }
 
-      
+      @media (max-width: 767px) {
+        #promo > .bravel-promo-source {
+          display: none !important;
+        }
+
+        #promo > .bravel-promo-mobile-legacy {
+          display: contents;
+        }
+
+        #promo > .bravel-promo-section-label {
+          position: relative;
+          top: auto;
+          left: auto;
+          z-index: 8;
+        }
+
+        #promo > .bravel-promo-mobile-legacy .music_430_200 {
+          display: none !important;
+        }
+      }
 
       .music_756_18340 {
         width: 100%;
@@ -6365,7 +7424,9 @@
       }
 
       /* --- "Остались вопросы?" — block from optimized index.html --- */
-
+      .bravel-questions-mobile-legacy {
+        display: none;
+      }
 
       .music_430_211 > .bravel-questions-section-label {
         position: absolute;
@@ -6378,10 +7439,32 @@
         transform: translateY(4px);
       }
 
-      
-      /* Match the 30px heading-to-content spacing used by the other sections. */
-      #how-it-works .bravel-how-cards-code {
-        margin-top: 30px;
+      @media (max-width: 767px) {
+        .music_430_211 > .bravel-questions-source {
+          display: none !important;
+        }
+
+        .music_430_211 > .bravel-questions-mobile-legacy {
+          display: contents;
+        }
+
+        .music_430_211 > .bravel-questions-section-label {
+          position: relative;
+          top: auto;
+          left: auto;
+          z-index: 8;
+        }
+
+        .music_430_211 > .bravel-questions-mobile-legacy .music_430_214 {
+          display: none !important;
+        }
+      }
+      /* Match the 30px heading-to-content spacing used by the other
+         desktop sections. Mobile cards keep their existing layout. */
+      @media (min-width: 768px) {
+        #how-it-works .bravel-how-cards-code {
+          margin-top: 30px;
+        }
       }
 
       /* --- Conservative cross-browser compatibility layer --- */
@@ -6396,386 +7479,60 @@
         text-size-adjust: 100%;
       }
 
+      /* Fallback dimensions apply only where aspect-ratio is unsupported;
+         modern-browser geometry remains untouched. */
+      @supports not (aspect-ratio: 1 / 1) {
+        @media (max-width: 767px) {
+          .bhm-promo {
+            height: calc((100vw - 32px) * 150 / 358);
+            max-height: 164px;
+          }
+
+          .music_430_255,
+          .music_430_255.bravel-roadmap-graph {
+            height: calc((100vw - 32px) * 563 / 1164);
+            max-height: 271px;
+          }
+
+          .music_430_202,
+          .music_430_202.bravel-promo-widget {
+            height: calc((100vw - 32px) * 220 / 526);
+            max-height: 235px;
+          }
+        }
+      }
       .bravel-scroll-dot.is-following-layout {
         transition:
           transform 360ms cubic-bezier(0.16, 1, 0.3, 1),
           opacity 180ms ease;
       }
-      /* --- Mobile layout: the same desktop markup, transformed only by CSS --- */
-      @media (max-width: 767px) {
-        html { scroll-padding-top: 16px; }
-        body { min-width: 0; width: 100%; overflow-x: hidden; }
-        .music_430_188 { display: none; }
-        .bravel-scroll-dot { display: none; }
+      /* --- Chromatic Waves canvas replacing the hero video --- */
+      .bravel-chromatic-stage {
+        position: relative;
+        overflow: hidden;
+        opacity: 1;
+        background: #ffffff;
+      }
 
-        .music_386_81,
-        .flexContainer_1_music_386_81 {
-          width: 100%;
-          height: auto;
-          min-height: 0;
-          overflow: visible;
-        }
+      .bravel-chromatic-waves {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        line-height: 0;
+        background-color: #ffffff;
+        background-image:
+          radial-gradient(circle, rgba(213,213,213,.92) 0 2px, transparent 2.5px),
+          radial-gradient(circle at 30% 35%, rgba(213,213,213,.22), transparent 48%),
+          radial-gradient(circle at 70% 65%, rgba(213,213,213,.16), transparent 44%);
+        background-size: 24px 24px, 100% 100%, 100% 100%;
+      }
 
-        .music_392_156 { display: none; }
-        .music_392_158 {
-          width: 100%;
-          height: 220px;
-          margin: 0;
-          padding: 20px 16px 0;
-          background: transparent;
-          -webkit-backdrop-filter: none;
-          backdrop-filter: none;
-        }
-        .music_430_189 {
-          width: 100%;
-          height: auto;
-          margin: 0;
-          align-items: center;
-        }
-        .music_392_139 { width: auto; height: 12px; font-size: 9px; line-height: 11px; }
-        .music_392_140 { width: 8px; height: 8px; margin-top: 1px; }
-        .music_392_141 { width: auto; height: auto; margin-left: 4px; }
-        .music_392_142,
-        .music_392_142_0_33,
-        .music_392_142_33_39 {
-          width: 100%;
-          font-size: 26px;
-          line-height: 30px;
-          text-align: center;
-          white-space: normal;
-        }
-        .music_392_142 { margin-top: 12px; }
-        .music_392_143 {
-          width: 100%;
-          max-width: 360px;
-          margin-top: 10px;
-          font-size: 12px;
-          line-height: 15px;
-          text-align: center;
-        }
-        .music_392_143 br { display: none; }
-        .bravel-hero-button-link {
-          width: 130px;
-          height: 34px;
-          margin-top: 14px;
-          transform: none;
-        }
-        .music_392_153 {
-          width: 100vw;
-          height: 78px;
-          margin: 0 0 0 calc(50% - 50vw);
-        }
-
-        .music_430_218,
-        .music_430_190,
-        .music_430_238,
-        .music_430_198,
-        .music_430_207,
-        .music_430_211,
-        .music_430_232 {
-          width: calc(100% - 32px);
-          max-width: 390px;
-          height: auto;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        .music_430_218 { margin-top: 20px; }
-        .music_430_190,
-        .music_430_238,
-        .music_430_198,
-        .music_430_211,
-        .music_430_232 { margin-top: 20px; }
-        .music_430_207 { display: none; }
-
-        .music_430_219,
-        .music_430_191 {
-          width: 100%;
-          height: 34px;
-        }
-        .music_430_220,
-        .music_430_192,
-        .music_430_246,
-        .music_430_200,
-        .music_430_214 {
-          width: auto;
-          height: 12px;
-          font-size: 9px;
-          line-height: 11px;
-          align-items: center;
-        }
-        .music_392_163,
-        .music_392_203,
-        .music_392_216,
-        .music_392_308,
-        .music_392_385 {
-          width: 8px;
-          height: 8px;
-          margin-top: 0;
-        }
-        .music_392_164,
-        .music_392_204,
-        .music_392_217,
-        .music_392_309,
-        .music_392_386 {
-          width: auto;
-          height: auto;
-          margin-left: 4px;
-          font-size: 0;
-          line-height: 0;
-        }
-        .music_392_164::after,
-        .music_392_204::after,
-        .music_392_217::after,
-        .music_392_309::after,
-        .music_392_386::after {
-          content: 'ОБЗОР';
-          font-size: 9px;
-          line-height: 11px;
-        }
-        .flexContainer_2_music_430_219,
-        .flexContainer_9_music_430_191 {
-          width: 100%;
-          height: 19px;
-          margin-top: 3px;
-        }
-        .music_392_161,
-        .music_392_201,
-        .music_392_214,
-        .music_392_310,
-        .music_392_387 {
-          width: 100%;
-          height: auto;
-          margin: 0;
-          font-size: 16px;
-          line-height: 19px;
-          text-align: left;
-          white-space: normal;
-        }
-
-        /* How it works — same four cards and promo, stacked. */
-        .bravel-how-cards-code { width: 100%; height: auto; margin-top: 18px; }
-        .music_694_1817 { position: relative; width: 100%; height: auto; min-height: 0; }
-        .flexContainer_2_music_694_1817,
-        .flexContainer_1_music_694_1817 {
-          width: 100%;
-          height: auto;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin: 0;
-        }
-        .flexContainer_1_music_694_1817 { margin-top: 10px; gap: 13px; }
-        .music_694_1853,
-        .music_694_1843,
-        .music_694_1835,
-        .music_694_1825 {
-          width: 100%;
-          height: 158px;
-          margin: 0;
-          padding: 16px;
-          border-radius: 19px;
-          background: #f7f7f7;
-        }
-        .music_694_1854,
-        .music_694_1844,
-        .music_694_1836,
-        .music_694_1826 {
-          width: 100%;
-          height: 126px;
-        }
-        .flexContainer_6_music_694_1854,
-        .flexContainer_5_music_694_1844,
-        .flexContainer_4_music_694_1836,
-        .flexContainer_3_music_694_1826 {
-          width: 100%;
-          height: 40px;
-        }
-        .music_694_1855,
-        .music_694_1850,
-        .music_694_1840,
-        .music_694_1832 { width: 40px; height: 40px; margin: 0; object-fit: contain; }
-        .music_694_1858,
-        .music_694_1845,
-        .music_694_1837,
-        .music_694_1827 { width: 21px; height: 21px; margin: 0 0 0 auto; }
-        .music_694_1857,
-        .music_694_1852,
-        .music_694_1841,
-        .music_694_1833 {
-          width: 100%;
-          margin: 46px 0 0;
-          font-size: 14px;
-          line-height: 17px;
-          white-space: normal;
-        }
-        .music_694_1856,
-        .music_694_1851,
-        .music_694_1842,
-        .music_694_1834 {
-          width: 100%;
-          margin: 5px 0 0;
-          font-size: 12px;
-          line-height: 13px;
-        }
-        .music_694_1856 br,
-        .music_694_1834 br { display: none; }
-        .music_694_1818 { width: 100%; height: 151px; margin: 0; border-radius: 17px; }
-        .music_694_1820,
-        .music_694_1821 { width: 100%; height: 100%; }
-        .music_694_1822 { font-size: 27px; line-height: 30px; }
-        .music_694_1824 { width: 68px; height: 50px; }
-        .music_694_1823 { position: absolute; right: 16px; bottom: 14px; left: auto; top: auto; margin: 0; font-size: 15px; line-height: 18px; }
-
-        /* Safety — the same two cards, converted to compact rows. */
-        .music_430_193.bravel-safety-cards {
-          position: relative;
-          width: 100%;
-          height: auto;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          margin: 32px 0 0;
-        }
-        .music_430_196,
-        .music_430_194 {
-          width: 100%;
-          height: 132px;
-          margin: 0;
-          padding: 22px;
-          border-radius: 21px;
-        }
-        .music_756_18556,
-        .music_758_18581 {
-          width: 100%;
-          height: 88px;
-          display: grid;
-          grid-template-columns: 88px minmax(0, 1fr);
-          gap: 18px;
-          align-items: center;
-        }
-        .music_756_18555 { width: 100%; height: 88px; }
-        .music_392_212,
-        .music_758_18579 { width: 88px; height: 82px; margin: 0; object-fit: contain; }
-        .music_430_197,
-        .music_430_195 { width: auto; height: auto; margin: 0; align-self: center; }
-        .music_392_206,
-        .music_392_205 {
-          width: 100%;
-          margin: 0;
-          padding-bottom: 8px;
-          border-bottom: 1px solid rgba(18,18,18,.12);
-          font-size: 14px;
-          line-height: 17px;
-          white-space: normal;
-          text-align: left;
-        }
-        .music_392_210,
-        .music_392_209 { display: none; }
-        .music_392_207,
-        .music_392_208 {
-          width: 100%;
-          margin: 8px 0 0;
-          font-size: 12px;
-          line-height: 13px;
-          text-align: left;
-        }
-
-        /* Roadmap — retain one source block and compact its internal parts. */
-        #roadmap { position: relative; min-height: 390px; }
-        #roadmap > .bravel-roadmap-section-label { position: relative; inset: auto; }
-        .bravel-roadmap-source { position: relative; width: 100%; height: 354px; min-height: 354px; }
-        .music_756_18349 { position: relative; inset: auto; width: 100%; height: 354px; }
-        .music_756_18546 { width: 100%; gap: 8px; }
-        .music_756_18545 { position: relative; width: 100%; height: 170px; display: block; }
-        .music_756_18407 { width: 100%; height: auto; justify-content: flex-start; gap: 6px; }
-        .music_756_18408 { width: 100%; font-size: 16px; line-height: 19px; text-align: left; white-space: normal; }
-        .music_756_18409 { width: 100%; font-size: 14px; line-height: 17px; }
-        .music_756_18409 br { display: none; }
-        .music_756_18410 {
-          position: absolute;
-          right: 0;
-          top: 100px;
-          width: 276px;
-          height: 143px;
-          margin: 0;
-          transform: scale(.45);
-          transform-origin: top right;
-        }
-        .music_694_1884 {
-          position: absolute;
-          left: 0;
-          top: 124px;
-          width: 422px;
-          height: 140px;
-          margin: 0;
-          transform: scale(.45);
-          transform-origin: top left;
-          z-index: 5;
-        }
-        .music_756_18547 { width: 100%; height: 176px; }
-        .bravel-roadmap-source .bravel-roadmap-pulse-dot { left: calc(50% - 8px); top: 0; }
-        .music_756_18458 { width: 100%; height: 176px; }
-        .music_756_18459 { width: 100%; height: 116px; margin: 0; object-fit: fill; }
-        .flexContainer_3_music_756_18458 { transform: scale(.31); transform-origin: top left; width: 1164px; }
-        .music_756_18404 { position: absolute; top: 170px; width: 100%; height: 176px; overflow: hidden; }
-        .music_756_18406 { display: none; }
-        .music_756_18457 { width: 100%; height: 176px; }
-        .bravel-roadmap-source .bravel-roadmap-countdown-mask { left: 30%; top: 156px; width: 40%; height: 20px; }
-        .bravel-roadmap-source .bravel-roadmap-countdown-text { top: 158px; width: 100%; font-size: 9px; line-height: 12px; }
-
-        /* Promo, support and footer. */
-        #promo > .bravel-promo-section-label,
-        .music_430_211 > .bravel-questions-section-label { position: relative; inset: auto; }
-        .bravel-promo-source { width: 100%; min-height: 0; display: flex; flex-direction: column; margin-top: 4px; }
-        .music_721_18301 { width: 100%; height: 126px; }
-        .music_721_18305 { margin-top: 2px; font-size: 16px; line-height: 19px; white-space: normal; }
-        .music_721_18306 { width: 100%; margin-top: 6px; font-size: 14px; line-height: 17px; }
-        .bravel-promo-source-button { width: 137px; height: 34px; bottom: 0; }
-        .music_721_18317 { width: 100%; height: auto; margin-top: 18px; }
-
-        .music_430_211 { position: relative; min-height: 92px; }
-        .bravel-questions-source { position: relative; width: 100%; min-height: 92px; display: flex; justify-content: space-between; }
-        .music_756_18343 { width: 235px; height: 72px; margin-top: 20px; transform: none; justify-content: flex-start; }
-        .music_756_18344 { width: 100%; height: 19px; font-size: 16px; line-height: 19px; }
-        .music_756_18346 { width: 235px; margin-top: 6px; font-size: 12px; line-height: 15px; }
-        .music_694_1786 { width: 112px; height: 58px; margin-top: 12px; }
-        .bravel-email-link { color: inherit; text-decoration: none; }
-
-        #how-it-works,
-        #safety,
-        #roadmap,
-        #promo,
-        .music_430_211,
-        #contacts {
-          content-visibility: visible !important;
-          contain-intrinsic-size: none !important;
-        }
-
-        .music_430_232 {
-          position: relative;
-          display: grid;
-          grid-template-columns: repeat(2,minmax(0,1fr));
-          grid-template-areas:
-            'brand social'
-            'about promo'
-            'development team';
-          gap: 28px 20px;
-          height: 330px;
-          min-height: 330px;
-          padding-bottom: 38px;
-          margin-bottom: 40px;
-        }
-        .music_430_233 { grid-area: brand; position: static; width: 100%; height: 32px; }
-        .music_430_234 { grid-area: about; }
-        .music_430_236 { grid-area: promo; }
-        .music_430_235 { grid-area: development; }
-        .flexContainer_11_music_430_232 { grid-area: team; }
-        .music_430_234,
-        .music_430_235,
-        .music_430_236,
-        .flexContainer_11_music_430_232 { width: 100%; height: auto; margin: 0; }
-        .music_430_237 { grid-area: social; justify-self: end; width: 74px; height: 32px; margin: 0; }
-        .music_413_127 { position: absolute; left: 0; bottom: 0; width: 100%; margin: 0; }
+      .bravel-chromatic-waves canvas {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
       }
     </style>
   </head>
@@ -6810,7 +7567,11 @@
 </filter>
 </defs>
 </svg>
-<nav class="bravel-header-links" id="bravel-navigation" aria-label="Основная навигация">
+
+<button class="bravel-mobile-menu-toggle" type="button" aria-label="Открыть меню" aria-controls="bravel-mobile-navigation" aria-expanded="false">
+  <span aria-hidden="true"></span>
+</button>
+<nav class="bravel-header-links" id="bravel-mobile-navigation" aria-label="Основная навигация">
   <a class="bravel-header-home" href="#top" aria-label="На главную">Bravel</a>
   <a class="bravel-header-link bravel-header-link_service" href="#how-it-works">О&nbsp;сервисе</a>
   <a class="bravel-header-link bravel-header-link_safety" href="#safety">Безопасность</a>
@@ -6822,9 +7583,8 @@
     </div>
     <div class="music_386_81" id="top">
       <div class="flexContainer_1_music_386_81">
-        <div class="music_392_156 bravel-hero-video-stage" aria-hidden="true" data-bravel-hero-stage>
-          <video class="bravel-hero-video is-active" src="bravel-hero-grid.mp4" autoplay muted loop playsinline preload="auto" data-bravel-hero-video></video>
-          <video class="bravel-hero-video" src="bravel-hero-grid.mp4" muted loop playsinline preload="auto" data-bravel-hero-video></video>
+        <div class="music_392_156 bravel-chromatic-stage" aria-hidden="true">
+          <div class="bravel-chromatic-waves" data-chromatic-waves></div>
         </div>
         <div class="music_392_158">
           <div class="music_430_189">
@@ -7010,7 +7770,52 @@
       </div>
     </div>
           </div>
-          
+          <div class="bhm" aria-label="Как работает Bravel">
+            <div class="bhm-list">
+              <article class="bhm-card">
+                <img class="bhm-img" src="assets/bravel-inline/bravel-inline-06-c43fb8c4547b.png" alt="" />
+                <span class="bhm-act" aria-hidden="true"></span>
+                <div class="bhm-text">
+                  <span class="bhm-title">Маршрут в реальном времени</span>
+                  <p class="bhm-desc">После отправления пассажир видит местоположение автомобиля, маршрут и время прибытия. Ссылкой на поездку можно поделиться с близкими без регистрации. Отслеживание завершится автоматически после прибытия.</p>
+                </div>
+              </article>
+              <article class="bhm-card">
+                <img class="bhm-img" src="assets/bravel-inline/bravel-inline-05-c2c1f67a2749.png" alt="" />
+                <span class="bhm-act" aria-hidden="true"></span>
+                <div class="bhm-text">
+                  <span class="bhm-title">Календарь поездок</span>
+                  <p class="bhm-desc">Один раз укажите маршрут, расписание, места и стоимость — Bravel автоматически опубликует поездки.</p>
+                </div>
+              </article>
+              <article class="bhm-card">
+                <img class="bhm-img" src="assets/bravel-inline/bravel-inline-04-93c8e58e0af9.png" alt="" />
+                <span class="bhm-act" aria-hidden="true"></span>
+                <div class="bhm-text">
+                  <span class="bhm-title">Возможности</span>
+                  <p class="bhm-desc">Найдите маршрут, проверьте водителя, забронируйте место и&nbsp;следите&nbsp;за&nbsp;поездкой.</p>
+                </div>
+              </article>
+              <article class="bhm-card">
+                <img class="bhm-img" src="assets/bravel-inline/bravel-inline-03-15acca0052e9.png" alt="" />
+                <span class="bhm-act" aria-hidden="true"></span>
+                <div class="bhm-text">
+                  <span class="bhm-title">Водителям — бесплатно</span>
+                  <p class="bhm-desc">Публикация поездок и управление расписанием бесплатны. Чтобы начать пользоваться сервисом, водителю нужно подтвердить личность, права и данные автомобиля.</p>
+                </div>
+              </article>
+            </div>
+            <article class="bhm-promo" aria-label="Bravel, в пути">
+              <img class="bhm-bg" src="assets/bravel-inline/bravel-inline-02-7ebef03aac91.jpg" alt="" />
+              <span class="bhm-logo">Bravel</span>
+              <svg class="bhm-car" viewBox="0 0 68 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M15.65 26.35C17.05 21.8 18.05 18.75 20.25 17.15C22.55 15.45 27.4 14.65 34 14.65C40.6 14.65 45.45 15.45 47.75 17.15C49.95 18.75 50.95 21.8 52.35 26.35" stroke="white" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.5 27.15C13.95 25.65 17.85 24.65 34 24.65C50.15 24.65 54.05 25.65 55.5 27.15C57.3 28.95 58.4 35.35 57.25 38.85H10.75C9.6 35.35 10.7 28.95 12.5 27.15Z" stroke="white" stroke-width="3.4" stroke-linejoin="round"/>
+                <path d="M17.7 38.85V42.25M50.3 38.85V42.25M21.5 32.5H25.5M42.5 32.5H46.5" stroke="white" stroke-width="3.4" stroke-linecap="round"/>
+              </svg>
+              <span class="bhm-status">В пути</span>
+            </article>
+          </div>
         </div>
         <div class="music_392_188"></div>
       </div>
@@ -7050,7 +7855,24 @@
             </div>
           </div>
         </div>
-        
+        <div class="bsm" aria-label="Безопасность на каждом этапе">
+          <div class="bsm-list">
+            <article class="bsm-card">
+              <img class="bsm-img bsm-img_doc" src="assets/bravel-inline/bravel-safety-passport.jpg" alt="" />
+              <div class="bsm-text">
+                <span class="bsm-title">Защита до начала поездки</span>
+                <p class="bsm-desc">Верифицируем водителя по паспорту, проверяем автомобиль, защищаем от подмены и выявляем подозрительные действия.</p>
+              </div>
+            </article>
+            <article class="bsm-card">
+              <img class="bsm-img bsm-img_car" src="assets/bravel-inline/bravel-safety-car.png" alt="" />
+              <div class="bsm-text">
+                <span class="bsm-title">Безопасность в пути</span>
+                <p class="bsm-desc">Показываем маршрут в реальном времени, держим близких в курсе и помогаем быстро обратиться за помощью.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
       <div class="music_430_238" id="roadmap">
         <div class="music_430_246 bravel-roadmap-section-label">
@@ -7563,7 +8385,69 @@
             </div>
           </div>
         </div>
-        
+        <div class="bravel-roadmap-mobile-legacy">
+        <div class="music_430_243">
+          <div class="music_430_244">
+            <div class="music_430_245">
+              <div class="music_430_246">
+                <div class="music_392_216"></div>
+                <span class="music_392_217">Обновления</span>
+              </div>
+              <span class="music_392_214">Следите за&nbsp;развитием Bravel</span
+              ><span class="music_392_215"
+                >Мы создаём Bravel вместе с&nbsp;будущими пассажирами и&nbsp;водителями. <br />Здесь можно узнать, над&nbsp;чем мы&nbsp;работаем сейчас, что уже готово <br />и&nbsp;когда появится возможность протестировать
+                сервис.</span
+              >
+            </div>
+            <div class="music_410_71 bravel-dev-status-widget" data-bravel-dev-clock>
+              <img class="bravel-dev-status-base" src="assets/bravel-inline/bravel-inline-08-6439bcaa71c2.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
+              <div class="bravel-dev-live-card" aria-label="Текущая дата и время">
+                <div class="music_430_248">
+                  <span class="music_392_243" data-bravel-date>Июл 23</span>
+                  <span class="music_392_245" data-bravel-time>12:39</span>
+                  <span class="music_392_244" data-bravel-weekday>Четверг</span>
+                </div>
+              </div>
+              <div class="bravel-dev-days-card" data-bravel-dev-days aria-label="176 дней позади, 184 дня осталось до 1 февраля">
+                <span class="bravel-dev-days-count" data-bravel-days-passed>176 дней</span>
+                <span class="bravel-dev-days-label">позади</span>
+              </div>
+            </div>
+          </div>
+<div class="music_430_255 bravel-roadmap-graph">
+  <img class="bravel-roadmap-graph-image" src="assets/bravel-inline/bravel-inline-09-603dad6ad66a.svg" loading="lazy" decode="async" alt="" />
+  <span class="bravel-roadmap-pulse-dot" aria-hidden="true"></span>
+  <span class="bravel-roadmap-countdown-mask" aria-hidden="true"></span>
+  <span class="bravel-roadmap-countdown-text" data-bravel-roadmap-countdown>Осталось: 189 дней</span>
+  <div class="music_427_185 bravel-roadmap-blur-rect" aria-hidden="true"></div>
+  <div class="music_427_186 bravel-roadmap-blur-rect" aria-hidden="true"></div>
+</div>
+        </div>
+        <div class="music_430_239">
+          <div class="music_392_227">
+            <div class="music_392_228">
+              <img class="music_i392_228_124_15 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-research.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
+            </div>
+            <span class="music_392_229">Исследования</span>
+          </div>
+          <div class="music_430_240">
+            <div class="music_392_233"></div>
+            <div class="music_430_241">
+              <div class="music_392_225">
+                <img class="music_i392_225_124_18 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-app.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
+              </div>
+              <span class="music_392_230">Разработка мобильного приложения</span>
+            </div>
+          </div>
+          <div class="music_430_242">
+            <div class="music_392_234">
+              <img class="music_i392_234_134_74 bravel-roadmap-list-icon" src="assets/bravel-inline/bravel-roadmap-icon-testing.svg" loading="lazy" decode="async" alt="" aria-hidden="true" />
+            </div>
+            <span class="music_392_231">Тестирование и&nbsp;исправление багов</span>
+          </div>
+        </div>
+      
+        </div>
       </div>
       <div class="music_430_198" id="promo">
         <div class="music_430_200 bravel-promo-section-label">
@@ -7791,7 +8675,66 @@
             </defs>
           </svg>
         </div>
-        
+        <div class="bravel-promo-mobile-legacy">
+        <div class="music_430_199">
+          <div class="music_430_200">
+            <div class="music_392_308"></div>
+            <span class="music_392_309">Бесплатно</span>
+          </div>
+          <span class="music_392_310">Бронируйте без&nbsp;комиссии целый год</span><span class="music_392_311">Пройдите короткий опрос и&nbsp;получите промокод на&nbsp;бесплатное бронирование поездок</span>
+          <a class="bravel-button-link bravel-promo-button-link" href="https://forms.yandex.ru/u/6a6375da068ff08c1ff3512e" target="_blank" rel="noopener noreferrer" aria-label="Пройти опрос">
+            <svg class="music_392_312 bravel-button-svg" aria-hidden="true" focusable="false" width="229" height="55" viewBox="0 0 229 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M116.386 0C131.352 0 145.671 13 160.637 13C162.131 13 163.589 12.8476 164.993 12.5576C177.06 10.0661 188.178 0 200.5 0C215.688 2.06163e-06 228 12.3122 228 27.5C228 42.6878 215.688 55 200.5 55C187.797 55 176.101 44.8762 163.51 43.1907C162.571 43.065 161.612 43 160.637 43C146.179 43 132.348 55 117.89 55H27.5C12.3122 55 0 42.6878 0 27.5C0 12.3122 12.3122 2.25491e-07 27.5 0H116.386Z" fill="#FF641A"/>
+<rect x="9" y="9" width="131" height="37" rx="18.5" fill="white" fill-opacity="0.3"/>
+<path d="M30.6719 33H28.9141V23.2422H23.2422V33H21.4922V21.7266H30.6719V33ZM33.0031 35.8281V24.5156H34.6984V25.8516H34.8313C34.9927 25.5391 35.201 25.2734 35.4563 25.0547C35.7167 24.8359 36.0135 24.6667 36.3469 24.5469C36.6802 24.4271 37.0448 24.3672 37.4406 24.3672C38.1542 24.3672 38.774 24.5495 39.3 24.9141C39.826 25.2734 40.2323 25.7812 40.5188 26.4375C40.8104 27.0885 40.9563 27.8594 40.9563 28.75V28.7656C40.9563 29.6615 40.813 30.4375 40.5266 31.0938C40.2401 31.7448 39.8339 32.25 39.3078 32.6094C38.7818 32.9635 38.1594 33.1406 37.4406 33.1406C37.05 33.1406 36.6854 33.0807 36.3469 32.9609C36.0083 32.8359 35.7089 32.6641 35.4484 32.4453C35.188 32.2266 34.9823 31.9635 34.8313 31.6562H34.6984V35.8281H33.0031ZM36.9563 31.6875C37.4302 31.6875 37.8365 31.5703 38.175 31.3359C38.5135 31.1016 38.7714 30.7656 38.9484 30.3281C39.1307 29.8906 39.2219 29.3698 39.2219 28.7656V28.75C39.2219 28.1406 39.1307 27.6172 38.9484 27.1797C38.7714 26.7422 38.5135 26.4062 38.175 26.1719C37.8365 25.9375 37.4302 25.8203 36.9563 25.8203C36.4875 25.8203 36.0813 25.9401 35.7375 26.1797C35.3938 26.4141 35.1307 26.75 34.9484 27.1875C34.7661 27.6198 34.675 28.1406 34.675 28.75V28.7656C34.675 29.3646 34.7661 29.8828 34.9484 30.3203C35.1307 30.7578 35.3938 31.0964 35.7375 31.3359C36.0813 31.5703 36.4875 31.6875 36.9563 31.6875ZM46.2875 33.1641C45.4594 33.1641 44.7432 32.987 44.1391 32.6328C43.5401 32.2786 43.0792 31.7734 42.7563 31.1172C42.4333 30.4557 42.2719 29.6719 42.2719 28.7656V28.75C42.2719 27.8385 42.4333 27.0547 42.7563 26.3984C43.0844 25.7422 43.5479 25.237 44.1469 24.8828C44.751 24.5286 45.4646 24.3516 46.2875 24.3516C47.1156 24.3516 47.8292 24.5286 48.4281 24.8828C49.0271 25.2318 49.488 25.737 49.8109 26.3984C50.1391 27.0547 50.3031 27.8385 50.3031 28.75V28.7656C50.3031 29.6719 50.1391 30.4557 49.8109 31.1172C49.488 31.7734 49.0271 32.2786 48.4281 32.6328C47.8344 32.987 47.1208 33.1641 46.2875 33.1641ZM46.2875 31.7422C46.7719 31.7422 47.1833 31.625 47.5219 31.3906C47.8604 31.151 48.1182 30.8099 48.2953 30.3672C48.4724 29.9245 48.5609 29.3906 48.5609 28.7656V28.75C48.5609 28.1198 48.4724 27.5833 48.2953 27.1406C48.1182 26.6979 47.8604 26.3594 47.5219 26.125C47.1833 25.8854 46.7719 25.7656 46.2875 25.7656C45.8031 25.7656 45.3917 25.8854 45.0531 26.125C44.7146 26.3594 44.4542 26.6979 44.2719 27.1406C44.0948 27.5833 44.0063 28.1198 44.0063 28.75V28.7656C44.0063 29.3906 44.0948 29.9245 44.2719 30.3672C44.4542 30.8099 44.7146 31.151 45.0531 31.3906C45.3917 31.625 45.8031 31.7422 46.2875 31.7422ZM52.0172 33V24.5156H53.7047V30.4688H54.5875L53.4391 31.1094L57.6812 24.5156H59.3687V33H57.6812V27.0234H56.7984L57.9469 26.375L53.7047 33H52.0172ZM55.6969 23.3438C55.1396 23.3438 54.6526 23.2292 54.2359 23C53.8193 22.7708 53.4937 22.4609 53.2594 22.0703C53.025 21.6745 52.9078 21.2266 52.9078 20.7266H54.3062C54.3115 21.1484 54.4365 21.5156 54.6812 21.8281C54.9312 22.1406 55.2698 22.2969 55.6969 22.2969C56.1292 22.2969 56.4677 22.1406 56.7125 21.8281C56.9573 21.5156 57.0823 21.1484 57.0875 20.7266H58.4859C58.4859 21.2266 58.3687 21.6745 58.1344 22.0703C57.9 22.4609 57.5745 22.7708 57.1578 23C56.7411 23.2292 56.2542 23.3438 55.6969 23.3438ZM67.8484 24.5156V25.8594H65.1766V33H63.4813V25.8594H60.8094V24.5156H67.8484ZM69.2891 33V24.5156H70.9766V30.4688H71.8594L70.7109 31.1094L74.9531 24.5156H76.6406V33H74.9531V27.0234H74.0703L75.2188 26.375L70.9766 33H69.2891ZM86.2875 33.1641C85.4594 33.1641 84.7432 32.987 84.1391 32.6328C83.5401 32.2786 83.0792 31.7734 82.7562 31.1172C82.4333 30.4557 82.2719 29.6719 82.2719 28.7656V28.75C82.2719 27.8385 82.4333 27.0547 82.7562 26.3984C83.0844 25.7422 83.5479 25.237 84.1469 24.8828C84.751 24.5286 85.4646 24.3516 86.2875 24.3516C87.1156 24.3516 87.8292 24.5286 88.4281 24.8828C89.0271 25.2318 89.488 25.737 89.8109 26.3984C90.1391 27.0547 90.3031 27.8385 90.3031 28.75V28.7656C90.3031 29.6719 90.1391 30.4557 89.8109 31.1172C89.488 31.7734 89.0271 32.2786 88.4281 32.6328C87.8344 32.987 87.1208 33.1641 86.2875 33.1641ZM86.2875 31.7422C86.7719 31.7422 87.1833 31.625 87.5219 31.3906C87.8604 31.151 88.1182 30.8099 88.2953 30.3672C88.4724 29.9245 88.5609 29.3906 88.5609 28.7656V28.75C88.5609 28.1198 88.4724 27.5833 88.2953 27.1406C88.1182 26.6979 87.8604 26.3594 87.5219 26.125C87.1833 25.8854 86.7719 25.7656 86.2875 25.7656C85.8031 25.7656 85.3917 25.8854 85.0531 26.125C84.7146 26.3594 84.4542 26.6979 84.2719 27.1406C84.0948 27.5833 84.0062 28.1198 84.0062 28.75V28.7656C84.0062 29.3906 84.0948 29.9245 84.2719 30.3672C84.4542 30.8099 84.7146 31.151 85.0531 31.3906C85.3917 31.625 85.8031 31.7422 86.2875 31.7422ZM92.0172 33V24.5156H99.1813V33H97.4781V25.8516H93.7203V33H92.0172ZM101.325 35.8281V24.5156H103.02V25.8516H103.153C103.315 25.5391 103.523 25.2734 103.778 25.0547C104.039 24.8359 104.335 24.6667 104.669 24.5469C105.002 24.4271 105.367 24.3672 105.762 24.3672C106.476 24.3672 107.096 24.5495 107.622 24.9141C108.148 25.2734 108.554 25.7812 108.841 26.4375C109.132 27.0885 109.278 27.8594 109.278 28.75V28.7656C109.278 29.6615 109.135 30.4375 108.848 31.0938C108.562 31.7448 108.156 32.25 107.63 32.6094C107.104 32.9635 106.481 33.1406 105.762 33.1406C105.372 33.1406 105.007 33.0807 104.669 32.9609C104.33 32.8359 104.031 32.6641 103.77 32.4453C103.51 32.2266 103.304 31.9635 103.153 31.6562H103.02V35.8281H101.325ZM105.278 31.6875C105.752 31.6875 106.158 31.5703 106.497 31.3359C106.835 31.1016 107.093 30.7656 107.27 30.3281C107.453 29.8906 107.544 29.3698 107.544 28.7656V28.75C107.544 28.1406 107.453 27.6172 107.27 27.1797C107.093 26.7422 106.835 26.4062 106.497 26.1719C106.158 25.9375 105.752 25.8203 105.278 25.8203C104.809 25.8203 104.403 25.9401 104.059 26.1797C103.716 26.4141 103.453 26.75 103.27 27.1875C103.088 27.6198 102.997 28.1406 102.997 28.75V28.7656C102.997 29.3646 103.088 29.8828 103.27 30.3203C103.453 30.7578 103.716 31.0964 104.059 31.3359C104.403 31.5703 104.809 31.6875 105.278 31.6875ZM114.609 33.1641C113.781 33.1641 113.065 32.987 112.461 32.6328C111.862 32.2786 111.401 31.7734 111.078 31.1172C110.755 30.4557 110.594 29.6719 110.594 28.7656V28.75C110.594 27.8385 110.755 27.0547 111.078 26.3984C111.406 25.7422 111.87 25.237 112.469 24.8828C113.073 24.5286 113.786 24.3516 114.609 24.3516C115.438 24.3516 116.151 24.5286 116.75 24.8828C117.349 25.2318 117.81 25.737 118.133 26.3984C118.461 27.0547 118.625 27.8385 118.625 28.75V28.7656C118.625 29.6719 118.461 30.4557 118.133 31.1172C117.81 31.7734 117.349 32.2786 116.75 32.6328C116.156 32.987 115.443 33.1641 114.609 33.1641ZM114.609 31.7422C115.094 31.7422 115.505 31.625 115.844 31.3906C116.182 31.151 116.44 30.8099 116.617 30.3672C116.794 29.9245 116.883 29.3906 116.883 28.7656V28.75C116.883 28.1198 116.794 27.5833 116.617 27.1406C116.44 26.6979 116.182 26.3594 115.844 26.125C115.505 25.8854 115.094 25.7656 114.609 25.7656C114.125 25.7656 113.714 25.8854 113.375 26.125C113.036 26.3594 112.776 26.6979 112.594 27.1406C112.417 27.5833 112.328 28.1198 112.328 28.75V28.7656C112.328 29.3906 112.417 29.9245 112.594 30.3672C112.776 30.8099 113.036 31.151 113.375 31.3906C113.714 31.625 114.125 31.7422 114.609 31.7422ZM123.917 33.1641C123.094 33.1641 122.383 32.987 121.784 32.6328C121.191 32.2734 120.732 31.763 120.409 31.1016C120.086 30.4401 119.925 29.651 119.925 28.7344V28.7188C119.925 27.8177 120.084 27.0417 120.402 26.3906C120.724 25.7396 121.183 25.237 121.777 24.8828C122.376 24.5286 123.086 24.3516 123.909 24.3516C124.623 24.3516 125.235 24.4766 125.745 24.7266C126.261 24.9714 126.67 25.3099 126.972 25.7422C127.279 26.1693 127.472 26.6562 127.55 27.2031L127.558 27.2422H125.925L125.917 27.2266C125.823 26.8099 125.607 26.4635 125.269 26.1875C124.93 25.9062 124.48 25.7656 123.917 25.7656C123.448 25.7656 123.045 25.8854 122.706 26.125C122.368 26.3594 122.107 26.6979 121.925 27.1406C121.748 27.5833 121.659 28.1094 121.659 28.7188V28.7344C121.659 29.3594 121.751 29.8958 121.933 30.3438C122.115 30.7917 122.376 31.138 122.714 31.3828C123.053 31.6224 123.454 31.7422 123.917 31.7422C124.448 31.7422 124.878 31.625 125.206 31.3906C125.54 31.1562 125.774 30.8099 125.909 30.3516L125.925 30.3125L127.55 30.3047L127.534 30.375C127.435 30.9271 127.235 31.4115 126.933 31.8281C126.631 32.2448 126.227 32.5729 125.722 32.8125C125.222 33.0469 124.62 33.1641 123.917 33.1641Z" fill="white"/>
+<circle cx="200.5" cy="27.5" r="21.5" fill="white"/>
+<path class="bravel-button-arrow-icon" d="M191 27C190.448 27 190 27.4477 190 28C190 28.5523 190.448 29 191 29V28V27ZM210.707 28.7071C211.098 28.3166 211.098 27.6834 210.707 27.2929L204.343 20.9289C203.953 20.5384 203.319 20.5384 202.929 20.9289C202.538 21.3195 202.538 21.9526 202.929 22.3431L208.586 28L202.929 33.6569C202.538 34.0474 202.538 34.6805 202.929 35.0711C203.319 35.4616 203.953 35.4616 204.343 35.0711L210.707 28.7071ZM191 28V29H210V28V27H191V28Z" fill="#FF641A"/>
+</svg>
+
+          </a>
+        </div>
+        <svg class="music_430_202 bravel-promo-widget" aria-hidden="true" focusable="false" width="526" height="220" viewBox="0 0 526 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="3" width="525.451" height="217" rx="30" fill="#F7F7F7"/>
+        <path d="M99.0854 76C118.995 76.0001 135.122 92.1243 135.122 112C135.122 131.876 118.995 148 99.0854 148C79.1758 148 63.0473 131.876 63.0473 112C63.0473 92.1242 79.1758 76 99.0854 76Z" stroke="#FF641A" stroke-width="16"/>
+        <foreignObject x="-28.5069" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);-webkit-clip-path:url(#bgblur_0_430_202_clip_path);clip-path:url(#bgblur_0_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <path d="M11.4931 19.0138C11.4931 10.1696 18.6627 3 27.5069 3H43.4931V220H27.4931C18.6565 220 11.4931 212.837 11.4931 204V19.0138Z" fill="url(#paint0_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
+        </g>
+        <foreignObject x="3.4931" y="-37" width="113" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);-webkit-clip-path:url(#bgblur_1_430_202_clip_path);clip-path:url(#bgblur_1_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <rect x="43.4931" y="3" width="33" height="217" fill="url(#paint1_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
+        </g>
+        <foreignObject x="36.4931" y="-37" width="112" height="297"><div xmlns="http://www.w3.org/1999/xhtml" style="-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);-webkit-clip-path:url(#bgblur_2_430_202_clip_path);clip-path:url(#bgblur_2_430_202_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="40">
+        <rect x="76.4931" y="3" width="32" height="217" fill="url(#paint2_linear_430_202)" fill-opacity="0.2" style="mix-blend-mode:overlay"/>
+        </g>
+        <line x1="159.13" y1="85" x2="159.13" y2="139" stroke="#FF641A" stroke-width="16" stroke-linecap="round"/>
+        <line x1="183.15" y1="94" x2="183.15" y2="130" stroke="#FF641A" stroke-width="16" stroke-linecap="round"/>
+        <line x1="247.206" y1="101" x2="247.206" y2="123" stroke="#FF641A" stroke-width="16" stroke-linecap="round"/>
+        <path d="M215.185 101.816C215.424 101.816 215.606 101.885 215.712 101.955C215.78 102 215.902 102.092 216.013 102.392C217.521 106.463 220.732 109.673 224.805 111.179C225.104 111.289 225.196 111.41 225.239 111.477C225.308 111.581 225.376 111.762 225.376 112C225.376 112.238 225.308 112.419 225.239 112.523C225.196 112.59 225.104 112.711 224.805 112.821C220.732 114.327 217.521 117.537 216.013 121.608C215.902 121.908 215.78 122 215.712 122.045C215.606 122.115 215.424 122.184 215.185 122.184C214.946 122.184 214.763 122.115 214.657 122.045C214.589 122 214.468 121.908 214.357 121.608C212.849 117.537 209.638 114.327 205.566 112.821C205.267 112.711 205.175 112.59 205.131 112.523C205.062 112.419 204.993 112.238 204.993 112C204.993 111.762 205.062 111.581 205.131 111.477C205.175 111.41 205.267 111.289 205.566 111.179C209.638 109.673 212.849 106.463 214.357 102.392C214.468 102.092 214.589 102 214.657 101.955C214.763 101.885 214.946 101.816 215.185 101.816Z" stroke="#FF641A" stroke-width="14"/>
+        <rect x="331.285" y="27" width="170.146" height="169" rx="15" fill="white"/>
+        <path d="M466.401 94C466.401 121.062 444.444 143 417.359 143C390.273 143 368.316 121.062 368.316 94C368.316 66.938 390.273 45 417.359 45C444.444 45 466.401 66.938 466.401 94ZM378.125 94C378.125 115.65 395.69 133.2 417.359 133.2C439.027 133.2 456.592 115.65 456.592 94C456.592 72.3504 439.027 54.8 417.359 54.8C395.69 54.8 378.125 72.3504 378.125 94Z" fill="#F7F7F7"/>
+        <path d="M415.357 49.9C415.357 47.1938 417.556 44.9747 420.249 45.2444C425.011 45.7214 429.686 46.8932 434.124 48.7299C440.075 51.1924 445.481 54.8017 450.035 59.3518C454.589 63.9018 458.201 69.3036 460.666 75.2485C462.503 79.6801 463.676 84.3488 464.154 89.104C464.424 91.7989 462.203 94 459.495 94V94C456.786 94 454.622 91.7959 454.284 89.1086C453.847 85.6414 452.948 82.2408 451.604 78.9988C449.632 74.2429 446.742 69.9215 443.099 66.2814C439.456 62.6414 435.131 59.7539 430.371 57.7839C427.124 56.44 423.717 55.541 420.244 55.1053C417.559 54.7685 415.357 52.6062 415.357 49.9V49.9Z" fill="#FF641A"/>
+        <path d="M399.309 91.0391C399.309 89.7695 399.765 88.7181 400.676 87.8848C401.594 87.0579 402.753 86.6445 404.153 86.6445C405.494 86.6445 406.61 87.0221 407.502 87.7773C408.394 88.5326 408.84 89.4701 408.84 90.5898C408.84 91.3776 408.609 92.1458 408.147 92.8945C407.737 93.5586 406.988 94.4473 405.901 95.5605L402.375 99.1055V99.1543H409.065V101H399.426V99.5156L404.514 94.3301C405.373 93.4316 405.95 92.7415 406.243 92.2598C406.536 91.7715 406.682 91.2507 406.682 90.6973C406.682 90.0723 406.431 89.5417 405.93 89.1055C405.429 88.6693 404.814 88.4512 404.084 88.4512C403.316 88.4512 402.672 88.6986 402.151 89.1934C401.636 89.6816 401.379 90.2936 401.379 91.0293V91.0586H399.309V91.0391ZM416.867 98.2168H409.816V96.3027C410.949 94.1673 412.944 91.0358 415.802 86.9082H418.966V96.3809H420.9V98.2168H418.966V101H416.867V98.2168ZM411.857 96.4102H416.886V88.5977H416.847C414.517 91.9635 412.853 94.5514 411.857 96.3613V96.4102ZM435.694 97.6113C435.694 98.6921 435.417 99.5579 434.864 100.209C434.317 100.854 433.582 101.176 432.657 101.176C431.726 101.176 430.984 100.854 430.43 100.209C429.877 99.5579 429.6 98.6921 429.6 97.6113C429.6 96.5306 429.877 95.668 430.43 95.0234C430.984 94.3789 431.726 94.0566 432.657 94.0566C433.582 94.0566 434.32 94.3789 434.874 95.0234C435.421 95.6615 435.694 96.5241 435.694 97.6113ZM432.657 99.7988C433.041 99.7988 433.347 99.6035 433.575 99.2129C433.796 98.8223 433.907 98.2884 433.907 97.6113C433.907 96.9277 433.796 96.3939 433.575 96.0098C433.36 95.6322 433.054 95.4434 432.657 95.4434C432.266 95.4434 431.957 95.6387 431.729 96.0293C431.501 96.4134 431.388 96.9408 431.388 97.6113C431.388 98.2819 431.501 98.8125 431.729 99.2031C431.957 99.6003 432.266 99.7988 432.657 99.7988ZM427.608 90.209C427.608 91.2897 427.332 92.1556 426.778 92.8066C426.231 93.4512 425.496 93.7734 424.571 93.7734C423.64 93.7734 422.898 93.4512 422.345 92.8066C421.791 92.1556 421.514 91.2897 421.514 90.209C421.514 89.1283 421.791 88.2656 422.345 87.6211C422.898 86.9766 423.64 86.6543 424.571 86.6543C425.496 86.6543 426.235 86.9766 426.788 87.6211C427.335 88.2591 427.608 89.1217 427.608 90.209ZM424.571 92.3965C424.955 92.3965 425.261 92.2012 425.489 91.8105C425.71 91.4199 425.821 90.8861 425.821 90.209C425.821 89.5254 425.71 88.9915 425.489 88.6074C425.274 88.2298 424.968 88.041 424.571 88.041C424.18 88.041 423.871 88.2363 423.643 88.627C423.416 89.0111 423.302 89.5384 423.302 90.209C423.302 90.8796 423.416 91.4102 423.643 91.8008C423.871 92.1979 424.18 92.3965 424.571 92.3965ZM422.423 101L432.725 86.9082H434.698L424.415 101H422.423Z" fill="#121212"/>
+        <path d="M381.326 160V150.859H376.038V160H374.39V149.431H382.952V160H381.326ZM388.574 151.965C389.589 151.965 390.402 152.334 391.013 153.071C391.628 153.809 391.936 154.792 391.936 156.023C391.936 157.249 391.63 158.232 391.02 158.975C390.415 159.712 389.611 160.081 388.61 160.081C387.429 160.081 386.589 159.619 386.091 158.696H386.062V162.6H384.472V152.046H386.003V153.364H386.04C386.264 152.935 386.604 152.595 387.058 152.346C387.517 152.092 388.022 151.965 388.574 151.965ZM388.171 158.733C388.816 158.733 389.333 158.486 389.724 157.993C390.114 157.5 390.31 156.843 390.31 156.023C390.31 155.203 390.114 154.546 389.724 154.053C389.333 153.56 388.816 153.313 388.171 153.313C387.541 153.313 387.031 153.562 386.64 154.06C386.25 154.558 386.052 155.212 386.047 156.023C386.052 156.833 386.25 157.488 386.64 157.986C387.026 158.484 387.536 158.733 388.171 158.733ZM396.32 160.095C395.167 160.095 394.252 159.729 393.573 158.997C392.894 158.264 392.555 157.273 392.555 156.023C392.555 154.778 392.897 153.787 393.58 153.049C394.259 152.312 395.172 151.943 396.32 151.943C397.467 151.943 398.38 152.31 399.059 153.042C399.738 153.779 400.077 154.773 400.077 156.023C400.077 157.273 399.738 158.264 399.059 158.997C398.385 159.729 397.472 160.095 396.32 160.095ZM396.32 158.777C396.993 158.777 397.521 158.535 397.902 158.052C398.278 157.568 398.466 156.892 398.466 156.023C398.466 155.154 398.278 154.478 397.902 153.994C397.521 153.506 396.993 153.262 396.32 153.262C395.646 153.262 395.118 153.506 394.738 153.994C394.357 154.482 394.166 155.159 394.166 156.023C394.166 156.887 394.357 157.563 394.738 158.052C395.118 158.535 395.646 158.777 396.32 158.777ZM401.063 160V152.046H403.04L405.64 157.935H405.699L408.313 152.046H410.232V160H408.702V154.456H408.643L406.226 159.7H405.062L402.652 154.456H402.593V160H401.063ZM414.961 160.095C413.808 160.095 412.893 159.729 412.214 158.997C411.535 158.264 411.196 157.273 411.196 156.023C411.196 154.778 411.538 153.787 412.221 153.049C412.9 152.312 413.813 151.943 414.961 151.943C416.108 151.943 417.021 152.31 417.7 153.042C418.379 153.779 418.718 154.773 418.718 156.023C418.718 157.273 418.379 158.264 417.7 158.997C417.026 159.729 416.113 160.095 414.961 160.095ZM414.961 158.777C415.634 158.777 416.162 158.535 416.543 158.052C416.919 157.568 417.107 156.892 417.107 156.023C417.107 155.154 416.919 154.478 416.543 153.994C416.162 153.506 415.634 153.262 414.961 153.262C414.287 153.262 413.759 153.506 413.379 153.994C412.998 154.482 412.807 155.159 412.807 156.023C412.807 156.887 412.998 157.563 413.379 158.052C413.759 158.535 414.287 158.777 414.961 158.777ZM426.53 160H424.545L421.337 156.301H421.278V160H419.704V152.046H421.278V155.466H421.337L424.508 152.046H426.398L422.853 155.789L426.53 160ZM430.408 160.095C429.256 160.095 428.34 159.729 427.662 158.997C426.983 158.264 426.644 157.273 426.644 156.023C426.644 154.778 426.985 153.787 427.669 153.049C428.348 152.312 429.261 151.943 430.408 151.943C431.556 151.943 432.469 152.31 433.148 153.042C433.826 153.779 434.166 154.773 434.166 156.023C434.166 157.273 433.826 158.264 433.148 158.997C432.474 159.729 431.561 160.095 430.408 160.095ZM430.408 158.777C431.082 158.777 431.609 158.535 431.99 158.052C432.366 157.568 432.554 156.892 432.554 156.023C432.554 155.154 432.366 154.478 431.99 153.994C431.609 153.506 431.082 153.262 430.408 153.262C429.734 153.262 429.207 153.506 428.826 153.994C428.445 154.482 428.255 155.159 428.255 156.023C428.255 156.887 428.445 157.563 428.826 158.052C429.207 158.535 429.734 158.777 430.408 158.777ZM440.447 153.298H437.641L437.414 156.396C437.341 157.446 437.131 158.208 436.784 158.682V158.74H440.447V153.298ZM434.411 162.087V158.74H435.056C435.583 158.408 435.891 157.605 435.979 156.331L436.272 152.046H442.014V158.74H443.259V162.087H441.794V160H435.869V162.087H434.411ZM447.335 160.095C446.183 160.095 445.268 159.729 444.589 158.997C443.91 158.264 443.571 157.273 443.571 156.023C443.571 154.778 443.913 153.787 444.596 153.049C445.275 152.312 446.188 151.943 447.335 151.943C448.483 151.943 449.396 152.31 450.075 153.042C450.753 153.779 451.093 154.773 451.093 156.023C451.093 157.273 450.753 158.264 450.075 158.997C449.401 159.729 448.488 160.095 447.335 160.095ZM447.335 158.777C448.009 158.777 448.537 158.535 448.917 158.052C449.293 157.568 449.481 156.892 449.481 156.023C449.481 155.154 449.293 154.478 448.917 153.994C448.537 153.506 448.009 153.262 447.335 153.262C446.662 153.262 446.134 153.506 445.753 153.994C445.373 154.482 445.182 155.159 445.182 156.023C445.182 156.887 445.373 157.563 445.753 158.052C446.134 158.535 446.662 158.777 447.335 158.777ZM453.638 153.21V155.32H455.228C456.16 155.32 456.627 154.966 456.627 154.258C456.627 153.56 456.217 153.21 455.396 153.21H453.638ZM453.638 156.448V158.828H455.535C456.488 158.828 456.964 158.435 456.964 157.649C456.964 156.848 456.422 156.448 455.338 156.448H453.638ZM452.078 152.046H455.704C456.47 152.046 457.076 152.227 457.52 152.588C457.96 152.949 458.179 153.442 458.179 154.067C458.179 154.482 458.05 154.854 457.791 155.181C457.532 155.513 457.213 155.715 456.832 155.789V155.847C457.34 155.916 457.75 156.118 458.062 156.455C458.375 156.797 458.531 157.214 458.531 157.708C458.531 158.411 458.282 158.967 457.784 159.377C457.281 159.792 456.6 160 455.74 160H452.078V152.046Z" fill="#121212"/>
+        <path d="M387.674 177.314C387.463 177.314 387.291 177.303 387.158 177.279V176.248C387.236 176.268 387.371 176.277 387.562 176.277C387.867 176.277 388.107 176.207 388.283 176.066C388.463 175.922 388.607 175.682 388.717 175.346L388.816 175.018L386.508 168.637H387.873L389.508 173.84H389.537L391.172 168.637H392.508L390.123 175.293C389.849 176.055 389.535 176.582 389.18 176.875C388.828 177.168 388.326 177.314 387.674 177.314ZM401.497 175H399.921L397.542 172.041H397.495V175H396.247V172.041H396.2L393.821 175H392.269L394.993 171.648L392.333 168.637H393.851L396.2 171.373H396.247V168.637H397.495V171.373H397.542L399.892 168.637H401.398L398.749 171.631L401.497 175ZM404.393 169.592C403.936 169.592 403.557 169.744 403.256 170.049C402.951 170.354 402.782 170.75 402.746 171.238H405.975C405.959 170.742 405.807 170.344 405.518 170.043C405.229 169.742 404.854 169.592 404.393 169.592ZM407.182 173.137C407.092 173.707 406.793 174.174 406.285 174.537C405.778 174.896 405.166 175.076 404.451 175.076C403.53 175.076 402.799 174.785 402.26 174.203C401.725 173.625 401.457 172.838 401.457 171.842C401.457 170.846 401.725 170.049 402.26 169.451C402.795 168.854 403.508 168.555 404.399 168.555C405.274 168.555 405.967 168.838 406.479 169.404C406.99 169.967 407.246 170.73 407.246 171.695V172.141H402.74V172.217C402.74 172.768 402.899 173.209 403.215 173.541C403.532 173.877 403.951 174.045 404.475 174.045C404.846 174.045 405.166 173.963 405.436 173.799C405.705 173.635 405.883 173.414 405.969 173.137H407.182ZM411.491 169.568V171.256H412.762C413.508 171.256 413.882 170.973 413.882 170.406C413.882 169.848 413.553 169.568 412.897 169.568H411.491ZM411.491 172.158V174.062H413.008C413.77 174.062 414.151 173.748 414.151 173.119C414.151 172.479 413.717 172.158 412.85 172.158H411.491ZM410.243 168.637H413.143C413.757 168.637 414.241 168.781 414.596 169.07C414.948 169.359 415.124 169.754 415.124 170.254C415.124 170.586 415.02 170.883 414.813 171.145C414.606 171.41 414.35 171.572 414.046 171.631V171.678C414.452 171.732 414.78 171.895 415.03 172.164C415.28 172.438 415.405 172.771 415.405 173.166C415.405 173.729 415.206 174.174 414.807 174.502C414.405 174.834 413.86 175 413.173 175H410.243V168.637ZM421.764 168.637H423.023V175H421.764V168.637ZM417.392 171.607V173.998H418.506C418.889 173.998 419.195 173.889 419.426 173.67C419.652 173.451 419.765 173.162 419.765 172.803C419.765 172.439 419.65 172.148 419.42 171.93C419.193 171.715 418.889 171.607 418.506 171.607H417.392ZM416.133 168.637H417.392V170.611H418.605C419.344 170.611 419.932 170.809 420.369 171.203C420.807 171.598 421.025 172.131 421.025 172.803C421.025 173.475 420.807 174.01 420.369 174.408C419.932 174.803 419.344 175 418.605 175H416.133V168.637ZM428.228 169.639H425.983L425.802 172.117C425.743 172.957 425.575 173.566 425.298 173.945V173.992H428.228V169.639ZM423.399 176.67V173.992H423.915C424.337 173.727 424.583 173.084 424.653 172.064L424.888 168.637H429.482V173.992H430.478V176.67H429.306V175H424.565V176.67H423.399ZM433.133 174.051C433.606 174.051 434 173.916 434.317 173.646C434.633 173.373 434.791 173.027 434.791 172.609V172.111L433.244 172.217C432.365 172.271 431.926 172.584 431.926 173.154C431.926 173.428 432.035 173.645 432.254 173.805C432.473 173.969 432.766 174.051 433.133 174.051ZM432.793 175.064C432.157 175.064 431.639 174.893 431.24 174.549C430.842 174.201 430.643 173.744 430.643 173.178C430.643 172.623 430.852 172.188 431.27 171.871C431.684 171.555 432.285 171.371 433.074 171.32L434.791 171.221V170.729C434.791 170.365 434.674 170.086 434.44 169.891C434.209 169.699 433.881 169.604 433.455 169.604C433.112 169.604 432.821 169.686 432.582 169.85C432.348 170.014 432.203 170.234 432.149 170.512H430.959C430.979 169.949 431.227 169.482 431.703 169.111C432.18 168.74 432.776 168.555 433.49 168.555C434.268 168.555 434.887 168.744 435.348 169.123C435.813 169.502 436.045 170.006 436.045 170.635V175H434.832V173.939H434.803C434.627 174.283 434.358 174.557 433.994 174.76C433.631 174.963 433.231 175.064 432.793 175.064ZM441.173 172.211H438.191V175H436.931V168.637H438.191V171.203H441.173V168.637H442.433V175H441.173V172.211ZM446.132 175.076C445.21 175.076 444.477 174.783 443.934 174.197C443.391 173.611 443.12 172.818 443.12 171.818C443.12 170.822 443.393 170.029 443.94 169.439C444.483 168.85 445.214 168.555 446.132 168.555C447.049 168.555 447.78 168.848 448.323 169.434C448.866 170.023 449.137 170.818 449.137 171.818C449.137 172.818 448.866 173.611 448.323 174.197C447.784 174.783 447.053 175.076 446.132 175.076ZM446.132 174.021C446.671 174.021 447.092 173.828 447.397 173.441C447.698 173.055 447.848 172.514 447.848 171.818C447.848 171.123 447.698 170.582 447.397 170.195C447.092 169.805 446.671 169.609 446.132 169.609C445.592 169.609 445.171 169.805 444.866 170.195C444.561 170.586 444.409 171.127 444.409 171.818C444.409 172.51 444.561 173.051 444.866 173.441C445.171 173.828 445.592 174.021 446.132 174.021Z" fill="#121212" fill-opacity="0.4"/>
+        <defs>
+        <clipPath id="bgblur_0_430_202_clip_path" transform="translate(28.5069 37)"><path d="M11.4931 19.0138C11.4931 10.1696 18.6627 3 27.5069 3H43.4931V220H27.4931C18.6565 220 11.4931 212.837 11.4931 204V19.0138Z"/>
+        </clipPath><clipPath id="bgblur_1_430_202_clip_path" transform="translate(-3.4931 37)"><rect x="43.4931" y="3" width="33" height="217"/>
+        </clipPath><clipPath id="bgblur_2_430_202_clip_path" transform="translate(-36.4931 37)"><rect x="76.4931" y="3" width="32" height="217"/>
+        </clipPath><linearGradient id="paint0_linear_430_202" x1="27.4931" y1="3" x2="27.4931" y2="220" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#D9D9D9"/>
+        <stop offset="1" stop-color="#737373"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_430_202" x1="59.9931" y1="3" x2="59.9931" y2="220" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#D9D9D9"/>
+        <stop offset="1" stop-color="#737373"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_430_202" x1="92.4931" y1="3" x2="92.4931" y2="220" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#D9D9D9"/>
+        <stop offset="1" stop-color="#737373"/>
+        </linearGradient>
+        </defs>
+        </svg>
+      
+        </div>
       </div>
       <div class="music_430_207 bravel-faq-section" id="faq">
         <div class="music_430_208 bravel-faq-heading">
@@ -7891,7 +8834,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту <a class="bravel-email-link" href="mailto:bravel2026@yandex.ru">bravel2026@yandex.ru</a><br />Ответим на все ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4527372433202977757773053c242b21203d6b3730">[email&#160;protected]</a><br />Ответим на все ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
@@ -7955,7 +8898,36 @@
             </defs>
           </svg>
         </div>
-        
+        <div class="bravel-questions-mobile-legacy">
+        <div class="music_430_212">
+          <div class="music_430_213">
+            <div class="music_430_214">
+              <div class="music_392_385"></div>
+              <span class="music_392_386">Помощь</span>
+            </div>
+            <span class="music_392_387">Остались вопросы?</span>
+          </div>
+          <span class="music_392_388">Пишите на&nbsp;почту <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4c6d6c5d2c1c896949692e4ddc5cac0c1dc8ad6d1">[email&#160;protected]</a><br />Ответим на&nbsp;все ваши вопросы.</span>
+        </div>
+        <svg class="music_430_215 bravel-questions-image" aria-hidden="true" focusable="false" width="335" height="173" viewBox="0 0 335 173" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <mask id="mask0_430_215" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="336" height="173">
+        <path d="M313.451 40C313.451 45.5228 317.928 50 323.451 50H325C330.523 50 335 54.4772 335 60V131.205C335 136.614 330.615 141 325.205 141C319.795 141 315.41 145.386 315.41 150.795V163C315.41 168.523 310.932 173 305.41 173H133.421C127.898 173 123.421 168.523 123.421 163V140C123.421 134.477 127.898 130 133.421 130H284.518C290.041 130 294.518 125.523 294.518 120V66C294.518 60.4772 290.041 56 284.518 56H265.659C260.136 56 255.659 51.5228 255.659 46V10C255.659 4.47715 260.136 0 265.659 0H303.451C308.973 0 313.451 4.47715 313.451 10V40Z" fill="#D9D9D9"/>
+        <path d="M21.5498 133C21.5498 127.477 17.0727 123 11.5498 123L10 123C4.47716 123 1.05937e-05 118.523 1.01208e-05 113L4.02329e-06 41.7954C3.56003e-06 36.3856 4.38556 32 9.79541 32C15.2053 32 19.5908 27.6145 19.5908 22.2046L19.5908 10C19.5908 4.47717 24.068 1.67353e-05 29.5908 1.62424e-05L201.579 8.92496e-07C207.102 3.99584e-07 211.579 4.47715 211.579 10L211.579 35C211.579 40.5228 207.102 45 201.579 45L50.1611 45C44.6383 45 40.1611 49.4772 40.1611 55L40.1611 109C40.1611 114.523 44.6383 119 50.1611 119L69.3418 119C74.8647 119 79.3418 123.477 79.3418 129L79.3418 163C79.3418 168.523 74.8647 173 69.3418 173L31.5498 173C26.027 173 21.5498 168.523 21.5498 163L21.5498 133Z" fill="#D9D9D9"/>
+        <rect width="143.485" height="33.9632" rx="10" transform="matrix(0.971844 0.235626 -0.226579 0.973993 41.9792 38)" fill="#D9D9D9"/>
+        <rect width="144.279" height="33.9632" rx="10" transform="matrix(0.971844 -0.235626 -0.226579 -0.973993 160.187 105.076)" fill="#D9D9D9"/>
+        </mask>
+        <g mask="url(#mask0_430_215)">
+        <rect x="-130.755" y="-87.3584" width="473.796" height="315.903" fill="url(#pattern0_430_215)"/>
+        </g>
+        <defs>
+        <pattern id="pattern0_430_215" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_430_215" transform="scale(0.000244141 0.000366166)"/>
+        </pattern>
+        <image id="image0_430_215" width="4096" height="2731" preserveAspectRatio="none" xlink:href="assets/bravel-inline/bravel-inline-10-d2efc9aa9b83.jpg"/>
+        </defs>
+        </svg>
+      
+        </div>
       </div>
       <div class="music_430_232" id="contacts">
         <div class="music_430_233">
@@ -7988,6 +8960,12 @@
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      (() => {
+        const viewport = document.querySelector('meta[name="viewport"][data-bravel-viewport]');
+        if (!viewport) return;
+
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+      })();
 
       (() => {
         const header = document.querySelector('.music_430_188');
@@ -8027,6 +9005,42 @@
       })();
 
       (() => {
+        const header = document.querySelector('.music_430_188');
+        const toggle = header ? header.querySelector('.bravel-mobile-menu-toggle') : null;
+        const links = header ? header.querySelectorAll('.bravel-header-links a') : null;
+        if (!header || !toggle || !links) return;
+
+        const setMenuOpen = (isOpen) => {
+          header.classList.toggle('is-menu-open', isOpen);
+          toggle.setAttribute('aria-expanded', String(isOpen));
+          toggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+        };
+
+        toggle.addEventListener('click', () => {
+          setMenuOpen(!header.classList.contains('is-menu-open'));
+        });
+
+        links.forEach((link) => {
+          link.addEventListener('click', () => setMenuOpen(false));
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') setMenuOpen(false);
+        });
+
+        const desktopQuery = window.matchMedia('(min-width: 768px)');
+        const handleDesktopChange = (event) => {
+          if (event.matches) setMenuOpen(false);
+        };
+
+        if (typeof desktopQuery.addEventListener === 'function') {
+          desktopQuery.addEventListener('change', handleDesktopChange);
+        } else {
+          desktopQuery.addListener(handleDesktopChange);
+        }
+      })();
+
+      (() => {
         const intro = document.querySelector('[data-bravel-intro]');
         let introFinished = false;
 
@@ -8050,77 +9064,7 @@
         window.setTimeout(finishIntro, 6200);
       })();
 
-      (() => {
-        const heroVideos = Array.from(document.querySelectorAll('[data-bravel-hero-video]'));
-        if (!heroVideos.length) return;
-
-        const playbackRate = 0.68;
-        const crossfadeSeconds = 1.15;
-        const transitionMs = 900;
-        let activeIndex = 0;
-        let isSwitching = false;
-
-        const applyHeroVideoSettings = (video) => {
-          video.muted = true;
-          video.loop = false;
-          video.playsInline = true;
-          video.defaultPlaybackRate = playbackRate;
-          video.playbackRate = playbackRate;
-        };
-
-        const playHeroVideo = (video) => {
-          const playRequest = video.play();
-          if (playRequest && typeof playRequest.catch === 'function') {
-            playRequest.catch(() => {});
-          }
-        };
-
-        const switchHeroVideo = () => {
-          if (isSwitching || heroVideos.length < 2) return;
-
-          const currentVideo = heroVideos[activeIndex];
-          const nextIndex = (activeIndex + 1) % heroVideos.length;
-          const nextVideo = heroVideos[nextIndex];
-          isSwitching = true;
-
-          applyHeroVideoSettings(nextVideo);
-          try {
-            nextVideo.currentTime = 0;
-          } catch (error) {}
-
-          nextVideo.classList.add('is-active');
-          playHeroVideo(nextVideo);
-          currentVideo.classList.remove('is-active');
-          activeIndex = nextIndex;
-
-          window.setTimeout(() => {
-            currentVideo.pause();
-            try {
-              currentVideo.currentTime = 0;
-            } catch (error) {}
-            isSwitching = false;
-          }, transitionMs + 150);
-        };
-
-        heroVideos.forEach((video, index) => {
-          applyHeroVideoSettings(video);
-          video.classList.toggle('is-active', index === activeIndex);
-          video.addEventListener('loadedmetadata', () => applyHeroVideoSettings(video));
-          video.addEventListener('timeupdate', () => {
-            if (video !== heroVideos[activeIndex] || !Number.isFinite(video.duration)) return;
-            if (video.duration - video.currentTime <= crossfadeSeconds) {
-              switchHeroVideo();
-            }
-          });
-          video.addEventListener('ended', () => {
-            if (video === heroVideos[activeIndex]) {
-              switchHeroVideo();
-            }
-          });
-        });
-
-        playHeroVideo(heroVideos[activeIndex]);
-      })();
+      
 
       (() => {
         const widgets = Array.from(document.querySelectorAll('[data-bravel-dev-clock]'));
@@ -8421,6 +9365,7 @@
           }, FAQ_LOCK_DURATION);
         });
         window.addEventListener('wheel', releaseFaqLock, { passive: true });
+        window.addEventListener('touchmove', releaseFaqLock, { passive: true });
         window.addEventListener('keydown', (event) => {
           if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) {
             releaseFaqLock();
@@ -8432,5 +9377,153 @@
         update(true);
       })();
     </script>
-  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0c200ef6b37c0',t:'MTc4Njg4NjY1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c1155feb13fe9a',t:'MTc4Njg5MDA2NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b0226fe92fb93c',t:'MTc4NjcxMjM0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b031723c3bfeaf',t:'MTc4NjcxMjk1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c0c200ef6b37c0',t:'MTc4Njg4NjY1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c1155feb13fe9a',t:'MTc4Njg5MDA2NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script type="module">
+import {
+  Renderer,
+  Camera,
+  Mesh,
+  Plane,
+  Program,
+  RenderTarget
+} from "https://esm.sh/ogl@1.0.11";
+
+const vertex = `#version 300 es
+in vec2 uv;
+in vec2 position;
+out vec2 vUv;
+void main(){vUv=uv;gl_Position=vec4(position,0.,1.);}`;
+
+const noiseFragment = `#version 300 es
+precision mediump float;
+uniform float uFrequency;
+uniform float uTime;
+uniform float uSpeed;
+uniform float uValue;
+uniform vec2 uResolution;
+in vec2 vUv;
+out vec4 fragColor;
+vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+float snoise(vec3 v){
+ const vec2 C=vec2(1.0/6.0,1.0/3.0);const vec4 D=vec4(0.0,0.5,1.0,2.0);
+ vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.0-g;
+ vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;i=mod289(i);
+ vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));
+ float n_=0.142857142857;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.0*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.0*x_);
+ vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.0-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);
+ vec4 s0=floor(b0)*2.0+1.0;vec4 s1=floor(b1)*2.0+1.0;vec4 sh=-step(h,vec4(0.0));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+ vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);
+ vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;
+ vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);m=m*m;
+ return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+}
+vec3 hsv2rgb(vec3 c){vec4 K=vec4(1.0,2.0/3.0,1.0/3.0,3.0);vec3 p=abs(fract(c.xxx+K.xyz)*6.0-K.www);return c.z*mix(K.xxx,clamp(p-K.xxx,0.0,1.0),c.y);}
+void main(){vec2 uv=vUv;float aspect=uResolution.x/max(uResolution.y,1.0);uv=(uv-0.5)*vec2(aspect,1.0)+0.5;float hue=abs(snoise(vec3(uv*uFrequency,uTime*uSpeed)));fragColor=vec4(hsv2rgb(vec3(hue,1.0,uValue)),1.0);}`;
+
+const dotsFragment = `#version 300 es
+precision highp float;
+uniform vec2 uResolution;
+uniform sampler2D uTexture;
+uniform int uPaletteCount;
+uniform vec3 uPalette[10];
+uniform float uPaletteAlpha[10];
+uniform float uCellSize;
+uniform float uGamma;
+uniform float uPaletteBias;
+out vec4 fragColor;
+void main(){
+ vec2 pix=gl_FragCoord.xy;float cell=max(uCellSize,1.0);vec2 cellIdx=floor(pix/cell);vec2 cellCenter=(cellIdx+0.5)*cell;
+ vec3 col=texture(uTexture,cellCenter/uResolution.xy).rgb;float gray=0.3*col.r+0.59*col.g+0.11*col.b;gray=pow(clamp(gray,0.0001,1.0),uGamma);
+ vec2 cellUV=fract(pix/cell)-0.5;float dist=length(cellUV);float radius=clamp(gray+uPaletteBias,0.0,1.0)*0.5;float aa=fwidth(dist)+0.0001;
+ float mark=1.0-smoothstep(radius-aa,radius+aa,dist);float g2=clamp(gray+uPaletteBias,0.0,1.0);int cnt=max(uPaletteCount,1);vec3 dotCol;float dotOpacity;
+ if(cnt<=1){dotCol=uPalette[0];dotOpacity=uPaletteAlpha[0];}else{float scaled=g2*float(cnt-1);int seg=clamp(int(floor(scaled)),0,cnt-2);float f=clamp(scaled-float(seg),0.0,1.0);dotCol=mix(uPalette[seg],uPalette[seg+1],f);dotOpacity=mix(uPaletteAlpha[seg],uPaletteAlpha[seg+1],f);}
+ fragColor=vec4(dotCol,mark*dotOpacity);
+}`;
+
+const container = document.querySelector("[data-chromatic-waves]");
+if (container) {
+  try {
+    const renderer = new Renderer({ dpr: Math.min(window.devicePixelRatio || 1, 2), alpha: true, premultipliedAlpha: false, webgl: 2 });
+    const gl = renderer.gl;
+    gl.clearColor(1, 1, 1, 1);
+    container.replaceChildren(gl.canvas);
+
+    const camera = new Camera(gl, { near: 0.1, far: 100 });
+    camera.position.set(0, 0, 3);
+    const geometry = new Plane(gl, { width: 2, height: 2 });
+    const dotGray = 213 / 255;
+    const palette = Array.from({ length: 10 }, (_, i) => i === 0 ? [dotGray, dotGray, dotGray] : [0, 0, 0]);
+    const alphas = Array.from({ length: 10 }, (_, i) => i === 0 ? 1 : 0);
+
+    const noiseProgram = new Program(gl, {
+      vertex,
+      fragment: noiseFragment,
+      uniforms: {
+        uTime: { value: 0 },
+        uFrequency: { value: 0.3 },
+        uSpeed: { value: 0.2 },
+        uValue: { value: 1 },
+        uResolution: { value: [1, 1] }
+      }
+    });
+    const noiseMesh = new Mesh(gl, { geometry, program: noiseProgram });
+    const target = new RenderTarget(gl);
+
+    const dotsProgram = new Program(gl, {
+      vertex,
+      fragment: dotsFragment,
+      transparent: true,
+      uniforms: {
+        uResolution: { value: [1, 1] },
+        uTexture: { value: target.texture },
+        uPaletteCount: { value: 1 },
+        uPalette: { value: palette },
+        uPaletteAlpha: { value: alphas },
+        uCellSize: { value: 24 },
+        uGamma: { value: 2.4736842105 },
+        uPaletteBias: { value: -0.15 }
+      }
+    });
+    const dotsMesh = new Mesh(gl, { geometry, program: dotsProgram });
+
+    const resize = () => {
+      const width = Math.max(container.clientWidth, 1);
+      const height = Math.max(container.clientHeight, 1);
+      renderer.setSize(width, height);
+      camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
+      target.setSize(gl.canvas.width, gl.canvas.height);
+      noiseProgram.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height];
+      dotsProgram.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height];
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(container);
+    resize();
+
+    let raf = 0;
+    let last = 0;
+    const frameInterval = 1000 / 30;
+    const render = (time) => {
+      raf = requestAnimationFrame(render);
+      if (document.hidden || time - last < frameInterval) return;
+      last = time;
+      noiseProgram.uniforms.uTime.value = time * 0.001;
+      renderer.render({ scene: noiseMesh, camera, target });
+      renderer.render({ scene: dotsMesh, camera });
+    };
+    raf = requestAnimationFrame(render);
+
+    window.addEventListener("pagehide", () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+    }, { once: true });
+  } catch (error) {
+    console.warn("Chromatic Waves fallback is active", error);
+  }
+}
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2d7fa083d24df76',t:'MTc4NzEzMDExOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
