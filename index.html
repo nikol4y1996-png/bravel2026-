@@ -6556,6 +6556,14 @@
         .music_430_237 { grid-area:social; justify-self:end; width:74px; height:32px; margin:0; }
         .music_413_127 { position:absolute; left:0; bottom:0; width:100%; margin:0; }
       }
+      /* --- FAQ section mobile fix (was still using fixed desktop widths) --- */
+      @media (max-width: 767px) {
+        .music_430_208.bravel-faq-heading { width:100%; }
+        .bravel-faq-intro { width:100%; font-size:14px; line-height:19px; }
+        .bravel-faq-question { width:100%; gap:12px; padding:14px 0; font-size:16px; line-height:20px; }
+        .bravel-faq-answer { width:100%; }
+        .bravel-faq-answer p { max-width:100%; font-size:14px; line-height:19px; }
+      }
     </style>
   </head>
   <body class="bravel-intro-active">
