@@ -878,6 +878,30 @@
         margin-right: auto;
       }
 
+      /* --- Shiny sweep for the "Bravel" word in the hero title (ShinyPill logic) --- */
+      .bravel-shiny-word {
+        position: relative;
+        display: inline-block;
+      }
+      .bravel-shiny-word .bravel-shiny-base {
+        color: #121212;
+      }
+      .bravel-shiny-word .bravel-shiny-shine {
+        position: absolute;
+        inset: 0;
+        color: #ff641a;
+        pointer-events: none;
+        -webkit-mask-image: linear-gradient(to right, transparent 30%, #000 50%, transparent 70%);
+        mask-image: linear-gradient(to right, transparent 30%, #000 50%, transparent 70%);
+        -webkit-mask-size: 150% auto;
+        mask-size: 150% auto;
+        animation: bravelShinySweep 1.5s ease-in-out infinite;
+      }
+      @keyframes bravelShinySweep {
+        0% { -webkit-mask-position: 200%; mask-position: 200%; }
+        100% { -webkit-mask-position: -100%; mask-position: -100%; }
+      }
+
       .music_392_143 {
         width: 804px;
         text-align: center;
@@ -6501,7 +6525,7 @@
         .music_392_140 { width:8px; height:8px; margin:0; flex:0 0 8px; }
         .music_392_142,.music_392_142_0_33,.music_392_142_33_39 { font-size:24px; font-weight:700; line-height:30px; }
         .music_392_142 { position:relative; top:auto; left:auto; width:100%; margin:11px 0 0; text-align:center; }
-        .music_392_143 { position:relative; top:auto; left:auto; width:355px; max-width:calc(100% - 32px); margin:39px 0 0; transform:none; font-size:16px; line-height:19px; text-align:center; }
+        .music_392_143 { position:relative; top:auto; left:auto; width:355px; max-width:calc(100% - 32px); margin:11px 0 0; transform:none; font-size:16px; line-height:19px; text-align:center; }
         .music_392_143 br { display:none; }
         .bravel-hero-button-link { position:relative; top:auto; left:auto; width:134px; height:34px; margin:11px 0 0; transform:none; }
         .music_392_153 { position:relative; width:100vw; height:135px; margin:0 0 0 calc(50% - 50vw); }
@@ -6623,7 +6647,7 @@
               <div class="music_392_140"></div>
               <span class="music_392_141">Разрабатываем</span>
             </div>
-            <div class="music_392_142"><span class="music_392_142_0_33">Путешествуйте безопасно вместе&nbsp;с&nbsp;</span><span class="music_392_142_33_39">Bravel</span></div>
+            <div class="music_392_142"><span class="music_392_142_0_33">Путешествуйте безопасно вместе&nbsp;с&nbsp;</span><span class="music_392_142_33_39 bravel-shiny-word"><span class="bravel-shiny-base">Bravel</span><span class="bravel-shiny-shine" aria-hidden="true">Bravel</span></span></div>
             <span class="music_392_143"
               >Находите проверенных водителей, бронируйте поездки между&nbsp;городами и&nbsp;делитесь маршрутом с&nbsp;близкими. Bravel поможет оставаться<br />на&nbsp;связи в&nbsp;течение всей поездки.</span
             >
