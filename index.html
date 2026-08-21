@@ -6604,16 +6604,32 @@
         .music_392_161,.music_392_201,.music_392_214,.music_392_310,.music_392_339,.music_392_387 { width:100%; height:auto; margin-left:0; font-size:18px; line-height:22px; text-align:left; white-space:normal; }
 
         .bravel-how-cards-code { width:100%; height:auto; margin-top:18px; }
+        #how-it-works .bravel-how-cards-code { margin-top:12px; } /* заголовок → блок: 12px */
+        .flexContainer_2_music_430_219 { height:auto; } /* убрать пустоту под заголовком */
         .music_694_1817 { position:relative; width:100%; height:auto; min-height:0; }
         .flexContainer_2_music_694_1817,.flexContainer_1_music_694_1817 { width:100%; height:auto; display:flex; flex-direction:column; gap:10px; margin:0; }
         .flexContainer_1_music_694_1817 { margin-top:10px; }
-        .music_694_1853,.music_694_1843,.music_694_1835,.music_694_1825 { width:100%; max-width:361px; height:157px; margin:0; padding:16px; border-radius:20px; }
-        .music_694_1854,.music_694_1844,.music_694_1836,.music_694_1826 { position:relative; width:100%; height:125px; display:flex; flex-direction:column; justify-content:flex-end; padding-top:50px; }
+        .music_694_1853,.music_694_1843,.music_694_1835,.music_694_1825 { width:100%; max-width:361px; height:auto; min-height:157px; margin:0; padding:16px; border-radius:20px; }
+        .music_694_1854,.music_694_1844,.music_694_1836,.music_694_1826 { position:relative; width:100%; height:auto; min-height:125px; display:flex; flex-direction:column; justify-content:flex-end; padding-top:50px; } /* текст прижат к низу, над ним min 50px (3D 40px + зазор 10px) */
         .music_694_1857,.music_694_1852,.music_694_1841,.music_694_1833 { width:100%; margin:0; font-size:14px; font-weight:500; line-height:17px; white-space:normal; }
         .music_694_1856,.music_694_1851,.music_694_1842,.music_694_1834 { width:100%; margin:5px 0 0; font-size:12px; font-weight:400; line-height:14px; }
-        .music_694_1818 { width:100%; height:151px; margin:0; border-radius:20px; }
+        /* карточки «Как работает Bravel»: 3D 40x40 слева сверху, иконка 21x21 справа сверху */
+        .flexContainer_6_music_694_1854,.flexContainer_5_music_694_1844,.flexContainer_4_music_694_1836,.flexContainer_3_music_694_1826 { position:absolute; top:0; left:0; right:0; height:40px; margin:0; display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start; }
+        .music_694_1855,.music_694_1850,.music_694_1840,.music_694_1832 { width:40px; height:40px; margin:0; object-fit:contain; flex-shrink:0; }
+        .music_694_1858,.music_694_1845,.music_694_1837 { width:21px; height:21px; margin:0; object-fit:contain; flex-shrink:0; }
+        .music_694_1827 { width:21px; height:21px; margin:0; flex-shrink:0; }
+        .music_694_1828 { width:8px; height:8px; margin:6px 0 0 auto; }
+        .music_694_1829 { width:7px; height:8px; margin:1px 0 0 auto; object-fit:contain; }
+        .music_694_1818 { width:100%; max-width:361px; height:151px; margin:0; padding:16px; border-radius:20px; background:url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721488520/b3ca/37d3/24fc/8906123c1ec2ce694faf10733c53c131.jpg) 50% 36.5% / cover no-repeat; }
+        /* Frame 94: «Bravel» слева сверху, машинка по центру, «В пути» справа снизу */
+        .music_694_1820 { width:100%; height:100%; border-radius:20px; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
+        .music_694_1821 { position:absolute; top:0; left:0; width:100%; height:100%; margin:0; }
+        .music_694_1822 { position:absolute; top:16px; left:16px; margin:0; font-size:28px; line-height:35px; }
+        .music_694_1824 { position:absolute; left:50%; top:50%; width:52px; height:52px; margin:0; transform:translate(-50%,-50%); }
+        .music_694_1823 { position:absolute; right:16px; bottom:16px; margin:0; font-size:16px; line-height:20px; }
 
-        .music_430_193 { width:100%; height:auto; display:flex; flex-direction:column; gap:12px; margin-top:24px; }
+        .music_430_193 { width:100%; height:auto; display:flex; flex-direction:column; gap:12px; margin-top:12px; } /* заголовок → блок: 12px */
+        .flexContainer_9_music_430_191 { height:auto; } /* убрать пустоту под заголовком */
         .music_430_196,.music_430_194 { width:100%; height:132px; margin:0; padding:22px; border-radius:24px; }
         .music_756_18556,.music_758_18581 { width:100%; height:88px; display:grid; grid-template-columns:88px 1fr; gap:18px; align-items:center; }
         .music_756_18555 { width:100%; height:88px; }
@@ -6624,9 +6640,10 @@
         .music_392_207,.music_392_208 { width:100%; margin:8px 0 0; font-size:12px; line-height:14px; text-align:left; }
 
         #roadmap>.bravel-roadmap-source,#promo>.bravel-promo-source,.music_430_211>.bravel-questions-source { position:relative; transform-origin:top left; transform:scale(var(--bravel-mobile-scale,.31)); }
-        #roadmap { height:calc(16px + var(--bravel-roadmap-height,227px)); }
-        #promo { height:calc(16px + var(--bravel-promo-height,68px)); }
-        .music_430_211 { height:calc(16px + var(--bravel-questions-height,54px)); }
+        #roadmap>.bravel-roadmap-section-label,#promo>.bravel-promo-section-label,.music_430_211>.bravel-questions-section-label { top:0; } /* метки вплотную к верху секции */
+        #roadmap { height:calc(28px + var(--bravel-roadmap-height,227px)); padding-top:28px; } /* метка 16px + зазор 12px над канвасом */
+        #promo { height:calc(28px + var(--bravel-promo-height,68px)); padding-top:28px; }
+        .music_430_211 { height:calc(28px + var(--bravel-questions-height,54px)); padding-top:28px; }
         #roadmap>.bravel-roadmap-source { width:1164px; height:732px; }
         #promo>.bravel-promo-source { width:1164px; height:220px; }
         .music_430_211>.bravel-questions-source { width:1164px; height:173px; }
@@ -6648,6 +6665,34 @@
         .music_430_237 { grid-area:social; justify-self:end; width:74px; height:32px; margin:0; }
         .music_413_127 { position:absolute; left:0; bottom:0; width:100%; margin:0; }
       }
+      /* --- "Как работает Bravel" + промо-карточка (Frame 94) для промежуточных ширин — как на мобильном --- */
+      @media (min-width: 768px) and (max-width: 1223px) {
+        .music_430_218 { width:calc(100% - 32px); max-width:390px; height:auto; margin:32px auto 0; }
+        .music_430_219 { width:100%; height:auto; }
+        .music_392_161 { width:100%; height:auto; margin-left:0; font-size:18px; line-height:22px; text-align:left; white-space:normal; }
+        .bravel-how-cards-code { width:100%; height:auto; margin-top:18px; }
+        #how-it-works .bravel-how-cards-code { margin-top:12px; } /* заголовок → блок: 12px */
+        .flexContainer_2_music_430_219 { height:auto; } /* убрать пустоту под заголовком */
+        .music_694_1817 { position:relative; width:100%; height:auto; min-height:0; }
+        .flexContainer_2_music_694_1817,.flexContainer_1_music_694_1817 { width:100%; height:auto; display:flex; flex-direction:column; gap:10px; margin:0; }
+        .flexContainer_1_music_694_1817 { margin-top:10px; }
+        .music_694_1853,.music_694_1843,.music_694_1835,.music_694_1825 { width:100%; max-width:361px; height:auto; min-height:157px; margin:0; padding:16px; border-radius:20px; }
+        .music_694_1854,.music_694_1844,.music_694_1836,.music_694_1826 { position:relative; width:100%; height:auto; min-height:125px; display:flex; flex-direction:column; justify-content:flex-end; padding-top:50px; }
+        .music_694_1857,.music_694_1852,.music_694_1841,.music_694_1833 { width:100%; margin:0; font-size:14px; font-weight:500; line-height:17px; white-space:normal; }
+        .music_694_1856,.music_694_1851,.music_694_1842,.music_694_1834 { width:100%; margin:5px 0 0; font-size:12px; font-weight:400; line-height:14px; }
+        .music_694_1856 br,.music_694_1834 br { display:none; }
+        .flexContainer_6_music_694_1854,.flexContainer_5_music_694_1844,.flexContainer_4_music_694_1836,.flexContainer_3_music_694_1826 { position:absolute; inset:0 0 auto 0; width:100%; height:40px; margin:0; display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start; }
+        .music_694_1855,.music_694_1850,.music_694_1840,.music_694_1832 { width:40px; height:40px; margin:0; object-fit:contain; flex-shrink:0; }
+        .music_694_1858,.music_694_1845,.music_694_1837,.music_694_1827 { width:21px; height:21px; margin:0; object-fit:contain; flex-shrink:0; }
+        .music_694_1828 { width:8px; height:8px; margin:6px 0 0 auto; }
+        .music_694_1829 { width:7px; height:8px; margin:1px 0 0 auto; object-fit:contain; }
+        .music_694_1818 { width:100%; max-width:361px; height:151px; margin:0; padding:16px; border-radius:20px; background:url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721488520/b3ca/37d3/24fc/8906123c1ec2ce694faf10733c53c131.jpg) 50% 36.5% / cover no-repeat; }
+        .music_694_1820 { width:100%; height:100%; border-radius:20px; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
+        .music_694_1821 { position:absolute; top:0; left:0; width:100%; height:100%; margin:0; }
+        .music_694_1822 { position:absolute; top:16px; left:16px; margin:0; font-size:28px; line-height:35px; }
+        .music_694_1824 { position:absolute; left:50%; top:50%; width:52px; height:52px; margin:0; transform:translate(-50%,-50%); }
+        .music_694_1823 { position:absolute; right:16px; bottom:16px; margin:0; font-size:16px; line-height:20px; }
+      }
       /* --- FAQ section mobile fix (was still using fixed desktop widths) --- */
       @media (max-width: 767px) {
         .music_430_208.bravel-faq-heading { width:100%; }
@@ -6655,6 +6700,16 @@
         .bravel-faq-question { width:100%; gap:12px; padding:14px 0; font-size:16px; line-height:20px; }
         .bravel-faq-answer { width:100%; }
         .bravel-faq-answer p { max-width:100%; font-size:14px; line-height:19px; }
+        .music_430_210.bravel-faq-list { margin-top:12px; } /* заголовок → список: 12px */
+      }
+      /* --- FAQ intermediate widths (768-1223): fluid instead of fixed 1164px, gutters at screen edges --- */
+      @media (min-width: 768px) and (max-width: 1223px) {
+        .music_430_207.bravel-faq-section { width:calc(100% - 48px); max-width:1164px; }
+        .music_430_208.bravel-faq-heading { width:100%; max-width:650px; }
+        .bravel-faq-intro { width:100%; max-width:650px; }
+        .bravel-faq-question { width:calc(100% - 40px); margin:0 auto; }
+        .bravel-faq-answer { width:calc(100% - 40px); margin:0 auto; }
+        .music_430_210.bravel-faq-list { margin-top:12px; } /* заголовок → список: 12px */
       }
       /* --- Tighten hero: wordmark flush to animation block, next section flush to wordmark --- */
       @media (max-width: 767px) {
@@ -8655,5 +8710,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2e9a73a3ead372c',t:'MTc4NzMxNTQ3MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2ea385fedd9d3b1',t:'MTc4NzMyMTQxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
