@@ -3984,6 +3984,7 @@
       .music_430_207 {
         position: relative;
         width: 1164px;
+        max-width: calc(100% - 32px); /* никогда не выходит за края экрана */
         height: 655px;
         display: flex;
         flex-direction: column;
@@ -5089,6 +5090,7 @@
 
       .music_430_208.bravel-faq-heading {
         width: 650px;
+        max-width: 100%;
         height: auto;
       }
 
@@ -5099,6 +5101,7 @@
       .bravel-faq-intro {
         display: block;
         width: 650px;
+        max-width: 100%;
         font-size: 18px;
         font-family: var(--bravel-font-ui);
         font-weight: 400;
@@ -5125,7 +5128,8 @@
       }
 
       .bravel-faq-question {
-        width: 1124px;
+        width: 100%;
+        max-width: 1124px;
         min-height: 58px;
         display: flex;
         justify-content: space-between;
@@ -5168,6 +5172,7 @@
         width: 9px;
         height: 9px;
         flex-shrink: 0;
+        margin-right: 4px; /* шеврон не упирается в край строки — не обрезается */
         border-right: 2px solid currentColor;
         border-bottom: 2px solid currentColor;
         transform: rotate(45deg) translateY(-2px);
@@ -5175,7 +5180,8 @@
       }
 
       .bravel-faq-answer {
-        width: 1124px;
+        width: 100%;
+        max-width: 1124px;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
@@ -8710,5 +8716,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2ea385fedd9d3b1',t:'MTc4NzMyMTQxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f26906cf2d23f1',t:'MTc4NzQwNzI5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
