@@ -673,12 +673,17 @@
         height: 100%;
         display: block;
         line-height: 0;
+        /* Сфера не должна выходить за пределы обводки: канвас жёстко
+           ограничен размером foreignObject (100% box) и обрезается по нему. */
+        overflow: hidden;
       }
 
       .bravel-thinking-orb canvas {
         display: block;
         width: 100% !important;
         height: 100% !important;
+        max-width: 100%;
+        max-height: 100%;
       }
 
       .bravel-social-icon {
@@ -6197,14 +6202,15 @@
       }
 
       .bravel-roadmap-source .bravel-roadmap-pulse-dot {
-        /* Дублирует оранжевую точку, уже нарисованную в картинке графика,
-           поэтому скрыта (оставляем её в DOM ради aria-семантики). */
-        display: none;
+        /* Точка совпадает с оранжевой точкой на вершине графика (нарисована на картинке)
+           и добавляет поверх неё пульсацию. Позиция и размер — в %, чтобы точно
+           попадать в то же место на картинке на любой ширине экрана. */
+        display: block;
         position: absolute;
-        left: 569px;
+        left: 48.883%;
         top: 0;
-        width: 16px;
-        height: 16px;
+        width: 1.3746%;
+        aspect-ratio: 1 / 1;
         border-radius: 50%;
         background-color: #ff641a;
         pointer-events: none;
@@ -6263,7 +6269,7 @@
         width: 214px;
         height: 51px;
         margin: 0 auto;
-        border-radius: 25.5px;
+        border-radius: 16.5px; /* как на референсе: скругление ~16.5, не полная «пилюля» */
         background-color: #ff641a;
         pointer-events: none;
         z-index: 4;
@@ -6290,9 +6296,11 @@
         bottom: 0;
         left: 0;
         width: 55%;
-        border-radius: 10.5px;
+        border-radius: 10.5px 0 0 10.5px; /* левый конец — «пилюля», правый край прямой (как на референсе) */
         background-color: #ffffff;
-        background-image: repeating-linear-gradient(108deg, transparent 0 6.5px, rgba(255, 100, 26, 0.11) 6.5px 13.8px);
+        background-image: repeating-linear-gradient(108deg,
+          rgba(255, 100, 26, 0.11) 0 2px, transparent 2px 2.7px,
+          rgba(255, 100, 26, 0.11) 2.7px 4.7px, transparent 4.7px 13.5px); /* двойная штриховка, как на референсе */
       }
 
       .bravel-roadmap-progress-value {
@@ -6308,10 +6316,11 @@
         white-space: nowrap;
       }
 
+      /* Белый разделитель — «стадион» со скруглёнными торцами, на ~3px выше заливки */
       .bravel-roadmap-progress-divider {
         position: absolute;
-        top: 0;
-        bottom: 0;
+        top: -1.5px;
+        bottom: -1.5px;
         right: -3px;
         width: 2px;
         border-radius: 1px;
@@ -6659,9 +6668,12 @@
         .bravel-mobile-menu-toggle span,.bravel-mobile-menu-toggle::before,.bravel-mobile-menu-toggle::after { content:''; position:absolute; width:20px; height:2px; border-radius:2px; background:currentColor; transition:transform .28s ease,opacity .16s ease; }
         .bravel-mobile-menu-toggle::before{transform:translateY(-6px)}.bravel-mobile-menu-toggle::after{transform:translateY(6px)}.music_430_188.is-menu-open .bravel-mobile-menu-toggle span{opacity:0}.music_430_188.is-menu-open .bravel-mobile-menu-toggle::before{transform:rotate(45deg)}.music_430_188.is-menu-open .bravel-mobile-menu-toggle::after{transform:rotate(-45deg)}
 
-        /* Оранжевое интро: «Добро пожаловать в Bravel» 32px + nowrap обрезается на узких экранах —
-           16px + перенос по необходимости; низ — с учётом safe-area (индикатор iOS) */
-        .bravel-intro__welcome { bottom:calc(22px + env(safe-area-inset-bottom, 0px)); font-size:16px; line-height:20px; white-space:normal; }
+        /* Оранжевое интро — мобильная версия:
+           «Bravel» — Neue Haas Grotesk Display Pro 6, 36px regular;
+           «Добро пожаловать в Bravel» — SF UI Display, 24px bold, с переносом по необходимости;
+           низ — с учётом safe-area (индикатор iOS) */
+        .bravel-intro__logo { height:45px; font-size:36px; line-height:45px; }
+        .bravel-intro__welcome { bottom:calc(22px + env(safe-area-inset-bottom, 0px)); font-size:24px; line-height:30px; white-space:normal; }
 
         .music_386_81,.flexContainer_1_music_386_81 { width:100%; height:auto; min-height:0; overflow:visible; }
         .flexContainer_1_music_386_81 { position:relative; display:block; }
@@ -6676,7 +6688,7 @@
         .music_392_143 { position:relative; top:auto; left:auto; width:355px; max-width:calc(100% - 32px); margin:11px 0 0; transform:none; font-size:16px; line-height:19px; text-align:center; }
         .music_392_143 br { display:none; }
         .bravel-hero-button-link { position:relative; top:auto; left:auto; width:134px; height:34px; margin:11px 0 0; transform:none; }
-        .music_392_153 { position:relative; width:100vw; height:135px; margin:0 0 0 calc(50% - 50vw); }
+        .music_392_153 { position:relative; width:100vw; height:19.861111vw; margin:0 0 0 calc(50% - 50vw); }
 
         .music_430_218,.music_430_190,.music_430_238,.music_430_198,.music_430_207,.music_430_211,.music_430_232 { width:calc(100% - 32px); max-width:390px; height:auto; margin-left:auto; margin-right:auto; }
         .music_430_218,.music_430_190,.music_430_238,.music_430_198,.music_430_207,.music_430_211,.music_430_232 { margin-top:32px; }
@@ -6777,17 +6789,17 @@
         .music_756_18467 { left:11%; }
         .music_756_18468 { left:29.8%; }
         .music_756_18470 { left:67.8%; filter:blur(2px); opacity:.75; }
-        .music_756_18471 { left:48.5%; margin-top:0; filter:blur(2px); opacity:.75; }
-        .music_756_18469 { left:86.4%; top:0; right:auto; bottom:auto; margin:0; }
+        .music_756_18471 { left:86.4%; margin-top:0; filter:blur(2px); opacity:.75; } /* Фев 2027 — последняя, блюр */
+        .music_756_18469 { left:48.5%; top:0; right:auto; bottom:auto; margin:0; }   /* Июл-Ноя 2026 — третья, без блюра */
 
         /* Шкала в оранжевом ректенгле: 80x19, по центру (адаптация десктопной отрисовки:
            белая заливка с штрихами + разделитель на её конце + светлый трек справа) */
-        .bravel-roadmap-source .bravel-roadmap-progress { position:relative; top:auto; left:auto; right:auto; order:2; width:80px; height:19px; margin:8px 0 0; border-radius:9.5px; }
+        .bravel-roadmap-source .bravel-roadmap-progress { position:relative; top:auto; left:auto; right:auto; order:2; width:80px; height:19px; margin:8px 0 0; border-radius:6px; }
         .bravel-roadmap-progress-inner { top:5.6px; bottom:5.6px; left:6.7px; right:6.7px; }
         .bravel-roadmap-progress-track { border-radius:3.9px; }
-        .bravel-roadmap-progress-fill { border-radius:3.9px; background-image:repeating-linear-gradient(108deg, transparent 0 2.4px, rgba(255,100,26,0.11) 2.4px 5.1px); }
+        .bravel-roadmap-progress-fill { border-radius:3.9px 0 0 3.9px; background-image:repeating-linear-gradient(108deg, rgba(255,100,26,0.11) 0 0.7px, transparent 0.7px 1px, rgba(255,100,26,0.11) 1px 1.7px, transparent 1.7px 5px); }
         .bravel-roadmap-progress-value { font-size:7px; }
-        .bravel-roadmap-progress-divider { right:-1.5px; width:1px; border-radius:0.5px; }
+        .bravel-roadmap-progress-divider { top:-0.75px; bottom:-0.75px; right:-2px; width:1px; border-radius:0.5px; }
 
         /* Подпись «Осталось: N дней»: 7px medium, по центру */
         .bravel-roadmap-source .bravel-roadmap-countdown-text { position:relative; order:3; left:auto; top:auto; width:100%; margin-top:8px; font-size:7px; font-weight:500; line-height:9px; }
@@ -6845,7 +6857,7 @@
         }
 
         /* --- "Остались вопросы?" — real (non-scaled) mobile layout --- */
-        .music_430_211 { height:auto; padding-top:28px; padding-bottom:20px; }
+        .music_430_211 { height:auto; padding-top:18px; padding-bottom:20px; } /* метка 16px + зазор 2px — как в остальных блоках */
         .music_430_211>.bravel-questions-source {
           position:relative;
           transform:none;
@@ -6943,33 +6955,32 @@
         .music_413_128 { gap:6px; margin-top:8px; }
         .music_412_107,.music_412_109,.music_412_122 { margin-top:8px; }
       }
-      /* --- "Как работает Bravel" + промо-карточка (Frame 94) для промежуточных ширин — как на мобильном --- */
+      /* --- Планшетная версия (768–1223px): та же раскладка блоков, что на десктопе,
+         просто уменьшены боковые отступы. Все секции спроектированы под фиксированный
+         десктопный холст (1164/1214/873px), поэтому вместо перестройки в мобильную
+         одноколоночную вёрстку весь блок пропорционально масштабируется (zoom) под
+         доступную ширину экрана — расположение карточек, колонок и текста остаётся
+         точно таким же, как в десктопной версии. */
       @media (min-width: 768px) and (max-width: 1223px) {
-        .music_430_218 { width:calc(100% - 32px); max-width:390px; height:auto; margin:32px auto 0; }
-        .music_430_219 { width:100%; height:auto; }
-        .music_392_161 { width:100%; height:auto; margin-left:0; font-size:18px; line-height:22px; text-align:left; white-space:normal; }
-        .bravel-how-cards-code { width:100%; height:auto; margin-top:18px; }
-        #how-it-works .bravel-how-cards-code { margin-top:12px; } /* заголовок → блок: 12px */
-        .flexContainer_2_music_430_219 { height:auto; } /* убрать пустоту под заголовком */
-        .music_694_1817 { position:relative; width:100%; height:auto; min-height:0; }
-        .flexContainer_2_music_694_1817,.flexContainer_1_music_694_1817 { width:100%; height:auto; display:flex; flex-direction:column; gap:10px; margin:0; }
-        .flexContainer_1_music_694_1817 { margin-top:10px; }
-        .music_694_1853,.music_694_1843,.music_694_1835,.music_694_1825 { width:100%; max-width:361px; height:auto; min-height:157px; margin:0; padding:16px; border-radius:20px; }
-        .music_694_1854,.music_694_1844,.music_694_1836,.music_694_1826 { position:relative; width:100%; height:auto; min-height:125px; display:flex; flex-direction:column; justify-content:flex-end; padding-top:50px; }
-        .music_694_1857,.music_694_1852,.music_694_1841,.music_694_1833 { width:100%; margin:0; font-size:14px; font-weight:500; line-height:17px; white-space:normal; }
-        .music_694_1856,.music_694_1851,.music_694_1842,.music_694_1834 { width:100%; margin:5px 0 0; font-size:12px; font-weight:400; line-height:14px; }
-        .music_694_1856 br,.music_694_1834 br { display:none; }
-        .flexContainer_6_music_694_1854,.flexContainer_5_music_694_1844,.flexContainer_4_music_694_1836,.flexContainer_3_music_694_1826 { position:absolute; inset:0 0 auto 0; width:100%; height:40px; margin:0; display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start; }
-        .music_694_1855,.music_694_1850,.music_694_1840,.music_694_1832 { width:40px; height:40px; margin:0; object-fit:contain; flex-shrink:0; }
-        .music_694_1858,.music_694_1845,.music_694_1837,.music_694_1827 { width:21px; height:21px; margin:0; object-fit:contain; flex-shrink:0; }
-        .music_694_1828 { width:8px; height:8px; margin:0; }
-        .music_694_1829 { width:7px; height:8px; margin:0; object-fit:contain; }
-        .music_694_1818 { width:100%; max-width:361px; height:151px; margin:0; padding:16px; border-radius:20px; background:url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721488520/b3ca/37d3/24fc/8906123c1ec2ce694faf10733c53c131.jpg) 50% 36.5% / cover no-repeat; }
-        .music_694_1820 { width:100%; height:100%; border-radius:20px; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
-        .music_694_1821 { position:absolute; top:0; left:0; width:100%; height:100%; margin:0; }
-        .music_694_1822 { position:absolute; top:16px; left:16px; margin:0; font-size:28px; line-height:35px; }
-        .music_694_1824 { position:absolute; left:50%; top:50%; width:52px; height:52px; margin:0; transform:translate(-50%,-50%); }
-        .music_694_1823 { position:absolute; right:16px; bottom:16px; margin:0; font-size:16px; line-height:20px; }
+        :root { --bravel-tablet-zoom: calc((100vw - 48px) / 1164); }
+
+        .music_430_188 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_189 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_218 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_190 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_238 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_198 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_211 { zoom: var(--bravel-tablet-zoom); }
+        .music_430_232 { zoom: var(--bravel-tablet-zoom); }
+
+        /* Страховка для браузеров без поддержки zoom — не даёт контенту вылезти за экран */
+        .music_430_189,
+        .music_430_218,
+        .music_430_190,
+        .music_430_238,
+        .music_430_198,
+        .music_430_211,
+        .music_430_232 { max-width: calc(100vw - 48px); }
       }
       /* --- FAQ section mobile fix (was still using fixed desktop widths) --- */
       @media (max-width: 767px) {
@@ -7793,8 +7804,8 @@
                     class="music_756_18459"
                     src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/82229755651/3e92/e419/822d/eab5bf36fb711a5e2c80613dc8d10fd3.png" />
                   <div class="flexContainer_3_music_756_18458">
-                    <span class="music_756_18467">Фев-Апр <br />2026</span><span class="music_756_18468">Май-Июн <br />2026</span><span class="music_756_18470">Дек-Янв <br />2026</span
-                    ><span class="music_756_18471">Фев <br />2026</span><span class="music_756_18469">Июл-Ноя <br />2026</span>
+                    <span class="music_756_18467">Фев-Апр <br />2026</span><span class="music_756_18468">Май-Июн <br />2026</span><span class="music_756_18470">Дек-Янв <br />2027</span
+                    ><span class="music_756_18471">Фев <br />2027</span><span class="music_756_18469">Июл-Ноя <br />2026</span>
                   </div>
                 </div>
                 <div class="bravel-roadmap-progress" data-bravel-roadmap-progress aria-hidden="true">
@@ -8932,7 +8943,7 @@ if (container) {
 
         const drawFrame = (ctx, time) => {
           const half = SIZE / 2;
-          const radius = half * 0.82;
+          const radius = half * 0.70; /* сфера чётко внутри обводки статус-пилюли, с запасом */
           const proj = makeProj(time * 0.55, 0.35 + 0.1 * Math.sin(time * 0.9), half, half, radius);
           const rs = radiusScale(SIZE, OPTS.rsPow);
           const timing = moveTiming(time, OPTS.moveCount, 0.42, 1.2);
@@ -9008,5 +9019,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f915ecbd279048',t:'MTc4NzQ3NzI5MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
