@@ -6648,6 +6648,9 @@
       .music_430_189 {
         z-index: 3;
       }
+      .bravel-legend-wrap { display: contents; }
+      .bravel-legend-orb { display: none; }
+
       /* --- Responsive mobile layout --- */
       .bravel-mobile-menu-toggle { display: none; }
 
@@ -6694,6 +6697,20 @@
         .music_430_218,.music_430_190,.music_430_238,.music_430_198,.music_430_207,.music_430_211,.music_430_232 { margin-top:32px; }
         .music_430_219,.music_430_191,.music_430_208 { width:100%; height:auto; }
         .music_392_161,.music_392_201,.music_392_214,.music_392_310,.music_392_339,.music_392_387 { width:100%; height:auto; margin-left:0; font-size:18px; line-height:22px; text-align:left; white-space:normal; }
+        .music_392_139,
+        .music_430_220,
+        .music_430_192,
+        .music_430_246,
+        .music_430_200,
+        .music_430_209,
+        .music_430_214,
+        .music_392_141,
+        .music_392_164,
+        .music_392_204,
+        .music_392_217,
+        .music_392_309,
+        .music_392_342,
+        .music_392_386 { font-family:var(--bravel-font-ui) !important; }
         .music_430_220,.music_430_192,.music_430_246,.music_430_200,.music_430_209,.music_430_214 { font-size:10px; } /* лейблы секций — размер как у лейбла на главной */
 
         .bravel-how-cards-code { width:100%; height:auto; margin-top:18px; }
@@ -6765,16 +6782,25 @@
            (контент 276x143, коэффициент 130/276 = 0.471) */
         .music_756_18410 { grid-column:2; grid-row:2; width:130px; height:67px; margin:0; flex-shrink:0; }
         .bravel-dev-status-base { width:130px; height:67px; }
-        .bravel-dev-live-card { left:4.7px; top:4.7px; width:58.2px; height:58.2px; border-radius:9.4px; }
-        .bravel-dev-live-card .music_430_248 { margin-top:7.1px; margin-left:7.1px; }
-        .bravel-dev-live-card .music_392_243 { font-size:6.6px; line-height:8px; }
-        .bravel-dev-live-card .music_392_245 { font-size:11.3px; line-height:13.7px; margin-top:0.9px; }
-        .bravel-dev-live-card .music_392_244 { font-size:6.6px; line-height:8px; margin-top:13.2px; }
-        .bravel-dev-days-card { left:67.4px; top:4.7px; width:58.2px; height:58.2px; }
+        .bravel-dev-live-card { left:4.7px; top:4.7px; width:58.2px; height:58.2px; border-radius:9.4px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-live-card .music_430_248 { margin-top:7.1px; margin-left:7.1px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-live-card .music_392_243 { font-size:6.6px; line-height:8px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-live-card .music_392_245 { font-size:11.3px; line-height:13.7px; margin-top:0.9px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-live-card .music_392_244 { font-size:6.6px; line-height:8px; margin-top:13.2px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-days-card { left:67.4px; top:4.7px; width:58.2px; height:58.2px; font-family:var(--bravel-font-ui); }
         .bravel-dev-days-card::before { left:3.8px; top:8.5px; width:50.4px; height:26.9px; border-radius:9.4px; }
         .bravel-dev-days-card::after { left:5.2px; top:15.8px; width:46.1px; }
-        .bravel-dev-days-count { left:5.2px; top:8.5px; width:46.1px; font-size:11.3px; line-height:14.6px; }
-        .bravel-dev-days-label { left:5.2px; top:23.1px; width:46.1px; font-size:7.1px; line-height:7.1px; }
+        .bravel-dev-days-count { left:5.2px; top:8.5px; width:46.1px; font-size:11.3px; line-height:14.6px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-days-label { left:5.2px; top:23.1px; width:46.1px; font-size:7.1px; line-height:7.1px; font-family:var(--bravel-font-ui); }
+
+        /* На мобильных foreignObject с canvas внутри масштабируемой SVG-легенды
+           может не рисоваться. Оборачиваем легенду в относительный контейнер
+           и выносим сферу в обычный HTML-слой поверх SVG. */
+        .bravel-legend-wrap { display:block; position:relative; grid-column:1; grid-row:2; min-width:0; }
+        .bravel-legend-orb { display:block; position:absolute; left:calc(22.5 / 422 * 100%); top:calc(59.5 / 140 * 100%); width:calc(20 / 422 * 100%); aspect-ratio:1 / 1; z-index:2; pointer-events:none; }
+        .bravel-legend-orb .bravel-thinking-orb { width:100%; height:100%; display:block; overflow:hidden; line-height:0; }
+        .music_694_1884 foreignObject,
+        .music_694_1884 .bravel-thinking-orb { display:none; }
 
         /* График — на всю ширину страницы */
         .music_756_18547 { grid-column:1 / -1; grid-row:3; display:flex; flex-direction:column; align-items:center; width:100%; height:auto; }
@@ -7729,7 +7755,8 @@
                 </div>
               </div>
               
-                <svg
+                <div class="bravel-legend-wrap">
+<svg
             class="music_694_1884"
             width="422"
             height="140"
@@ -7793,6 +7820,8 @@
               fill="black"
               fill-opacity="0.3" />
           </svg>
+                  <div class="bravel-legend-orb" aria-hidden="true"><div class="bravel-thinking-orb" data-orb-state="solving" role="img" aria-label="Solving…"></div></div>
+                </div>
               <div class="music_756_18547">
                 <span class="bravel-roadmap-pulse-dot" aria-hidden="true"></span>
                 <span class="bravel-roadmap-countdown-mask" aria-hidden="true"></span>
@@ -9019,5 +9048,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc1d7aa9b665b8',t:'MTc4NzUwOTA1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
