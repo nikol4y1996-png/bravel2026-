@@ -15,7 +15,8 @@
     <style>
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('./assets/fonts/bravel-sf-pro-display-regular.otf') format('opentype');
+        src: local('SF UI Display'), local('SF Pro Display'), local('SF Pro Text'),
+             url('./assets/fonts/bravel-sf-pro-display-regular.otf') format('opentype');
         font-weight: 400;
         font-style: normal;
         font-display: block;
@@ -23,7 +24,8 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
+        src: local('SF UI Display Medium'), local('SF Pro Display Medium'), local('SF Pro Text Medium'),
+             url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
         font-weight: 500;
         font-style: normal;
         font-display: block;
@@ -31,7 +33,8 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
+        src: local('SF UI Display Medium'), local('SF Pro Display Medium'), local('SF Pro Text Medium'),
+             url('./assets/fonts/bravel-sf-pro-display-medium.otf') format('opentype');
         font-weight: 510;
         font-style: normal;
         font-display: block;
@@ -39,7 +42,8 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display';
-        src: url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
+        src: local('SF UI Display Bold'), local('SF Pro Display Bold'), local('SF Pro Text Bold'),
+             url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
         font-weight: 700;
         font-style: normal;
         font-display: block;
@@ -47,7 +51,8 @@
 
       @font-face {
         font-family: 'Bravel SF UI Display Headline Slant';
-        src: url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
+        src: local('SF UI Display Bold'), local('SF Pro Display Bold'), local('SF Pro Text Bold'),
+             url('./assets/fonts/bravel-sf-pro-display-bold.otf') format('opentype');
         font-weight: 700;
         font-style: normal;
         font-display: block;
@@ -176,9 +181,21 @@
         scroll-padding-top: 130px;
       }
 
+      /* Яндекс.Браузер / Chrome на Android по умолчанию включают «font boosting»
+         (автоувеличение мелкого текста в широких блоках). Из-за него заданные
+         7px/6.6px под графиком и в виджетах игнорировались и казалось, что
+         правки шрифтов «не применяются». Отключаем автоподбор размера. */
+      html {
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+
       body {
         min-width: 100%;
         overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
         font-synthesis: none;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -6788,21 +6805,37 @@
            (контент 276x143, коэффициент 130/276 = 0.471) */
         .music_756_18410 { grid-column:2; grid-row:2; width:130px; height:67px; margin:0; flex-shrink:0; }
         .bravel-dev-status-base { width:130px; height:67px; }
-        .bravel-dev-live-card { left:4.7px; top:4.7px; width:58.2px; height:58.2px; border-radius:9.4px; font-family:var(--bravel-font-ui); }
-        .bravel-dev-live-card .music_430_248 { margin-top:7.1px; margin-left:7.1px; font-family:var(--bravel-font-ui); }
-        .bravel-dev-live-card .music_392_243 { font-size:6.6px; line-height:8px; font-family:var(--bravel-font-ui); }
-        .bravel-dev-live-card .music_392_245 { font-size:11.3px; line-height:13.7px; margin-top:0.9px; font-family:var(--bravel-font-ui); }
-        .bravel-dev-live-card .music_392_244 { font-size:6.6px; line-height:8px; margin-top:13.2px; font-family:var(--bravel-font-ui); }
+        /* Виджет с датой и временем — только SF UI Display (family + вес
+           заданы явно и с !important, размеры защищены от font boosting). */
+        .bravel-dev-live-card { left:4.7px; top:4.7px; width:58.2px; height:58.2px; border-radius:9.4px; font-family:var(--bravel-font-ui) !important; }
+        .bravel-dev-live-card .music_430_248 { margin-top:7.1px; margin-left:7.1px; font-family:var(--bravel-font-ui) !important; }
+        .bravel-dev-live-card .music_392_243 { font-family:var(--bravel-font-ui) !important; font-weight:500 !important; font-size:6.6px !important; line-height:8px !important; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        .bravel-dev-live-card .music_392_245 { font-family:var(--bravel-font-ui) !important; font-weight:400 !important; font-size:11.3px !important; line-height:13.7px !important; margin-top:0.9px; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        .bravel-dev-live-card .music_392_244 { font-family:var(--bravel-font-ui) !important; font-weight:500 !important; font-size:6.6px !important; line-height:8px !important; margin-top:13.2px; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
         .bravel-dev-days-card { left:67.4px; top:4.7px; width:58.2px; height:58.2px; font-family:var(--bravel-font-ui); }
         .bravel-dev-days-card::before { left:3.8px; top:8.5px; width:50.4px; height:26.9px; border-radius:9.4px; }
         .bravel-dev-days-card::after { left:5.2px; top:15.8px; width:46.1px; }
-        .bravel-dev-days-count { left:5.2px; top:8.5px; width:46.1px; font-size:11.3px; line-height:14.6px; font-family:var(--bravel-font-ui); }
-        .bravel-dev-days-label { left:5.2px; top:23.1px; width:46.1px; font-size:7.1px; line-height:7.1px; font-family:var(--bravel-font-ui); }
+        .bravel-dev-days-count { left:5.2px; top:8.5px; width:46.1px; font-family:var(--bravel-font-ui) !important; font-weight:400 !important; font-size:11.3px !important; line-height:14.6px !important; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        .bravel-dev-days-label { left:5.2px; top:23.1px; width:46.1px; font-family:var(--bravel-font-ui) !important; font-weight:500 !important; font-size:7.1px !important; line-height:7.1px !important; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
         /* На мобильных foreignObject с canvas внутри масштабируемой SVG-легенды
            может не рисоваться. Оборачиваем легенду в относительный контейнер
            и выносим сферу в обычный HTML-слой поверх SVG. */
-        .bravel-legend-wrap { display:block; position:relative; grid-column:1; grid-row:2; min-width:0; }
+        /* Контейнер легенды получает пропорции исходного SVG (422x140) через
+           padding-hack. Это не зависит от того, умеет ли браузер вычислять
+           intrinsic-размер для <svg width:100%; height:auto> (Яндекс.Браузер
+           в ряде версий отдавал здесь высоту 140px или 0), поэтому проценты
+           для сферы всегда считаются от правильной базы. */
+        .bravel-legend-wrap {
+          display:block; position:relative; grid-column:1; grid-row:2;
+          width:100%; min-width:0;
+          height:0; padding-top:calc(140 / 422 * 100%);
+          overflow:visible;
+        }
+        .bravel-legend-wrap > svg.music_694_1884 {
+          position:absolute; top:0; left:0; right:0; bottom:0;
+          width:100%; height:100%; display:block; margin:0;
+        }
         /* Сфера должна быть ровно посередине плашки «Разработка мобильного
            приложения» (rect y=48.5..91.5 из исходного SVG, центр = 70/140 = 50%
            по высоте легенды). Раньше top считался от верхнего края иконки
@@ -6811,8 +6844,25 @@
            сферы жёстко фиксируется на 50% высоты и просто сдвигается на
            половину своего размера через translate — это гарантирует точное
            совпадение с центром плашки независимо от округлений. */
-        .bravel-legend-orb { display:block; position:absolute; left:calc(22.5 / 422 * 100% + 20 / 422 * 100% / 2); top:50%; width:calc(20 / 422 * 100%); aspect-ratio:1 / 1; transform:translate(-50%, -50%); z-index:2; pointer-events:none; }
-        .bravel-legend-orb .bravel-thinking-orb { width:100%; height:100%; display:block; overflow:hidden; line-height:0; }
+        /* Сфера ровно в центре плашки «Разработка мобильного приложения»:
+           плашка в исходном SVG — rect y=48.5, height=43 → центр 70 из 140
+           (=50% высоты легенды), центр по X — 32.5 из 422.
+           Размер задаём через padding-hack (без aspect-ratio), а сдвиг на
+           половину собственного размера — через translate(-50%,-50%):
+           это даёт точное попадание в центр в любом браузере. */
+        .bravel-legend-orb {
+          display:block; position:absolute;
+          left:calc(32.5 / 422 * 100%);
+          top:calc(70 / 140 * 100%);
+          width:calc(20 / 422 * 100%);
+          height:0; padding-top:calc(20 / 422 * 100%);
+          transform:translate(-50%, -50%);
+          z-index:2; pointer-events:none;
+        }
+        .bravel-legend-orb .bravel-thinking-orb {
+          position:absolute; top:0; left:0; right:0; bottom:0;
+          width:100%; height:100%; display:block; overflow:hidden; line-height:0;
+        }
         .music_694_1884 foreignObject,
         .music_694_1884 .bravel-thinking-orb { display:none; }
 
@@ -6826,7 +6876,20 @@
         /* Метки месяцев под графиком: 8px, две строки («Фев-Апр» / «2026»), по пикам кривой */
         .flexContainer_3_music_756_18458 { position:relative; display:block; width:100%; height:20px; margin-top:6px; }
         /* SF UI Display 7 medium — тот же размер, что у «55%» и «Осталось: N дней» (было 8px) */
-        .flexContainer_3_music_756_18458 span { position:absolute; top:0; width:auto; margin:0; transform:translateX(-50%); font-family:var(--bravel-font-ui); font-weight:500; font-size:7px; line-height:9px; white-space:nowrap; text-align:center; }
+        /* Подписи месяцев под графиком: SF UI Display, medium (500), 7px.
+           font-family/-weight/-size продублированы с !important — в
+           Яндекс.Браузере эти подписи иначе перебивались наследованием
+           и автоувеличением шрифта. */
+        .bravel-roadmap-source .flexContainer_3_music_756_18458 span,
+        .flexContainer_3_music_756_18458 span {
+          position:absolute; top:0; width:auto; margin:0; transform:translateX(-50%);
+          font-family:var(--bravel-font-ui) !important;
+          font-weight:500 !important;
+          font-size:7px !important;
+          line-height:9px !important;
+          -webkit-text-size-adjust:100%; text-size-adjust:100%;
+          white-space:nowrap; text-align:center;
+        }
         .music_756_18467 { left:11%; }
         .music_756_18468 { left:29.8%; }
         .music_756_18470 { left:67.8%; filter:blur(2px); opacity:.75; }
@@ -6839,11 +6902,27 @@
         .bravel-roadmap-progress-inner { top:5.6px; bottom:5.6px; left:6.7px; right:6.7px; }
         .bravel-roadmap-progress-track { border-radius:3.9px; }
         .bravel-roadmap-progress-fill { border-radius:3.9px 0 0 3.9px; background-image:repeating-linear-gradient(108deg, rgba(255,100,26,0.11) 0 0.7px, transparent 0.7px 1px, rgba(255,100,26,0.11) 1px 1.7px, transparent 1.7px 5px); }
-        .bravel-roadmap-progress-value { font-size:7px; }
+        /* «55%» в оранжевом виджете: SF UI Display 7px medium */
+        .bravel-roadmap-source .bravel-roadmap-progress-value,
+        .bravel-roadmap-progress-value {
+          font-family:var(--bravel-font-ui) !important;
+          font-weight:500 !important;
+          font-size:7px !important;
+          line-height:1 !important;
+          -webkit-text-size-adjust:100%; text-size-adjust:100%;
+        }
         .bravel-roadmap-progress-divider { top:-0.75px; bottom:-0.75px; right:-2px; width:1px; border-radius:0.5px; }
 
         /* Подпись «Осталось: N дней»: 7px medium, по центру */
-        .bravel-roadmap-source .bravel-roadmap-countdown-text { position:relative; order:3; left:auto; top:auto; width:100%; margin-top:8px; font-size:7px; font-weight:500; line-height:9px; }
+        /* Подпись «Осталось: N дней»: SF UI Display 7px medium, по центру */
+        .bravel-roadmap-source .bravel-roadmap-countdown-text {
+          position:relative; order:3; left:auto; top:auto; width:100%; margin-top:8px;
+          font-family:var(--bravel-font-ui) !important;
+          font-weight:500 !important;
+          font-size:7px !important;
+          line-height:9px !important;
+          -webkit-text-size-adjust:100%; text-size-adjust:100%;
+        }
 
         /* --- "Бронируйте без комиссии целый год" — real (non-scaled) mobile layout --- */
         #promo { height:auto; padding-top:18px; padding-bottom:20px; } /* метка 16px + зазор 2px — как в остальных блоках */
@@ -9062,5 +9141,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc6c04dc28dca9',t:'MTc4NzUxMjI3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
