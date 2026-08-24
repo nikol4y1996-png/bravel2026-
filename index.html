@@ -7080,7 +7080,7 @@
          доступную ширину экрана — расположение карточек, колонок и текста остаётся
          точно таким же, как в десктопной версии. */
       @media (min-width: 768px) and (max-width: 1223px) {
-        :root { --bravel-tablet-zoom: calc((100vw - 48px) / 1164); }
+        :root { --bravel-tablet-zoom: calc((100vw - 32px) / 1164); }
 
         .music_430_188 { zoom: var(--bravel-tablet-zoom); }
         .music_430_189 { zoom: var(--bravel-tablet-zoom); }
@@ -7098,7 +7098,7 @@
         .music_430_238,
         .music_430_198,
         .music_430_211,
-        .music_430_232 { max-width: calc(100vw - 48px); }
+        .music_430_232 { max-width: calc(100vw - 32px); }
       }
       /* --- FAQ section mobile fix (was still using fixed desktop widths) --- */
       @media (max-width: 767px) {
@@ -7111,7 +7111,7 @@
       }
       /* --- FAQ intermediate widths (768-1223): fluid instead of fixed 1164px, gutters at screen edges --- */
       @media (min-width: 768px) and (max-width: 1223px) {
-        .music_430_207.bravel-faq-section { width:calc(100% - 48px); max-width:1164px; }
+        .music_430_207.bravel-faq-section { width:calc(100% - 32px); max-width:1164px; }
         .music_430_208.bravel-faq-heading { width:100%; max-width:650px; }
         .bravel-faq-intro { width:100%; max-width:650px; }
         .bravel-faq-question { width:calc(100% - 40px); margin:0 auto; }
