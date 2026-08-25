@@ -9021,6 +9021,13 @@
                        на SVG-атрибут clip-path групповой обёртки: работает во всех браузерах.
                        Сам блюр (backdrop-filter) не изменён. -->
                   <g clip-path="url(#bgblur_0_721_18317_clip_path)">
+                  <!-- Доп. подстраховка: вложенный <svg>, обрезанный строго по bbox фигуры
+                       (11.4932, 3, 32, 217). Вложенный SVG-вьюпорт обрезает содержимое по
+                       спецификации всегда, независимо от того, работает ли clip-path у
+                       родительского <g> в конкретном браузере — на мобильном WebKit именно
+                       clip-path у <g> с foreignObject иногда игнорируется, из-за чего блюр
+                       расползался большим пятном за пределы фигуры. Сам блюр не меняется. -->
+                  <svg x="11.4932" y="3" width="32" height="217" viewBox="11.4932 3 32 217" style="overflow: hidden">
                   <foreignObject
                     x="-28.5068"
                     y="-37"
@@ -9028,8 +9035,9 @@
                     height="297"
                     ><div
                       xmlns="http://www.w3.org/1999/xhtml"
-                      style="backdrop-filter: blur(20px); height: 100%; width: 100%"></div
+                      style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); height: 100%; width: 100%"></div
                   ></foreignObject>
+                  </svg>
                   </g>
                   <g data-figma-bg-blur-radius="40">
                     <path
@@ -9043,6 +9051,8 @@
                        на SVG-атрибут clip-path групповой обёртки: работает во всех браузерах.
                        Сам блюр (backdrop-filter) не изменён. -->
                   <g clip-path="url(#bgblur_1_721_18317_clip_path)">
+                  <!-- Доп. подстраховка: вложенный <svg> с обрезкой по bbox (43.4932, 3, 33, 217) — см. комментарий у первой группы выше. -->
+                  <svg x="43.4932" y="3" width="33" height="217" viewBox="43.4932 3 33 217" style="overflow: hidden">
                   <foreignObject
                     x="3.49316"
                     y="-37"
@@ -9050,8 +9060,9 @@
                     height="297"
                     ><div
                       xmlns="http://www.w3.org/1999/xhtml"
-                      style="backdrop-filter: blur(20px); height: 100%; width: 100%"></div
+                      style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); height: 100%; width: 100%"></div
                   ></foreignObject>
+                  </svg>
                   </g>
                   <g data-figma-bg-blur-radius="40">
                     <rect
@@ -9068,6 +9079,8 @@
                        на SVG-атрибут clip-path групповой обёртки: работает во всех браузерах.
                        Сам блюр (backdrop-filter) не изменён. -->
                   <g clip-path="url(#bgblur_2_721_18317_clip_path)">
+                  <!-- Доп. подстраховка: вложенный <svg> с обрезкой по bbox (76.4932, 3, 32, 217) — см. комментарий у первой группы выше. -->
+                  <svg x="76.4932" y="3" width="32" height="217" viewBox="76.4932 3 32 217" style="overflow: hidden">
                   <foreignObject
                     x="36.4932"
                     y="-37"
@@ -9075,8 +9088,9 @@
                     height="297"
                     ><div
                       xmlns="http://www.w3.org/1999/xhtml"
-                      style="backdrop-filter: blur(20px); height: 100%; width: 100%"></div
+                      style="backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); height: 100%; width: 100%"></div
                   ></foreignObject>
+                  </svg>
                   </g>
                   <g data-figma-bg-blur-radius="40">
                     <rect
