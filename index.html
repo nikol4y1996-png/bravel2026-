@@ -7478,17 +7478,24 @@
         .music_756_18406 { display: none; }
         .music_756_18457 { width: 100%; height: auto; margin: 0; }
 
+        /* Раскладка планшетной версии (по макету):
+           строка 1 — заголовок+подзаголовок слева (виджет 190x98 — absolute справа
+           на уровне заголовка, вне потока: высота строки 1 зависит только от текста);
+           строка 2 — график на всю ширину; row-gap 40px = отступ от подзаголовка
+           до самой высокой точки графика (пика). Легенда лежит ПОВЕРХ графика
+           в его пустой левой части — между подзаголовком и уровнями кривой. */
         .music_756_18546 {
           display: grid;
-          grid-template-columns: 1fr 180px;
-          gap: 20px 24px;
+          grid-template-columns: 1fr 190px;
+          gap: 40px 24px;
           align-items: start;
           width: 100%;
+          position: relative;
         }
         .music_756_18545 { display: contents; }
         .bravel-roadmap-source .music_756_18407 { height: auto; }
         .music_756_18407 {
-          grid-column: 1 / -1;
+          grid-column: 1;
           grid-row: 1;
           width: auto;
           height: auto;
@@ -7497,30 +7504,39 @@
         }
         .music_756_18408 {
           width: 100%;
-          font-size: 26px;
+          font-size: 20px;
           font-weight: 700;
-          line-height: 32px;
+          line-height: 24px;
           white-space: normal;
           text-align: left;
         }
         .music_756_18409 {
           width: 100%;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 400;
-          line-height: 22px;
+          line-height: 19px;
           white-space: normal;
         }
         .music_756_18409 br { display: none; }
 
+        /* Легенда 309.5px = 422 * (11/15): векторный текст легенды (15px в 422px)
+           при такой ширине рендерится как SF UI Display 11px medium.
+           Высота через aspect-ratio, а не через padding-хак: процентный padding
+           считается от ширины колонки сетки (~588px), а не самого элемента, поэтому
+           бокс раздувался до ~196px и добавлял ~46px пустоты сверху и снизу легенды,
+           из-за чего график уезжал вниз. Теперь высота ровно 309.5 * 140/422 ≈ 102.6px. */
         .bravel-legend-wrap {
           display: block;
           position: relative;
           grid-column: 1;
-          grid-row: 2;
-          width: 100%;
+          grid-row: 2; /* та же строка, что и график: легенда поверх его пустой левой части */
+          z-index: 2;
+          width: 309.5px;
+          max-width: 100%;
           min-width: 0;
-          height: 0;
-          padding-top: calc(140 / 422 * 100%);
+          aspect-ratio: 422 / 140;
+          height: auto;
+          padding-top: 0;
           overflow: visible;
         }
         .bravel-legend-wrap > svg.music_694_1884 {
@@ -7562,41 +7578,48 @@
         .music_694_1884 foreignObject,
         .music_694_1884 .bravel-thinking-orb { display: none; }
 
+        /* Виджет «дата + дней позади»: 190x98, absolute в правом верхнем углу блока
+           (на уровне заголовка, как на макете). Вне потока сетки — поэтому высота
+           строки 1 равна высоте заголовка+подзаголовка, и отступ до пика графика
+           равен row-gap (40px) при любом числе строк подзаголовка.
+           Внутренняя композиция 276x143 пересчитана пропорционально (x190/276 = 0.688) */
         .music_756_18410 {
-          grid-column: 2;
-          grid-row: 2;
-          width: 180px;
-          height: 93px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 190px;
+          height: 98px;
           margin: 0;
           flex-shrink: 0;
         }
-        .bravel-dev-status-base { width: 180px; height: 93px; }
+        .bravel-dev-status-base { width: 190px; height: 98px; }
         .bravel-dev-live-card {
-          left: 6.5px;
-          top: 6.5px;
-          width: 80px;
-          height: 80px;
-          border-radius: 13px;
+          left: 6.9px;
+          top: 6.9px;
+          width: 84.4px;
+          height: 84.4px;
+          border-radius: 13.7px;
         }
-        .bravel-dev-live-card .music_430_248 { margin-top: 10px; margin-left: 10px; }
-        .bravel-dev-live-card .music_392_243 { font-size: 9px !important; line-height: 11px !important; }
-        .bravel-dev-live-card .music_392_245 { font-size: 16px !important; line-height: 19px !important; margin-top: 2px; }
-        .bravel-dev-live-card .music_392_244 { font-size: 9px !important; line-height: 11px !important; margin-top: 18px; }
-        .bravel-dev-days-card { left: 93px; top: 6.5px; width: 80px; height: 80px; }
-        .bravel-dev-days-card::before { left: 5px; top: 12px; width: 70px; height: 37px; }
-        .bravel-dev-days-card::after { left: 7px; top: 22px; width: 64px; }
+        .bravel-dev-live-card .music_430_248 { margin-top: 10.6px; margin-left: 10.6px; }
+        .bravel-dev-live-card .music_392_243 { font-size: 9.5px !important; line-height: 11.6px !important; }
+        .bravel-dev-live-card .music_392_245 { font-size: 16.9px !important; line-height: 20.1px !important; margin-top: 2.1px; }
+        .bravel-dev-live-card .music_392_244 { font-size: 9.5px !important; line-height: 11.6px !important; margin-top: 19px; }
+        .bravel-dev-days-card { left: 98.2px; top: 6.9px; width: 84.4px; height: 84.4px; }
+        .bravel-dev-days-card::before { left: 5.3px; top: 12.7px; width: 73.9px; height: 39.1px; }
+        .bravel-dev-days-card::after { left: 7.4px; top: 23.2px; width: 67.6px; }
         .bravel-dev-days-count {
-          left: 7px; top: 12px; width: 64px;
-          font-size: 16px !important; line-height: 20px !important;
+          left: 7.4px; top: 12.7px; width: 67.6px;
+          font-size: 16.9px !important; line-height: 21.1px !important;
         }
         .bravel-dev-days-label {
-          left: 7px; top: 32px; width: 64px;
-          font-size: 10px !important; line-height: 12px !important;
+          left: 7.4px; top: 33.8px; width: 67.6px;
+          font-size: 10.6px !important; line-height: 12.7px !important;
         }
 
         .music_756_18547 {
           grid-column: 1 / -1;
-          grid-row: 3;
+          grid-row: 2; /* на 40px ниже подзаголовка; легенда (z-index: 2) поверх */
+          z-index: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -7643,33 +7666,46 @@
         .music_756_18471 { left: 86.4%; margin-top: 0; filter: blur(2px); opacity: .75; }
         .music_756_18469 { left: 48.5%; top: 0; right: auto; bottom: auto; margin: 0; }
 
+        /* Шкала в оранжевом прямоугольнике: 156x37 (внутренности — пропорция
+           от базовой отрисовки 214x51, коэффициент ~0.729) */
         .bravel-roadmap-source .bravel-roadmap-progress {
           position: relative;
           top: auto; left: auto; right: auto;
           order: 2;
-          width: 140px;
-          height: 32px;
+          width: 156px;
+          height: 37px;
           margin: 12px 0 0;
-          border-radius: 10px;
+          border-radius: 12px;
         }
-        .bravel-roadmap-progress-inner { top: 8px; bottom: 8px; left: 10px; right: 10px; }
+        .bravel-roadmap-progress-inner { top: 11px; bottom: 11px; left: 13px; right: 13px; }
         .bravel-roadmap-source .bravel-roadmap-progress-value,
         .bravel-roadmap-progress-value {
-          font-size: 11px !important;
+          font-size: 13px !important;
           line-height: 1 !important;
         }
+        /* Подпись «Осталось: N дней»: SF UI Display 14px medium */
         .bravel-roadmap-source .bravel-roadmap-countdown-text {
           position: relative;
           order: 3;
           left: auto; top: auto;
           width: 100%;
           margin-top: 10px;
-          font-size: 13px !important;
-          line-height: 16px !important;
+          font-family: var(--bravel-font-ui) !important;
+          font-weight: 500 !important;
+          font-size: 14px !important;
+          line-height: 17px !important;
         }
 
-        /* --- Промо: текст слева, виджет справа --- */
-        #promo { height: auto; padding-top: 22px; padding-bottom: 8px; }
+        /* --- Промо: текст слева (под лейблом), виджет с промокодом справа —
+           выровнен на уровень заголовка (выравнивание к верху, не по центру) --- */
+        #promo {
+          height: auto;
+          padding-top: 22px;
+          padding-bottom: 8px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
         #promo > .bravel-promo-source {
           position: relative;
           transform: none;
@@ -7677,7 +7713,7 @@
           height: auto;
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: flex-start;
           justify-content: space-between;
           gap: 28px;
         }
@@ -7693,18 +7729,18 @@
         }
         .music_721_18305 {
           width: 100%;
-          font-size: 26px;
+          font-size: 20px;
           font-weight: 700;
-          line-height: 32px;
+          line-height: 24px;
           white-space: normal;
           margin-top: 0;
         }
         .music_721_18306 {
           width: 100%;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 700;
-          line-height: 22px;
-          margin-top: 10px;
+          line-height: 19px;
+          margin-top: 8px;
         }
         .bravel-promo-source-button {
           position: relative;
@@ -7739,8 +7775,15 @@
         .bravel-faq-answer { width: 100%; max-width: none; }
         .bravel-faq-answer p { max-width: 100%; font-size: 16px; line-height: 24px; }
 
-        /* --- Остались вопросы --- */
-        .music_430_211 { height: auto; padding-top: 22px; padding-bottom: 8px; }
+        /* --- Остались вопросы: текст под лейблом (к верху), виджет справа --- */
+        .music_430_211 {
+          height: auto;
+          padding-top: 22px;
+          padding-bottom: 8px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
         .music_430_211 > .bravel-questions-source {
           position: relative;
           transform: none;
@@ -7749,7 +7792,7 @@
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
           gap: 24px;
         }
         .music_756_18343 {
@@ -7764,15 +7807,15 @@
           transform: none;
         }
         .music_756_18344 {
-          font-size: 26px;
+          font-size: 20px;
           font-weight: 700;
-          line-height: 32px;
+          line-height: 24px;
           white-space: normal;
         }
         .music_756_18346 {
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 400;
-          line-height: 22px;
+          line-height: 19px;
         }
         .music_694_1786 {
           width: 200px;
@@ -7967,13 +8010,9 @@
         .music_430_237 { justify-self: end; }
         .music_413_127 { grid-column: 1 / -1; }
 
-        /* Промо на portrait — колонкой, виджет на всю ширину */
-        #promo > .bravel-promo-source {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .music_721_18301 { width: 100%; max-width: none; }
-        .music_721_18317 { width: 100%; max-width: none; }
+        /* Промо на узких планшетах (portrait) — заголовок/подзаголовок под лейблом слева,
+           виджет с промокодом справа, с выравниванием по правому краю (как на широких планшетах) */
+        .music_721_18317 { width: 44%; max-width: 300px; }
 
         .music_756_18343 { max-width: calc(100% - 180px); }
         .music_694_1786 { width: 160px; height: 83px; }
@@ -10094,5 +10133,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc797d5b8aae55',t:'MTc4NzUxMjgyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a308d6d84fd5a01d',t:'MTc4NzY0MjQ3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3093221b8c7d2c6',t:'MTc4NzY0NjIxOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc797d5b8aae55',t:'MTc4NzUxMjgyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a308d6d84fd5a01d',t:'MTc4NzY0MjQ3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30998c3acb9a93b',t:'MTc4NzY1MDQyMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
