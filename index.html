@@ -7073,33 +7073,990 @@
         .music_413_128 { gap:6px; margin-top:8px; }
         .music_412_107,.music_412_109,.music_412_122 { margin-top:8px; }
       }
-      /* --- Планшетная версия (768–1223px): та же раскладка блоков, что на десктопе,
-         просто уменьшены боковые отступы. Все секции спроектированы под фиксированный
-         десктопный холст (1164/1214/873px), поэтому вместо перестройки в мобильную
-         одноколоночную вёрстку весь блок пропорционально масштабируется (zoom) под
-         доступную ширину экрана — расположение карточек, колонок и текста остаётся
-         точно таким же, как в десктопной версии. */
+
+      /* --- Планшетная версия (768–1223px) ---
+         Не масштабируем десктопный холст 1164px через zoom (ломается в Firefox
+         и слишком мелко на iPad). Пересобираем блоки: жидкая ширина, 2 колонки,
+         HTML-шапка вместо SVG. */
       @media (min-width: 768px) and (max-width: 1223px) {
-        :root { --bravel-tablet-zoom: calc((100vw - 32px) / 1164); }
+        html { scroll-padding-top: 104px; }
+        body { min-width: 0; width: 100%; overflow-x: hidden; }
 
-        .music_430_188 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_189 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_218 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_190 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_238 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_198 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_211 { zoom: var(--bravel-tablet-zoom); }
-        .music_430_232 { zoom: var(--bravel-tablet-zoom); }
+        .music_386_81 { padding-top: 96px; width: 100%; }
+        .music_386_81,
+        .flexContainer_1_music_386_81 { height: auto; min-height: 0; overflow: visible; }
+        .flexContainer_1_music_386_81 { position: relative; display: block; }
+        .flexContainer_1_music_386_81::after { display: none; }
 
-        /* Страховка для браузеров без поддержки zoom — не даёт контенту вылезти за экран */
-        .music_430_189,
+        /* Интро */
+        .bravel-intro__logo { height: 56px; font-size: 44px; line-height: 56px; }
+        .bravel-intro__welcome {
+          bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+          font-size: 28px;
+          line-height: 34px;
+          white-space: normal;
+          max-width: calc(100vw - 64px);
+        }
+
+        /* Герой */
+        .music_392_156 {
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%;
+          min-width: 0;
+          height: 560px;
+          margin: 0;
+          opacity: 0.55;
+        }
+        .music_392_158 {
+          position: relative;
+          width: 100%;
+          height: 560px;
+          margin: 0;
+          padding: 0;
+          background: transparent;
+          -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+          z-index: 2;
+        }
+        .music_430_189 {
+          position: absolute;
+          top: 88px;
+          left: 0;
+          width: 100%;
+          height: auto;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 32px;
+          box-sizing: border-box;
+        }
+        .music_392_139 {
+          position: relative;
+          width: auto;
+          height: auto;
+          margin: 0;
+          font-size: 12px;
+          line-height: 16px;
+        }
+        .music_392_142,
+        .music_392_142_0_33,
+        .music_392_142_33_39 {
+          font-size: 40px;
+          line-height: 48px;
+        }
+        .music_392_142 {
+          position: relative;
+          width: 100%;
+          max-width: 720px;
+          margin: 16px 0 0;
+          text-align: center;
+        }
+        .music_392_143 {
+          position: relative;
+          width: 100%;
+          max-width: 640px;
+          margin: 16px 0 0;
+          font-size: 18px;
+          line-height: 24px;
+          text-align: center;
+        }
+        .bravel-hero-button-link {
+          position: relative;
+          width: 190px;
+          height: 46px;
+          margin: 24px auto 0;
+        }
+        .music_392_153 {
+          position: relative;
+          width: 100vw;
+          height: 19.861111vw;
+          margin: 0 0 0 calc(50% - 50vw);
+        }
+
+        /* Общая колонка секций */
         .music_430_218,
         .music_430_190,
         .music_430_238,
         .music_430_198,
+        .music_430_207,
         .music_430_211,
-        .music_430_232 { max-width: calc(100vw - 32px); }
+        .music_430_232 {
+          width: calc(100% - 48px);
+          max-width: 980px;
+          height: auto;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 48px;
+        }
+        .music_430_232 { margin-bottom: 56px; }
+        .music_430_219,
+        .music_430_191,
+        .music_430_208 { width: 100%; height: auto; }
+        .flexContainer_2_music_430_219,
+        .flexContainer_9_music_430_191 { height: auto; width: 100%; }
+
+        .music_392_161,
+        .music_392_201,
+        .music_392_214,
+        .music_392_310,
+        .music_392_339,
+        .music_392_387 {
+          width: 100%;
+          height: auto;
+          margin-left: 0;
+          font-size: 26px;
+          line-height: 32px;
+          text-align: left;
+          white-space: normal;
+        }
+        .music_430_220,
+        .music_430_192,
+        .music_430_246,
+        .music_430_200,
+        .music_430_209,
+        .music_430_214 { font-size: 11px; }
+
+        #how-it-works,
+        #safety,
+        #roadmap,
+        #promo,
+        #faq,
+        #contacts {
+          content-visibility: visible;
+          contain-intrinsic-size: auto;
+        }
+
+        /* --- Как работает Bravel: 2×2 + широкая оранжевая --- */
+        .bravel-how-cards-code {
+          width: 100%;
+          height: auto;
+          margin-top: 20px;
+        }
+        #how-it-works .bravel-how-cards-code { margin-top: 16px; }
+        .music_694_1817 {
+          position: relative;
+          width: 100%;
+          height: auto;
+          min-height: 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+        .flexContainer_2_music_694_1817,
+        .flexContainer_1_music_694_1817 {
+          display: contents;
+        }
+        .music_694_1853,
+        .music_694_1843,
+        .music_694_1835,
+        .music_694_1825 {
+          width: auto;
+          max-width: none;
+          height: auto;
+          min-height: 220px;
+          margin: 0;
+          padding: 22px;
+          border-radius: 24px;
+        }
+        .music_694_1854,
+        .music_694_1844,
+        .music_694_1836,
+        .music_694_1826 {
+          position: relative;
+          width: 100%;
+          height: auto;
+          min-height: 176px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding-top: 72px;
+        }
+        .music_694_1857,
+        .music_694_1852,
+        .music_694_1841,
+        .music_694_1833 {
+          width: 100%;
+          margin: 0;
+          margin-right: 0;
+          font-size: 18px;
+          line-height: 22px;
+          white-space: normal;
+        }
+        .music_694_1856,
+        .music_694_1851,
+        .music_694_1842,
+        .music_694_1834 {
+          width: 100%;
+          margin: 6px 0 0;
+          margin-right: 0;
+          font-size: 14px;
+          line-height: 18px;
+          white-space: normal;
+        }
+        .flexContainer_6_music_694_1854,
+        .flexContainer_5_music_694_1844,
+        .flexContainer_4_music_694_1836,
+        .flexContainer_3_music_694_1826 {
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 64px;
+          margin: 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+        .music_694_1855,
+        .music_694_1850,
+        .music_694_1840,
+        .music_694_1832 {
+          width: 64px;
+          height: 64px;
+          margin: 0;
+          object-fit: contain;
+          flex-shrink: 0;
+        }
+        .music_694_1858,
+        .music_694_1845,
+        .music_694_1837,
+        .music_694_1827 {
+          width: 24px;
+          height: 24px;
+          margin: 0;
+          flex-shrink: 0;
+        }
+        .music_694_1818 {
+          grid-column: 1 / -1;
+          width: 100%;
+          max-width: none;
+          height: 200px;
+          margin: 0;
+          padding: 24px;
+          border-radius: 24px;
+          background: url(https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721488520/b3ca/37d3/24fc/8906123c1ec2ce694faf10733c53c131.jpg) 50% 36% / cover no-repeat;
+        }
+        .music_694_1820 {
+          width: 100%;
+          height: 100%;
+          border-radius: 24px;
+          -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+        }
+        .music_694_1821 {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+        }
+        .music_694_1822 {
+          position: absolute;
+          top: 24px;
+          left: 24px;
+          margin: 0;
+          font-size: 40px;
+          line-height: 48px;
+        }
+        .music_694_1824 {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 72px;
+          height: 72px;
+          margin: 0;
+          transform: translate(-50%, -50%);
+        }
+        .music_694_1823 {
+          position: absolute;
+          right: 24px;
+          bottom: 24px;
+          left: auto;
+          top: auto;
+          margin: 0;
+          font-size: 20px;
+          line-height: 24px;
+        }
+
+        /* --- Безопасность: две колонки --- */
+        .music_430_193 {
+          width: 100%;
+          height: auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+          margin-top: 20px;
+        }
+        .music_430_196,
+        .music_430_194 {
+          width: auto;
+          height: auto;
+          min-height: 0;
+          margin: 0;
+          padding: 28px 24px;
+          border-radius: 24px;
+          display: flex;
+          align-items: stretch;
+        }
+        .music_756_18556,
+        .music_758_18581,
+        .music_756_18555 {
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+        .music_392_212,
+        .music_758_18579 {
+          width: 180px;
+          height: 124px;
+          margin: 0;
+          object-fit: contain;
+        }
+        .music_430_197,
+        .music_430_195 {
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+        .music_392_206,
+        .music_392_205 {
+          width: 100%;
+          margin: 0;
+          font-size: 18px;
+          line-height: 22px;
+          white-space: normal;
+          text-align: center;
+        }
+        .music_392_210,
+        .music_392_209 {
+          display: block;
+          width: 100%;
+          margin: 12px 0 0;
+        }
+        .music_392_207,
+        .music_392_208 {
+          width: 100%;
+          margin: 12px 0 0;
+          font-size: 14px;
+          line-height: 18px;
+          text-align: center;
+        }
+
+        /* --- Roadmap --- */
+        #roadmap { height: auto; padding-top: 22px; }
+        #roadmap > .bravel-roadmap-section-label,
+        #promo > .bravel-promo-section-label,
+        .music_430_211 > .bravel-questions-section-label {
+          position: relative;
+          top: 0;
+          left: 0;
+        }
+        #roadmap > .bravel-roadmap-source {
+          position: static;
+          width: 100%;
+          height: auto;
+          transform: none;
+        }
+        .music_756_18349,
+        .music_756_18404 {
+          position: relative;
+          top: auto; left: auto; right: auto; bottom: auto;
+          width: 100%;
+          height: auto;
+          margin: 0;
+          gap: 0;
+          align-items: stretch;
+        }
+        .music_756_18406 { display: none; }
+        .music_756_18457 { width: 100%; height: auto; margin: 0; }
+
+        .music_756_18546 {
+          display: grid;
+          grid-template-columns: 1fr 180px;
+          gap: 20px 24px;
+          align-items: start;
+          width: 100%;
+        }
+        .music_756_18545 { display: contents; }
+        .bravel-roadmap-source .music_756_18407 { height: auto; }
+        .music_756_18407 {
+          grid-column: 1 / -1;
+          grid-row: 1;
+          width: auto;
+          height: auto;
+          gap: 8px;
+          justify-content: flex-start;
+        }
+        .music_756_18408 {
+          width: 100%;
+          font-size: 26px;
+          font-weight: 700;
+          line-height: 32px;
+          white-space: normal;
+          text-align: left;
+        }
+        .music_756_18409 {
+          width: 100%;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 22px;
+          white-space: normal;
+        }
+        .music_756_18409 br { display: none; }
+
+        .bravel-legend-wrap {
+          display: block;
+          position: relative;
+          grid-column: 1;
+          grid-row: 2;
+          width: 100%;
+          min-width: 0;
+          height: 0;
+          padding-top: calc(140 / 422 * 100%);
+          overflow: visible;
+        }
+        .bravel-legend-wrap > svg.music_694_1884 {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          margin: 0;
+        }
+        .music_694_1884 {
+          position: relative;
+          top: auto; left: auto;
+          width: 100%;
+          height: auto;
+          margin: 0;
+        }
+        .bravel-legend-orb {
+          display: block;
+          position: absolute;
+          left: calc(32.5 / 422 * 100%);
+          top: calc(71.03 / 140 * 100%);
+          width: calc(20 / 422 * 100%);
+          height: 0;
+          padding-top: calc(20 / 422 * 100%);
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          pointer-events: none;
+        }
+        .bravel-legend-orb .bravel-thinking-orb {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          overflow: hidden;
+          line-height: 0;
+        }
+        .music_694_1884 foreignObject,
+        .music_694_1884 .bravel-thinking-orb { display: none; }
+
+        .music_756_18410 {
+          grid-column: 2;
+          grid-row: 2;
+          width: 180px;
+          height: 93px;
+          margin: 0;
+          flex-shrink: 0;
+        }
+        .bravel-dev-status-base { width: 180px; height: 93px; }
+        .bravel-dev-live-card {
+          left: 6.5px;
+          top: 6.5px;
+          width: 80px;
+          height: 80px;
+          border-radius: 13px;
+        }
+        .bravel-dev-live-card .music_430_248 { margin-top: 10px; margin-left: 10px; }
+        .bravel-dev-live-card .music_392_243 { font-size: 9px !important; line-height: 11px !important; }
+        .bravel-dev-live-card .music_392_245 { font-size: 16px !important; line-height: 19px !important; margin-top: 2px; }
+        .bravel-dev-live-card .music_392_244 { font-size: 9px !important; line-height: 11px !important; margin-top: 18px; }
+        .bravel-dev-days-card { left: 93px; top: 6.5px; width: 80px; height: 80px; }
+        .bravel-dev-days-card::before { left: 5px; top: 12px; width: 70px; height: 37px; }
+        .bravel-dev-days-card::after { left: 7px; top: 22px; width: 64px; }
+        .bravel-dev-days-count {
+          left: 7px; top: 12px; width: 64px;
+          font-size: 16px !important; line-height: 20px !important;
+        }
+        .bravel-dev-days-label {
+          left: 7px; top: 32px; width: 64px;
+          font-size: 10px !important; line-height: 12px !important;
+        }
+
+        .music_756_18547 {
+          grid-column: 1 / -1;
+          grid-row: 3;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          height: auto;
+        }
+        .music_756_18458 {
+          position: relative;
+          top: auto; left: auto; right: auto;
+          width: 100%;
+          height: auto;
+          z-index: 0;
+          order: 1;
+        }
+        .music_756_18459 { width: 100%; height: auto; margin: 0; }
+        .music_694_1988,
+        .music_694_1989 { display: none; }
+        .bravel-roadmap-source .bravel-roadmap-countdown-mask { display: none; }
+
+        .flexContainer_3_music_756_18458 {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: 28px;
+          margin-top: 8px;
+        }
+        .bravel-roadmap-source .flexContainer_3_music_756_18458 span,
+        .flexContainer_3_music_756_18458 span {
+          position: absolute;
+          top: 0;
+          width: auto;
+          margin: 0;
+          transform: translateX(-50%);
+          font-family: var(--bravel-font-ui) !important;
+          font-weight: 500 !important;
+          font-size: 11px !important;
+          line-height: 14px !important;
+          white-space: nowrap;
+          text-align: center;
+        }
+        .music_756_18467 { left: 11%; }
+        .music_756_18468 { left: 29.8%; }
+        .music_756_18470 { left: 67.8%; filter: blur(2px); opacity: .75; }
+        .music_756_18471 { left: 86.4%; margin-top: 0; filter: blur(2px); opacity: .75; }
+        .music_756_18469 { left: 48.5%; top: 0; right: auto; bottom: auto; margin: 0; }
+
+        .bravel-roadmap-source .bravel-roadmap-progress {
+          position: relative;
+          top: auto; left: auto; right: auto;
+          order: 2;
+          width: 140px;
+          height: 32px;
+          margin: 12px 0 0;
+          border-radius: 10px;
+        }
+        .bravel-roadmap-progress-inner { top: 8px; bottom: 8px; left: 10px; right: 10px; }
+        .bravel-roadmap-source .bravel-roadmap-progress-value,
+        .bravel-roadmap-progress-value {
+          font-size: 11px !important;
+          line-height: 1 !important;
+        }
+        .bravel-roadmap-source .bravel-roadmap-countdown-text {
+          position: relative;
+          order: 3;
+          left: auto; top: auto;
+          width: 100%;
+          margin-top: 10px;
+          font-size: 13px !important;
+          line-height: 16px !important;
+        }
+
+        /* --- Промо: текст слева, виджет справа --- */
+        #promo { height: auto; padding-top: 22px; padding-bottom: 8px; }
+        #promo > .bravel-promo-source {
+          position: relative;
+          transform: none;
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 28px;
+        }
+        .music_721_18301 {
+          position: relative;
+          width: 46%;
+          max-width: 420px;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          flex-shrink: 0;
+        }
+        .music_721_18305 {
+          width: 100%;
+          font-size: 26px;
+          font-weight: 700;
+          line-height: 32px;
+          white-space: normal;
+          margin-top: 0;
+        }
+        .music_721_18306 {
+          width: 100%;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 22px;
+          margin-top: 10px;
+        }
+        .bravel-promo-source-button {
+          position: relative;
+          left: auto; bottom: auto;
+          width: 190px;
+          height: 46px;
+          margin: 20px 0 0;
+        }
+        .bravel-promo-source-button .music_721_18307 { width: 100%; height: 100%; }
+        .music_721_18317 {
+          width: 50%;
+          max-width: 460px;
+          height: auto;
+          aspect-ratio: 525.451 / 220;
+          flex-shrink: 1;
+          margin: 0;
+        }
+
+        /* --- FAQ --- */
+        .music_430_207.bravel-faq-section { width: calc(100% - 48px); max-width: 980px; }
+        .music_430_208.bravel-faq-heading { width: 100%; max-width: 720px; }
+        .bravel-faq-intro { width: 100%; max-width: 720px; font-size: 16px; line-height: 22px; }
+        .music_430_210.bravel-faq-list { margin-top: 16px; }
+        .bravel-faq-question {
+          width: 100%;
+          max-width: none;
+          gap: 16px;
+          padding: 16px 0;
+          font-size: 18px;
+          line-height: 24px;
+        }
+        .bravel-faq-answer { width: 100%; max-width: none; }
+        .bravel-faq-answer p { max-width: 100%; font-size: 16px; line-height: 24px; }
+
+        /* --- Остались вопросы --- */
+        .music_430_211 { height: auto; padding-top: 22px; padding-bottom: 8px; }
+        .music_430_211 > .bravel-questions-source {
+          position: relative;
+          transform: none;
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          gap: 24px;
+        }
+        .music_756_18343 {
+          position: relative;
+          width: auto;
+          max-width: calc(100% - 220px);
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          transform: none;
+        }
+        .music_756_18344 {
+          font-size: 26px;
+          font-weight: 700;
+          line-height: 32px;
+          white-space: normal;
+        }
+        .music_756_18346 {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 22px;
+        }
+        .music_694_1786 {
+          width: 200px;
+          height: 103px;
+          flex-shrink: 0;
+          margin-left: auto;
+        }
+
+        /* --- Футер --- */
+        .music_430_232 {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1.15fr 1fr 1fr 0.8fr 1.1fr auto;
+          grid-template-areas: "brand about development promo team social";
+          gap: 24px 20px;
+          align-items: start;
+          min-height: 0;
+        }
+        .music_430_233 { display: contents; }
+        .music_412_125 { grid-area: brand; width: auto; height: auto; margin: 0; }
+        .music_430_234 { grid-area: about; }
+        .music_430_235 { grid-area: development; }
+        .music_430_236 { grid-area: promo; }
+        .flexContainer_11_music_430_232 { grid-area: team; }
+        .music_430_237 { grid-area: social; width: 74px; height: 32px; margin: 0; justify-self: end; }
+        .music_430_234,
+        .music_430_235,
+        .music_430_236,
+        .flexContainer_11_music_430_232 {
+          width: auto;
+          height: auto;
+          margin: 0;
+        }
+        .music_413_127 {
+          grid-column: 1 / -1;
+          width: 100%;
+          margin: 8px 0 0;
+          font-size: 13px;
+          line-height: 17px;
+        }
+        .music_412_114,
+        .music_412_118,
+        .music_412_119,
+        .music_412_121 {
+          width: 100%;
+          text-align: left;
+          font-size: 15px;
+          line-height: 19px;
+          white-space: normal;
+          margin-top: 0;
+        }
+        .music_412_105,
+        .music_412_120,
+        .music_412_108,
+        .music_412_107,
+        .music_412_109,
+        .music_412_122 {
+          width: 100%;
+          text-align: left;
+          font-size: 14px;
+          line-height: 18px;
+          white-space: normal;
+        }
+        .music_413_128 { gap: 6px; margin-top: 8px; }
+        .music_412_107,
+        .music_412_109,
+        .music_412_122 { margin-top: 8px; }
       }
+
+      /* Шапка-бургер на узких планшетах (iPad portrait) */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .music_430_188 {
+          display: block;
+          top: 14px;
+          left: 24px;
+          width: calc(100vw - 48px);
+          height: 68px;
+          margin: 0;
+          transform: none;
+          overflow: visible;
+          z-index: 1000;
+          transition: height .38s cubic-bezier(.16, 1, .3, 1);
+        }
+        .music_430_188.is-menu-open { height: 372px; }
+        .music_430_188::before {
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          border-radius: 34px;
+          background: rgba(255, 255, 255, .62);
+          border: 1px solid rgba(255, 255, 255, .48);
+          box-shadow: 0 4px 25px rgba(0, 0, 0, .1);
+          -webkit-backdrop-filter: blur(18px) saturate(160%);
+          backdrop-filter: blur(18px) saturate(160%);
+        }
+        .bravel-floating-header-frame { display: none; }
+        .bravel-header-links {
+          position: relative;
+          inset: auto;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        .bravel-header-home {
+          top: 0; left: 20px;
+          width: 170px; height: 68px;
+          padding-left: 40px;
+          border-radius: 0;
+          font-size: 22px;
+          line-height: 27px;
+          color: #121212;
+        }
+        .bravel-header-home::before {
+          content: '';
+          position: absolute;
+          left: 4px; top: 24px;
+          width: 20px; height: 20px;
+          border-radius: 50%;
+          background: #ff641a;
+        }
+        .bravel-header-link,
+        .bravel-header-contacts {
+          left: 20px;
+          width: calc(100% - 40px);
+          height: 50px;
+          justify-content: flex-start;
+          padding: 0 16px;
+          border-top: 1px solid rgba(18, 18, 18, .08);
+          border-radius: 0;
+          color: #121212;
+          font-size: 16px;
+          line-height: 20px;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transform: translateY(-8px);
+        }
+        .bravel-header-link_service { top: 68px; }
+        .bravel-header-link_safety { top: 118px; }
+        .bravel-header-link_roadmap { top: 168px; }
+        .bravel-header-link_faq { top: 218px; }
+        .bravel-header-link_promo { top: 268px; }
+        .bravel-header-contacts { top: 318px; }
+        .music_430_188.is-menu-open .bravel-header-link,
+        .music_430_188.is-menu-open .bravel-header-contacts {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+        }
+        .bravel-mobile-menu-toggle {
+          position: absolute;
+          top: 14px; right: 14px;
+          z-index: 5;
+          display: flex;
+          width: 40px; height: 40px;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: 0;
+          border-radius: 50%;
+          background: transparent;
+          color: #121212;
+        }
+        .bravel-mobile-menu-toggle span,
+        .bravel-mobile-menu-toggle::before,
+        .bravel-mobile-menu-toggle::after {
+          content: '';
+          position: absolute;
+          width: 20px; height: 2px;
+          border-radius: 2px;
+          background: currentColor;
+          transition: transform .28s ease, opacity .16s ease;
+        }
+        .bravel-mobile-menu-toggle::before { transform: translateY(-6px); }
+        .bravel-mobile-menu-toggle::after { transform: translateY(6px); }
+        .music_430_188.is-menu-open .bravel-mobile-menu-toggle span { opacity: 0; }
+        .music_430_188.is-menu-open .bravel-mobile-menu-toggle::before { transform: rotate(45deg); }
+        .music_430_188.is-menu-open .bravel-mobile-menu-toggle::after { transform: rotate(-45deg); }
+
+        /* На portrait карточки «Как работает» в одну/две колонки читаются лучше */
+        .music_694_1817 { gap: 14px; }
+
+        /* Футер: 6 колонок не влезают в 768–834px */
+        .music_430_232 {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas:
+            "brand social"
+            "about promo"
+            "development team";
+          gap: 28px 24px;
+        }
+        .music_430_237 { justify-self: end; }
+        .music_413_127 { grid-column: 1 / -1; }
+
+        /* Промо на portrait — колонкой, виджет на всю ширину */
+        #promo > .bravel-promo-source {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .music_721_18301 { width: 100%; max-width: none; }
+        .music_721_18317 { width: 100%; max-width: none; }
+
+        .music_756_18343 { max-width: calc(100% - 180px); }
+        .music_694_1786 { width: 160px; height: 83px; }
+      }
+
+      /* Горизонтальная HTML-шапка на широких планшетах (iPad landscape) */
+      @media (min-width: 1024px) and (max-width: 1223px) {
+        .music_430_188 {
+          display: block;
+          top: 14px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: calc(100vw - 48px);
+          max-width: 980px;
+          height: 72px;
+          margin: 0;
+          overflow: visible;
+          z-index: 1000;
+        }
+        .music_430_188::before {
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          border-radius: 36px;
+          background: rgba(255, 255, 255, .62);
+          border: 1px solid rgba(255, 255, 255, .48);
+          box-shadow: 0 4px 25px rgba(0, 0, 0, .1);
+          -webkit-backdrop-filter: blur(18px) saturate(160%);
+          backdrop-filter: blur(18px) saturate(160%);
+        }
+        .bravel-floating-header-frame { display: none; }
+        .bravel-mobile-menu-toggle { display: none; }
+        .bravel-header-links {
+          position: relative;
+          inset: auto;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          padding: 0 18px 0 10px;
+          gap: 2px;
+          overflow: visible;
+        }
+        .bravel-header-home {
+          position: relative;
+          top: auto; left: auto;
+          width: auto;
+          height: 72px;
+          padding-left: 44px;
+          margin-right: auto;
+          border-radius: 0;
+          font-size: 20px;
+          line-height: 24px;
+          color: #121212;
+          flex-shrink: 0;
+        }
+        .bravel-header-home::before {
+          content: '';
+          position: absolute;
+          left: 12px; top: 26px;
+          width: 20px; height: 20px;
+          border-radius: 50%;
+          background: #ff641a;
+        }
+        .bravel-header-link,
+        .bravel-header-contacts {
+          position: relative;
+          top: auto; left: auto;
+          width: auto;
+          height: 72px;
+          padding: 0 10px;
+          justify-content: center;
+          border-radius: 0;
+          color: #121212;
+          font-size: 13px;
+          line-height: 16px;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transform: none;
+          flex-shrink: 0;
+        }
+        .bravel-header-contacts {
+          font-size: 14px;
+          padding-right: 6px;
+        }
+      }
+
       /* --- FAQ section mobile fix (was still using fixed desktop widths) --- */
       @media (max-width: 767px) {
         .music_430_208.bravel-faq-heading { width:100%; }
@@ -7109,15 +8066,7 @@
         .bravel-faq-answer p { max-width:100%; font-size:14px; line-height:19px; }
         .music_430_210.bravel-faq-list { margin-top:12px; } /* заголовок → список: 12px */
       }
-      /* --- FAQ intermediate widths (768-1223): fluid instead of fixed 1164px, gutters at screen edges --- */
-      @media (min-width: 768px) and (max-width: 1223px) {
-        .music_430_207.bravel-faq-section { width:calc(100% - 32px); max-width:1164px; }
-        .music_430_208.bravel-faq-heading { width:100%; max-width:650px; }
-        .bravel-faq-intro { width:100%; max-width:650px; }
-        .bravel-faq-question { width:calc(100% - 40px); margin:0 auto; }
-        .bravel-faq-answer { width:calc(100% - 40px); margin:0 auto; }
-        .music_430_210.bravel-faq-list { margin-top:12px; } /* заголовок → список: 12px */
-      }
+
       /* Отступ после больших букв BRAVEL до лейбла и заголовка секции */
       @media (max-width: 767px) {
         #how-it-works.music_430_218 { margin-top:30px; }
@@ -7981,140 +8930,190 @@
               </svg>
             </a>
           </div>
-          <svg
-            class="music_721_18317"
-            width="526"
-            height="220"
-            viewBox="0 0 526 220"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <rect
-              y="3"
-              width="525.451"
-              height="217"
-              rx="30"
-              fill="#F7F7F7" />
-            <path
-              d="M99.0854 76C118.995 76.0001 135.123 92.1243 135.123 112C135.123 131.876 118.995 148 99.0854 148C79.1758 148 63.0474 131.876 63.0474 112C63.0474 92.1242 79.1758 76 99.0854 76Z"
-              stroke="#FF641A"
-              stroke-width="16" />
-            <g data-figma-bg-blur-radius="40">
-              <path
-                d="M11.4932 19.0138C11.4932 10.1696 18.6628 3 27.5069 3H43.4932V220H27.4932C18.6566 220 11.4932 212.837 11.4932 204V19.0138Z"
-                fill="url(#paint0_linear_721_18317)"
-                fill-opacity="0.2"
-                style="mix-blend-mode: overlay" />
-            </g>
-            <g data-figma-bg-blur-radius="40">
-              <rect
-                x="43.4932"
-                y="3"
-                width="33"
-                height="217"
-                fill="url(#paint1_linear_721_18317)"
-                fill-opacity="0.2"
-                style="mix-blend-mode: overlay" />
-            </g>
-            <g data-figma-bg-blur-radius="40">
-              <rect
-                x="76.4932"
-                y="3"
-                width="32"
-                height="217"
-                fill="url(#paint2_linear_721_18317)"
-                fill-opacity="0.2"
-                style="mix-blend-mode: overlay" />
-            </g>
-            <line
-              x1="159.13"
-              y1="85"
-              x2="159.13"
-              y2="139"
-              stroke="#FF641A"
-              stroke-width="16"
-              stroke-linecap="round" />
-            <line
-              x1="183.15"
-              y1="94"
-              x2="183.15"
-              y2="130"
-              stroke="#FF641A"
-              stroke-width="16"
-              stroke-linecap="round" />
-            <line
-              x1="247.206"
-              y1="101"
-              x2="247.206"
-              y2="123"
-              stroke="#FF641A"
-              stroke-width="16"
-              stroke-linecap="round" />
-            <path
-              d="M215.185 101.816C215.424 101.816 215.606 101.885 215.712 101.955C215.78 102 215.902 102.092 216.013 102.392C217.52 106.463 220.732 109.673 224.805 111.179C225.104 111.289 225.196 111.41 225.239 111.477C225.308 111.581 225.376 111.762 225.376 112C225.376 112.238 225.308 112.419 225.239 112.523C225.196 112.59 225.104 112.711 224.805 112.821C220.732 114.327 217.52 117.537 216.013 121.608C215.902 121.908 215.78 122 215.712 122.045C215.606 122.115 215.424 122.184 215.185 122.184C214.946 122.184 214.763 122.115 214.657 122.045C214.589 122 214.467 121.908 214.356 121.608C212.849 117.537 209.638 114.327 205.565 112.821C205.266 112.711 205.175 112.59 205.131 112.523C205.062 112.419 204.993 112.238 204.993 112C204.993 111.762 205.062 111.581 205.131 111.477C205.175 111.41 205.266 111.289 205.565 111.179C209.638 109.673 212.849 106.463 214.356 102.392C214.467 102.092 214.589 102 214.657 101.955C214.763 101.885 214.946 101.816 215.185 101.816Z"
-              stroke="#FF641A"
-              stroke-width="14" />
-            <rect
-              x="331.285"
-              y="27"
-              width="170.146"
-              height="169"
-              rx="15"
-              fill="white" />
-            <path
-              d="M466.401 94C466.401 121.062 444.444 143 417.359 143C390.273 143 368.317 121.062 368.317 94C368.317 66.938 390.273 45 417.359 45C444.444 45 466.401 66.938 466.401 94ZM378.125 94C378.125 115.65 395.69 133.2 417.359 133.2C439.027 133.2 456.592 115.65 456.592 94C456.592 72.3504 439.027 54.8 417.359 54.8C395.69 54.8 378.125 72.3504 378.125 94Z"
-              fill="#F7F7F7" />
-            <path
-              d="M415.357 49.9C415.357 47.1938 417.556 44.9747 420.249 45.2444C425.011 45.7214 429.687 46.8932 434.125 48.7299C440.075 51.1924 445.481 54.8017 450.035 59.3518C454.589 63.9018 458.201 69.3036 460.666 75.2485C462.503 79.6801 463.676 84.3488 464.154 89.104C464.425 91.7989 462.203 94 459.495 94V94C456.786 94 454.622 91.7959 454.284 89.1086C453.848 85.6414 452.948 82.2408 451.604 78.9988C449.632 74.2429 446.743 69.9215 443.099 66.2814C439.456 62.6414 435.131 59.7539 430.371 57.7839C427.124 56.44 423.717 55.541 420.244 55.1053C417.559 54.7685 415.357 52.6062 415.357 49.9V49.9Z"
-              fill="#FF641A" />
-            <path
-              d="M399.309 91.0391C399.309 89.7695 399.765 88.7181 400.676 87.8848C401.594 87.0579 402.753 86.6445 404.153 86.6445C405.494 86.6445 406.611 87.0221 407.502 87.7773C408.394 88.5326 408.84 89.4701 408.84 90.5898C408.84 91.3776 408.609 92.1458 408.147 92.8945C407.737 93.5586 406.988 94.4473 405.901 95.5605L402.375 99.1055V99.1543H409.065V101H399.426V99.5156L404.514 94.3301C405.374 93.4316 405.95 92.7415 406.243 92.2598C406.536 91.7715 406.682 91.2507 406.682 90.6973C406.682 90.0723 406.431 89.5417 405.93 89.1055C405.429 88.6693 404.814 88.4512 404.084 88.4512C403.316 88.4512 402.672 88.6986 402.151 89.1934C401.637 89.6816 401.379 90.2936 401.379 91.0293V91.0586H399.309V91.0391ZM416.867 98.2168H409.816V96.3027C410.949 94.1673 412.944 91.0358 415.802 86.9082H418.967V96.3809H420.9V98.2168H418.967V101H416.867V98.2168ZM411.857 96.4102H416.886V88.5977H416.847C414.517 91.9635 412.853 94.5514 411.857 96.3613V96.4102ZM435.694 97.6113C435.694 98.6921 435.418 99.5579 434.864 100.209C434.317 100.854 433.582 101.176 432.657 101.176C431.726 101.176 430.984 100.854 430.431 100.209C429.877 99.5579 429.6 98.6921 429.6 97.6113C429.6 96.5306 429.877 95.668 430.431 95.0234C430.984 94.3789 431.726 94.0566 432.657 94.0566C433.582 94.0566 434.321 94.3789 434.874 95.0234C435.421 95.6615 435.694 96.5241 435.694 97.6113ZM432.657 99.7988C433.041 99.7988 433.347 99.6035 433.575 99.2129C433.796 98.8223 433.907 98.2884 433.907 97.6113C433.907 96.9277 433.796 96.3939 433.575 96.0098C433.36 95.6322 433.054 95.4434 432.657 95.4434C432.267 95.4434 431.957 95.6387 431.729 96.0293C431.502 96.4134 431.388 96.9408 431.388 97.6113C431.388 98.2819 431.502 98.8125 431.729 99.2031C431.957 99.6003 432.267 99.7988 432.657 99.7988ZM427.608 90.209C427.608 91.2897 427.332 92.1556 426.778 92.8066C426.231 93.4512 425.496 93.7734 424.571 93.7734C423.64 93.7734 422.898 93.4512 422.345 92.8066C421.791 92.1556 421.515 91.2897 421.515 90.209C421.515 89.1283 421.791 88.2656 422.345 87.6211C422.898 86.9766 423.64 86.6543 424.571 86.6543C425.496 86.6543 426.235 86.9766 426.788 87.6211C427.335 88.2591 427.608 89.1217 427.608 90.209ZM424.571 92.3965C424.955 92.3965 425.261 92.2012 425.489 91.8105C425.711 91.4199 425.821 90.8861 425.821 90.209C425.821 89.5254 425.711 88.9915 425.489 88.6074C425.274 88.2298 424.968 88.041 424.571 88.041C424.181 88.041 423.871 88.2363 423.643 88.627C423.416 89.0111 423.302 89.5384 423.302 90.209C423.302 90.8796 423.416 91.4102 423.643 91.8008C423.871 92.1979 424.181 92.3965 424.571 92.3965ZM422.423 101L432.725 86.9082H434.698L424.415 101H422.423Z"
-              fill="#121212" />
-            <path
-              d="M381.326 160V150.859H376.038V160H374.39V149.431H382.952V160H381.326ZM388.574 151.965C389.59 151.965 390.403 152.334 391.013 153.071C391.628 153.809 391.936 154.792 391.936 156.023C391.936 157.249 391.631 158.232 391.02 158.975C390.415 159.712 389.612 160.081 388.611 160.081C387.429 160.081 386.589 159.619 386.091 158.696H386.062V162.6H384.472V152.046H386.003V153.364H386.04C386.264 152.935 386.604 152.595 387.058 152.346C387.517 152.092 388.022 151.965 388.574 151.965ZM388.171 158.733C388.816 158.733 389.333 158.486 389.724 157.993C390.114 157.5 390.31 156.843 390.31 156.023C390.31 155.203 390.114 154.546 389.724 154.053C389.333 153.56 388.816 153.313 388.171 153.313C387.541 153.313 387.031 153.562 386.64 154.06C386.25 154.558 386.052 155.212 386.047 156.023C386.052 156.833 386.25 157.488 386.64 157.986C387.026 158.484 387.536 158.733 388.171 158.733ZM396.32 160.095C395.167 160.095 394.252 159.729 393.573 158.997C392.894 158.264 392.555 157.273 392.555 156.023C392.555 154.778 392.897 153.787 393.58 153.049C394.259 152.312 395.172 151.943 396.32 151.943C397.467 151.943 398.38 152.31 399.059 153.042C399.738 153.779 400.077 154.773 400.077 156.023C400.077 157.273 399.738 158.264 399.059 158.997C398.385 159.729 397.472 160.095 396.32 160.095ZM396.32 158.777C396.994 158.777 397.521 158.535 397.902 158.052C398.278 157.568 398.466 156.892 398.466 156.023C398.466 155.154 398.278 154.478 397.902 153.994C397.521 153.506 396.994 153.262 396.32 153.262C395.646 153.262 395.119 153.506 394.738 153.994C394.357 154.482 394.166 155.159 394.166 156.023C394.166 156.887 394.357 157.563 394.738 158.052C395.119 158.535 395.646 158.777 396.32 158.777ZM401.063 160V152.046H403.04L405.64 157.935H405.699L408.314 152.046H410.233V160H408.702V154.456H408.643L406.226 159.7H405.062L402.652 154.456H402.593V160H401.063ZM414.961 160.095C413.808 160.095 412.893 159.729 412.214 158.997C411.535 158.264 411.196 157.273 411.196 156.023C411.196 154.778 411.538 153.787 412.221 153.049C412.9 152.312 413.813 151.943 414.961 151.943C416.108 151.943 417.021 152.31 417.7 153.042C418.379 153.779 418.718 154.773 418.718 156.023C418.718 157.273 418.379 158.264 417.7 158.997C417.026 159.729 416.113 160.095 414.961 160.095ZM414.961 158.777C415.635 158.777 416.162 158.535 416.543 158.052C416.919 157.568 417.107 156.892 417.107 156.023C417.107 155.154 416.919 154.478 416.543 153.994C416.162 153.506 415.635 153.262 414.961 153.262C414.287 153.262 413.76 153.506 413.379 153.994C412.998 154.482 412.807 155.159 412.807 156.023C412.807 156.887 412.998 157.563 413.379 158.052C413.76 158.535 414.287 158.777 414.961 158.777ZM426.53 160H424.545L421.337 156.301H421.278V160H419.704V152.046H421.278V155.466H421.337L424.508 152.046H426.398L422.853 155.789L426.53 160ZM430.408 160.095C429.256 160.095 428.341 159.729 427.662 158.997C426.983 158.264 426.644 157.273 426.644 156.023C426.644 154.778 426.986 153.787 427.669 153.049C428.348 152.312 429.261 151.943 430.408 151.943C431.556 151.943 432.469 152.31 433.148 153.042C433.826 153.779 434.166 154.773 434.166 156.023C434.166 157.273 433.826 158.264 433.148 158.997C432.474 159.729 431.561 160.095 430.408 160.095ZM430.408 158.777C431.082 158.777 431.61 158.535 431.99 158.052C432.366 157.568 432.554 156.892 432.554 156.023C432.554 155.154 432.366 154.478 431.99 153.994C431.61 153.506 431.082 153.262 430.408 153.262C429.735 153.262 429.207 153.506 428.826 153.994C428.446 154.482 428.255 155.159 428.255 156.023C428.255 156.887 428.446 157.563 428.826 158.052C429.207 158.535 429.735 158.777 430.408 158.777ZM440.447 153.298H437.642L437.414 156.396C437.341 157.446 437.131 158.208 436.785 158.682V158.74H440.447V153.298ZM434.412 162.087V158.74H435.056C435.583 158.408 435.891 157.605 435.979 156.331L436.272 152.046H442.014V158.74H443.259V162.087H441.794V160H435.869V162.087H434.412ZM447.336 160.095C446.183 160.095 445.268 159.729 444.589 158.997C443.91 158.264 443.571 157.273 443.571 156.023C443.571 154.778 443.913 153.787 444.596 153.049C445.275 152.312 446.188 151.943 447.336 151.943C448.483 151.943 449.396 152.31 450.075 153.042C450.754 153.779 451.093 154.773 451.093 156.023C451.093 157.273 450.754 158.264 450.075 158.997C449.401 159.729 448.488 160.095 447.336 160.095ZM447.336 158.777C448.009 158.777 448.537 158.535 448.918 158.052C449.294 157.568 449.482 156.892 449.482 156.023C449.482 155.154 449.294 154.478 448.918 153.994C448.537 153.506 448.009 153.262 447.336 153.262C446.662 153.262 446.134 153.506 445.754 153.994C445.373 154.482 445.182 155.159 445.182 156.023C445.182 156.887 445.373 157.563 445.754 158.052C446.134 158.535 446.662 158.777 447.336 158.777ZM453.638 153.21V155.32H455.228C456.16 155.32 456.627 154.966 456.627 154.258C456.627 153.56 456.217 153.21 455.396 153.21H453.638ZM453.638 156.448V158.828H455.535C456.488 158.828 456.964 158.435 456.964 157.649C456.964 156.848 456.422 156.448 455.338 156.448H453.638ZM452.078 152.046H455.704C456.471 152.046 457.076 152.227 457.52 152.588C457.96 152.949 458.179 153.442 458.179 154.067C458.179 154.482 458.05 154.854 457.791 155.181C457.533 155.513 457.213 155.715 456.832 155.789V155.847C457.34 155.916 457.75 156.118 458.062 156.455C458.375 156.797 458.531 157.214 458.531 157.708C458.531 158.411 458.282 158.967 457.784 159.377C457.281 159.792 456.6 160 455.741 160H452.078V152.046Z"
-              fill="#121212" />
-            <path
-              d="M387.674 177.314C387.463 177.314 387.291 177.303 387.158 177.279V176.248C387.236 176.268 387.371 176.277 387.562 176.277C387.867 176.277 388.107 176.207 388.283 176.066C388.463 175.922 388.607 175.682 388.717 175.346L388.816 175.018L386.508 168.637H387.873L389.508 173.84H389.537L391.172 168.637H392.508L390.123 175.293C389.85 176.055 389.535 176.582 389.18 176.875C388.828 177.168 388.326 177.314 387.674 177.314ZM401.497 175H399.921L397.542 172.041H397.495V175H396.247V172.041H396.2L393.821 175H392.269L394.993 171.648L392.333 168.637H393.851L396.2 171.373H396.247V168.637H397.495V171.373H397.542L399.892 168.637H401.398L398.749 171.631L401.497 175ZM404.393 169.592C403.936 169.592 403.557 169.744 403.256 170.049C402.952 170.354 402.782 170.75 402.746 171.238H405.975C405.959 170.742 405.807 170.344 405.518 170.043C405.229 169.742 404.854 169.592 404.393 169.592ZM407.182 173.137C407.092 173.707 406.793 174.174 406.286 174.537C405.778 174.896 405.166 175.076 404.452 175.076C403.53 175.076 402.799 174.785 402.26 174.203C401.725 173.625 401.457 172.838 401.457 171.842C401.457 170.846 401.725 170.049 402.26 169.451C402.795 168.854 403.508 168.555 404.399 168.555C405.274 168.555 405.967 168.838 406.479 169.404C406.991 169.967 407.246 170.73 407.246 171.695V172.141H402.741V172.217C402.741 172.768 402.899 173.209 403.215 173.541C403.532 173.877 403.952 174.045 404.475 174.045C404.846 174.045 405.166 173.963 405.436 173.799C405.705 173.635 405.883 173.414 405.969 173.137H407.182ZM411.491 169.568V171.256H412.763C413.509 171.256 413.882 170.973 413.882 170.406C413.882 169.848 413.554 169.568 412.897 169.568H411.491ZM411.491 172.158V174.062H413.009C413.77 174.062 414.151 173.748 414.151 173.119C414.151 172.479 413.718 172.158 412.85 172.158H411.491ZM410.243 168.637H413.143C413.757 168.637 414.241 168.781 414.596 169.07C414.948 169.359 415.124 169.754 415.124 170.254C415.124 170.586 415.02 170.883 414.813 171.145C414.606 171.41 414.35 171.572 414.046 171.631V171.678C414.452 171.732 414.78 171.895 415.03 172.164C415.28 172.438 415.405 172.771 415.405 173.166C415.405 173.729 415.206 174.174 414.807 174.502C414.405 174.834 413.86 175 413.173 175H410.243V168.637ZM421.764 168.637H423.023V175H421.764V168.637ZM417.393 171.607V173.998H418.506C418.889 173.998 419.195 173.889 419.426 173.67C419.652 173.451 419.766 173.162 419.766 172.803C419.766 172.439 419.65 172.148 419.42 171.93C419.193 171.715 418.889 171.607 418.506 171.607H417.393ZM416.133 168.637H417.393V170.611H418.605C419.344 170.611 419.932 170.809 420.369 171.203C420.807 171.598 421.025 172.131 421.025 172.803C421.025 173.475 420.807 174.01 420.369 174.408C419.932 174.803 419.344 175 418.605 175H416.133V168.637ZM428.228 169.639H425.984L425.802 172.117C425.743 172.957 425.575 173.566 425.298 173.945V173.992H428.228V169.639ZM423.4 176.67V173.992H423.915C424.337 173.727 424.583 173.084 424.654 172.064L424.888 168.637H429.482V173.992H430.478V176.67H429.306V175H424.566V176.67H423.4ZM433.133 174.051C433.606 174.051 434 173.916 434.317 173.646C434.633 173.373 434.791 173.027 434.791 172.609V172.111L433.245 172.217C432.366 172.271 431.926 172.584 431.926 173.154C431.926 173.428 432.036 173.645 432.254 173.805C432.473 173.969 432.766 174.051 433.133 174.051ZM432.793 175.064C432.157 175.064 431.639 174.893 431.241 174.549C430.842 174.201 430.643 173.744 430.643 173.178C430.643 172.623 430.852 172.188 431.27 171.871C431.684 171.555 432.286 171.371 433.075 171.32L434.791 171.221V170.729C434.791 170.365 434.674 170.086 434.44 169.891C434.209 169.699 433.881 169.604 433.455 169.604C433.112 169.604 432.821 169.686 432.582 169.85C432.348 170.014 432.204 170.234 432.149 170.512H430.959C430.979 169.949 431.227 169.482 431.704 169.111C432.18 168.74 432.776 168.555 433.491 168.555C434.268 168.555 434.887 168.744 435.348 169.123C435.813 169.502 436.045 170.006 436.045 170.635V175H434.832V173.939H434.803C434.627 174.283 434.358 174.557 433.995 174.76C433.631 174.963 433.231 175.064 432.793 175.064ZM441.173 172.211H438.191V175H436.931V168.637H438.191V171.203H441.173V168.637H442.433V175H441.173V172.211ZM446.132 175.076C445.21 175.076 444.477 174.783 443.934 174.197C443.391 173.611 443.12 172.818 443.12 171.818C443.12 170.822 443.393 170.029 443.94 169.439C444.483 168.85 445.214 168.555 446.132 168.555C447.05 168.555 447.78 168.848 448.323 169.434C448.866 170.023 449.138 170.818 449.138 171.818C449.138 172.818 448.866 173.611 448.323 174.197C447.784 174.783 447.054 175.076 446.132 175.076ZM446.132 174.021C446.671 174.021 447.093 173.828 447.397 173.441C447.698 173.055 447.848 172.514 447.848 171.818C447.848 171.123 447.698 170.582 447.397 170.195C447.093 169.805 446.671 169.609 446.132 169.609C445.593 169.609 445.171 169.805 444.866 170.195C444.561 170.586 444.409 171.127 444.409 171.818C444.409 172.51 444.561 173.051 444.866 173.441C445.171 173.828 445.593 174.021 446.132 174.021Z"
-              fill="#121212"
-              fill-opacity="0.4" />
-            <defs>
-              <linearGradient
-                id="paint0_linear_721_18317"
-                x1="27.4932"
-                y1="3"
-                x2="27.4932"
-                y2="220"
-                gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D9D9D9" />
-                <stop
-                  offset="1"
-                  stop-color="#737373" />
-              </linearGradient>
-              <linearGradient
-                id="paint1_linear_721_18317"
-                x1="59.9932"
-                y1="3"
-                x2="59.9932"
-                y2="220"
-                gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D9D9D9" />
-                <stop
-                  offset="1"
-                  stop-color="#737373" />
-              </linearGradient>
-              <linearGradient
-                id="paint2_linear_721_18317"
-                x1="92.4932"
-                y1="3"
-                x2="92.4932"
-                y2="220"
-                gradientUnits="userSpaceOnUse">
-                <stop stop-color="#D9D9D9" />
-                <stop
-                  offset="1"
-                  stop-color="#737373" />
-              </linearGradient>
-            </defs>
-          </svg>
+                    <svg
+                  class="music_721_18317"
+                  width="526"
+                  height="220"
+                  viewBox="0 0 526 220"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <rect
+                    y="3"
+                    width="525.451"
+                    height="217"
+                    rx="30"
+                    fill="#F7F7F7" />
+                  <path
+                    d="M99.0854 76C118.995 76.0001 135.123 92.1243 135.123 112C135.123 131.876 118.995 148 99.0854 148C79.1758 148 63.0474 131.876 63.0474 112C63.0474 92.1242 79.1758 76 99.0854 76Z"
+                    stroke="#FF641A"
+                    stroke-width="16" />
+                  <foreignObject
+                    x="-28.5068"
+                    y="-37"
+                    width="112"
+                    height="297"
+                    ><div
+                      xmlns="http://www.w3.org/1999/xhtml"
+                      style="backdrop-filter: blur(20px); clip-path: url(#bgblur_0_721_18317_clip_path); height: 100%; width: 100%"></div
+                  ></foreignObject>
+                  <g data-figma-bg-blur-radius="40">
+                    <path
+                      d="M11.4932 19.0138C11.4932 10.1696 18.6628 3 27.5069 3H43.4932V220H27.4932C18.6566 220 11.4932 212.837 11.4932 204V19.0138Z"
+                      fill="url(#paint0_linear_721_18317)"
+                      fill-opacity="0.2"
+                      style="mix-blend-mode: overlay" />
+                  </g>
+                  <foreignObject
+                    x="3.49316"
+                    y="-37"
+                    width="113"
+                    height="297"
+                    ><div
+                      xmlns="http://www.w3.org/1999/xhtml"
+                      style="backdrop-filter: blur(20px); clip-path: url(#bgblur_1_721_18317_clip_path); height: 100%; width: 100%"></div
+                  ></foreignObject>
+                  <g data-figma-bg-blur-radius="40">
+                    <rect
+                      x="43.4932"
+                      y="3"
+                      width="33"
+                      height="217"
+                      fill="url(#paint1_linear_721_18317)"
+                      fill-opacity="0.2"
+                      style="mix-blend-mode: overlay" />
+                  </g>
+                  <foreignObject
+                    x="36.4932"
+                    y="-37"
+                    width="112"
+                    height="297"
+                    ><div
+                      xmlns="http://www.w3.org/1999/xhtml"
+                      style="backdrop-filter: blur(20px); clip-path: url(#bgblur_2_721_18317_clip_path); height: 100%; width: 100%"></div
+                  ></foreignObject>
+                  <g data-figma-bg-blur-radius="40">
+                    <rect
+                      x="76.4932"
+                      y="3"
+                      width="32"
+                      height="217"
+                      fill="url(#paint2_linear_721_18317)"
+                      fill-opacity="0.2"
+                      style="mix-blend-mode: overlay" />
+                  </g>
+                  <line
+                    x1="159.13"
+                    y1="85"
+                    x2="159.13"
+                    y2="139"
+                    stroke="#FF641A"
+                    stroke-width="16"
+                    stroke-linecap="round" />
+                  <line
+                    x1="183.15"
+                    y1="94"
+                    x2="183.15"
+                    y2="130"
+                    stroke="#FF641A"
+                    stroke-width="16"
+                    stroke-linecap="round" />
+                  <line
+                    x1="247.206"
+                    y1="101"
+                    x2="247.206"
+                    y2="123"
+                    stroke="#FF641A"
+                    stroke-width="16"
+                    stroke-linecap="round" />
+                  <path
+                    d="M215.185 101.816C215.424 101.816 215.606 101.885 215.712 101.955C215.78 102 215.902 102.092 216.013 102.392C217.52 106.463 220.732 109.673 224.805 111.179C225.104 111.289 225.196 111.41 225.239 111.477C225.308 111.581 225.376 111.762 225.376 112C225.376 112.238 225.308 112.419 225.239 112.523C225.196 112.59 225.104 112.711 224.805 112.821C220.732 114.327 217.52 117.537 216.013 121.608C215.902 121.908 215.78 122 215.712 122.045C215.606 122.115 215.424 122.184 215.185 122.184C214.946 122.184 214.763 122.115 214.657 122.045C214.589 122 214.467 121.908 214.356 121.608C212.849 117.537 209.638 114.327 205.565 112.821C205.266 112.711 205.175 112.59 205.131 112.523C205.062 112.419 204.993 112.238 204.993 112C204.993 111.762 205.062 111.581 205.131 111.477C205.175 111.41 205.266 111.289 205.565 111.179C209.638 109.673 212.849 106.463 214.356 102.392C214.467 102.092 214.589 102 214.657 101.955C214.763 101.885 214.946 101.816 215.185 101.816Z"
+                    stroke="#FF641A"
+                    stroke-width="14" />
+                  <rect
+                    x="331.285"
+                    y="27"
+                    width="170.146"
+                    height="169"
+                    rx="15"
+                    fill="white" />
+                  <path
+                    d="M466.401 94C466.401 121.062 444.444 143 417.359 143C390.273 143 368.317 121.062 368.317 94C368.317 66.938 390.273 45 417.359 45C444.444 45 466.401 66.938 466.401 94ZM378.125 94C378.125 115.65 395.69 133.2 417.359 133.2C439.027 133.2 456.592 115.65 456.592 94C456.592 72.3504 439.027 54.8 417.359 54.8C395.69 54.8 378.125 72.3504 378.125 94Z"
+                    fill="#F7F7F7" />
+                  <path
+                    d="M415.357 49.9C415.357 47.1938 417.556 44.9747 420.249 45.2444C425.011 45.7214 429.687 46.8932 434.125 48.7299C440.075 51.1924 445.481 54.8017 450.035 59.3518C454.589 63.9018 458.201 69.3036 460.666 75.2485C462.503 79.6801 463.676 84.3488 464.154 89.104C464.425 91.7989 462.203 94 459.495 94V94C456.786 94 454.622 91.7959 454.284 89.1086C453.848 85.6414 452.948 82.2408 451.604 78.9988C449.632 74.2429 446.743 69.9215 443.099 66.2814C439.456 62.6414 435.131 59.7539 430.371 57.7839C427.124 56.44 423.717 55.541 420.244 55.1053C417.559 54.7685 415.357 52.6062 415.357 49.9V49.9Z"
+                    fill="#FF641A" />
+                  <path
+                    d="M399.309 91.0391C399.309 89.7695 399.765 88.7181 400.676 87.8848C401.594 87.0579 402.753 86.6445 404.153 86.6445C405.494 86.6445 406.611 87.0221 407.502 87.7773C408.394 88.5326 408.84 89.4701 408.84 90.5898C408.84 91.3776 408.609 92.1458 408.147 92.8945C407.737 93.5586 406.988 94.4473 405.901 95.5605L402.375 99.1055V99.1543H409.065V101H399.426V99.5156L404.514 94.3301C405.374 93.4316 405.95 92.7415 406.243 92.2598C406.536 91.7715 406.682 91.2507 406.682 90.6973C406.682 90.0723 406.431 89.5417 405.93 89.1055C405.429 88.6693 404.814 88.4512 404.084 88.4512C403.316 88.4512 402.672 88.6986 402.151 89.1934C401.637 89.6816 401.379 90.2936 401.379 91.0293V91.0586H399.309V91.0391ZM416.867 98.2168H409.816V96.3027C410.949 94.1673 412.944 91.0358 415.802 86.9082H418.967V96.3809H420.9V98.2168H418.967V101H416.867V98.2168ZM411.857 96.4102H416.886V88.5977H416.847C414.517 91.9635 412.853 94.5514 411.857 96.3613V96.4102ZM435.694 97.6113C435.694 98.6921 435.418 99.5579 434.864 100.209C434.317 100.854 433.582 101.176 432.657 101.176C431.726 101.176 430.984 100.854 430.431 100.209C429.877 99.5579 429.6 98.6921 429.6 97.6113C429.6 96.5306 429.877 95.668 430.431 95.0234C430.984 94.3789 431.726 94.0566 432.657 94.0566C433.582 94.0566 434.321 94.3789 434.874 95.0234C435.421 95.6615 435.694 96.5241 435.694 97.6113ZM432.657 99.7988C433.041 99.7988 433.347 99.6035 433.575 99.2129C433.796 98.8223 433.907 98.2884 433.907 97.6113C433.907 96.9277 433.796 96.3939 433.575 96.0098C433.36 95.6322 433.054 95.4434 432.657 95.4434C432.267 95.4434 431.957 95.6387 431.729 96.0293C431.502 96.4134 431.388 96.9408 431.388 97.6113C431.388 98.2819 431.502 98.8125 431.729 99.2031C431.957 99.6003 432.267 99.7988 432.657 99.7988ZM427.608 90.209C427.608 91.2897 427.332 92.1556 426.778 92.8066C426.231 93.4512 425.496 93.7734 424.571 93.7734C423.64 93.7734 422.898 93.4512 422.345 92.8066C421.791 92.1556 421.515 91.2897 421.515 90.209C421.515 89.1283 421.791 88.2656 422.345 87.6211C422.898 86.9766 423.64 86.6543 424.571 86.6543C425.496 86.6543 426.235 86.9766 426.788 87.6211C427.335 88.2591 427.608 89.1217 427.608 90.209ZM424.571 92.3965C424.955 92.3965 425.261 92.2012 425.489 91.8105C425.711 91.4199 425.821 90.8861 425.821 90.209C425.821 89.5254 425.711 88.9915 425.489 88.6074C425.274 88.2298 424.968 88.041 424.571 88.041C424.181 88.041 423.871 88.2363 423.643 88.627C423.416 89.0111 423.302 89.5384 423.302 90.209C423.302 90.8796 423.416 91.4102 423.643 91.8008C423.871 92.1979 424.181 92.3965 424.571 92.3965ZM422.423 101L432.725 86.9082H434.698L424.415 101H422.423Z"
+                    fill="#121212" />
+                  <path
+                    d="M381.326 160V150.859H376.038V160H374.39V149.431H382.952V160H381.326ZM388.574 151.965C389.59 151.965 390.403 152.334 391.013 153.071C391.628 153.809 391.936 154.792 391.936 156.023C391.936 157.249 391.631 158.232 391.02 158.975C390.415 159.712 389.612 160.081 388.611 160.081C387.429 160.081 386.589 159.619 386.091 158.696H386.062V162.6H384.472V152.046H386.003V153.364H386.04C386.264 152.935 386.604 152.595 387.058 152.346C387.517 152.092 388.022 151.965 388.574 151.965ZM388.171 158.733C388.816 158.733 389.333 158.486 389.724 157.993C390.114 157.5 390.31 156.843 390.31 156.023C390.31 155.203 390.114 154.546 389.724 154.053C389.333 153.56 388.816 153.313 388.171 153.313C387.541 153.313 387.031 153.562 386.64 154.06C386.25 154.558 386.052 155.212 386.047 156.023C386.052 156.833 386.25 157.488 386.64 157.986C387.026 158.484 387.536 158.733 388.171 158.733ZM396.32 160.095C395.167 160.095 394.252 159.729 393.573 158.997C392.894 158.264 392.555 157.273 392.555 156.023C392.555 154.778 392.897 153.787 393.58 153.049C394.259 152.312 395.172 151.943 396.32 151.943C397.467 151.943 398.38 152.31 399.059 153.042C399.738 153.779 400.077 154.773 400.077 156.023C400.077 157.273 399.738 158.264 399.059 158.997C398.385 159.729 397.472 160.095 396.32 160.095ZM396.32 158.777C396.994 158.777 397.521 158.535 397.902 158.052C398.278 157.568 398.466 156.892 398.466 156.023C398.466 155.154 398.278 154.478 397.902 153.994C397.521 153.506 396.994 153.262 396.32 153.262C395.646 153.262 395.119 153.506 394.738 153.994C394.357 154.482 394.166 155.159 394.166 156.023C394.166 156.887 394.357 157.563 394.738 158.052C395.119 158.535 395.646 158.777 396.32 158.777ZM401.063 160V152.046H403.04L405.64 157.935H405.699L408.314 152.046H410.233V160H408.702V154.456H408.643L406.226 159.7H405.062L402.652 154.456H402.593V160H401.063ZM414.961 160.095C413.808 160.095 412.893 159.729 412.214 158.997C411.535 158.264 411.196 157.273 411.196 156.023C411.196 154.778 411.538 153.787 412.221 153.049C412.9 152.312 413.813 151.943 414.961 151.943C416.108 151.943 417.021 152.31 417.7 153.042C418.379 153.779 418.718 154.773 418.718 156.023C418.718 157.273 418.379 158.264 417.7 158.997C417.026 159.729 416.113 160.095 414.961 160.095ZM414.961 158.777C415.635 158.777 416.162 158.535 416.543 158.052C416.919 157.568 417.107 156.892 417.107 156.023C417.107 155.154 416.919 154.478 416.543 153.994C416.162 153.506 415.635 153.262 414.961 153.262C414.287 153.262 413.76 153.506 413.379 153.994C412.998 154.482 412.807 155.159 412.807 156.023C412.807 156.887 412.998 157.563 413.379 158.052C413.76 158.535 414.287 158.777 414.961 158.777ZM426.53 160H424.545L421.337 156.301H421.278V160H419.704V152.046H421.278V155.466H421.337L424.508 152.046H426.398L422.853 155.789L426.53 160ZM430.408 160.095C429.256 160.095 428.341 159.729 427.662 158.997C426.983 158.264 426.644 157.273 426.644 156.023C426.644 154.778 426.986 153.787 427.669 153.049C428.348 152.312 429.261 151.943 430.408 151.943C431.556 151.943 432.469 152.31 433.148 153.042C433.826 153.779 434.166 154.773 434.166 156.023C434.166 157.273 433.826 158.264 433.148 158.997C432.474 159.729 431.561 160.095 430.408 160.095ZM430.408 158.777C431.082 158.777 431.61 158.535 431.99 158.052C432.366 157.568 432.554 156.892 432.554 156.023C432.554 155.154 432.366 154.478 431.99 153.994C431.61 153.506 431.082 153.262 430.408 153.262C429.735 153.262 429.207 153.506 428.826 153.994C428.446 154.482 428.255 155.159 428.255 156.023C428.255 156.887 428.446 157.563 428.826 158.052C429.207 158.535 429.735 158.777 430.408 158.777ZM440.447 153.298H437.642L437.414 156.396C437.341 157.446 437.131 158.208 436.785 158.682V158.74H440.447V153.298ZM434.412 162.087V158.74H435.056C435.583 158.408 435.891 157.605 435.979 156.331L436.272 152.046H442.014V158.74H443.259V162.087H441.794V160H435.869V162.087H434.412ZM447.336 160.095C446.183 160.095 445.268 159.729 444.589 158.997C443.91 158.264 443.571 157.273 443.571 156.023C443.571 154.778 443.913 153.787 444.596 153.049C445.275 152.312 446.188 151.943 447.336 151.943C448.483 151.943 449.396 152.31 450.075 153.042C450.754 153.779 451.093 154.773 451.093 156.023C451.093 157.273 450.754 158.264 450.075 158.997C449.401 159.729 448.488 160.095 447.336 160.095ZM447.336 158.777C448.009 158.777 448.537 158.535 448.918 158.052C449.294 157.568 449.482 156.892 449.482 156.023C449.482 155.154 449.294 154.478 448.918 153.994C448.537 153.506 448.009 153.262 447.336 153.262C446.662 153.262 446.134 153.506 445.754 153.994C445.373 154.482 445.182 155.159 445.182 156.023C445.182 156.887 445.373 157.563 445.754 158.052C446.134 158.535 446.662 158.777 447.336 158.777ZM453.638 153.21V155.32H455.228C456.16 155.32 456.627 154.966 456.627 154.258C456.627 153.56 456.217 153.21 455.396 153.21H453.638ZM453.638 156.448V158.828H455.535C456.488 158.828 456.964 158.435 456.964 157.649C456.964 156.848 456.422 156.448 455.338 156.448H453.638ZM452.078 152.046H455.704C456.471 152.046 457.076 152.227 457.52 152.588C457.96 152.949 458.179 153.442 458.179 154.067C458.179 154.482 458.05 154.854 457.791 155.181C457.533 155.513 457.213 155.715 456.832 155.789V155.847C457.34 155.916 457.75 156.118 458.062 156.455C458.375 156.797 458.531 157.214 458.531 157.708C458.531 158.411 458.282 158.967 457.784 159.377C457.281 159.792 456.6 160 455.741 160H452.078V152.046Z"
+                    fill="#121212" />
+                  <path
+                    d="M387.674 177.314C387.463 177.314 387.291 177.303 387.158 177.279V176.248C387.236 176.268 387.371 176.277 387.562 176.277C387.867 176.277 388.107 176.207 388.283 176.066C388.463 175.922 388.607 175.682 388.717 175.346L388.816 175.018L386.508 168.637H387.873L389.508 173.84H389.537L391.172 168.637H392.508L390.123 175.293C389.85 176.055 389.535 176.582 389.18 176.875C388.828 177.168 388.326 177.314 387.674 177.314ZM401.497 175H399.921L397.542 172.041H397.495V175H396.247V172.041H396.2L393.821 175H392.269L394.993 171.648L392.333 168.637H393.851L396.2 171.373H396.247V168.637H397.495V171.373H397.542L399.892 168.637H401.398L398.749 171.631L401.497 175ZM404.393 169.592C403.936 169.592 403.557 169.744 403.256 170.049C402.952 170.354 402.782 170.75 402.746 171.238H405.975C405.959 170.742 405.807 170.344 405.518 170.043C405.229 169.742 404.854 169.592 404.393 169.592ZM407.182 173.137C407.092 173.707 406.793 174.174 406.286 174.537C405.778 174.896 405.166 175.076 404.452 175.076C403.53 175.076 402.799 174.785 402.26 174.203C401.725 173.625 401.457 172.838 401.457 171.842C401.457 170.846 401.725 170.049 402.26 169.451C402.795 168.854 403.508 168.555 404.399 168.555C405.274 168.555 405.967 168.838 406.479 169.404C406.991 169.967 407.246 170.73 407.246 171.695V172.141H402.741V172.217C402.741 172.768 402.899 173.209 403.215 173.541C403.532 173.877 403.952 174.045 404.475 174.045C404.846 174.045 405.166 173.963 405.436 173.799C405.705 173.635 405.883 173.414 405.969 173.137H407.182ZM411.491 169.568V171.256H412.763C413.509 171.256 413.882 170.973 413.882 170.406C413.882 169.848 413.554 169.568 412.897 169.568H411.491ZM411.491 172.158V174.062H413.009C413.77 174.062 414.151 173.748 414.151 173.119C414.151 172.479 413.718 172.158 412.85 172.158H411.491ZM410.243 168.637H413.143C413.757 168.637 414.241 168.781 414.596 169.07C414.948 169.359 415.124 169.754 415.124 170.254C415.124 170.586 415.02 170.883 414.813 171.145C414.606 171.41 414.35 171.572 414.046 171.631V171.678C414.452 171.732 414.78 171.895 415.03 172.164C415.28 172.438 415.405 172.771 415.405 173.166C415.405 173.729 415.206 174.174 414.807 174.502C414.405 174.834 413.86 175 413.173 175H410.243V168.637ZM421.764 168.637H423.023V175H421.764V168.637ZM417.393 171.607V173.998H418.506C418.889 173.998 419.195 173.889 419.426 173.67C419.652 173.451 419.766 173.162 419.766 172.803C419.766 172.439 419.65 172.148 419.42 171.93C419.193 171.715 418.889 171.607 418.506 171.607H417.393ZM416.133 168.637H417.393V170.611H418.605C419.344 170.611 419.932 170.809 420.369 171.203C420.807 171.598 421.025 172.131 421.025 172.803C421.025 173.475 420.807 174.01 420.369 174.408C419.932 174.803 419.344 175 418.605 175H416.133V168.637ZM428.228 169.639H425.984L425.802 172.117C425.743 172.957 425.575 173.566 425.298 173.945V173.992H428.228V169.639ZM423.4 176.67V173.992H423.915C424.337 173.727 424.583 173.084 424.654 172.064L424.888 168.637H429.482V173.992H430.478V176.67H429.306V175H424.566V176.67H423.4ZM433.133 174.051C433.606 174.051 434 173.916 434.317 173.646C434.633 173.373 434.791 173.027 434.791 172.609V172.111L433.245 172.217C432.366 172.271 431.926 172.584 431.926 173.154C431.926 173.428 432.036 173.645 432.254 173.805C432.473 173.969 432.766 174.051 433.133 174.051ZM432.793 175.064C432.157 175.064 431.639 174.893 431.241 174.549C430.842 174.201 430.643 173.744 430.643 173.178C430.643 172.623 430.852 172.188 431.27 171.871C431.684 171.555 432.286 171.371 433.075 171.32L434.791 171.221V170.729C434.791 170.365 434.674 170.086 434.44 169.891C434.209 169.699 433.881 169.604 433.455 169.604C433.112 169.604 432.821 169.686 432.582 169.85C432.348 170.014 432.204 170.234 432.149 170.512H430.959C430.979 169.949 431.227 169.482 431.704 169.111C432.18 168.74 432.776 168.555 433.491 168.555C434.268 168.555 434.887 168.744 435.348 169.123C435.813 169.502 436.045 170.006 436.045 170.635V175H434.832V173.939H434.803C434.627 174.283 434.358 174.557 433.995 174.76C433.631 174.963 433.231 175.064 432.793 175.064ZM441.173 172.211H438.191V175H436.931V168.637H438.191V171.203H441.173V168.637H442.433V175H441.173V172.211ZM446.132 175.076C445.21 175.076 444.477 174.783 443.934 174.197C443.391 173.611 443.12 172.818 443.12 171.818C443.12 170.822 443.393 170.029 443.94 169.439C444.483 168.85 445.214 168.555 446.132 168.555C447.05 168.555 447.78 168.848 448.323 169.434C448.866 170.023 449.138 170.818 449.138 171.818C449.138 172.818 448.866 173.611 448.323 174.197C447.784 174.783 447.054 175.076 446.132 175.076ZM446.132 174.021C446.671 174.021 447.093 173.828 447.397 173.441C447.698 173.055 447.848 172.514 447.848 171.818C447.848 171.123 447.698 170.582 447.397 170.195C447.093 169.805 446.671 169.609 446.132 169.609C445.593 169.609 445.171 169.805 444.866 170.195C444.561 170.586 444.409 171.127 444.409 171.818C444.409 172.51 444.561 173.051 444.866 173.441C445.171 173.828 445.593 174.021 446.132 174.021Z"
+                    fill="#121212"
+                    fill-opacity="0.4" />
+                  <defs>
+                    <clipPath
+                      id="bgblur_0_721_18317_clip_path"
+                      transform="translate(28.5068 37)">
+                      <path d="M11.4932 19.0138C11.4932 10.1696 18.6628 3 27.5069 3H43.4932V220H27.4932C18.6566 220 11.4932 212.837 11.4932 204V19.0138Z" />
+                    </clipPath>
+                    <clipPath
+                      id="bgblur_1_721_18317_clip_path"
+                      transform="translate(-3.49316 37)">
+                      <rect
+                        x="43.4932"
+                        y="3"
+                        width="33"
+                        height="217" />
+                    </clipPath>
+                    <clipPath
+                      id="bgblur_2_721_18317_clip_path"
+                      transform="translate(-36.4932 37)">
+                      <rect
+                        x="76.4932"
+                        y="3"
+                        width="32"
+                        height="217" />
+                    </clipPath>
+                    <linearGradient
+                      id="paint0_linear_721_18317"
+                      x1="27.4932"
+                      y1="3"
+                      x2="27.4932"
+                      y2="220"
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#D9D9D9" />
+                      <stop
+                        offset="1"
+                        stop-color="#737373" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint1_linear_721_18317"
+                      x1="59.9932"
+                      y1="3"
+                      x2="59.9932"
+                      y2="220"
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#D9D9D9" />
+                      <stop
+                        offset="1"
+                        stop-color="#737373" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint2_linear_721_18317"
+                      x1="92.4932"
+                      y1="3"
+                      x2="92.4932"
+                      y2="220"
+                      gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#D9D9D9" />
+                      <stop
+                        offset="1"
+                        stop-color="#737373" />
+                    </linearGradient>
+                  </defs>
+                </svg>
         </div>
         
       </div>
@@ -8216,7 +9215,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту bravel2026@yandex.ru<br />Ответим на все ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afcdddced9cac39d9f9d99efd6cec1cbcad781ddda">[email&#160;protected]</a><br />Ответим на все ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
@@ -8312,7 +9311,7 @@
       </div>
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
       (() => {
         const header = document.querySelector('.music_430_188');
@@ -8867,7 +9866,7 @@ if (container) {
           document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false); });
         }
         const resize = () => {
-          if (window.innerWidth >= 768) { setOpen(false); return; }
+          if (window.innerWidth >= 1024) { setOpen(false); return; }
           const scale = Math.max(.24, Math.min((window.innerWidth - 32) / 1164, .64));
           const root = document.documentElement.style;
           root.setProperty('--bravel-mobile-scale', String(scale));
@@ -9089,5 +10088,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc797d5b8aae55',t:'MTc4NzUxMjgyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc797d5b8aae55',t:'MTc4NzUxMjgyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a308d6d84fd5a01d',t:'MTc4NzY0MjQ3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
