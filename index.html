@@ -178,8 +178,7 @@
 
       /* Яндекс.Браузер / Chrome на Android по умолчанию включают «font boosting»
          (автоувеличение мелкого текста в широких блоках). Из-за него заданные
-         7px/6.6px под графиком и в виджетах игнорировались и казалось, что
-         правки шрифтов «не применяются». Отключаем автоподбор размера. */
+         7px/6.6px под графиком и в виджетах игнорировались и казалось, что правки шрифтов «не применяются». Отключаем автоподбор размера. */
       html {
         -webkit-text-size-adjust: 100%;
         -moz-text-size-adjust: 100%;
@@ -6839,17 +6838,14 @@
            по высоте легенды). Раньше top считался от верхнего края иконки
            (calc(59.5/140*100%)), что вместе с паразитным нижним отступом SVG
            давало заметное смещение сферы вверх от центра плашки. Теперь центр
-           сферы жёстко фиксируется на 50% высоты и просто сдвигается на
-           половину своего размера через translate — это гарантирует точное
+           сферы жёстко фиксируется на 50% высоты и просто сдвигается на половину своего размера через translate — это гарантирует точное
            совпадение с центром плашки независимо от округлений. */
         /* Сфера ровно посередине фразы «Разработка мобильного приложения».
            Замер реального контура текста в исходном SVG (422x140):
            надпись занимает y = 61.83 … 80.24 → её середина = 71.03.
            Плашка (rect y=48.5, h=43) имеет центр 70, поэтому раньше сфера
-           стояла на ~1.3 единицы выше середины самой фразы и читалась как
-           смещённая вверх. Центр по X — 32.5 из 422 (как в исходной вёрстке).
-           Размер задаём через padding-hack (без aspect-ratio), а сдвиг на
-           половину собственного размера — через translate(-50%,-50%):
+           стояла на ~1.3 единицы выше середины самой фразы и читалась как смещённая вверх. Центр по X — 32.5 из 422 (как в исходной вёрстке).
+           Размер задаём через padding-hack (без aspect-ratio), а сдвиг на половину собственного размера — через translate(-50%,-50%):
            это даёт точное попадание в центр в любом браузере. */
         .bravel-legend-orb {
           display:block; position:absolute;
@@ -6878,8 +6874,7 @@
         .flexContainer_3_music_756_18458 { position:relative; display:block; width:100%; height:20px; margin-top:6px; }
         /* SF UI Display 7 medium — тот же размер, что у «55%» и «Осталось: N дней» (было 8px) */
         /* Подписи месяцев под графиком: SF UI Display, medium (500), 7px.
-           font-family/-weight/-size продублированы с !important — в
-           Яндекс.Браузере эти подписи иначе перебивались наследованием
+           font-family/-weight/-size продублированы с !important — в Яндекс.Браузере эти подписи иначе перебивались наследованием
            и автоувеличением шрифта. */
         .bravel-roadmap-source .flexContainer_3_music_756_18458 span,
         .flexContainer_3_music_756_18458 span {
@@ -7473,6 +7468,7 @@
           width: 100%;
           height: auto;
           transform: none;
+          margin-top: 2px; /* лейбл 16px + 2px — как у остальных секций и мобильной версии */
         }
         .music_756_18349,
         .music_756_18404 {
@@ -8139,7 +8135,7 @@
   <body class="bravel-intro-active">
     <div class="bravel-intro" data-bravel-intro aria-hidden="true">
       <span class="bravel-intro__logo"><span class="bravel-intro__letter" style="--bravel-letter-index: 0">B</span><span class="bravel-intro__letter" style="--bravel-letter-index: 1">r</span><span class="bravel-intro__letter" style="--bravel-letter-index: 2">a</span><span class="bravel-intro__letter" style="--bravel-letter-index: 3">v</span><span class="bravel-intro__letter" style="--bravel-letter-index: 4">e</span><span class="bravel-intro__letter" style="--bravel-letter-index: 5">l</span></span>
-      <span class="bravel-intro__welcome">Добро пожаловать в Bravel</span>
+      <span class="bravel-intro__welcome">Добро пожаловать в&nbsp;Bravel</span>
     </div>
     <div class="music_430_188">
       <svg class="bravel-floating-header-frame" aria-hidden="true" focusable="false" width="1214" height="124" viewBox="0 0 1214 124" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8257,9 +8253,9 @@
                 class="music_694_1858"
                 src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721497999/3c44/f64a/a6f4/96f52d2b2fc023dbaac860489fb0970f.png" />
             </div>
-            <span class="music_694_1857">Маршрут в реальном времени</span
+            <span class="music_694_1857">Маршрут в&nbsp;реальном времени</span
             ><span class="music_694_1856"
-              >После отправления пассажир видит местоположение автомобиля, маршрут и время прибытия. Ссылкой на поездку можно поделиться <br />с близкими без регистрации. Отслеживание завершится
+              >После отправления пассажир видит местоположение автомобиля, маршрут и&nbsp;время прибытия. Ссылкой на&nbsp;поездку можно поделиться <br />с&nbsp;близкими без&nbsp;регистрации. Отслеживание завершится
               автоматически после прибытия.</span
             >
           </div>
@@ -8273,7 +8269,7 @@
                 class="music_694_1845"
                 src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81721496914/da82/7bf2/31c9/89886477165b20c751fd8393f16be1d3.png" />
             </div>
-            <span class="music_694_1852">Календарь поездок</span><span class="music_694_1851">Один раз укажите маршрут, расписание, места и стоимость — Bravel автоматически опубликует поездки.</span>
+            <span class="music_694_1852">Календарь поездок</span><span class="music_694_1851">Один раз укажите маршрут, расписание, места и&nbsp;стоимость — Bravel автоматически опубликует поездки.</span>
           </div>
         </div>
         <div class="music_694_1835">
@@ -8306,7 +8302,7 @@
             </div>
             <span class="music_694_1833">Водителям — бесплатно</span
             ><span class="music_694_1834"
-              >Публикация поездок и управление расписанием бесплатны. Чтобы начать пользоваться сервисом, водителю нужно подтвердить личность, права <br />и данные автомобиля.</span
+              >Публикация поездок и&nbsp;управление расписанием бесплатны. Чтобы начать пользоваться сервисом, водителю нужно подтвердить личность, права <br />и&nbsp;данные автомобиля.</span
             >
           </div>
         </div>
@@ -8386,9 +8382,9 @@
                 class="music_392_212"
                 src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/81575074018/efc4/b0ca/3261/6605a7d2a72edc1ed2a1d82da3d8bba7.jpg" />
               <div class="music_430_197">
-                <span class="music_392_206">Защита до начала поездки</span>
+                <span class="music_392_206">Защита до&nbsp;начала поездки</span>
                 <div class="music_392_210"></div>
-                <span class="music_392_207">Верифицируем водителя по паспорту, проверяем автомобиль, защищаем от подмены и выявляем подозрительные действия.</span>
+                <span class="music_392_207">Верифицируем водителя по&nbsp;паспорту, проверяем автомобиль, защищаем от&nbsp;подмены и&nbsp;выявляем подозрительные действия.</span>
               </div>
             </div>
           </div>
@@ -8399,9 +8395,9 @@
                   class="music_758_18579"
                   src="https://seal-img.nos-jd.163yun.com/obj/w5rCgMKVw6DCmGzCmsK-/82230603066/11f2/ddcc/0da3/ced1a038697493b41db4a0a57161cd19.png" />
                 <div class="music_430_195">
-                  <span class="music_392_205">Безопасность в пути</span>
+                  <span class="music_392_205">Безопасность в&nbsp;пути</span>
                   <div class="music_392_209"></div>
-                  <span class="music_392_208">Показываем маршрут в реальном времени, держим близких в курсе и помогаем быстро обратиться за помощью.</span>
+                  <span class="music_392_208">Показываем маршрут в&nbsp;реальном времени, держим близких в&nbsp;курсе и&nbsp;помогаем быстро обратиться за&nbsp;помощью.</span>
                 </div>
               </div>
             </div>
@@ -8525,9 +8521,9 @@
             <div class="music_756_18546">
               <div class="music_756_18545">
                 <div class="music_756_18407">
-                  <span class="music_756_18408">Следите за развитием Bravel</span
+                  <span class="music_756_18408">Следите за&nbsp;развитием Bravel</span
                   ><span class="music_756_18409"
-                    >Мы создаём Bravel вместе с будущими пассажирами и водителями. <br />Здесь можно узнать, над чем мы работаем сейчас, что уже готово <br />и когда появится возможность протестировать
+                    >Мы создаём Bravel вместе с&nbsp;будущими пассажирами и&nbsp;водителями. <br />Здесь можно узнать, над&nbsp;чем&nbsp;мы&nbsp;работаем сейчас, что&nbsp;уже&nbsp;готово <br />и&nbsp;когда появится возможность протестировать
                     сервис.</span
                   >
                 </div>
@@ -8959,7 +8955,7 @@
         </div>
         <div class="music_756_18339 bravel-promo-source">
           <div class="music_721_18301">
-            <span class="music_721_18305">Бронируйте без комиссии целый год</span><span class="music_721_18306">Пройдите короткий опрос и получите промокод на бесплатное бронирование поездок</span
+            <span class="music_721_18305">Бронируйте без&nbsp;комиссии целый год</span><span class="music_721_18306">Пройдите короткий опрос и&nbsp;получите промокод на&nbsp;бесплатное бронирование поездок</span
             ><a class="bravel-button-link bravel-promo-button-link bravel-promo-source-button" href="https://forms.yandex.ru/u/6a6375da068ff08c1ff3512e" target="_blank" rel="noopener noreferrer" aria-label="Пройти опрос">
           <svg
                 class="music_721_18307 bravel-button-svg"
@@ -9199,7 +9195,7 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2" data-bravel-faq-question>
-              <span>Как&nbsp;вы проверяете водителей?</span>
+              <span>Как&nbsp;вы&nbsp;проверяете водителей?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" aria-hidden="true">
               <p>Водитель подтверждает личность по&nbsp;паспорту и&nbsp;селфи, а&nbsp;также загружает права и&nbsp;документы на&nbsp;автомобиль. После проверки в&nbsp;профиле появляется специальная отметка.</p>
@@ -9207,7 +9203,7 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3" data-bravel-faq-question>
-              <span>Может&nbsp;ли приехать другой водитель или автомобиль?</span>
+              <span>Может&nbsp;ли&nbsp;приехать другой водитель или&nbsp;автомобиль?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" aria-hidden="true">
               <p>Нет. Бронирование привязано к&nbsp;конкретному водителю и&nbsp;автомобилю. До&nbsp;поездки вы&nbsp;увидите фотографию водителя, марку, цвет и&nbsp;номер машины.</p>
@@ -9215,7 +9211,7 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4" data-bravel-faq-question>
-              <span>Может&nbsp;ли измениться стоимость поездки?</span>
+              <span>Может&nbsp;ли&nbsp;измениться стоимость поездки?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" aria-hidden="true">
               <p>После бронирования стоимость фиксируется. Все условия, включая багаж, животных и&nbsp;дополнительные остановки, водитель указывает заранее.</p>
@@ -9234,15 +9230,15 @@
               <span>Как возвращаются деньги?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" aria-hidden="true">
-              <p>Если водитель отменил поездку или не&nbsp;приехал, оплата возвращается автоматически. При отмене пассажиром сумма возврата зависит от&nbsp;времени до&nbsp;отправления.</p>
+              <p>Если водитель отменил поездку или&nbsp;не&nbsp;приехал, оплата возвращается автоматически. При отмене пассажиром сумма возврата зависит от&nbsp;времени до&nbsp;отправления.</p>
             </div>
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7" data-bravel-faq-question>
-              <span>Как понять, что поездка состоится?</span>
+              <span>Как понять, что&nbsp;поездка состоится?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-question-7" aria-hidden="true">
-              <p>В&nbsp;профиле водителя можно посмотреть рейтинг, отзывы, количество поездок и&nbsp;частоту отмен. Перед отправлением мы&nbsp;попросим водителя подтвердить поездку и&nbsp;сообщим вам её статус.</p>
+              <p>В&nbsp;профиле водителя можно посмотреть рейтинг, отзывы, количество поездок и&nbsp;частоту отмен. Перед отправлением мы&nbsp;попросим водителя подтвердить поездку и&nbsp;сообщим вам&nbsp;её&nbsp;статус.</p>
             </div>
           </div>
           <div class="bravel-faq-item">
@@ -9250,12 +9246,12 @@
               <span>Что делать, если водитель опаздывает?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-8" role="region" aria-labelledby="faq-question-8" aria-hidden="true">
-              <p>В&nbsp;приложении можно увидеть местоположение автомобиля и&nbsp;новое время прибытия. Если ожидание затянется, вы&nbsp;сможете связаться с&nbsp;водителем, отменить бронирование или обратиться в&nbsp;поддержку.</p>
+              <p>В&nbsp;приложении можно увидеть местоположение автомобиля и&nbsp;новое время прибытия. Если ожидание затянется, вы&nbsp;сможете связаться с&nbsp;водителем, отменить бронирование или&nbsp;обратиться в&nbsp;поддержку.</p>
             </div>
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-9" id="faq-question-9" data-bravel-faq-question>
-              <span>Можно&nbsp;ли ездить на&nbsp;работу регулярно?</span>
+              <span>Можно&nbsp;ли&nbsp;ездить на&nbsp;работу регулярно?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-9" role="region" aria-labelledby="faq-question-9" aria-hidden="true">
               <p>Да. Водители заранее публикуют расписание повторяющихся поездок. Вы&nbsp;сможете выбрать удобные дни и&nbsp;время, а&nbsp;затем заранее бронировать места.</p>
@@ -9278,7 +9274,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на почту <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afcdddced9cac39d9f9d99efd6cec1cbcad781ddda">[email&#160;protected]</a><br />Ответим на все ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <span style="user-select: text;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1775657661727b25272521576e767973726f396562">[email&#160;protected]</a></span><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
@@ -9374,7 +9370,7 @@
       </div>
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
       (() => {
         const header = document.querySelector('.music_430_188');
@@ -10151,5 +10147,5 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc797d5b8aae55',t:'MTc4NzUxMjgyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a308d6d84fd5a01d',t:'MTc4NzY0MjQ3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30998c3acb9a93b',t:'MTc4NzY1MDQyMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30acc2e8bbb1010',t:'MTc4NzY2MzAxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30ad451bc621010',t:'MTc4NzY2MzM0Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30ad8a28b7b1010',t:'MTc4NzY2MzUyNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30b0b97fafcd2a2',t:'MTc4NzY2NTYxMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f2bea14d3ec6bf',t:'MTc4NzQxMDgwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fa4ef7fd219f1a',t:'MTc4NzQ5MDExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc2bff0b012bcd',t:'MTc4NzUwOTY1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2fc797d5b8aae55',t:'MTc4NzUxMjgyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a308d6d84fd5a01d',t:'MTc4NzY0MjQ3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30998c3acb9a93b',t:'MTc4NzY1MDQyMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30acc2e8bbb1010',t:'MTc4NzY2MzAxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30ad451bc621010',t:'MTc4NzY2MzM0Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30ad8a28b7b1010',t:'MTc4NzY2MzUyNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30b0b97fafcd2a2',t:'MTc4NzY2NTYxMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a30b1e8fb9d6dca9',t:'MTc4NzY2NjM4OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
