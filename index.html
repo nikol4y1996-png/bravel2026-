@@ -8170,6 +8170,31 @@
         white-space: normal;
       }
 
+
+      /* На мобильных центр интро считается по видимой области браузера, а не по
+         большому layout viewport: нижняя панель/меню браузера не участвует в
+         центрировании логотипа. Динамическая высота также корректно обновляется
+         при появлении и скрытии панели. */
+      @media (max-width: 767px) {
+        .bravel-intro {
+          height: 100svh;
+          min-height: 100svh;
+          bottom: auto;
+        }
+        .bravel-intro__logo {
+          top: 50%;
+        }
+      }
+
+      @supports (height: 100dvh) {
+        @media (max-width: 767px) {
+          .bravel-intro {
+            height: 100dvh;
+            min-height: 100dvh;
+          }
+        }
+      }
+
 </style>
   </head>
   <body class="bravel-intro-active">
@@ -9340,7 +9365,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <span style="user-select: text;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3456465542515806040602744d555a50514c1a4641">[email&#160;protected]</a></span><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <span style="user-select: text;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e0c1c0f180b025c5e5c582e170f000a0b16401c1b">[email&#160;protected]</a></span><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
