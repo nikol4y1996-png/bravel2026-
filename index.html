@@ -8140,7 +8140,37 @@
       @media (max-width: 767px) {
         #how-it-works.music_430_218 { margin-top:30px; }
       }
-    </style>
+    
+
+      /* Убираем заметную прямоугольную границу зон блюра в блоке «Следите за развитием Bravel».
+         Сам эффект размытия сохраняется, но его края плавно растворяются. */
+      .music_430_255.bravel-roadmap-graph .music_427_185,
+      .music_430_255.bravel-roadmap-graph .music_427_186 {
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+      }
+
+      /* Email в блоке «Остались вопросы?» всегда находится поверх иллюстрации
+         и не теряется из-за позиционирования/слоёв соседних элементов. */
+      .music_430_211 > .bravel-questions-source {
+        z-index: 9;
+      }
+      .bravel-questions-source .music_756_18346,
+      .bravel-questions-source .music_756_18346 span {
+        position: relative;
+        z-index: 20;
+        display: inline;
+        visibility: visible;
+        opacity: 1;
+        color: #121212;
+        white-space: normal;
+      }
+
+</style>
   </head>
   <body class="bravel-intro-active">
     <div class="bravel-intro" data-bravel-intro aria-hidden="true">
@@ -9310,7 +9340,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <span style="user-select: text;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1775657661727b25272521576e767973726f396562">[email&#160;protected]</a></span><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <span style="user-select: text;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3456465542515806040602744d555a50514c1a4641">[email&#160;protected]</a></span><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
@@ -9406,7 +9436,7 @@
       </div>
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
       (() => {
         const header = document.querySelector('.music_430_188');
