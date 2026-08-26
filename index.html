@@ -8218,7 +8218,22 @@
       }
 
 </style>
-  </head>
+
+    <!-- bravel-support-email-style-start -->
+    <style>
+      .bravel-support-email,
+      .bravel-support-email:visited,
+      .bravel-support-email:hover,
+      .bravel-support-email:active,
+      .bravel-support-email:focus {
+        color: inherit !important;
+        text-decoration: none !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+      }
+    </style>
+    <!-- bravel-support-email-style-end -->
+</head>
   <body class="bravel-intro-active">
     <div class="bravel-intro" data-bravel-intro aria-hidden="true">
       <span class="bravel-intro__logo"><span class="bravel-intro__letter" style="--bravel-letter-index: 0">B</span><span class="bravel-intro__letter" style="--bravel-letter-index: 1">r</span><span class="bravel-intro__letter" style="--bravel-letter-index: 2">a</span><span class="bravel-intro__letter" style="--bravel-letter-index: 3">v</span><span class="bravel-intro__letter" style="--bravel-letter-index: 4">e</span><span class="bravel-intro__letter" style="--bravel-letter-index: 5">l</span></span>
@@ -9359,7 +9374,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="debcacbfa8bbb2eceeece89ea7bfb0babba6f0acab">[email&#160;protected]</a><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <a href="mailto:bravel2026%40yandex.ru" class="bravel-support-email" style="color: inherit; text-decoration: none; border-bottom: 0; box-shadow: none;">bravel2026<!-- -->@<!-- -->yandex.ru</a><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
@@ -9454,8 +9469,7 @@
         </div>
       </div>
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
-    </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    </div><script>
 
       (() => {
         const header = document.querySelector('.music_430_188');
@@ -10232,5 +10246,40 @@ if (container) {
           legend.pauseAnimations();
         }
       })();
-    </script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3116ff04a1e39c7',t:'MTc4NzczMjYzNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    </script>
+
+    <!-- bravel-support-mailto-fix-start -->
+    <script>
+      (() => {
+        const applySupportEmail = () => {
+          const user = 'bravel2026';
+          const domain = 'yandex.ru';
+          const email = user + '@' + domain;
+
+          document.querySelectorAll('.music_756_18346').forEach((container) => {
+            const link = document.createElement('a');
+            link.href = 'mailto:' + email;
+            link.className = 'bravel-support-email';
+            link.style.color = 'inherit';
+            link.style.textDecoration = 'none';
+            link.style.borderBottom = '0';
+            link.style.boxShadow = 'none';
+            link.textContent = email;
+
+            container.textContent = 'Пишите на\u00a0почту ';
+            container.appendChild(link);
+            container.appendChild(document.createElement('br'));
+            container.appendChild(document.createTextNode('Ответим на\u00a0все\u00a0ваши вопросы.'));
+          });
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', applySupportEmail, { once: true });
+        } else {
+          applySupportEmail();
+        }
+      })();
+    </script>
+    <!-- bravel-support-mailto-fix-end -->
+</body>
 </html>
