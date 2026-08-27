@@ -5,11 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Bravel</title>
-    <link rel="icon" type="image/png" href="./assets/bravel-inline/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="./assets/bravel-inline/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="./assets/bravel-inline/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/bravel-inline/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="./assets/bravel-inline/favicon/site.webmanifest" />
+    <meta
+      name="description"
+      content="Находите проверенных водителей, бронируйте поездки между городами и делитесь маршрутом с близкими. Bravel поможет оставаться на связи в течение всей поездки." />
+    <meta property="og:title" content="Bravel" />
+    <meta
+      property="og:description"
+      content="Находите проверенных водителей, бронируйте поездки между городами и делитесь маршрутом с близкими. Bravel поможет оставаться на связи в течение всей поездки." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Bravel" />
+    <meta
+      name="twitter:description"
+      content="Находите проверенных водителей, бронируйте поездки между городами и делитесь маршрутом с близкими. Bravel поможет оставаться на связи в течение всей поездки." />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://bravel.ru/#organization",
+            "name": "Bravel",
+            "url": "https://bravel.ru/",
+            "description": "Находите проверенных водителей, бронируйте поездки между городами и делитесь маршрутом с близкими. Bravel поможет оставаться на связи в течение всей поездки.",
+            "email": "bravel2026@yandex.ru",
+            "sameAs": ["https://t.me/bravel2026", "https://vk.ru/club240456240"],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "bravel2026@yandex.ru",
+              "contactType": "customer support"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://bravel.ru/#website",
+            "url": "https://bravel.ru/",
+            "name": "Bravel",
+            "description": "Находите проверенных водителей, бронируйте поездки между городами и делитесь маршрутом с близкими. Bravel поможет оставаться на связи в течение всей поездки.",
+            "inLanguage": "ru-RU",
+            "publisher": { "@id": "https://bravel.ru/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://bravel.ru/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Почему именно мы?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Мы проверяем водителей и автомобили, фиксируем стоимость после бронирования и показываем маршрут в реальном времени. В сервисе также можно находить регулярные поездки, выбирать попутчиков по предпочтениям и оставлять запрос на нужный маршрут."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Как вы проверяете водителей?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Водитель подтверждает личность по паспорту и селфи, а также загружает права и документы на автомобиль. После проверки в профиле появляется специальная отметка."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Может ли приехать другой водитель или автомобиль?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Нет. Бронирование привязано к конкретному водителю и автомобилю. До поездки вы увидите фотографию водителя, марку, цвет и номер машины."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Может ли измениться стоимость поездки?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "После бронирования стоимость фиксируется. Все условия, включая багаж, животных и дополнительные остановки, водитель указывает заранее."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Что произойдёт, если водитель отменит поездку?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Мы сразу сообщим об отмене, предложим похожие варианты и отправим запрос водителям, которые ездят по этому маршруту."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Как возвращаются деньги?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Если водитель отменил поездку или не приехал, оплата возвращается автоматически. При отмене пассажиром сумма возврата зависит от времени до отправления."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Как понять, что поездка состоится?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "В профиле водителя можно посмотреть рейтинг, отзывы, количество поездок и частоту отмен. Перед отправлением мы попросим водителя подтвердить поездку и сообщим вам её статус."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Что делать, если водитель опаздывает?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "В приложении можно увидеть местоположение автомобиля и новое время прибытия. Если ожидание затянется, вы сможете связаться с водителем, отменить бронирование или обратиться в поддержку."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Можно ли ездить на работу регулярно?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Да. Водители заранее публикуют расписание повторяющихся поездок. Вы сможете выбрать удобные дни и время, а затем заранее бронировать места."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Что делать, если подходящей поездки нет?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Оставьте запрос с маршрутом, датой и временем. Водители, которые регулярно ездят в этом направлении, получат уведомление и смогут предложить поездку."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preload" href="./assets/bravel-inline/fonts/bravel-sf-pro-display-regular.otf" as="font" type="font/otf" />
     <link rel="preload" href="./assets/bravel-inline/fonts/bravel-sf-pro-display-medium.otf" as="font" type="font/otf" />
     <link rel="preload" href="./assets/bravel-inline/fonts/bravel-sf-pro-display-bold.otf" as="font" type="font/otf" />
@@ -6222,10 +6350,31 @@
         overflow: visible;
       }
 
+      .bravel-roadmap-source .bravel-roadmap-dot-eraser {
+        /* Закрашивает белым старую статичную оранжевую точку, нарисованную
+           прямо на картинке графика, — чтобы на этом месте осталась только
+           одна, пульсирующая, точка ниже. Те же left/top/width, что и
+           у самой точки, — центр совпадает точь-в-точь, — а масштаб
+           (scale, вокруг центра) чуть больше, чтобы перекрыть края
+           и сглаженную обводку точки из картинки. */
+        display: block;
+        position: absolute;
+        left: 48.883%;
+        top: 0;
+        width: 1.3746%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: #ffffff;
+        transform: scale(1.9);
+        pointer-events: none;
+        z-index: 2;
+      }
+
       .bravel-roadmap-source .bravel-roadmap-pulse-dot {
-        /* Точка совпадает с оранжевой точкой на вершине графика (нарисована на картинке)
-           и добавляет поверх неё пульсацию. Позиция и размер — в %, чтобы точно
-           попадать в то же место на картинке на любой ширине экрана. */
+        /* Точка совпадает с оранжевой точкой на вершине графика (нарисована на картинке,
+           но теперь скрыта .bravel-roadmap-dot-eraser выше) и заменяет её собой,
+           добавляя пульсацию. Позиция и размер — в %, чтобы точно попадать в то же
+           место на картинке на любой ширине экрана. */
         display: block;
         position: absolute;
         left: 48.883%;
@@ -8342,7 +8491,7 @@
               <div class="music_392_163"></div>
               <span class="music_392_164">Обзор</span>
             </div>
-            <div class="flexContainer_2_music_430_219"><span class="music_392_161">Как работает Bravel</span></div>
+            <div class="flexContainer_2_music_430_219"><span class="music_392_161">Как&nbsp;работает Bravel</span></div>
           </div>
           <div class="bravel-how-cards-code">
     <div class="music_694_1817">
@@ -8460,7 +8609,7 @@
                 d="M17.4498 48.2199C15.6317 48.6852 13.7787 47.5917 13.308 45.7737C12.8365 43.9525 13.9307 42.0939 15.7518 41.6224L16.6056 44.9199C15.7518 41.6224 15.753 41.6221 15.7542 41.6218L15.7567 41.6211L15.7625 41.6196L15.7768 41.616C15.7875 41.6133 15.8006 41.61 15.8162 41.6062C15.8473 41.5984 15.8883 41.5885 15.9392 41.5764C16.0412 41.5523 16.1833 41.5198 16.3676 41.4802C16.7361 41.4008 17.2735 41.2928 17.9958 41.1659C19.4401 40.9121 21.6255 40.5825 24.6804 40.2557C30.7888 39.6022 40.3849 38.959 54.5001 38.959C68.6152 38.959 78.2114 39.6022 84.3198 40.2557C87.3747 40.5825 89.5601 40.9121 91.0044 41.1659C91.7267 41.2928 92.2641 41.4008 92.6326 41.4802C92.8169 41.5198 92.959 41.5523 93.0609 41.5764C93.1119 41.5885 93.1529 41.5984 93.184 41.6062C93.1996 41.61 93.2127 41.6133 93.2234 41.616L93.2377 41.6196L93.246 41.6218C93.2472 41.6221 93.2483 41.6224 92.3946 44.9199L93.2483 41.6224C95.0695 42.0939 96.1637 43.9525 95.6921 45.7737C95.2215 47.5916 93.3686 48.6851 91.5505 48.2199M17.4498 48.2199C17.4506 48.2197 17.4518 48.2194 17.4533 48.219C17.4612 48.2171 17.4791 48.2127 17.5072 48.206C17.5635 48.1927 17.6607 48.1703 17.801 48.1401C18.0816 48.0798 18.5341 47.9882 19.1748 47.8756C20.4564 47.6504 22.4896 47.3414 25.405 47.0295C31.237 46.4056 40.5882 45.7715 54.5001 45.7715C68.412 45.7715 77.7631 46.4056 83.5952 47.0295C86.5106 47.3414 88.5438 47.6504 89.8254 47.8756C90.4661 47.9882 90.9186 48.0798 91.1992 48.1401C91.3394 48.1703 91.4367 48.1927 91.493 48.206C91.5211 48.2127 91.539 48.2171 91.5469 48.219"
                 fill="white" />
             </svg>
-            <span class="music_694_1823">В пути</span>
+            <span class="music_694_1823">В&nbsp;пути</span>
           </div>
         </div>
       </div>
@@ -9026,6 +9175,7 @@
                   <div class="bravel-legend-orb" aria-hidden="true"><div class="bravel-thinking-orb" data-orb-state="solving" role="img" aria-label="Solving…"></div></div>
                 </div>
               <div class="music_756_18547">
+                <div class="bravel-roadmap-dot-eraser" aria-hidden="true"></div>
                 <div class="bravel-roadmap-pulse-dot" aria-hidden="true"></div>
                 <span class="bravel-roadmap-countdown-mask" aria-hidden="true"></span>
                 <span class="bravel-roadmap-countdown-text" data-bravel-roadmap-countdown>Осталось: 171 день</span>
@@ -9321,7 +9471,7 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5" data-bravel-faq-question>
-              <span>Что произойдёт, если водитель отменит поездку?</span>
+              <span>Что&nbsp;произойдёт, если водитель отменит поездку?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" aria-hidden="true">
               <p>Мы&nbsp;сразу сообщим об&nbsp;отмене, предложим похожие варианты и&nbsp;отправим запрос водителям, которые ездят по&nbsp;этому маршруту.</p>
@@ -9329,15 +9479,15 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6" data-bravel-faq-question>
-              <span>Как возвращаются деньги?</span>
+              <span>Как&nbsp;возвращаются деньги?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" aria-hidden="true">
-              <p>Если водитель отменил поездку или&nbsp;не&nbsp;приехал, оплата возвращается автоматически. При отмене пассажиром сумма возврата зависит от&nbsp;времени до&nbsp;отправления.</p>
+              <p>Если водитель отменил поездку или&nbsp;не&nbsp;приехал, оплата возвращается автоматически. При&nbsp;отмене пассажиром сумма возврата зависит от&nbsp;времени до&nbsp;отправления.</p>
             </div>
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7" data-bravel-faq-question>
-              <span>Как понять, что&nbsp;поездка состоится?</span>
+              <span>Как&nbsp;понять, что&nbsp;поездка состоится?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-question-7" aria-hidden="true">
               <p>В&nbsp;профиле водителя можно посмотреть рейтинг, отзывы, количество поездок и&nbsp;частоту отмен. Перед отправлением мы&nbsp;попросим водителя подтвердить поездку и&nbsp;сообщим вам&nbsp;её&nbsp;статус.</p>
@@ -9345,7 +9495,7 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8" data-bravel-faq-question>
-              <span>Что делать, если водитель опаздывает?</span>
+              <span>Что&nbsp;делать, если водитель опаздывает?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-8" role="region" aria-labelledby="faq-question-8" aria-hidden="true">
               <p>В&nbsp;приложении можно увидеть местоположение автомобиля и&nbsp;новое время прибытия. Если ожидание затянется, вы&nbsp;сможете связаться с&nbsp;водителем, отменить бронирование или&nbsp;обратиться в&nbsp;поддержку.</p>
@@ -9361,7 +9511,7 @@
           </div>
           <div class="bravel-faq-item">
             <button class="bravel-faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-10" id="faq-question-10" data-bravel-faq-question>
-              <span>Что делать, если подходящей поездки нет?</span>
+              <span>Что&nbsp;делать, если подходящей поездки нет?</span>
             </button>
             <div class="bravel-faq-answer" id="faq-answer-10" role="region" aria-labelledby="faq-question-10" aria-hidden="true">
               <p>Оставьте запрос с&nbsp;маршрутом, датой и&nbsp;временем. Водители, которые регулярно ездят в&nbsp;этом направлении, получат уведомление и&nbsp;смогут предложить поездку.</p>
@@ -9376,7 +9526,7 @@
         </div>
         <div class="music_756_18340 bravel-questions-source">
           <div class="music_756_18343">
-            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <a href="/cdn-cgi/l/email-protection#2e4c5c4f584b421c1e1c180b1a1e574f404a4b56005c5b" class="bravel-support-email" style="color: inherit; text-decoration: none; border-bottom: 0; box-shadow: none;">bravel2026<!-- -->@<!-- -->yandex.ru</a><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
+            <span class="music_756_18344">Остались вопросы?</span><span class="music_756_18346">Пишите на&nbsp;почту <a href="mailto:bravel2026%40yandex.ru" class="bravel-support-email" style="color: inherit; text-decoration: none; border-bottom: 0; box-shadow: none;">bravel2026<!-- -->@<!-- -->yandex.ru</a><br />Ответим на&nbsp;все&nbsp;ваши вопросы.</span>
           </div>
           <svg
             class="music_694_1786"
@@ -9471,7 +9621,7 @@
         </div>
       </div>
       <div class="bravel-scroll-dot" aria-hidden="true"></div>
-    </div><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    </div><script>
 
       (() => {
         const header = document.querySelector('.music_430_188');
