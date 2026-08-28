@@ -7220,20 +7220,21 @@
            use a fixed-size HTML overlay instead (see below). */
         .bravel-promo-inner-blur { display: none; }
 
-        /* 3 rectangles in a row, 32×144px each (height simply matches the
-           widget's own rendered height via 100%, so it always lines up even
-           though the widget's real pixel height varies slightly by device
-           width — at the ~344–358px widget widths typical of phones this
-           comes out to ~144px, matching the reference design). Only the
-           first rectangle is rounded (top-left + bottom-left, 20px); the
-           other two butt up against it with square corners so the group
-           reads as one continuous blurred strip. */
+        /* 2 rectangles in a row, 32px wide each (64px total — narrowed to end
+           right at the horizontal center of the orange ring icon). Height is
+           pinned to the widget card's own box: the card sits inset 3/220 of
+           the SVG's height from the top (matching its rx:30 rounded rect),
+           not the full canvas, so the overlay lines up with the card edges
+           instead of poking a couple px past its top/bottom. Only the first
+           rectangle is rounded (top-left + bottom-left, 20px); the second
+           butts up against it with square corners so the pair reads as one
+           continuous blurred strip. */
         .bravel-promo-blur-mobile {
           display: flex;
           position: absolute;
-          top: 0;
+          top: calc(100% * 3 / 220);
           left: 0;
-          height: 100%;
+          height: calc(100% * 217 / 220);
           pointer-events: none;
           z-index: 2;
         }
@@ -7247,6 +7248,9 @@
         }
         .bravel-promo-blur-mobile__seg--1 {
           border-radius: 20px 0 0 20px;
+        }
+        .bravel-promo-blur-mobile__seg--3 {
+          display: none;
         }
 
         /* --- "Остались вопросы?" — real (non-scaled) mobile layout --- */
