@@ -7220,15 +7220,16 @@
            use a fixed-size HTML overlay instead (see below). */
         .bravel-promo-inner-blur { display: none; }
 
-        /* 2 rectangles in a row, 32px wide each (64px total — narrowed to end
-           right at the horizontal center of the orange ring icon). Height is
-           pinned to the widget card's own box: the card sits inset 3/220 of
-           the SVG's height from the top (matching its rx:30 rounded rect),
-           not the full canvas, so the overlay lines up with the card edges
-           instead of poking a couple px past its top/bottom. Only the first
-           rectangle is rounded (top-left + bottom-left, 20px); the second
-           butts up against it with square corners so the pair reads as one
-           continuous blurred strip. */
+        /* 3 rectangles in a row, 22px wide each (66px total — narrowed from
+           32px so the strip ends right around the horizontal center of the
+           orange ring icon). Height is pinned to the widget card's own box:
+           the card sits inset 3/220 of the SVG's height from the top
+           (matching its rx:30 rounded rect), not the full canvas, so the
+           overlay lines up with the card edges instead of poking a couple
+           px past its top/bottom. Only the first rectangle is rounded
+           (top-left + bottom-left, 20px); the other two butt up against it
+           with square corners so the group reads as one continuous
+           blurred strip. */
         .bravel-promo-blur-mobile {
           display: flex;
           position: absolute;
@@ -7239,7 +7240,7 @@
           z-index: 2;
         }
         .bravel-promo-blur-mobile__seg {
-          width: 32px;
+          width: 18px;
           height: 100%;
           flex-shrink: 0;
           -webkit-backdrop-filter: blur(20px);
@@ -7248,9 +7249,6 @@
         }
         .bravel-promo-blur-mobile__seg--1 {
           border-radius: 20px 0 0 20px;
-        }
-        .bravel-promo-blur-mobile__seg--3 {
-          display: none;
         }
 
         /* --- "Остались вопросы?" — real (non-scaled) mobile layout --- */
