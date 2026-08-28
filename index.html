@@ -8531,6 +8531,138 @@
       }
     </style>
     <!-- bravel-support-email-style-end -->
+<style>
+      /* Форма «Работа у нас» */
+      .bravel-careers-trigger {
+        appearance: none;
+        -webkit-appearance: none;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        transition: color 320ms cubic-bezier(.22,1,.36,1);
+      }
+      .bravel-careers-trigger:hover,
+      .bravel-careers-trigger:focus-visible { color: #ff641a; }
+      .bravel-careers-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 20000;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(18,18,18,.34);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .28s ease, visibility .28s ease;
+      }
+      .bravel-careers-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+      .bravel-careers-dialog {
+        position: relative;
+        width: min(680px, 100%);
+        max-height: min(900px, calc(100vh - 48px));
+        overflow: auto;
+        padding: 40px;
+        border-radius: 35px;
+        background: #f7f7f7;
+        box-shadow: 0 20px 70px rgba(0,0,0,.2);
+        transform: translateY(18px) scale(.98);
+        transition: transform .35s cubic-bezier(.22,1,.36,1);
+      }
+      .bravel-careers-modal.is-open .bravel-careers-dialog { transform: translateY(0) scale(1); }
+      .bravel-careers-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        border-radius: 50%;
+        background: #fff;
+        color: #121212;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .bravel-careers-kicker {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      .bravel-careers-kicker::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ff641a;
+      }
+      .bravel-careers-title { margin: 0; font-size: 40px; line-height: 1.08; font-weight: 700; }
+      .bravel-careers-subtitle { margin: 12px 0 28px; color: rgba(18,18,18,.55); font-size: 16px; line-height: 1.4; }
+      .bravel-careers-form { display: grid; gap: 18px; }
+      .bravel-careers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .bravel-careers-field { display: grid; gap: 8px; }
+      .bravel-careers-field label,
+      .bravel-careers-legend { font-size: 14px; font-weight: 500; }
+      .bravel-careers-field input,
+      .bravel-careers-field textarea {
+        width: 100%;
+        border: 1px solid rgba(18,18,18,.18);
+        border-radius: 16px;
+        padding: 14px 16px;
+        background: #fff;
+        color: #121212;
+        font: inherit;
+        outline: none;
+        transition: border-color .2s ease, box-shadow .2s ease;
+      }
+      .bravel-careers-field input:focus,
+      .bravel-careers-field textarea:focus { border-color: #ff641a; box-shadow: 0 0 0 3px rgba(255,100,26,.14); }
+      .bravel-careers-field textarea { min-height: 118px; resize: vertical; }
+      .bravel-careers-choices { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+      .bravel-careers-choice input { position: absolute; opacity: 0; pointer-events: none; }
+      .bravel-careers-choice span {
+        display: block;
+        padding: 11px 15px;
+        border: 1px solid rgba(18,18,18,.18);
+        border-radius: 999px;
+        background: #fff;
+        cursor: pointer;
+        transition: .2s ease;
+      }
+      .bravel-careers-choice input:checked + span { border-color: #ff641a; background: #ff641a; color: #fff; }
+      .bravel-careers-file { position: relative; }
+      .bravel-careers-file input { padding: 11px 14px; }
+      .bravel-careers-file small { color: rgba(18,18,18,.45); font-size: 12px; }
+      .bravel-careers-submit {
+        justify-self: start;
+        border: 0;
+        border-radius: 999px;
+        padding: 15px 28px;
+        background: #ff641a;
+        color: #fff;
+        font: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background .2s ease, transform .2s ease;
+      }
+      .bravel-careers-submit:hover { background: #ff4c1a; transform: translateY(-1px); }
+      .bravel-careers-status { min-height: 20px; margin: -4px 0 0; color: #ff641a; font-size: 14px; }
+      @media (max-width: 640px) {
+        .bravel-careers-modal { padding: 12px; }
+        .bravel-careers-dialog { padding: 30px 20px 24px; border-radius: 25px; max-height: calc(100vh - 24px); }
+        .bravel-careers-title { font-size: 30px; padding-right: 24px; }
+        .bravel-careers-grid { grid-template-columns: 1fr; gap: 18px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bravel-careers-modal, .bravel-careers-dialog { transition: none; }
+      }
+    </style>
 </head>
   <body class="bravel-intro-active">
     <div class="bravel-intro" data-bravel-intro aria-hidden="true">
@@ -9764,7 +9896,7 @@
         </div>
         <div class="music_430_235"><span class="music_412_118">Развитие продукта</span><a class="music_412_107 bravel-footer-link" href="#roadmap">Этапы разработки</a></div>
         <div class="music_430_236"><span class="music_412_119">Акции</span><a class="music_412_109 bravel-footer-link" href="#promo">Промокод</a></div>
-        <div class="flexContainer_11_music_430_232"><span class="music_412_121">Стать частью команды</span><span class="music_412_122">Работа у&nbsp;нас</span></div>
+        <div class="flexContainer_11_music_430_232"><span class="music_412_121">Стать частью команды</span><button class="music_412_122 bravel-careers-trigger" type="button" aria-haspopup="dialog" aria-controls="bravel-careers-modal">Работа у&nbsp;нас</button></div>
         <div class="music_430_237">
           <a class="music_392_415 bravel-social-link" href="https://vk.ru/club240456240" target="_blank" rel="noopener noreferrer" aria-label="VK">
             <svg class="music_i392_415_381_103 bravel-social-icon" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -10591,5 +10723,90 @@ if (container) {
       })();
     </script>
     <!-- bravel-support-mailto-fix-end -->
-</body>
+  <div class="bravel-careers-modal" id="bravel-careers-modal" role="dialog" aria-modal="true" aria-labelledby="bravel-careers-title" aria-hidden="true">
+    <div class="bravel-careers-dialog">
+      <button class="bravel-careers-close" type="button" aria-label="Закрыть форму">×</button>
+      <div class="bravel-careers-kicker">Стать частью команды</div>
+      <h2 class="bravel-careers-title" id="bravel-careers-title">Работа у нас</h2>
+      <p class="bravel-careers-subtitle">Расскажите о себе — мы свяжемся с вами, если появится подходящая возможность.</p>
+      <form class="bravel-careers-form" id="bravel-careers-form" action="https://formsubmit.co/bravel2026@yandex.ru" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Новый отклик на вакансию Bravel">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://www.xn--80abem4a0a.xn--p1ai/">
+        <input type="hidden" name="_url" value="https://www.xn--80abem4a0a.xn--p1ai/">
+        <input type="hidden" name="_captcha" value="true">
+        <div class="bravel-careers-grid">
+          <div class="bravel-careers-field">
+            <label for="career-name">Фамилия и имя *</label>
+            <input id="career-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="bravel-careers-field">
+            <label for="career-specialization">Специализация *</label>
+            <input id="career-specialization" name="specialization" type="text" placeholder="Например, frontend-разработчик" required>
+          </div>
+        </div>
+        <div class="bravel-careers-grid">
+          <div class="bravel-careers-field">
+            <label for="career-phone">Номер телефона *</label>
+            <input id="career-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          </div>
+          <div class="bravel-careers-field">
+            <label for="career-email">Email *</label>
+            <input id="career-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <fieldset class="bravel-careers-field" style="border:0; padding:0; margin:0;">
+          <legend class="bravel-careers-legend">Предпочтительный способ связи *</legend>
+          <div class="bravel-careers-choices">
+            <label class="bravel-careers-choice"><input type="radio" name="contact" value="По почте" required><span>По почте</span></label>
+            <label class="bravel-careers-choice"><input type="radio" name="contact" value="По телефону"><span>По телефону</span></label>
+            <label class="bravel-careers-choice"><input type="radio" name="contact" value="Мессенджеры"><span>Мессенджеры</span></label>
+          </div>
+        </fieldset>
+        <div class="bravel-careers-field bravel-careers-file">
+          <label for="career-resume">Резюме *</label>
+          <input id="career-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required>
+          <small>PDF, DOC или DOCX, до 10 МБ</small>
+        </div>
+        <div class="bravel-careers-field">
+          <label for="career-about">Напишите о себе</label>
+          <textarea id="career-about" name="about" placeholder="Опыт, навыки и чем вы хотели бы заниматься в Bravel"></textarea>
+        </div>
+        <p class="bravel-careers-status" id="bravel-careers-status" role="status" aria-live="polite"></p>
+        <button class="bravel-careers-submit" type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const modal = document.getElementById('bravel-careers-modal');
+      const form = document.getElementById('bravel-careers-form');
+      const trigger = document.querySelector('.bravel-careers-trigger');
+      const close = modal && modal.querySelector('.bravel-careers-close');
+      const status = document.getElementById('bravel-careers-status');
+      let previousFocus;
+      const setOpen = (open) => {
+        if (!modal) return;
+        modal.classList.toggle('is-open', open);
+        modal.setAttribute('aria-hidden', String(!open));
+        document.body.classList.toggle('bravel-careers-open', open);
+        if (open) { previousFocus = document.activeElement; close && close.focus(); }
+        else if (previousFocus && previousFocus.focus) previousFocus.focus();
+      };
+      if (trigger) trigger.addEventListener('click', () => setOpen(true));
+      if (close) close.addEventListener('click', () => setOpen(false));
+      if (modal) modal.addEventListener('click', (event) => { if (event.target === modal) setOpen(false); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) setOpen(false); });
+      if (form) form.addEventListener('submit', (event) => {
+        const file = form.elements.resume.files[0];
+        if (file && file.size > 10 * 1024 * 1024) {
+          event.preventDefault();
+          status.textContent = 'Файл слишком большой. Максимальный размер — 10 МБ.';
+          return;
+        }
+        status.textContent = 'Отправляем отклик…';
+      });
+    })();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32359545bb6d27c',t:'MTc4NzkyMDQ1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
