@@ -10735,6 +10735,7 @@ if (container) {
         <input type="hidden" name="from_name" value="Bravel — отклик на работу">
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
         <input type="hidden" name="form_token" value="bravel-careers">
+        <textarea name="message" id="career-message" hidden></textarea>
         <div class="bravel-careers-field" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
           <label for="career-website">Сайт</label>
           <input id="career-website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -10769,7 +10770,7 @@ if (container) {
         </fieldset>
         <div class="bravel-careers-field bravel-careers-file">
           <label for="career-resume">Резюме *</label>
-          <input id="career-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required>
+          <input id="career-resume" name="attachment" type="file" accept=".pdf,.doc,.docx" required>
           <small>PDF, DOC или DOCX, до 10 МБ</small>
         </div>
         <div class="bravel-careers-field">
@@ -10803,22 +10804,60 @@ if (container) {
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) setOpen(false); });
       if (form) form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const file = form.elements.resume.files[0];
+        const file = form.elements.attachment && form.elements.attachment.files[0];
         if (file && file.size > 10 * 1024 * 1024) {
           status.textContent = 'Файл слишком большой. Максимальный размер — 10 МБ.';
           return;
         }
+
+        const contact = form.querySelector('input[name="contact"]:checked');
+        const value = (name) => form.elements[name] ? form.elements[name].value.trim() : '';
+        form.elements.message.value = [
+          'Фамилия и имя: ' + value('name'),
+          'Специализация: ' + value('specialization'),
+          'Номер телефона: ' + value('phone'),
+          'Email: ' + value('email'),
+          'Предпочтительный способ связи: ' + (contact ? contact.value : ''),
+          'Резюме: ' + (file ? file.name : 'не прикреплено'),
+          '',
+          'О себе:',
+          value('about') || '—'
+        ].join('\n');
+
         status.textContent = 'Отправляем отклик…';
         const submitButton = form.querySelector('.bravel-careers-submit');
         if (submitButton) submitButton.disabled = true;
         try {
-          const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-          const result = await response.json();
-          if (!response.ok || !result.success) throw new Error(result.message || 'Ошибка отправки');
-          status.textContent = 'Спасибо! Отклик успешно отправлен.';
+          const send = async (data) => {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              headers: { Accept: 'application/json' },
+              body: data
+            });
+            const text = await response.text();
+            let result = {};
+            try { result = JSON.parse(text); } catch (_) {}
+            if (!response.ok || result.success === false) {
+              throw new Error(result.message || 'Ошибка отправки');
+            }
+          };
+
+          const data = new FormData(form);
+          try {
+            await send(data);
+          } catch (error) {
+            /* На бесплатном тарифе Web3Forms вложения могут быть недоступны.
+               В этом случае отправляем все текстовые данные и название файла,
+               чтобы отклик всё равно гарантированно пришёл на почту. */
+            if (!file) throw error;
+            data.delete('attachment');
+            data.append('resume_filename', file.name);
+            await send(data);
+          }
+          status.textContent = 'Спасибо! Отклик успешно отправлен на bravel2026@yandex.ru.';
           form.reset();
         } catch (error) {
-          status.textContent = 'Не удалось отправить отклик. Попробуйте ещё раз.';
+          status.textContent = 'Не удалось отправить отклик. Проверьте подключение и повторите попытку.';
           console.error('Web3Forms:', error);
         } finally {
           if (submitButton) submitButton.disabled = false;
@@ -10826,5 +10865,5 @@ if (container) {
       });
     })();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32398077863d3c2',t:'MTc4NzkyMzAyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a323a7723b28141d',t:'MTc4NzkyMzY1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
