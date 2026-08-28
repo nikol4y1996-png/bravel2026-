@@ -10729,12 +10729,7 @@ if (container) {
       <div class="bravel-careers-kicker">Стать частью команды</div>
       <h2 class="bravel-careers-title" id="bravel-careers-title">Работа у нас</h2>
       <p class="bravel-careers-subtitle">Расскажите о себе — мы свяжемся с вами, если появится подходящая возможность.</p>
-      <form class="bravel-careers-form" id="bravel-careers-form" action="https://formsubmit.co/bravel2026@yandex.ru" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="Новый отклик на вакансию Bravel">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://www.xn--80abem4a0a.xn--p1ai/">
-        <input type="hidden" name="_url" value="https://www.xn--80abem4a0a.xn--p1ai/">
-        <input type="hidden" name="_captcha" value="true">
+      <form class="bravel-careers-form" id="bravel-careers-form">
         <div class="bravel-careers-grid">
           <div class="bravel-careers-field">
             <label for="career-name">Фамилия и имя *</label>
@@ -10798,15 +10793,34 @@ if (container) {
       if (modal) modal.addEventListener('click', (event) => { if (event.target === modal) setOpen(false); });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) setOpen(false); });
       if (form) form.addEventListener('submit', (event) => {
+        event.preventDefault();
         const file = form.elements.resume.files[0];
         if (file && file.size > 10 * 1024 * 1024) {
-          event.preventDefault();
           status.textContent = 'Файл слишком большой. Максимальный размер — 10 МБ.';
           return;
         }
-        status.textContent = 'Отправляем отклик…';
+        const value = (name) => form.elements[name] ? form.elements[name].value.trim() : '';
+        const contact = form.querySelector('input[name="contact"]:checked');
+        const body = [
+          'Новый отклик на работу в Bravel',
+          '',
+          'Фамилия и имя: ' + value('name'),
+          'Специализация: ' + value('specialization'),
+          'Телефон: ' + value('phone'),
+          'Email: ' + value('email'),
+          'Предпочтительный способ связи: ' + (contact ? contact.value : ''),
+          'Резюме: ' + (file ? file.name : 'не прикреплено'),
+          '',
+          'О себе:',
+          value('about') || '—'
+        ].join('\n');
+        const mailto = 'mailto:bravel2026@yandex.ru?subject=' + encodeURIComponent('Новый отклик на работу в Bravel') + '&body=' + encodeURIComponent(body);
+        window.location.href = mailto;
+        status.textContent = file
+          ? 'Открываем письмо. Прикрепите выбранное резюме к письму и отправьте его.'
+          : 'Открываем письмо для отправки отклика.';
       });
     })();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32359545bb6d27c',t:'MTc4NzkyMDQ1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a323683338ca35e5',t:'MTc4NzkyMTA2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
