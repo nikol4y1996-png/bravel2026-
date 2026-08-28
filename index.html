@@ -10729,7 +10729,16 @@ if (container) {
       <div class="bravel-careers-kicker">Стать частью команды</div>
       <h2 class="bravel-careers-title" id="bravel-careers-title">Работа у нас</h2>
       <p class="bravel-careers-subtitle">Расскажите о себе — мы свяжемся с вами, если появится подходящая возможность.</p>
-      <form class="bravel-careers-form" id="bravel-careers-form">
+      <form class="bravel-careers-form" id="bravel-careers-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="access_key" value="79c61009-9987-4ef3-9740-f16a0b985cab">
+        <input type="hidden" name="subject" value="Новый отклик на работу в Bravel">
+        <input type="hidden" name="from_name" value="Bravel — отклик на работу">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+        <input type="hidden" name="form_token" value="bravel-careers">
+        <div class="bravel-careers-field" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+          <label for="career-website">Сайт</label>
+          <input id="career-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="bravel-careers-grid">
           <div class="bravel-careers-field">
             <label for="career-name">Фамилия и имя *</label>
@@ -10792,35 +10801,30 @@ if (container) {
       if (close) close.addEventListener('click', () => setOpen(false));
       if (modal) modal.addEventListener('click', (event) => { if (event.target === modal) setOpen(false); });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) setOpen(false); });
-      if (form) form.addEventListener('submit', (event) => {
+      if (form) form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const file = form.elements.resume.files[0];
         if (file && file.size > 10 * 1024 * 1024) {
           status.textContent = 'Файл слишком большой. Максимальный размер — 10 МБ.';
           return;
         }
-        const value = (name) => form.elements[name] ? form.elements[name].value.trim() : '';
-        const contact = form.querySelector('input[name="contact"]:checked');
-        const body = [
-          'Новый отклик на работу в Bravel',
-          '',
-          'Фамилия и имя: ' + value('name'),
-          'Специализация: ' + value('specialization'),
-          'Телефон: ' + value('phone'),
-          'Email: ' + value('email'),
-          'Предпочтительный способ связи: ' + (contact ? contact.value : ''),
-          'Резюме: ' + (file ? file.name : 'не прикреплено'),
-          '',
-          'О себе:',
-          value('about') || '—'
-        ].join('\n');
-        const mailto = 'mailto:bravel2026@yandex.ru?subject=' + encodeURIComponent('Новый отклик на работу в Bravel') + '&body=' + encodeURIComponent(body);
-        window.location.href = mailto;
-        status.textContent = file
-          ? 'Открываем письмо. Прикрепите выбранное резюме к письму и отправьте его.'
-          : 'Открываем письмо для отправки отклика.';
+        status.textContent = 'Отправляем отклик…';
+        const submitButton = form.querySelector('.bravel-careers-submit');
+        if (submitButton) submitButton.disabled = true;
+        try {
+          const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          const result = await response.json();
+          if (!response.ok || !result.success) throw new Error(result.message || 'Ошибка отправки');
+          status.textContent = 'Спасибо! Отклик успешно отправлен.';
+          form.reset();
+        } catch (error) {
+          status.textContent = 'Не удалось отправить отклик. Попробуйте ещё раз.';
+          console.error('Web3Forms:', error);
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
       });
     })();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a323683338ca35e5',t:'MTc4NzkyMTA2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32398077863d3c2',t:'MTc4NzkyMzAyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
