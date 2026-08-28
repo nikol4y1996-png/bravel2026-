@@ -6646,6 +6646,17 @@
         margin-left: 0;
       }
 
+      /* SVG now lives inside .bravel-promo-widget-wrap and simply fills it. */
+      .bravel-promo-widget-svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Fixed-size (32×144px) mobile blur overlay — replaces the SVG's own
+         proportionally-scaled blur bands on small screens. Hidden elsewhere. */
+      .bravel-promo-blur-mobile { display: none; }
+
       /* --- "Бронируйте без комиссии целый год" — block from index.html --- */
 
 
@@ -7202,6 +7213,40 @@
           align-self:stretch;
           flex-shrink:0;
           margin-top:20px;
+        }
+
+        /* The SVG's own bg-blur bands scale proportionally with the widget and
+           end up narrower than intended on small screens — hide them here and
+           use a fixed-size HTML overlay instead (see below). */
+        .bravel-promo-inner-blur { display: none; }
+
+        /* 3 rectangles in a row, 32×144px each (height simply matches the
+           widget's own rendered height via 100%, so it always lines up even
+           though the widget's real pixel height varies slightly by device
+           width — at the ~344–358px widget widths typical of phones this
+           comes out to ~144px, matching the reference design). Only the
+           first rectangle is rounded (top-left + bottom-left, 20px); the
+           other two butt up against it with square corners so the group
+           reads as one continuous blurred strip. */
+        .bravel-promo-blur-mobile {
+          display: flex;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .bravel-promo-blur-mobile__seg {
+          width: 32px;
+          height: 100%;
+          flex-shrink: 0;
+          -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+          background: rgba(255, 255, 255, 0.04);
+        }
+        .bravel-promo-blur-mobile__seg--1 {
+          border-radius: 20px 0 0 20px;
         }
 
         /* --- "Остались вопросы?" — real (non-scaled) mobile layout --- */
@@ -9315,8 +9360,9 @@
               </svg>
             </a>
           </div>
+<div class="music_721_18317 music_1180_151 bravel-promo-widget-wrap">
 <svg
-        class="music_721_18317 music_1180_151"
+        class="bravel-promo-widget-svg"
         width="526"
         height="220"
         viewBox="0 0 526 220"
@@ -9384,6 +9430,7 @@
           fill="#121212"
           fill-opacity="0.4" />
         <foreignObject
+          class="bravel-promo-inner-blur"
           x="43.4932"
           y="3"
           width="33"
@@ -9392,7 +9439,7 @@
             xmlns="http://www.w3.org/1999/xhtml"
             style="-webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); width: 100%; height: 100%; background: rgba(255, 255, 255, 0.04);"></div>
         </foreignObject>
-        <g data-figma-bg-blur-radius="40">
+        <g class="bravel-promo-inner-blur" data-figma-bg-blur-radius="40">
           <rect
             x="43.4932"
             y="3"
@@ -9403,6 +9450,7 @@
             style="mix-blend-mode: overlay" />
         </g>
         <foreignObject
+          class="bravel-promo-inner-blur"
           x="76.4932"
           y="3"
           width="32"
@@ -9411,7 +9459,7 @@
             xmlns="http://www.w3.org/1999/xhtml"
             style="-webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); width: 100%; height: 100%; background: rgba(255, 255, 255, 0.04);"></div>
         </foreignObject>
-        <g data-figma-bg-blur-radius="40">
+        <g class="bravel-promo-inner-blur" data-figma-bg-blur-radius="40">
           <rect
             x="76.4932"
             y="3"
@@ -9422,6 +9470,7 @@
             style="mix-blend-mode: overlay" />
         </g>
         <foreignObject
+          class="bravel-promo-inner-blur"
           x="0"
           y="3"
           width="43.5"
@@ -9431,7 +9480,7 @@
             xmlns="http://www.w3.org/1999/xhtml"
             style="-webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); width: 100%; height: 100%; border-radius: 30px 0 0 30px; background: rgba(255, 255, 255, 0.04);"></div>
         </foreignObject>
-        <g data-figma-bg-blur-radius="40">
+        <g class="bravel-promo-inner-blur" data-figma-bg-blur-radius="40">
           <path
             d="M0 33C0 16.4315 13.4315 3 30 3H43.4932V220H30C13.4315 220 0 206.569 0 190V33Z"
             fill="url(#paint2_linear_1180_151)"
@@ -9497,6 +9546,12 @@
           </linearGradient>
         </defs>
       </svg>
+        <div class="bravel-promo-blur-mobile" aria-hidden="true">
+          <span class="bravel-promo-blur-mobile__seg bravel-promo-blur-mobile__seg--1"></span>
+          <span class="bravel-promo-blur-mobile__seg bravel-promo-blur-mobile__seg--2"></span>
+          <span class="bravel-promo-blur-mobile__seg bravel-promo-blur-mobile__seg--3"></span>
+        </div>
+      </div>
         </div>
         
       </div>
