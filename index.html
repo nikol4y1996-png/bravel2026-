@@ -8639,6 +8639,25 @@
       .bravel-careers-file { position: relative; }
       .bravel-careers-file input { padding: 11px 14px; }
       .bravel-careers-file small { color: rgba(18,18,18,.45); font-size: 12px; }
+      /* Подсказки и ошибки полей */
+      .bravel-careers-hint { color: rgba(18,18,18,.45); font-size: 12px; line-height: 1.35; }
+      .bravel-careers-error {
+        display: none;
+        color: #e0392b;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .bravel-careers-field.has-error .bravel-careers-error { display: block; }
+      .bravel-careers-field.has-error .bravel-careers-hint { display: none; }
+      .bravel-careers-field.has-error input,
+      .bravel-careers-field.has-error textarea {
+        border-color: #e0392b;
+      }
+      .bravel-careers-field.has-error input:focus,
+      .bravel-careers-field.has-error textarea:focus {
+        box-shadow: 0 0 0 3px rgba(224,57,43,.14);
+      }
+      .bravel-careers-field.has-error .bravel-careers-choice span { border-color: #e0392b; }
       .bravel-careers-submit {
         justify-self: start;
         border: 0;
@@ -8653,11 +8672,60 @@
       }
       .bravel-careers-submit:hover { background: #ff4c1a; transform: translateY(-1px); }
       .bravel-careers-status { min-height: 20px; margin: -4px 0 0; color: #ff641a; font-size: 14px; }
-      @media (max-width: 640px) {
-        .bravel-careers-modal { padding: 12px; }
-        .bravel-careers-dialog { padding: 30px 20px 24px; border-radius: 25px; max-height: calc(100vh - 24px); }
-        .bravel-careers-title { font-size: 30px; padding-right: 24px; }
-        .bravel-careers-grid { grid-template-columns: 1fr; gap: 18px; }
+      /* --- Мобильная адаптация формы «Работа у нас» --- */
+      @media (max-width: 767px) {
+        .bravel-careers-modal {
+          padding: 0;
+          align-items: flex-end;
+        }
+        .bravel-careers-dialog {
+          width: 100%;
+          max-width: 100%;
+          max-height: min(92vh, 92svh);
+          padding: 24px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+          border-radius: 24px 24px 0 0;
+          -webkit-overflow-scrolling: touch;
+          transform: translateY(100%);
+        }
+        .bravel-careers-modal.is-open .bravel-careers-dialog { transform: translateY(0); }
+        .bravel-careers-close {
+          top: 14px;
+          right: 14px;
+          width: 36px;
+          height: 36px;
+          font-size: 22px;
+        }
+        .bravel-careers-kicker { font-size: 11px; margin-bottom: 10px; }
+        .bravel-careers-title { font-size: 24px; line-height: 1.15; padding-right: 40px; }
+        .bravel-careers-subtitle { font-size: 14px; margin: 8px 0 20px; }
+        .bravel-careers-form { gap: 14px; }
+        .bravel-careers-grid { grid-template-columns: 1fr; gap: 14px; }
+        .bravel-careers-field label,
+        .bravel-careers-legend { font-size: 13px; }
+        .bravel-careers-field input,
+        .bravel-careers-field textarea {
+          padding: 13px 14px;
+          font-size: 16px; /* защищает от авто-зума в Safari при фокусе */
+          border-radius: 14px;
+        }
+        .bravel-careers-field textarea { min-height: 96px; }
+        .bravel-careers-choices { gap: 8px; }
+        .bravel-careers-choice span { padding: 10px 14px; font-size: 14px; }
+        .bravel-careers-file input {
+          padding: 10px 12px;
+          font-size: 13px;
+        }
+        .bravel-careers-file small { font-size: 11px; }
+        .bravel-careers-submit {
+          justify-self: stretch;
+          width: 100%;
+          text-align: center;
+          padding: 15px 20px;
+        }
+      }
+      @media (max-width: 360px) {
+        .bravel-careers-dialog { padding: 20px 14px calc(18px + env(safe-area-inset-bottom, 0px)); }
+        .bravel-careers-title { font-size: 21px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .bravel-careers-modal, .bravel-careers-dialog { transition: none; }
@@ -10741,41 +10809,50 @@ if (container) {
           <input id="career-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
         <div class="bravel-careers-grid">
-          <div class="bravel-careers-field">
+          <div class="bravel-careers-field" data-field="name">
             <label for="career-name">Фамилия и имя *</label>
-            <input id="career-name" name="name" type="text" autocomplete="name" required>
+            <input id="career-name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="career-name-hint career-name-error">
+            <small class="bravel-careers-hint" id="career-name-hint">Например: Иванов Иван</small>
+            <span class="bravel-careers-error" id="career-name-error" role="alert">Укажите фамилию и имя</span>
           </div>
-          <div class="bravel-careers-field">
+          <div class="bravel-careers-field" data-field="specialization">
             <label for="career-specialization">Специализация *</label>
-            <input id="career-specialization" name="specialization" type="text" placeholder="Например, frontend-разработчик" required>
+            <input id="career-specialization" name="specialization" type="text" placeholder="Например, frontend-разработчик" required minlength="2" aria-describedby="career-specialization-error">
+            <span class="bravel-careers-error" id="career-specialization-error" role="alert">Укажите специализацию</span>
           </div>
         </div>
         <div class="bravel-careers-grid">
-          <div class="bravel-careers-field">
+          <div class="bravel-careers-field" data-field="phone">
             <label for="career-phone">Номер телефона *</label>
-            <input id="career-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+            <input id="career-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" maxlength="20" required aria-describedby="career-phone-hint career-phone-error">
+            <small class="bravel-careers-hint" id="career-phone-hint">С кодом страны, например +7 900 000-00-00</small>
+            <span class="bravel-careers-error" id="career-phone-error" role="alert">Проверьте номер — от 10 до 15 цифр</span>
           </div>
-          <div class="bravel-careers-field">
+          <div class="bravel-careers-field" data-field="email">
             <label for="career-email">Email *</label>
-            <input id="career-email" name="email" type="email" autocomplete="email" required>
+            <input id="career-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="career-email-error">
+            <span class="bravel-careers-error" id="career-email-error" role="alert">Введите email в формате name@example.com</span>
           </div>
         </div>
-        <fieldset class="bravel-careers-field" style="border:0; padding:0; margin:0;">
+        <fieldset class="bravel-careers-field" data-field="contact" style="border:0; padding:0; margin:0;">
           <legend class="bravel-careers-legend">Предпочтительный способ связи *</legend>
           <div class="bravel-careers-choices">
             <label class="bravel-careers-choice"><input type="radio" name="contact" value="По почте" required><span>По почте</span></label>
             <label class="bravel-careers-choice"><input type="radio" name="contact" value="По телефону"><span>По телефону</span></label>
             <label class="bravel-careers-choice"><input type="radio" name="contact" value="Мессенджеры"><span>Мессенджеры</span></label>
           </div>
+          <span class="bravel-careers-error" id="career-contact-error" role="alert">Выберите способ связи</span>
         </fieldset>
-        <div class="bravel-careers-field bravel-careers-file">
+        <div class="bravel-careers-field bravel-careers-file" data-field="attachment">
           <label for="career-resume">Резюме *</label>
-          <input id="career-resume" name="attachment" type="file" accept=".pdf,.doc,.docx" required>
-          <small>PDF, DOC или DOCX, до 10 МБ</small>
+          <input id="career-resume" name="attachment" type="file" accept=".pdf,.doc,.docx" required aria-describedby="career-resume-hint career-resume-error">
+          <small class="bravel-careers-hint" id="career-resume-hint">PDF, DOC или DOCX, до 10 МБ</small>
+          <span class="bravel-careers-error" id="career-resume-error" role="alert">Прикрепите резюме — PDF, DOC или DOCX</span>
         </div>
-        <div class="bravel-careers-field">
+        <div class="bravel-careers-field" data-field="about">
           <label for="career-about">Напишите о себе</label>
-          <textarea id="career-about" name="about" placeholder="Опыт, навыки и чем вы хотели бы заниматься в Bravel"></textarea>
+          <textarea id="career-about" name="about" maxlength="1000" placeholder="Опыт, навыки и чем вы хотели бы заниматься в Bravel"></textarea>
+          <small class="bravel-careers-hint">Необязательно, но поможет нам быстрее сориентироваться — до 1000 символов</small>
         </div>
         <p class="bravel-careers-status" id="bravel-careers-status" role="status" aria-live="polite"></p>
         <button class="bravel-careers-submit" type="submit">Отправить</button>
@@ -10802,16 +10879,112 @@ if (container) {
       if (close) close.addEventListener('click', () => setOpen(false));
       if (modal) modal.addEventListener('click', (event) => { if (event.target === modal) setOpen(false); });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) setOpen(false); });
+
+      /* ---------- Валидация полей ---------- */
+      const value = (name) => (form && form.elements[name]) ? form.elements[name].value.trim() : '';
+      const resumeErrorEl = document.getElementById('career-resume-error');
+
+      const isValidName = (v) => v.length >= 2;
+      const isValidSpecialization = (v) => v.length >= 2;
+      const isValidPhone = (v) => {
+        const digits = v.replace(/\D/g, '');
+        return digits.length >= 10 && digits.length <= 15;
+      };
+      const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      const isValidContact = () => !!form.querySelector('input[name="contact"]:checked');
+      const isValidResume = () => {
+        const file = form.elements.attachment && form.elements.attachment.files[0];
+        if (!file) {
+          if (resumeErrorEl) resumeErrorEl.textContent = 'Прикрепите резюме — PDF, DOC или DOCX';
+          return false;
+        }
+        const ext = '.' + file.name.split('.').pop().toLowerCase();
+        if (!['.pdf', '.doc', '.docx'].includes(ext)) {
+          if (resumeErrorEl) resumeErrorEl.textContent = 'Допустимые форматы: PDF, DOC, DOCX';
+          return false;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          if (resumeErrorEl) resumeErrorEl.textContent = 'Файл слишком большой — максимум 10 МБ';
+          return false;
+        }
+        return true;
+      };
+
+      const setFieldError = (field, hasError) => {
+        const wrap = form.querySelector(`[data-field="${field}"]`);
+        if (!wrap) return;
+        wrap.classList.toggle('has-error', hasError);
+        const control = wrap.querySelector('input, textarea');
+        if (control) control.setAttribute('aria-invalid', String(hasError));
+      };
+
+      /* Ограничиваем ввод в поле телефона допустимыми символами */
+      const phoneInput = form.elements.phone;
+      if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+          const cleaned = phoneInput.value.replace(/[^\d+()\-\s]/g, '');
+          if (cleaned !== phoneInput.value) phoneInput.value = cleaned;
+        });
+      }
+
+      /* Проверка полей по мере заполнения: подсказываем на blur,
+         сразу убираем ошибку, как только поле стало корректным */
+      const liveFields = [
+        ['name', isValidName],
+        ['specialization', isValidSpecialization],
+        ['phone', isValidPhone],
+        ['email', isValidEmail]
+      ];
+      liveFields.forEach(([field, test]) => {
+        const input = form.elements[field];
+        if (!input) return;
+        input.addEventListener('blur', () => setFieldError(field, !test(value(field))));
+        input.addEventListener('input', () => {
+          const wrap = form.querySelector(`[data-field="${field}"]`);
+          if (wrap && wrap.classList.contains('has-error') && test(value(field))) setFieldError(field, false);
+        });
+      });
+
+      form.querySelectorAll('input[name="contact"]').forEach((radio) => {
+        radio.addEventListener('change', () => setFieldError('contact', false));
+      });
+
+      const resumeInput = form.elements.attachment;
+      if (resumeInput) {
+        resumeInput.addEventListener('change', () => setFieldError('attachment', !isValidResume()));
+      }
+
+      const validateForm = () => {
+        const checks = [
+          ['name', isValidName(value('name'))],
+          ['specialization', isValidSpecialization(value('specialization'))],
+          ['phone', isValidPhone(value('phone'))],
+          ['email', isValidEmail(value('email'))],
+          ['contact', isValidContact()],
+          ['attachment', isValidResume()]
+        ];
+        let firstInvalid = null;
+        checks.forEach(([field, isValid]) => {
+          setFieldError(field, !isValid);
+          if (!isValid && !firstInvalid) firstInvalid = field;
+        });
+        return firstInvalid;
+      };
+
       if (form) form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const file = form.elements.attachment && form.elements.attachment.files[0];
-        if (file && file.size > 10 * 1024 * 1024) {
-          status.textContent = 'Файл слишком большой. Максимальный размер — 10 МБ.';
+
+        const invalidField = validateForm();
+        if (invalidField) {
+          status.textContent = 'Проверьте, пожалуйста, отмеченные поля.';
+          const wrap = form.querySelector(`[data-field="${invalidField}"]`);
+          const focusTarget = wrap && wrap.querySelector('input, textarea');
+          if (focusTarget) focusTarget.focus();
           return;
         }
 
+        const file = form.elements.attachment && form.elements.attachment.files[0];
         const contact = form.querySelector('input[name="contact"]:checked');
-        const value = (name) => form.elements[name] ? form.elements[name].value.trim() : '';
         form.elements.message.value = [
           'Фамилия и имя: ' + value('name'),
           'Специализация: ' + value('specialization'),
