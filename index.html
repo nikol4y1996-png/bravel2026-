@@ -8725,6 +8725,52 @@
       }
       .bravel-careers-submit:hover { background: #ff4c1a; transform: translateY(-1px); }
       .bravel-careers-status { min-height: 20px; margin: -4px 0 0; color: #ff641a; font-size: 14px; }
+      .bravel-careers-form.is-success-hidden { display: none; }
+      .bravel-careers-dialog.is-success-state .bravel-careers-kicker,
+      .bravel-careers-dialog.is-success-state .bravel-careers-title,
+      .bravel-careers-dialog.is-success-state .bravel-careers-subtitle { display: none; }
+      .bravel-careers-success {
+        display: none;
+        min-height: 360px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 34px 12px 18px;
+      }
+      .bravel-careers-success.is-visible { display: flex; }
+      .bravel-careers-success-icon {
+        width: 86px;
+        height: 86px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 24px;
+        border-radius: 50%;
+        background: #ff641a;
+        color: #fff;
+        box-shadow: 0 12px 28px rgba(255,100,26,.24);
+      }
+      .bravel-careers-success-icon svg { width: 42px; height: 42px; }
+      .bravel-careers-success-title { margin: 0; font-size: 34px; line-height: 1.1; font-weight: 700; }
+      .bravel-careers-success-text {
+        max-width: 430px;
+        margin: 14px 0 28px;
+        color: rgba(18,18,18,.55);
+        font-size: 16px;
+        line-height: 1.45;
+      }
+      .bravel-careers-success-close {
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 27px;
+        background: #121212;
+        color: #fff;
+        font: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background .2s ease, transform .2s ease;
+      }
+      .bravel-careers-success-close:hover { background: #ff641a; transform: translateY(-1px); }
       /* --- Мобильная адаптация формы «Работа у нас» --- */
       @media (max-width: 767px) {
         .bravel-careers-modal {
@@ -8781,6 +8827,12 @@
           text-align: center;
           padding: 15px 20px;
         }
+        .bravel-careers-success { min-height: 330px; padding: 26px 4px 8px; }
+        .bravel-careers-success-icon { width: 72px; height: 72px; margin-bottom: 20px; }
+        .bravel-careers-success-icon svg { width: 36px; height: 36px; }
+        .bravel-careers-success-title { font-size: 26px; }
+        .bravel-careers-success-text { margin: 12px 0 24px; font-size: 14px; }
+        .bravel-careers-success-close { width: 100%; padding: 14px 20px; }
       }
       @media (max-width: 360px) {
         .bravel-careers-dialog { padding: 20px 14px calc(18px + env(safe-area-inset-bottom, 0px)); }
@@ -10856,6 +10908,16 @@ if (container) {
       <div class="bravel-careers-kicker">Стать частью команды</div>
       <h2 class="bravel-careers-title" id="bravel-careers-title">Работа у нас</h2>
       <p class="bravel-careers-subtitle">Расскажите о себе — мы свяжемся с вами, если появится подходящая возможность.</p>
+      <div class="bravel-careers-success" id="bravel-careers-success" role="status" aria-live="polite" aria-hidden="true">
+        <div class="bravel-careers-success-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 25.5L20.5 34L36 17.5" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="bravel-careers-success-title">Отклик отправлен!</h2>
+        <p class="bravel-careers-success-text">Спасибо, что хотите стать частью Bravel. Мы получили вашу заявку и свяжемся с вами, если появится подходящая возможность.</p>
+        <button class="bravel-careers-success-close" type="button">Вернуться на сайт</button>
+      </div>
       <form class="bravel-careers-form" id="bravel-careers-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="access_key" value="79c61009-9987-4ef3-9740-f16a0b985cab">
         <input type="hidden" name="subject" value="Новый отклик на работу в Bravel">
@@ -10883,14 +10945,14 @@ if (container) {
         <div class="bravel-careers-grid">
           <div class="bravel-careers-field" data-field="phone">
             <label for="career-phone">Номер телефона *</label>
-            <input id="career-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" maxlength="20" required aria-describedby="career-phone-hint career-phone-error">
+            <input id="career-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" maxlength="16" pattern="\+7 \d{3} \d{3}-\d{2}-\d{2}" required aria-describedby="career-phone-hint career-phone-error">
             <small class="bravel-careers-hint" id="career-phone-hint">С кодом страны, например +7 900 000-00-00</small>
-            <span class="bravel-careers-error" id="career-phone-error" role="alert">Проверьте номер — от 10 до 15 цифр</span>
+            <span class="bravel-careers-error" id="career-phone-error" role="alert">Введите номер в формате +7 900 000-00-00</span>
           </div>
           <div class="bravel-careers-field" data-field="email">
             <label for="career-email">Email *</label>
             <input id="career-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="career-email-error">
-            <span class="bravel-careers-error" id="career-email-error" role="alert">Введите email в формате name@example.com</span>
+            <span class="bravel-careers-error" id="career-email-error" role="alert">Введите email в формате <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7618171b1336130e171b061a135815191b">[email&#160;protected]</a></span>
           </div>
         </div>
         <fieldset class="bravel-careers-field" data-field="contact" style="border:0; padding:0; margin:0;">
@@ -10918,16 +10980,38 @@ if (container) {
       </form>
     </div>
   </div>
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (() => {
       const modal = document.getElementById('bravel-careers-modal');
       const form = document.getElementById('bravel-careers-form');
       const trigger = document.querySelector('.bravel-careers-trigger');
       const close = modal && modal.querySelector('.bravel-careers-close');
       const status = document.getElementById('bravel-careers-status');
+      const success = document.getElementById('bravel-careers-success');
+      const successClose = success && success.querySelector('.bravel-careers-success-close');
       let previousFocus;
+      const showForm = () => {
+        const dialog = modal && modal.querySelector('.bravel-careers-dialog');
+        dialog && dialog.classList.remove('is-success-state');
+        form && form.classList.remove('is-success-hidden');
+        if (success) {
+          success.classList.remove('is-visible');
+          success.setAttribute('aria-hidden', 'true');
+        }
+      };
+      const showSuccess = () => {
+        const dialog = modal && modal.querySelector('.bravel-careers-dialog');
+        dialog && dialog.classList.add('is-success-state');
+        form && form.classList.add('is-success-hidden');
+        if (success) {
+          success.classList.add('is-visible');
+          success.setAttribute('aria-hidden', 'false');
+          successClose && successClose.focus();
+        }
+      };
       const setOpen = (open) => {
         if (!modal) return;
+        if (open) showForm();
         modal.classList.toggle('is-open', open);
         modal.setAttribute('aria-hidden', String(!open));
         document.body.classList.toggle('bravel-careers-open', open);
@@ -10936,6 +11020,7 @@ if (container) {
       };
       if (trigger) trigger.addEventListener('click', () => setOpen(true));
       if (close) close.addEventListener('click', () => setOpen(false));
+      if (successClose) successClose.addEventListener('click', () => setOpen(false));
       if (modal) modal.addEventListener('click', (event) => { if (event.target === modal) setOpen(false); });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) setOpen(false); });
 
@@ -10945,10 +11030,7 @@ if (container) {
 
       const isValidName = (v) => v.length >= 2;
       const isValidSpecialization = (v) => v.length >= 2;
-      const isValidPhone = (v) => {
-        const digits = v.replace(/\D/g, '');
-        return digits.length >= 10 && digits.length <= 15;
-      };
+      const isValidPhone = (v) => /^\+7 \d{3} \d{3}-\d{2}-\d{2}$/.test(v);
       const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
       const isValidContact = () => !!form.querySelector('input[name="contact"]:checked');
       const isValidResume = () => {
@@ -10977,12 +11059,35 @@ if (container) {
         if (control) control.setAttribute('aria-invalid', String(hasError));
       };
 
-      /* Ограничиваем ввод в поле телефона допустимыми символами */
+      /* Маска телефона: только российский номер в формате +7 900 000-00-00. */
       const phoneInput = form.elements.phone;
+      const formatPhone = (raw) => {
+        let digits = raw.replace(/\D/g, '');
+        if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+        if (digits.startsWith('7')) digits = digits.slice(1);
+        digits = digits.slice(0, 10);
+
+        let formatted = '+7';
+        if (digits.length) formatted += ' ' + digits.slice(0, 3);
+        if (digits.length > 3) formatted += ' ' + digits.slice(3, 6);
+        if (digits.length > 6) formatted += '-' + digits.slice(6, 8);
+        if (digits.length > 8) formatted += '-' + digits.slice(8, 10);
+        return formatted;
+      };
+
       if (phoneInput) {
+        phoneInput.addEventListener('focus', () => {
+          if (!phoneInput.value) phoneInput.value = '+7 ';
+        });
         phoneInput.addEventListener('input', () => {
-          const cleaned = phoneInput.value.replace(/[^\d+()\-\s]/g, '');
-          if (cleaned !== phoneInput.value) phoneInput.value = cleaned;
+          const previous = phoneInput.value;
+          phoneInput.value = formatPhone(previous);
+          phoneInput.setCustomValidity(isValidPhone(phoneInput.value) || phoneInput.value === '+7 ' ? '' : 'Введите номер в формате +7 900 000-00-00');
+        });
+        phoneInput.addEventListener('keydown', (event) => {
+          if (event.key === 'Backspace' && phoneInput.selectionStart <= 3 && phoneInput.selectionEnd <= 3) {
+            event.preventDefault();
+          }
         });
       }
 
@@ -11086,8 +11191,9 @@ if (container) {
             data.append('resume_filename', file.name);
             await send(data);
           }
-          status.textContent = 'Спасибо! Отклик успешно отправлен на bravel2026@yandex.ru.';
+          status.textContent = '';
           form.reset();
+          showSuccess();
         } catch (error) {
           status.textContent = 'Не удалось отправить отклик. Проверьте подключение и повторите попытку.';
           console.error('Web3Forms:', error);
@@ -11097,5 +11203,5 @@ if (container) {
       });
     })();
   </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a323a7723b28141d',t:'MTc4NzkyMzY1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a323a7723b28141d',t:'MTc4NzkyMzY1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32ad12148f837f5',t:'MTc4Nzk5ODc2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
