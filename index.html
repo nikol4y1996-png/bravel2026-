@@ -8549,8 +8549,10 @@
         inset: 0;
         z-index: 20000;
         display: grid;
+        grid-template-columns: minmax(0, 1fr);
         place-items: center;
         padding: 24px;
+        overflow: hidden;
         background: rgba(18,18,18,.34);
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
@@ -8563,8 +8565,12 @@
       .bravel-careers-dialog {
         position: relative;
         width: min(680px, 100%);
+        max-width: 100%;
+        min-width: 0;
         max-height: min(900px, calc(100vh - 48px));
-        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        touch-action: pan-y;
         padding: 40px;
         border-radius: 35px;
         background: #f7f7f7;
@@ -8579,12 +8585,16 @@
         right: 20px;
         width: 40px;
         height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: 0;
         border-radius: 50%;
         background: #fff;
         color: #121212;
         font-size: 28px;
         line-height: 1;
+        padding: 0;
         cursor: pointer;
       }
       .bravel-careers-kicker {
@@ -8604,14 +8614,22 @@
       }
       .bravel-careers-title { margin: 0; font-size: 40px; line-height: 1.08; font-weight: 700; }
       .bravel-careers-subtitle { margin: 12px 0 28px; color: rgba(18,18,18,.55); font-size: 16px; line-height: 1.4; }
-      .bravel-careers-form { display: grid; gap: 18px; }
-      .bravel-careers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-      .bravel-careers-field { display: grid; gap: 8px; }
+      .bravel-careers-form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; min-width: 0; }
+      .bravel-careers-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        gap: 18px;
+        min-width: 0;
+      }
+      .bravel-careers-field { display: grid; gap: 8px; min-width: 0; }
       .bravel-careers-field label,
       .bravel-careers-legend { font-size: 14px; font-weight: 500; }
       .bravel-careers-field input,
       .bravel-careers-field textarea {
         width: 100%;
+        min-width: 0;
+        max-width: 100%;
         border: 1px solid rgba(18,18,18,.18);
         border-radius: 16px;
         padding: 14px 16px;
@@ -8636,8 +8654,25 @@
         transition: .2s ease;
       }
       .bravel-careers-choice input:checked + span { border-color: #ff641a; background: #ff641a; color: #fff; }
-      .bravel-careers-file { position: relative; }
-      .bravel-careers-file input { padding: 11px 14px; }
+      .bravel-careers-file { position: relative; min-width: 0; }
+      .bravel-careers-file input {
+        min-width: 0;
+        max-width: 100%;
+        padding: 11px 14px;
+      }
+      .bravel-careers-file input::file-selector-button,
+      .bravel-careers-file input::-webkit-file-upload-button {
+        max-width: 100%;
+        margin-right: 10px;
+        border: 0;
+        border-radius: 999px;
+        padding: 7px 14px;
+        background: rgba(18,18,18,.08);
+        color: #121212;
+        font: inherit;
+        font-size: 13px;
+        cursor: pointer;
+      }
       .bravel-careers-file small { color: rgba(18,18,18,.45); font-size: 12px; }
       /* Подсказки и ошибки полей */
       .bravel-careers-hint { color: rgba(18,18,18,.45); font-size: 12px; line-height: 1.35; }
@@ -8699,7 +8734,7 @@
         .bravel-careers-title { font-size: 24px; line-height: 1.15; padding-right: 40px; }
         .bravel-careers-subtitle { font-size: 14px; margin: 8px 0 20px; }
         .bravel-careers-form { gap: 14px; }
-        .bravel-careers-grid { grid-template-columns: 1fr; gap: 14px; }
+        .bravel-careers-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
         .bravel-careers-field label,
         .bravel-careers-legend { font-size: 13px; }
         .bravel-careers-field input,
@@ -8714,6 +8749,12 @@
         .bravel-careers-file input {
           padding: 10px 12px;
           font-size: 13px;
+        }
+        .bravel-careers-file input::file-selector-button,
+        .bravel-careers-file input::-webkit-file-upload-button {
+          padding: 6px 12px;
+          font-size: 12px;
+          margin-right: 8px;
         }
         .bravel-careers-file small { font-size: 11px; }
         .bravel-careers-submit {
