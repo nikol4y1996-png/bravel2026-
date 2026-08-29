@@ -8643,7 +8643,19 @@
       .bravel-careers-field textarea:focus { border-color: #ff641a; box-shadow: 0 0 0 3px rgba(255,100,26,.14); }
       .bravel-careers-field textarea { min-height: 118px; resize: vertical; }
       .bravel-careers-choices { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
-      .bravel-careers-choice input { position: absolute; opacity: 0; pointer-events: none; }
+      .bravel-careers-choice {
+        position: relative;
+        display: inline-flex;
+      }
+      .bravel-careers-choice input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
       .bravel-careers-choice span {
         display: block;
         padding: 11px 15px;
@@ -8654,6 +8666,12 @@
         transition: .2s ease;
       }
       .bravel-careers-choice input:checked + span { border-color: #ff641a; background: #ff641a; color: #fff; }
+      /* <legend> нестабильно ведёт себя как grid-элемент в разных браузерах,
+         поэтому у fieldset отдельно задаём блочную раскладку с тем же отступом 8px */
+      fieldset.bravel-careers-field { display: block; }
+      fieldset.bravel-careers-field .bravel-careers-legend { display: block; margin: 0 0 8px; }
+      fieldset.bravel-careers-field .bravel-careers-choices { margin-top: 0; }
+      fieldset.bravel-careers-field .bravel-careers-error { margin-top: 8px; }
       .bravel-careers-file { position: relative; min-width: 0; }
       .bravel-careers-file input {
         min-width: 0;
