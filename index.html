@@ -428,9 +428,12 @@
 
       .bravel-intro {
         position: fixed;
-        inset: 0;
-        width: 100%;
-        min-height: 100vh;
+        top: -12vh;
+        left: -12vw;
+        right: -12vw;
+        bottom: -12vh;
+        width: auto;
+        min-height: 0;
         overflow: hidden;
         background-color: #ff641a;
         display: flex;
@@ -8055,29 +8058,33 @@
           aspect-ratio: 525.451 / 220;
           flex-shrink: 1;
           margin: 0;
+          overflow: hidden; /* жёсткий предел: блюр-полоса не может вылезти за виджет */
         }
 
         /* Блюр в планшетной версии промо-виджета:
-           три соседних прямоугольника по 32px. Высота повторяет внутреннюю
-           карточку SVG (y=3, height=217 при viewBox 220), поэтому полоса
-           не выходит за верхнюю и нижнюю границы виджета. Скругление есть
-           только у внешнего левого края — как у самой карточки. */
+           три соседних прямоугольника по 24px. Высота повторяет внутреннюю
+           карточку SVG (y=3, height=217 при viewBox 220) и дополнительно
+           обрезается по границам виджета через overflow:hidden на обёртке —
+           полоса не выходит за верхнюю и нижнюю границы виджета ни при каких
+           условиях. Скругление есть только у внешнего левого края — как у
+           самой карточки. */
         .bravel-promo-inner-blur { display: none; }
         .bravel-promo-blur-mobile {
           display: flex;
           position: absolute;
           top: calc(100% * 3 / 220);
           left: 0;
-          width: 96px;
+          width: 72px;
           height: calc(100% * 217 / 220);
+          max-height: 100%;
           overflow: hidden;
           pointer-events: none;
           z-index: 2;
         }
         .bravel-promo-blur-mobile__seg {
-          width: 32px;
+          width: 24px;
           height: 100%;
-          flex: 0 0 32px;
+          flex: 0 0 24px;
           -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
           background: rgba(255, 255, 255, 0.04);
